@@ -3,29 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>InnerFire Product Website</title>
+    <title>InnerFire — Breathe. Feel It.</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="page">
-      <header class="hero">
-        <p class="eyebrow">InnerFire</p>
-        <h1>Product Overview</h1>
-        <p class="subtitle">
-          Breath-driven multisensory experience: visuals, sound, and haptics.
-        </p>
-      </header>
 
-      <section class="card">
-        <div class="card-head">
-          <h2>Source Document</h2>
-          <a href="./content/InnerFire_Product_Overview_EN.md" target="_blank" rel="noreferrer">
-            Open Markdown
-          </a>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">InnerFire</p>
+        <h1>Your exhale.<br>On fire.</h1>
+        <p class="subtitle">A breathing app where your breath drives fire visuals, sound, and haptics — in real time.</p>
+        <a href="#signup" class="btn-primary">Get Early Access</a>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section class="demo">
+      <div class="container">
+        <div class="video-placeholder">
+          <span class="play-icon">▶</span>
+          <p>Demo video coming soon</p>
         </div>
-        <article id="content" class="content">Loading...</article>
-      </section>
-    </main>
+        <p class="demo-caption">This is what your exhale looks like.</p>
+      </div>
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <section class="for-who">
+      <div class="container">
+        <h2>Built for people who feel too much, too fast.</h2>
+        <ul class="benefits">
+          <li>You've tried breathing apps. They feel like homework. This feels like something else.</li>
+          <li>No timers. No instructions. Just exhale — and feel the fire respond.</li>
+          <li>1–5 minutes. Any time. Anywhere you need to reset.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EMAIL SIGNUP -->
+    <section class="signup" id="signup">
+      <div class="container">
+        <h2>Be one of 300 early testers.</h2>
+        <p class="signup-sub">Leave your email → get free TestFlight access when we launch.</p>
+        <p class="signup-note">No spam. Just a beta invite when we're ready.</p>
+
+        <!--
+          PASTE YOUR CONVERTKIT FORM CODE HERE.
+          Steps:
+          1. Go to convertkit.com → sign up (free)
+          2. Forms → New Form → Inline
+          3. Customize, then click "Publish" → "Copy Code"
+          4. Delete the placeholder <div> below and paste your ConvertKit code
+        -->
+        <div class="form-placeholder">
+          <input type="email" placeholder="your@email.com" class="email-input" disabled />
+          <button class="btn-primary" disabled>Get Early Access</button>
+          <p class="form-note">⚠️ Connect ConvertKit to activate this form</p>
+        </div>
+        <!-- END CONVERTKIT FORM -->
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p class="footer-follow">Follow the build:</p>
+        <div class="social-links">
+          <!-- Replace # with your actual social profile URLs -->
+          <a href="#" class="social-link">TikTok</a>
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">YouTube</a>
+        </div>
+        <p class="footer-credit">Made by an indie developer who needed to breathe.</p>
+      </div>
+    </footer>
 
     <script src="./script.js"></script>
   </body>
