@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-24
-## Current status: Landing page built — pending integrations and polish
+## Current status: Landing page built — SEO metadata added, pending integrations and polish
 
 ---
 
@@ -23,7 +23,6 @@
 - ConvertKit form is disconnected — emails cannot be collected
 - Social links are `href="#"` — not pointing to real profiles
 - No favicon
-- No OG/meta tags for social sharing (critical for link-in-bio traffic)
 - No CLAUDE.md (AI rules not auto-loaded)
 - No dev server script (developer must run python manually)
 - Blog has no articles
@@ -38,7 +37,7 @@ Conversion path: video → landing page → email signup → TestFlight invite.
 ---
 
 ## Completed tasks
-- none (task management system just initialized)
+- [TASK-001] Add OG meta tags and page SEO
 
 ## Active task
 - none

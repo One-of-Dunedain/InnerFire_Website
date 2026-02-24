@@ -3,7 +3,7 @@
 ---
 
 ## [TASK-001] Add OG meta tags and page SEO
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 
