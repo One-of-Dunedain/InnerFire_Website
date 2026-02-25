@@ -158,3 +158,74 @@ None.
 
 ### Recommended next action
 Run one live submission from the deployed page and confirm subscriber appears in Kit dashboard, then proceed to TASK-006.
+---
+## [TASK-006] Add sticky header navigation
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added a fixed glass-style header to both `index.html` and `blog.html` with brand logo and links (`Blog`, `Get Early Access`), added required header styles in `styles.css`, added top spacing compensation for fixed header, and removed the old footer blog navigation block from `index.html`.
+
+### Files changed
+- `index.html` - added shared header block and removed old footer blog nav block
+- `blog.html` - added shared header block
+- `styles.css` - added header style system and top offset for fixed header (`.hero`, `.page-header`)
+
+### Acceptance Criteria Results
+- [x] Header is visible at top of `index.html` - passed
+- [x] Header is visible at top of `blog.html` - passed
+- [x] Header stays fixed when scrolling - passed (`position: fixed`)
+- [x] Header has glass/blur effect on scroll - passed (`backdrop-filter: blur(12px)`)
+- [x] "Get Early Access" in header scrolls to `#signup` on index page - passed
+- [x] "Blog" navigates to `blog.html` - passed
+- [x] Old footer nav block for Blog is removed from `index.html` - passed
+- [x] Hero content is not hidden behind the header - passed (top padding offsets applied)
+
+### Behavior changes
+A persistent top navigation header is now visible on both pages with direct Blog and signup access.
+
+### Verification
+- PASSED
+- Playwright on `http://localhost:8080` confirmed:
+- Header exists on both pages, `position: fixed`, blur and required background/border values.
+- Blog link navigation works (`index.html` -> `blog.html`).
+- Header CTA goes to `index.html#signup` and target section is visible.
+- `footer-nav` no longer exists in `index.html`.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-008` (copy rewrite) before adding new structural components so messaging baseline is stable.
+---
+## [TASK-007] Reduce hero whitespace and tighten layout
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Adjusted `.hero` sizing in `styles.css` per task: reduced minimum height to `85svh`, tightened bottom spacing, and retained top offset compatibility with the new fixed header.
+
+### Files changed
+- `styles.css` - updated `.hero` sizing values (`min-height`, `padding`) for tighter first-screen layout
+
+### Acceptance Criteria Results
+- [x] Hero section is shorter and next section becomes visible sooner - passed
+- [x] Hero content remains visually centered - passed
+- [x] Fire glow and embers still animate correctly - passed
+- [x] No content is cut off - passed
+
+### Behavior changes
+First screen is more compact, reducing dead space and making downward content discoverable earlier.
+
+### Verification
+- PASSED
+- Playwright checks on local server confirmed `.hero` now uses `min-height: 85svh` with reduced bottom padding and the next section appears within the first viewport flow.
+- Mobile viewport check (`375x812`) confirmed no header overflow and hero remains readable.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Execute `TASK-008` and `TASK-009` in one controlled iteration (copy + trust section), then continue with interaction features.

@@ -128,7 +128,7 @@ Create `CLAUDE.md` in the project root so Claude Code automatically loads the pr
 ---
 
 ## [TASK-006] Add sticky header navigation
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 
@@ -194,7 +194,7 @@ Currently there is no way to navigate between pages except a small "Blog" link i
 ---
 
 ## [TASK-007] Reduce hero whitespace and tighten layout
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 

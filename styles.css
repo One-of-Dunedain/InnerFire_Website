@@ -28,6 +28,61 @@ body {
   padding: 0 24px;
 }
 
+/* ── Site Header ─────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(10,13,18,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.header-nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.header-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.header-nav a:hover { color: var(--text); }
+
+.btn-header {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 6px 16px;
+  border-radius: var(--radius);
+}
+
+.btn-header:hover {
+  background: var(--accent);
+  color: #000;
+}
+
 /* ── Button ─────────────────────────────────────── */
 .btn-primary {
   display: inline-block;
@@ -51,13 +106,14 @@ body {
    ═══════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 85svh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: var(--bg);
-  padding: 80px 0 120px;
+  padding: 80px 0 60px;
+  padding-top: 60px;
   overflow: hidden;
 }
 
@@ -344,6 +400,9 @@ footer {
   .btn-primary { width: 100%; text-align: center; }
   .email-input { max-width: 100%; }
   .carousel-card { flex: 0 0 180px; }
+  .header-nav { gap: 12px; }
+  .header-nav a { font-size: 0.8rem; }
+  .btn-header { padding: 6px 12px; }
 }
 
 /* Tablet */
@@ -366,6 +425,7 @@ footer {
    ═══════════════════════════════════════════════════ */
 .page-header {
   padding: 120px 0 60px;
+  padding-top: 60px;
   text-align: center;
 }
 

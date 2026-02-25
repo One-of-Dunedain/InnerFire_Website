@@ -1,58 +1,55 @@
-# Project State
+﻿# Project State
 
 ## Last updated: 2026-02-25
-## Current status: Signup form connected to Kit with brand-consistent custom fields
+## Current status: Header/navigation and hero spacing updates completed; ready for copy/story iteration
 
 ---
 
 ## What exists
 
 ### Website (static HTML/CSS/JS, no build step)
-- `index.html` — landing page with 5 sections:
-  - Hero: animated fire glow + floating ember particles
-  - Demo: horizontal carousel of 5 vertical (9:16) video placeholders
-  - Who It's For: 3 benefit cards (to be rewritten in TASK-008)
-  - Email Signup: ConvertKit placeholder (disabled form)
-  - Footer: social links (placeholder), blog link
-- `styles.css` — dark theme, mobile-first responsive (3 breakpoints)
-- `script.js` — smooth anchor scroll only
-- `blog.html` — blog shell ("coming soon")
-- `content/` — product overview and user-rules docs (not shown on site)
-- OG/Twitter meta tags added (TASK-001 DONE)
+- `index.html` - landing page with hero, carousel, benefits section, signup section, and footer
+- `blog.html` - blog shell page with shared top header
+- `styles.css` - dark theme styles, responsive breakpoints, fixed glass header styles
+- `script.js` - smooth anchor scrolling
+- `content/` - product/docs assets not rendered directly on site
+
+### Implemented capabilities
+- SEO/OG/Twitter meta tags added (TASK-001 DONE)
 - Flame favicon added to both pages (TASK-002 DONE)
-- Root `CLAUDE.md` added for Claude Code auto-loading rules (TASK-005 DONE)
-- Footer social links updated to TikTok/X/Discord structure (TASK-010 DONE; TikTok URL still placeholder)
-- Signup form now posts to Kit form endpoint with custom branded Email + First Name fields (TASK-004 DONE)
+- Kit-connected custom signup form (Email + First Name) in `index.html` (TASK-004 DONE)
+- `CLAUDE.md` added from `content/user-rules.md` (TASK-005 DONE)
+- Shared sticky header added on `index.html` and `blog.html` (TASK-006 DONE)
+- Hero whitespace reduced for tighter first-screen layout (TASK-007 DONE)
+- Footer social links updated to TikTok placeholder + X + Discord (TASK-010 DONE)
 
 ### What is NOT done yet
-- No site header/navigation (TASK-006)
-- Hero has too much whitespace (TASK-007)
-- Page copy is generic, needs rewrite with real messaging pillars (TASK-008)
-- No About the Author section (TASK-009)
-- No carousel share buttons (TASK-011)
-- No signup progress indicator (TASK-012)
+- Landing page copy rewrite and section text restructuring (TASK-008)
+- About the Author section (TASK-009)
+- Carousel share buttons (TASK-011)
+- Signup wick/progress indicator (TASK-012)
 - TikTok URL still placeholder `#` (owner has not provided final URL)
-- First live submission should be validated by owner inside Kit dashboard
+- Live Kit submission and confirmation-email flow still needs owner-side validation
 
 ---
 
 ## Product goal
 Collect 300 emails from potential beta testers.
 Traffic source: short video content (TikTok, X, Discord).
-Conversion path: video → landing page → email signup → TestFlight invite.
+Conversion path: video -> landing page -> email signup -> TestFlight invite.
 
 ---
 
 ## Page narrative architecture (Orchestrator decision)
-Visitor arrives from a 15-30s TikTok/Reel with high curiosity, low attention span.
-Page flow: HOOK → SHOW → EXPLAIN → TRUST → CONVERT
+Visitor arrives from short social video with high curiosity and low attention span.
+Page flow: HOOK -> SHOW -> EXPLAIN -> TRUST -> CONVERT
 
-1. **Hero** — confirm ("this is the thing from the video")
-2. **Carousel** — show more breathing environments
-3. **Why it works** — explain grounding mechanism (vagus nerve, doomscrolling, multisensory)
-4. **About the Author** — trust (Ukraine, war, personal origin story)
-5. **CTA + progress wick** — convert with urgency and social proof
-6. **Footer** — nav, TikTok/X/Discord, blog link
+1. Hero - confirm product concept immediately
+2. Carousel - show breathing environments
+3. Why it works - explain mechanism
+4. About the Author - add trust
+5. CTA + progress wick - conversion + urgency
+6. Footer - social destinations
 
 ---
 
@@ -61,19 +58,21 @@ Page flow: HOOK → SHOW → EXPLAIN → TRUST → CONVERT
 - [TASK-002] Add favicon
 - [TASK-004] Connect ConvertKit email form
 - [TASK-005] Create CLAUDE.md for AI auto-loading rules
-- [TASK-010] Replace social links — remove Instagram/YouTube, add TikTok/X/Discord
+- [TASK-006] Add sticky header navigation
+- [TASK-007] Reduce hero whitespace and tighten layout
+- [TASK-010] Replace social links - remove Instagram/YouTube, add TikTok/X/Discord
 
 ## Active task
 - none
 
 ## Superseded tasks
-- [TASK-003] Old social links task — replaced by TASK-010
+- [TASK-003] Old social links task - replaced by TASK-010
 
 ## Blocked tasks
 - none
 
 ## Known issues
-- Python not properly installed on dev machine (winget install ran but may need terminal restart)
+- Python installation state may vary by terminal session on the local machine
 
 ## Author info (for tasks)
 - Name: Maryan Kushnir
@@ -86,4 +85,4 @@ Page flow: HOOK → SHOW → EXPLAIN → TRUST → CONVERT
 ## Stack
 - Pure HTML/CSS/JS, no dependencies, no build step
 - Hosted: GitHub Pages (intended)
-- Email service: ConvertKit (connected via HTML form post endpoint)
+- Email service: Kit (HTML form POST endpoint)
