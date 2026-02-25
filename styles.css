@@ -704,6 +704,33 @@ footer {
   color: var(--muted);
 }
 
+/* Blog newsletter section */
+.blog-newsletter {
+  padding: 80px 0;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 60%, rgba(255,138,61,0.06) 0%, transparent 70%),
+    var(--bg);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.blog-newsletter h2 {
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.blog-newsletter-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+.blog-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 /* ═══════════════════════════════════════════════════
    BLOG — Article Page
    ═══════════════════════════════════════════════════ */
@@ -902,6 +929,35 @@ footer {
 /* Article nav */
 .article-nav {
   padding: 0 0 60px;
+}
+
+/* Article inline CTA */
+.article-cta {
+  padding: 0 0 40px;
+}
+.article-cta-card {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+}
+.article-cta-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.article-cta-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+.article-cta-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 @media (min-width: 481px) and (max-width: 768px) {

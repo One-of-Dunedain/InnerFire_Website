@@ -128,3 +128,45 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-016` to add newsletter CTA blocks to both blog index and article pages and connect the conversion nudge flow.
+---
+## [TASK-016] Blog newsletter CTA + conversion nudge
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added a conversion-focused newsletter section to the bottom of `blog.html` (before footer) and inserted an inline article CTA block in `blog/_template.html` between the article content and author card. Both forms now post to the same Kit endpoint as the landing page and reuse shared input/button styling. Added dedicated styling in `styles.css` for the new blog newsletter block and article CTA card while keeping the existing dark visual system.
+
+### Files changed
+- `blog.html` - added `blog-newsletter` section with heading, subtitle, email + first-name inputs, submit button, and no-spam note before footer
+- `blog/_template.html` - added `article-cta` card after `</article>` and before `.article-author`, with Kit form and note
+- `styles.css` - added `.blog-newsletter*` and `.article-cta*` style rules (including surface card + border)
+- `TASKS.md` - updated TASK-016 status to DONE
+- `REPORT.md` - appended TASK-016 report
+- `PROJECT_STATE.md` - updated project state for TASK-016 completion
+
+### Acceptance Criteria Results
+- [x] Blog index page has a newsletter section before the footer
+- [x] Newsletter section shows heading, subtitle, email input, first name input, submit button, and "no spam" note
+- [x] Article template has an inline CTA card after the article body
+- [x] Article CTA shows heading, description, email input, and submit button
+- [x] Both forms POST to the same Kit endpoint as the landing page
+- [x] Forms match the dark theme styling
+- [x] Inputs have the same `.email-input` styling as the landing page
+- [x] CTA card has a subtle surface background with border
+
+### Behavior changes
+`blog.html` now includes a built-in signup block for readers at the bottom of the page. `blog/_template.html` now includes an inline conversion CTA section before author attribution.
+
+### Verification
+- PASSED
+- Verified local render endpoints return HTTP 200 for `blog.html` and `blog/_template.html`.
+- Verified structure and placement via deterministic HTML checks (newsletter section exists and is before footer; article CTA exists and is between article and author card).
+- Verified both forms use `action="https://app.kit.com/forms/9132207/subscriptions"` with `method="post"`.
+- Verified mobile-centered usability constraints from CSS (`.blog-newsletter-form` / `.article-cta-form` are column-centered, `.email-input` is full width on mobile via existing media rule).
+
+### Issues encountered
+Playwright browser context tool returned repeated "Another browser context is being closed" errors, so interactive click/submit simulation in Playwright could not be used in this iteration.
+
+### Recommended next action
+Proceed with `TASK-017` to add site-wide SEO artifacts (`robots.txt`, `sitemap.xml`, canonical/JSON-LD updates) now that blog structure and conversion surfaces are in place.

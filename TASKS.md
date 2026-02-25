@@ -42,7 +42,7 @@ Goal: Add share buttons to blog article pages and blog index cards so any articl
 ---
 
 ## [TASK-016] Blog newsletter CTA + conversion nudge
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-013, TASK-014
