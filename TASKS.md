@@ -22,7 +22,7 @@ Goal: Transform `blog.html` from a "coming soon" shell into a dynamic blog index
 ---
 
 ## [TASK-014] Blog article template with rich media support
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-013

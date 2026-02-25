@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-25
-## Current status: Blog development - 5 tasks queued (TASK-014 through TASK-018)
+## Current status: Blog development - 4 tasks queued (TASK-015 through TASK-018)
 
 ---
 
@@ -10,12 +10,12 @@
 ### Website (static HTML/CSS/JS, no build step)
 - `index.html` - landing page (hero, carousel, why-it-works, about, signup, footer)
 - `blog.html` - dynamic blog index page (JSON manifest-driven card grid + empty state)
-- `styles.css` - dark theme, responsive breakpoints, glass header, blog index grid styles
+- `styles.css` - dark theme, responsive breakpoints, glass header, blog index + article styles
 - `script.js` - smooth scroll, share buttons, wick progress
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (currently empty)
 
-### Implemented capabilities (TASK-001-013, all DONE)
+### Implemented capabilities (TASK-001-014, all DONE)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -28,9 +28,9 @@
 - Burning wick signup progress indicator
 - CLAUDE.md auto-loading rules
 - Blog manifest system and responsive blog card grid (TASK-013)
+- Reusable article template with rich media and reading-progress bar (TASK-014)
 
 ### What is NOT done yet
-- Blog article template and media styles are not implemented yet (TASK-014)
 - Blog sharing buttons + article social metadata are not implemented yet (TASK-015)
 - Blog newsletter CTA on index/article pages is not implemented yet (TASK-016)
 - Site-wide SEO assets (`sitemap.xml`, `robots.txt`, JSON-LD rollout) are pending (TASK-017)
@@ -76,7 +76,6 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks
-- [TASK-014] Blog article template with rich media support (TODO, depends on TASK-013)
 - [TASK-015] Blog sharing buttons + social meta (TODO, depends on TASK-013 + TASK-014)
 - [TASK-016] Blog newsletter CTA + conversion nudge (TODO, depends on TASK-013 + TASK-014)
 - [TASK-017] Site-wide SEO enhancements (TODO, depends on TASK-014)
@@ -85,6 +84,7 @@ Static blog with JSON manifest. No build step.
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-001 through TASK-013 (DONE)
+- TASK-014 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
