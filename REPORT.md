@@ -266,3 +266,75 @@ Initial regex-edit attempt introduced encoding corruption; reverted affected fil
 
 ### Recommended next action
 Proceed to `TASK-009` (About the Author section) to complete the TRUST step in the page narrative.
+---
+## [TASK-009] Add About the Author section
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added a new About section in `index.html` between `why-it-works` and signup, including the required heading, three story paragraphs, LinkedIn link, and circular photo placeholder; added all requested styles in `styles.css` including desktop row layout and mobile stacked layout at `<=480px`.
+
+### Files changed
+- `index.html` - added `<!-- ABOUT -->` section before `<!-- EMAIL SIGNUP -->`
+- `styles.css` - added `.about*`, `.photo-placeholder`, `.author-link` styles and mobile stack media rule
+- `TASKS.md` - changed TASK-009 status to DONE
+
+### Acceptance Criteria Results
+- [x] About section appears between "Why it works" and "Signup" - passed
+- [x] Shows round photo placeholder (120px circle) - passed
+- [x] Shows heading "Built from the front line" - passed
+- [x] Shows 3 paragraphs of author story - passed
+- [x] LinkedIn link opens in new tab and points to correct URL - passed
+- [x] On mobile (<=480px): photo and text stack vertically and center - passed
+- [x] Visual style matches existing dark theme - passed
+
+### Behavior changes
+Landing page now includes a trust-focused author story block before signup, with responsive layout and a direct LinkedIn connection link.
+
+### Verification
+- PASSED
+- Verified source diffs contain only required additions in `index.html` and `styles.css`.
+- Playwright verification on `http://localhost:8080/index.html` confirmed section order (`why-it-works` -> `about` -> `signup`), heading/text presence, placeholder dimensions (`120x120`, `border-radius: 50%`), and link attributes (`href`, `target=\"_blank\"`, `rel=\"noopener\"`).
+- Mobile verification at `375x812` confirmed `.about-card` uses `flex-direction: column`, `align-items: center`, and centered text.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed to `TASK-011` (share button on carousel cards) or `TASK-012` (signup progress wick), depending on whether interaction or conversion urgency is higher priority for the next increment.
+---
+## [TASK-009] About section refinement (non-clickable label + centered shelter placeholder)
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Adjusted the About section per follow-up UI requests: removed clickable LinkedIn anchor, replaced it with plain `Linkedin` text under the round profile placeholder, moved the bomb-shelter placeholder under About text, centered it, and increased it to an adaptive, visually appropriate size.
+
+### Files changed
+- `index.html` - removed LinkedIn anchor, added plain `Linkedin` label under profile placeholder, moved shelter placeholder into `.about-text`
+- `styles.css` - removed `.author-link` styles, added `.about-photo-label`, enlarged and centered `.about-shelter-photo` / `.shelter-photo-placeholder`
+
+### Acceptance Criteria Results
+- [x] LinkedIn text is non-clickable - passed
+- [x] Shelter image placeholder is centered under text - passed
+- [x] Shelter image placeholder size is no longer tiny - passed (`420x263` on desktop during verification)
+
+### Behavior changes
+About section no longer contains an outbound LinkedIn link; it now shows static `Linkedin` text and a larger centered shelter-photo placeholder below story text.
+
+### Verification
+- PASSED
+- Verified DOM/CSS with `Select-String` and browser rendering on `http://localhost:8080/index.html`.
+- Playwright checks confirmed:
+- no `author-link` anchor remains
+- shelter placeholder parent is `.about-text`
+- block is centered (`centeredInAboutTextPx = 0`)
+- rendered size is `420 x 263` on desktop viewport.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-011` (carousel share action) to improve interaction, then `TASK-012` for conversion urgency.

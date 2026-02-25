@@ -1,14 +1,14 @@
 ﻿# Project State
 
 ## Last updated: 2026-02-25
-## Current status: Core copy rewrite completed; ready for trust and interaction layers
+## Current status: Trust layer added with About section; ready for interaction and conversion enhancements
 
 ---
 
 ## What exists
 
 ### Website (static HTML/CSS/JS, no build step)
-- `index.html` - landing page with hero, breathing-environments intro, why-it-works section, signup section, and footer
+- `index.html` - landing page with hero, breathing-environments intro, why-it-works section, about section, signup section, and footer
 - `blog.html` - blog shell page with shared top header
 - `styles.css` - dark theme styles, responsive breakpoints, fixed glass header styles
 - `script.js` - smooth anchor scrolling
@@ -22,10 +22,11 @@
 - Shared sticky header added on `index.html` and `blog.html` (TASK-006 DONE)
 - Hero whitespace reduced for tighter first-screen layout (TASK-007 DONE)
 - Landing-page copy and section narrative updated (TASK-008 DONE)
+- About-the-Author trust section added between why-it-works and signup (TASK-009 DONE)
+- About section refined: non-clickable `Linkedin` label under profile placeholder and larger centered shelter-photo placeholder
 - Footer social links updated to TikTok placeholder + X + Discord (TASK-010 DONE)
 
 ### What is NOT done yet
-- About the Author section (TASK-009)
 - Carousel share buttons (TASK-011)
 - Signup wick/progress indicator (TASK-012)
 - TikTok URL still placeholder `#` (owner has not provided final URL)
@@ -61,6 +62,7 @@ Page flow: HOOK -> SHOW -> EXPLAIN -> TRUST -> CONVERT
 - [TASK-006] Add sticky header navigation
 - [TASK-007] Reduce hero whitespace and tighten layout
 - [TASK-008] Rewrite page copy and restructure content sections
+- [TASK-009] Add About the Author section
 - [TASK-010] Replace social links - remove Instagram/YouTube, add TikTok/X/Discord
 
 ## Active task

@@ -9,9 +9,9 @@ Collect 300 emails from potential beta testers via static landing page flows.
 - Email provider: Kit (ConvertKit)
 
 ## Status
-- Completed set now: TASK-001, TASK-002, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008, TASK-010.
-- `TASK-008` copy rewrite is implemented and verified in browser automation.
-- Remaining major tasks: TASK-009, TASK-011, TASK-012.
+- Completed set now: TASK-001, TASK-002, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008, TASK-009, TASK-010.
+- `TASK-009` About section is implemented and then refined per UI feedback (non-clickable label + larger centered shelter placeholder).
+- Remaining major tasks: TASK-011, TASK-012.
 - `PROJECT_DEBT.md` exists for pending integrations/purchases (including Kit email-domain setup).
 
 ## Decisions
@@ -19,50 +19,48 @@ Collect 300 emails from potential beta testers via static landing page flows.
 - Use fixed translucent header with blur to match dark visual identity.
 - Tighten hero viewport occupancy to expose next section earlier.
 - Keep layout unchanged during copy rewrite; only replace text and rename section class `.for-who` -> `.why-it-works`.
+- Add trust narrative as a dedicated About section between why-it-works and signup.
+- Keep `Linkedin` as plain text label (no outbound link) in About section.
+- Place shelter-image placeholder under About text, centered and visually prominent.
 - Keep implementation static and dependency-free.
 
 ## Files changed in latest iteration
 - `index.html`
-  - Updated `meta description` and `og:description` to the new hero message.
-  - Updated hero subtitle.
-  - Updated carousel intro heading/subtitle.
-  - Replaced `for-who` section markup with `why-it-works` copy block.
+  - Removed clickable LinkedIn anchor.
+  - Added plain `Linkedin` label below profile placeholder.
+  - Moved shelter placeholder block into `.about-text` (below paragraphs).
 - `styles.css`
-  - Renamed selectors `.for-who` and `.for-who h2` to `.why-it-works` and `.why-it-works h2`.
-- `TASKS.md`
-  - Marked TASK-008 DONE.
+  - Replaced `.author-link` usage with `.about-photo-label`.
+  - Increased shelter placeholder to adaptive size (`min(100%, 420px)`, `aspect-ratio: 16/10`) and centered it.
 - `REPORT.md`
-  - Appended execution report for TASK-008.
+  - Appended refinement report block for TASK-009 follow-up adjustments.
 - `PROJECT_STATE.md`
-  - Updated current status and completed tasks list.
+  - Updated implemented capabilities with refinement note.
 
 ## Commands run
 - `Get-Content TASKS.md`
 - `Get-Content PROJECT_STATE.md`
 - `Get-Content REPORTING_FORMAT.md`
 - `git status --short`
-- `git diff -- index.html`
-- `git diff -- styles.css`
-- `rg -n` checks for required copy strings and class rename
+- `Select-String` checks for About markup/classes and link removal
 - `Invoke-WebRequest http://localhost:8080`
 - Playwright checks:
-  - navigate to `http://localhost:8080/index.html`
-  - snapshot validation of updated hero/carousel/why-it-works copy
+  - snapshot validation of About structure
+  - computed checks for parent container, center alignment, and rendered size
 
 ## Verification/QA Status
 - Verification run: YES
 - Result: PASSED
 - Evidence:
-  - Updated copy is rendered in hero subtitle, carousel intro, and why-it-works section.
-  - `meta description` and `og:description` match requested sentence.
-  - `.for-who` no longer exists in `index.html` or `styles.css`.
+  - `Linkedin` is plain text, no clickable anchor in About section.
+  - Shelter placeholder is rendered under About text and centered.
+  - Desktop rendered placeholder size measured at `420 x 263`.
 
 ## Open risks / notes
 - First live Kit submission flow still needs owner validation in Kit dashboard and inbox.
 - TikTok URL still placeholder until provided.
 
 ## Next steps
-1. Execute TASK-009 (About the Author section).
-2. Execute TASK-011 (share buttons on carousel cards).
-3. Execute TASK-012 (signup wick/progress indicator).
-4. Replace TikTok placeholder when URL is available.
+1. Execute TASK-011 (share buttons on carousel cards).
+2. Execute TASK-012 (signup wick/progress indicator).
+3. Replace TikTok placeholder when URL is available.

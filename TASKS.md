@@ -334,7 +334,7 @@ Blow into your phone. Watch fire, sound, and vibration respond to your breath. A
 ---
 
 ## [TASK-009] Add About the Author section
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 
