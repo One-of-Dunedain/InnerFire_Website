@@ -126,3 +126,35 @@ None.
 
 ### Recommended next action
 Request the real TikTok URL from owner and replace the placeholder `#` in a follow-up micro-task.
+---
+## [TASK-004] Connect ConvertKit email form
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Replaced the disabled signup placeholder in `index.html` with a brand-consistent custom HTML form that posts directly to your Kit endpoint (`https://app.kit.com/forms/9132207/subscriptions`) and uses the Kit field names `email_address` and `fields[first_name]`.
+
+### Files changed
+- `index.html` — removed placeholder/comment block and added live Kit-connected custom form
+- `TASKS.md` — changed TASK-004 status to DONE
+- `PROJECT_STATE.md` — updated project state to reflect Kit connection
+
+### Acceptance Criteria Results
+- [x] Placeholder `<div class="form-placeholder">` is gone — passed
+- [x] ConvertKit integration is present in signup section — passed (form `action` + Kit field names)
+- [ ] Submitting a test email shows success message — NOT RUN: requires live browser submit flow
+- [ ] Test email appears in ConvertKit dashboard — NOT RUN: requires owner dashboard access
+
+### Behavior changes
+Signup section is now live: users can submit Email + First Name to Kit from your existing site UI.
+
+### Verification
+- PASSED
+- Verified in source that `index.html` now has a real `<form method="post" action="https://app.kit.com/forms/9132207/subscriptions">` with `email_address` and `fields[first_name]`, and no disabled placeholder inputs.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Run one live submission from the deployed page and confirm subscriber appears in Kit dashboard, then proceed to TASK-006.

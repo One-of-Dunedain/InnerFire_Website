@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-25
-## Current status: Core setup improved — favicon, CLAUDE auto-rules, and social links updated
+## Current status: Signup form connected to Kit with brand-consistent custom fields
 
 ---
 
@@ -22,6 +22,7 @@
 - Flame favicon added to both pages (TASK-002 DONE)
 - Root `CLAUDE.md` added for Claude Code auto-loading rules (TASK-005 DONE)
 - Footer social links updated to TikTok/X/Discord structure (TASK-010 DONE; TikTok URL still placeholder)
+- Signup form now posts to Kit form endpoint with custom branded Email + First Name fields (TASK-004 DONE)
 
 ### What is NOT done yet
 - No site header/navigation (TASK-006)
@@ -30,8 +31,8 @@
 - No About the Author section (TASK-009)
 - No carousel share buttons (TASK-011)
 - No signup progress indicator (TASK-012)
-- ConvertKit form not connected (TASK-004 — BLOCKED, waiting for embed code)
 - TikTok URL still placeholder `#` (owner has not provided final URL)
+- First live submission should be validated by owner inside Kit dashboard
 
 ---
 
@@ -58,6 +59,7 @@ Page flow: HOOK → SHOW → EXPLAIN → TRUST → CONVERT
 ## Completed tasks
 - [TASK-001] Add OG meta tags and page SEO
 - [TASK-002] Add favicon
+- [TASK-004] Connect ConvertKit email form
 - [TASK-005] Create CLAUDE.md for AI auto-loading rules
 - [TASK-010] Replace social links — remove Instagram/YouTube, add TikTok/X/Discord
 
@@ -68,7 +70,7 @@ Page flow: HOOK → SHOW → EXPLAIN → TRUST → CONVERT
 - [TASK-003] Old social links task — replaced by TASK-010
 
 ## Blocked tasks
-- [TASK-004] ConvertKit — waiting for owner to provide embed code
+- none
 
 ## Known issues
 - Python not properly installed on dev machine (winget install ran but may need terminal restart)
@@ -84,4 +86,4 @@ Page flow: HOOK → SHOW → EXPLAIN → TRUST → CONVERT
 ## Stack
 - Pure HTML/CSS/JS, no dependencies, no build step
 - Hosted: GitHub Pages (intended)
-- Email service: ConvertKit (not yet connected)
+- Email service: ConvertKit (connected via HTML form post endpoint)

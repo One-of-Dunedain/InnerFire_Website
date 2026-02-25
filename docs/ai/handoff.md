@@ -6,60 +6,56 @@ Collect 300 emails from potential beta testers via static landing page flows.
 ## Stack
 - Static site: HTML/CSS/JS (no build step)
 - Hosting target: GitHub Pages
-- Email provider target: ConvertKit
+- Email provider: Kit (ConvertKit)
 
 ## Status
-- Iteration completed with 3 tasks: TASK-002, TASK-005, TASK-010.
-- Completed set now: TASK-001, TASK-002, TASK-005, TASK-010.
-- Remaining high-impact UI/content tasks: TASK-006, TASK-007, TASK-008, TASK-009, TASK-011, TASK-012.
-- TASK-004 remains blocked pending ConvertKit embed code from owner.
+- TASK-004 implemented with owner-provided Kit form endpoint using custom branded UI.
+- Completed set now: TASK-001, TASK-002, TASK-004, TASK-005, TASK-010.
+- Remaining major UI/content tasks: TASK-006, TASK-007, TASK-008, TASK-009, TASK-011, TASK-012.
+- `PROJECT_DEBT.md` added to track all pending integrations/purchases (including Kit email-domain setup).
 
 ## Decisions
-- Picked only unblocked, deterministic tasks for high-confidence delivery in one iteration.
-- Limited code edits to required surfaces only:
-  - TASK-002: `<head>` in `index.html` + `blog.html`
-  - TASK-010: `.social-links` block only in `index.html`
-  - TASK-005: verbatim file copy from `content/user-rules.md` to `CLAUDE.md`
-- Updated required orchestration files after execution: `TASKS.md`, `REPORT.md`, `PROJECT_STATE.md`.
+- Owner requested brand-consistent integration: only Email + First Name fields from Kit backend, all visual UI remains site-native.
+- Implemented direct HTML form POST to Kit endpoint (no Kit template styles injected).
+- Updated orchestration files after iteration: `TASKS.md`, `REPORT.md`, `PROJECT_STATE.md`.
 
 ## Files
 - `index.html`
-  - Added favicon link tag.
-  - Replaced footer social links with TikTok placeholder + X + Discord (`target="_blank" rel="noopener"`).
-- `blog.html`
-  - Added favicon link tag.
-- `CLAUDE.md`
-  - Created as exact copy of `content/user-rules.md`.
+  - Removed disabled signup placeholder and ConvertKit instruction comment block.
+  - Added live custom form:
+    - `action="https://app.kit.com/forms/9132207/subscriptions"`
+    - `name="email_address"`
+    - `name="fields[first_name]"`
 - `TASKS.md`
-  - Set statuses to DONE for TASK-002, TASK-005, TASK-010.
+  - Set TASK-004 status to DONE.
 - `REPORT.md`
-  - Appended report blocks for TASK-002, TASK-005, TASK-010 in required format.
+  - Appended TASK-004 report block in required format.
 - `PROJECT_STATE.md`
-  - Updated current status, completed tasks list, and not-done list.
+  - Updated current status, completed tasks, and blocked/not-done sections.
+- `PROJECT_DEBT.md`
+  - Added centralized debt register for pending connections, purchases, and launch prerequisites.
 
 ## Commands
+- `Get-Content index.html -Encoding UTF8`
+- `Select-String -Path index.html -Pattern 'action="https://app.kit.com/forms/9132207/subscriptions"|name="email_address"|name="fields\[first_name\]"|disabled|PASTE YOUR CONVERTKIT FORM CODE HERE|form-placeholder'`
 - `Get-Content TASKS.md -Encoding UTF8`
 - `Get-Content PROJECT_STATE.md -Encoding UTF8`
-- `Get-Content REPORTING_FORMAT.md -Encoding UTF8`
-- `Get-Content index.html -Encoding UTF8`
-- `Get-Content blog.html -Encoding UTF8`
-- `Copy-Item content/user-rules.md CLAUDE.md -Force`
-- `Select-String -Path index.html,blog.html -Pattern '<link rel="icon"'`
-- `Select-String -Path index.html -Pattern 'Instagram|YouTube' | Measure-Object`
-- `Select-String -Path index.html -Pattern 'TikTok URL: replace # when provided|https://x.com/kushnir_marian_|https://discord.gg/PRuveBJH'`
-- `Compare-Object (Get-Content CLAUDE.md) (Get-Content content/user-rules.md)`
+- `Get-Content REPORT.md -Encoding UTF8`
+- `git diff -- index.html`
 
 ## Verification/QA Status
-- Verification run: YES
-- Result: PASSED
+- Verification run: YES (source-level)
+- Result: PASSED for implementation checks
 - Evidence:
-  - Favicon tags present in both files at line 7.
-  - `OLD_SOCIAL_MATCHES=0` confirms Instagram/YouTube removed.
-  - TikTok/X/Discord links and required attributes verified in `index.html` lines 141–144.
-  - `CLAUDE_DIFF=NONE` confirms exact copy.
+  - Live Kit form action is present.
+  - Required Kit field names are present.
+  - Disabled placeholder inputs and instruction comment are removed.
+- External verification pending owner:
+  - Submit test email and confirm subscriber appears in Kit dashboard.
 
 ## Next steps
-1. Execute TASK-006 (sticky header) and TASK-007 (hero height) in the next UI iteration.
-2. Execute TASK-008 + TASK-009 together to align narrative flow and trust section.
-3. Execute TASK-011 and TASK-012 after the content structure stabilizes.
-4. Wait for owner input to unblock TASK-004 (ConvertKit embed code) and TikTok URL finalization.
+1. Owner performs one live submission test from page and confirms it appears in Kit dashboard.
+2. Execute TASK-006 + TASK-007 (header + hero spacing).
+3. Execute TASK-008 + TASK-009 (copy rewrite + about section).
+4. Execute TASK-011 + TASK-012 after content structure is stable.
+5. Replace TikTok placeholder URL when owner provides final link.

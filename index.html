@@ -111,21 +111,18 @@
         <h2>Be one of 300 early testers.</h2>
         <p class="signup-sub">Leave your email → get free TestFlight access when we launch.</p>
         <p class="signup-note">No spam. Just a beta invite when we're ready.</p>
-
-        <!--
-          PASTE YOUR CONVERTKIT FORM CODE HERE.
-          Steps:
-          1. Go to convertkit.com → sign up (free)
-          2. Forms → New Form → Inline
-          3. Customize, then click "Publish" → "Copy Code"
-          4. Delete the placeholder <div> below and paste your ConvertKit code
-        -->
-        <div class="form-placeholder">
-          <input type="email" placeholder="your@email.com" class="email-input" disabled />
-          <button class="btn-primary" disabled>Get Early Access</button>
-          <p class="form-note">Connect ConvertKit to activate this form</p>
-        </div>
-        <!-- END CONVERTKIT FORM -->
+        <form
+          action="https://app.kit.com/forms/9132207/subscriptions"
+          method="post"
+          class="form-placeholder"
+          data-sv-form="9132207"
+          data-uid="b081b4720d"
+        >
+          <input type="email" name="email_address" placeholder="Email Address" class="email-input" required />
+          <input type="text" name="fields[first_name]" placeholder="First Name" class="email-input" required />
+          <button class="btn-primary" type="submit">Get Early Access</button>
+          <p class="form-note">By subscribing, you agree to receive InnerFire beta updates.</p>
+        </form>
 
       </div>
     </section>

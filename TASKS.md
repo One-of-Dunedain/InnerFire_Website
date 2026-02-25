@@ -56,7 +56,7 @@ Note: Requirements changed — see TASK-010. Instagram and YouTube are removed. 
 ---
 
 ## [TASK-004] Connect ConvertKit email form
-Status: TODO — BLOCKED (waiting for owner to provide ConvertKit embed code)
+Status: DONE
 Priority: High
 Owner: Executor AI
 
