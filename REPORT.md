@@ -170,3 +170,93 @@ Playwright browser context tool returned repeated "Another browser context is be
 
 ### Recommended next action
 Proceed with `TASK-017` to add site-wide SEO artifacts (`robots.txt`, `sitemap.xml`, canonical/JSON-LD updates) now that blog structure and conversion surfaces are in place.
+---
+## [TASK-017] Site-wide SEO enhancements
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented the full site SEO baseline: created `robots.txt` and `sitemap.xml`, added canonical URLs to `index.html`, `blog.html`, and `blog/_template.html`, and added structured data via JSON-LD (`WebSite` schema on `index.html`, `Article` schema template on `blog/_template.html`). All additions were limited to SEO surfaces (root SEO files + `<head>` updates) as required.
+
+### Files changed
+- `robots.txt` - created crawler allow rules and sitemap reference
+- `sitemap.xml` - created sitemap with index/blog URL entries and placeholder comment for new posts
+- `index.html` - added canonical URL and `WebSite` JSON-LD in `<head>`
+- `blog.html` - added canonical URL in `<head>`
+- `blog/_template.html` - added canonical URL and editable `Article` JSON-LD in `<head>`
+- `TASKS.md` - updated TASK-017 status to DONE
+- `REPORT.md` - appended TASK-017 report
+- `PROJECT_STATE.md` - updated project state for TASK-017 completion
+
+### Acceptance Criteria Results
+- [x] `robots.txt` exists in project root and allows all crawlers
+- [x] `sitemap.xml` exists with entries for index and blog pages
+- [x] `index.html` has `<link rel="canonical">` and WebSite JSON-LD
+- [x] `blog.html` has `<link rel="canonical">`
+- [x] `blog/_template.html` has Article JSON-LD with editable placeholders
+- [x] JSON-LD is valid (no syntax errors)
+- [x] Canonical URLs use `https://innerfire.app` base
+
+### Behavior changes
+Search engines now receive crawl directives, sitemap discovery, canonical URL hints, and structured schema metadata across landing/blog/article templates.
+
+### Verification
+- PASSED
+- `robots.txt` and `sitemap.xml` are accessible locally (`HTTP 200`).
+- Parsed `sitemap.xml` as XML successfully: root `urlset`, URL count = 2, expected loc values.
+- Extracted and parsed JSON-LD from `index.html` and `blog/_template.html` with `ConvertFrom-Json`; both valid.
+- Verified canonical href values:
+  - `index.html` -> `https://innerfire.app/`
+  - `blog.html` -> `https://innerfire.app/blog.html`
+  - `blog/_template.html` -> `https://innerfire.app/blog/SLUG`
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-018` and add GA4 + Microsoft Clarity placeholder scripts to all pages using clearly marked replaceable IDs.
+---
+## [TASK-018] GA4 + Microsoft Clarity analytics preparation
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added GA4 and Microsoft Clarity placeholder snippets to `index.html`, `blog.html`, and `blog/_template.html` directly after `<meta charset>`, with clear activation instructions and both snippets wrapped in HTML comments so tracking stays inactive until IDs are provided. Also restored missing `<meta charset="UTF-8" />` lines caused by an intermediate insertion error, preserving required placement consistency across all three pages.
+
+### Files changed
+- `index.html` - added commented GA4 and Clarity placeholders right after charset meta
+- `blog.html` - added commented GA4 and Clarity placeholders right after charset meta
+- `blog/_template.html` - added commented GA4 and Clarity placeholders right after charset meta
+- `TASKS.md` - updated TASK-018 status to DONE
+- `REPORT.md` - appended TASK-018 report
+- `PROJECT_STATE.md` - updated project state for TASK-018 completion
+
+### Acceptance Criteria Results
+- [x] GA4 placeholder snippet is present in `index.html`, `blog.html`, and `blog/_template.html`
+- [x] Clarity placeholder snippet is present in all three pages
+- [x] Both snippets are commented out (inactive by default)
+- [x] Each snippet has clear activation instructions in the comment
+- [x] Snippets are placed consistently in the same position across all pages
+- [x] Page loads are not affected (no active analytics execution)
+
+### Behavior changes
+All pages now include ready-to-activate analytics placeholders. No runtime tracking behavior changed because both snippets are commented out.
+
+### Verification
+- PASSED
+- Verified via deterministic checks on all three files:
+  - `CharsetLine=4`, `GALine=5`, `ClarityLine=16`, `PositionCorrect=true`
+  - Exactly one commented GA4 snippet and one commented Clarity snippet per file
+  - No GA/Clarity script references outside HTML comments (`GAActiveOutsideComments=false`, `ClarityActiveOutsideComments=false`)
+- Verified local page loads return `HTTP 200`:
+  - `http://localhost:8080/index.html`
+  - `http://localhost:8080/blog.html`
+  - `http://localhost:8080/blog/_template.html`
+
+### Issues encountered
+Playwright browser-console tool in this environment returned persistent context errors (`Another browser context is being closed`), so console-level interactive validation was replaced with strict static checks proving analytics scripts are inactive.
+
+### Recommended next action
+Provide real GA4 Measurement ID and Clarity Project ID, then remove comment delimiters in all three pages to activate tracking.

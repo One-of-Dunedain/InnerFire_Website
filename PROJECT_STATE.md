@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-25
-## Current status: Blog development - 2 tasks queued (TASK-017 through TASK-018)
+## Current status: Core task queue complete (0 active TODO tasks)
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (currently populated with demo posts)
 
-### Implemented capabilities (TASK-001-016, all DONE)
+### Implemented capabilities (TASK-001-018, all DONE)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -31,10 +31,11 @@
 - Reusable article template with rich media and reading-progress bar (TASK-014)
 - Blog share controls on article pages and blog cards with clipboard fallback (TASK-015)
 - Blog newsletter and inline article CTA forms connected to Kit endpoint (TASK-016)
+- SEO foundation: canonical links, JSON-LD, robots.txt, and sitemap.xml (TASK-017)
+- GA4 + Microsoft Clarity placeholders added to all pages (inactive by default, TASK-018)
 
 ### What is NOT done yet
-- Site-wide SEO assets (`sitemap.xml`, `robots.txt`, JSON-LD rollout) are pending (TASK-017)
-- GA4 and Microsoft Clarity placeholders are not added yet (TASK-018)
+- Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
 - TikTok URL still placeholder `#`
 - Live Kit submission still needs owner-side validation
 - `og-image.png` does not exist yet
@@ -76,8 +77,7 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks
-- [TASK-017] Site-wide SEO enhancements (TODO, depends on TASK-014)
-- [TASK-018] GA4 + Microsoft Clarity analytics preparation (TODO)
+- none
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -85,6 +85,8 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-014 (DONE)
 - TASK-015 (DONE)
 - TASK-016 (DONE)
+- TASK-017 (DONE)
+- TASK-018 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
@@ -108,4 +110,4 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - Pure HTML/CSS/JS, no dependencies, no build step
 - Hosted: GitHub Pages (intended)
 - Email service: Kit (HTML form POST endpoint)
-- Analytics: GA4 + Microsoft Clarity (planned, TASK-018)
+- Analytics: GA4 + Microsoft Clarity placeholders integrated (IDs pending)

@@ -52,7 +52,7 @@ Goal: Add newsletter subscription sections to the blog index page and article pa
 ---
 
 ## [TASK-017] Site-wide SEO enhancements
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 Depends on: TASK-014
@@ -62,7 +62,7 @@ Goal: Add structured data (JSON-LD), `sitemap.xml`, `robots.txt`, and canonical 
 ---
 
 ## [TASK-018] GA4 + Microsoft Clarity analytics preparation
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 Depends on: none
