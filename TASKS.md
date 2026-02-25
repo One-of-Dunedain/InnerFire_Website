@@ -12,7 +12,7 @@ Last optimized: 2026-02-25
 ---
 
 ## [TASK-013] Blog index page — manifest system + article grid
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
