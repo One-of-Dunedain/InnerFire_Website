@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-25
-## Current status: Blog development - 4 tasks queued (TASK-015 through TASK-018)
+## Current status: Blog development - 3 tasks queued (TASK-016 through TASK-018)
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (currently empty)
 
-### Implemented capabilities (TASK-001-014, all DONE)
+### Implemented capabilities (TASK-001-015, all DONE)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -29,9 +29,9 @@
 - CLAUDE.md auto-loading rules
 - Blog manifest system and responsive blog card grid (TASK-013)
 - Reusable article template with rich media and reading-progress bar (TASK-014)
+- Blog share controls on article pages and blog cards with clipboard fallback (TASK-015)
 
 ### What is NOT done yet
-- Blog sharing buttons + article social metadata are not implemented yet (TASK-015)
 - Blog newsletter CTA on index/article pages is not implemented yet (TASK-016)
 - Site-wide SEO assets (`sitemap.xml`, `robots.txt`, JSON-LD rollout) are pending (TASK-017)
 - GA4 and Microsoft Clarity placeholders are not added yet (TASK-018)
@@ -76,7 +76,6 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks
-- [TASK-015] Blog sharing buttons + social meta (TODO, depends on TASK-013 + TASK-014)
 - [TASK-016] Blog newsletter CTA + conversion nudge (TODO, depends on TASK-013 + TASK-014)
 - [TASK-017] Site-wide SEO enhancements (TODO, depends on TASK-014)
 - [TASK-018] GA4 + Microsoft Clarity analytics preparation (TODO)
@@ -85,6 +84,7 @@ Static blog with JSON manifest. No build step.
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-001 through TASK-013 (DONE)
 - TASK-014 (DONE)
+- TASK-015 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system

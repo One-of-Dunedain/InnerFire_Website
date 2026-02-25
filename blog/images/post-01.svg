@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#12161e"/>
+      <stop offset="60%" stop-color="#1f1410"/>
+      <stop offset="100%" stop-color="#ff8a3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <circle cx="210" cy="520" r="130" fill="#ff8a3d" fill-opacity="0.28"/>
+  <text x="70" y="120" fill="#ffd166" font-size="34" font-family="Segoe UI, Arial" letter-spacing="3">INNERFIRE BLOG</text>
+  <text x="70" y="220" fill="#e8edf7" font-size="72" font-weight="700" font-family="Segoe UI, Arial">Breathing Under Noise</text>
+  <text x="70" y="290" fill="#c7ccda" font-size="34" font-family="Segoe UI, Arial">How to reset in chaotic environments</text>
+</svg>

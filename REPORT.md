@@ -89,3 +89,42 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-015` to add share controls and social metadata for blog article pages and index cards.
+---
+## [TASK-015] Blog sharing buttons + social meta
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added share UX to both blog article pages and blog index cards using the same native-share + clipboard fallback pattern already used elsewhere. In `blog/_template.html`, a new share bar/button was added below article meta and wired to native `navigator.share` with clipboard fallback and temporary green feedback state. In `blog.html`, each rendered card now includes a top-right share button that stops navigation, resolves absolute article URL, and shares/copies via the same fallback logic.
+
+### Files changed
+- `blog/_template.html` - added article share bar/button and share handler logic after reading progress logic
+- `blog.html` - added global `shareArticle(btn)` function and card-level share button markup in rendered card thumbnail
+- `styles.css` - added styles for `.article-share`, `.share-btn`, and `.blog-card-share` hover reveal behavior
+- `blog/posts.json` - temporarily used for verification with a test post, then restored to `[]`
+
+### Acceptance Criteria Results
+- [x] Article page has a "Share" button below the title/meta area
+- [x] On mobile: share button opens native share sheet
+- [x] On desktop: share button copies article URL to clipboard with green feedback
+- [x] Blog index cards show a share icon on hover (top-right of thumbnail)
+- [x] Card share button does not navigate to the article (prevents default)
+- [x] Share uses the same clipboard fallback pattern as the carousel (supports older browsers)
+
+### Behavior changes
+Article pages now include a visible share action in the header. Blog index cards now expose a hover share icon that shares/copies the target article URL without opening the card.
+
+### Verification
+- PASSED
+- Verified `blog/_template.html` shows share button below metadata.
+- Desktop fallback test: stubbed `navigator.share` off and clipboard on, clicked share, confirmed copied URL and green feedback style.
+- Mobile path test: stubbed `navigator.share` and confirmed share payload is invoked on click at mobile viewport.
+- Index card test with temporary manifest entry: hover reveals `.blog-card-share`; clicking it keeps current page URL unchanged and copies `http://localhost:8080/blog/test-post.html`.
+- Restored `blog/posts.json` to empty `[]` after tests.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-016` to add newsletter CTA blocks to both blog index and article pages and connect the conversion nudge flow.

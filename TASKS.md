@@ -32,7 +32,7 @@ Goal: Create a complete, reusable blog article HTML template (`blog/_template.ht
 ---
 
 ## [TASK-015] Blog sharing buttons + social meta
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-013, TASK-014

@@ -1,0 +1,14 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#0f1420"/>
+      <stop offset="55%" stop-color="#1d2232"/>
+      <stop offset="100%" stop-color="#ffd166"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <rect x="65" y="70" width="1070" height="535" rx="24" fill="#0a0d12" fill-opacity="0.25"/>
+  <text x="110" y="180" fill="#ffd166" font-size="34" font-family="Segoe UI, Arial" letter-spacing="3">INNERFIRE BLOG</text>
+  <text x="110" y="275" fill="#e8edf7" font-size="72" font-weight="700" font-family="Segoe UI, Arial">3-Minute Reset Protocol</text>
+  <text x="110" y="340" fill="#c7ccda" font-size="34" font-family="Segoe UI, Arial">A practical breathing loop for focus recovery</text>
+</svg>

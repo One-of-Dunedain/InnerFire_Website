@@ -1,1 +1,29 @@
-[]
+﻿[
+  {
+    "slug": "why-exhale-works",
+    "title": "Why Exhale Controls State",
+    "excerpt": "Why extending exhale changes the body state faster than trying to force calm with thoughts.",
+    "date": "2026-03-07",
+    "readTime": "7 min",
+    "category": "Science",
+    "thumbnail": "./blog/images/post-03.svg"
+  },
+  {
+    "slug": "reset-in-3-minutes",
+    "title": "3-Minute Reset Protocol",
+    "excerpt": "A compact 3-minute breathing sequence for recovering focus between tasks.",
+    "date": "2026-03-04",
+    "readTime": "5 min",
+    "category": "Focus",
+    "thumbnail": "./blog/images/post-02.svg"
+  },
+  {
+    "slug": "breathing-under-noise",
+    "title": "Breathing Under Noise",
+    "excerpt": "A practical guide for stabilizing breath when your environment is loud and unpredictable.",
+    "date": "2026-03-01",
+    "readTime": "6 min",
+    "category": "Breathing",
+    "thumbnail": "./blog/images/post-01.svg"
+  }
+]

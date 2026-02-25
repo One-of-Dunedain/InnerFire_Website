@@ -3,19 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- EDIT: Replace with your article title -->
-    <title>Article Title — InnerFire Blog</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
-    <!-- EDIT: Replace with your article description -->
-    <meta name="description" content="Article description here." />
-    <meta property="og:title" content="Article Title — InnerFire Blog" />
-    <meta property="og:description" content="Article description here." />
+    <title>Why Exhale Controls State - InnerFire Blog</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F525;</text></svg>">
+    <meta name="description" content="Why extending exhale changes the body state faster than trying to force calm with thoughts." />
+    <meta property="og:title" content="Why Exhale Controls State - InnerFire Blog" />
+    <meta property="og:description" content="Why extending exhale changes the body state faster than trying to force calm with thoughts." />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="../og-image.png" />
-    <meta property="og:url" content="https://innerfire.app/blog/SLUG" />
+    <meta property="og:image" content="../blog/images/post-03.svg" />
+    <meta property="og:url" content="https://innerfire.app/blog/why-exhale-works" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Article Title — InnerFire Blog" />
-    <meta name="twitter:description" content="Article description here." />
+    <meta name="twitter:title" content="Why Exhale Controls State - InnerFire Blog" />
+    <meta name="twitter:description" content="Why extending exhale changes the body state faster than trying to force calm with thoughts." />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -29,18 +27,16 @@
       </div>
     </header>
 
-    <!-- Reading progress bar -->
     <div class="reading-progress" id="reading-progress"></div>
 
     <article class="article">
       <div class="container article-container">
-        <!-- Article header -->
         <header class="article-header">
-          <span class="article-category"><!-- EDIT: e.g. Breathing --></span>
-          <h1><!-- EDIT: Article Title --></h1>
+          <span class="article-category">Science</span>
+          <h1>Why Exhale Controls State</h1>
           <div class="article-meta">
-            <time datetime="2026-01-01"><!-- EDIT: Jan 1, 2026 --></time>
-            <span class="article-read-time"><!-- EDIT: 5 min read --></span>
+            <time datetime="2026-03-07">Mar 7, 2026</time>
+            <span class="article-read-time">7 min read</span>
           </div>
           <div class="article-share">
             <button class="share-btn" id="article-share-btn" type="button" aria-label="Share this article">
@@ -50,53 +46,29 @@
           </div>
         </header>
 
-        <!-- Article body -->
         <div class="article-body">
-          <p><!-- EDIT: Your article text here. Use standard HTML: p, h2, h3, strong, em, a, blockquote, ul, ol --></p>
+          <p>People often ask why we design around exhale intensity. The short answer is control: the exhale phase is usually easier to modulate intentionally, which makes it a practical signal for state regulation.</p>
 
-          <!-- ═══ OPTIONAL MEDIA BLOCKS — delete what you don't need ═══ -->
+          <h2>Mechanism in plain language</h2>
+          <p>Longer exhales can increase parasympathetic influence. In practice, this means the body exits high-alert mode faster. You do not need perfect rhythm, only repeated cycles with clear intent.</p>
 
-          <!-- Horizontal video (16:9) -->
-          <figure class="media-block media-video-h">
-            <video controls preload="metadata" poster="">
-              <source src="" type="video/mp4" />
-            </video>
-            <figcaption><!-- EDIT: Video caption --></figcaption>
-          </figure>
-
-          <!-- Vertical video (9:16) -->
-          <figure class="media-block media-video-v">
-            <video controls preload="metadata" poster="">
-              <source src="" type="video/mp4" />
-            </video>
-            <figcaption><!-- EDIT: Video caption --></figcaption>
-          </figure>
-
-          <!-- Image -->
           <figure class="media-block media-image">
-            <img src="" alt="" loading="lazy" />
-            <figcaption><!-- EDIT: Image caption --></figcaption>
+            <img src="./images/post-03.svg" alt="InnerFire article illustration for exhale mechanism" loading="lazy" />
+            <figcaption>A simple model: longer exhale, lower internal noise, better decisions.</figcaption>
           </figure>
 
-          <!-- Audio -->
-          <figure class="media-block media-audio">
-            <div class="audio-wrapper">
-              <p class="audio-title"><!-- EDIT: Audio title --></p>
-              <audio controls preload="metadata">
-                <source src="" type="audio/mpeg" />
-              </audio>
-            </div>
-            <figcaption><!-- EDIT: Audio caption --></figcaption>
-          </figure>
+          <h3>What to measure</h3>
+          <ul>
+            <li>Time to first feeling of calm (seconds).</li>
+            <li>How quickly your attention returns to task.</li>
+            <li>How stable your breathing feels after 3 cycles.</li>
+          </ul>
 
-          <!-- ═══ END OPTIONAL MEDIA BLOCKS ═══ -->
-
-          <p><!-- EDIT: Continue article text --></p>
+          <p>For a deeper background, read this <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6137615/" target="_blank" rel="noreferrer">open review on slow breathing</a>. Then test one routine for seven days before changing it.</p>
         </div>
       </div>
     </article>
 
-    <!-- Author card -->
     <section class="article-author">
       <div class="container article-container">
         <div class="author-card">
@@ -109,7 +81,6 @@
       </div>
     </section>
 
-    <!-- Back to blog -->
     <nav class="article-nav">
       <div class="container article-container">
         <a href="../blog.html" class="back-link">&larr; All articles</a>
@@ -123,7 +94,6 @@
     </footer>
 
     <script>
-    // Reading progress bar
     window.addEventListener('scroll', function() {
       var bar = document.getElementById('reading-progress');
       var article = document.querySelector('.article');
@@ -135,7 +105,6 @@
       bar.style.width = pct + '%';
     });
 
-    // Share button
     document.getElementById('article-share-btn').addEventListener('click', async function() {
       var title = document.querySelector('.article-header h1').textContent;
       var url = window.location.href;
