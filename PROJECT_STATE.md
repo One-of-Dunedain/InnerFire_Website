@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-25
-## Current status: Task queue updated — major landing page overhaul planned
+## Current status: Core setup improved — favicon, CLAUDE auto-rules, and social links updated
 
 ---
 
@@ -19,18 +19,19 @@
 - `blog.html` — blog shell ("coming soon")
 - `content/` — product overview and user-rules docs (not shown on site)
 - OG/Twitter meta tags added (TASK-001 DONE)
+- Flame favicon added to both pages (TASK-002 DONE)
+- Root `CLAUDE.md` added for Claude Code auto-loading rules (TASK-005 DONE)
+- Footer social links updated to TikTok/X/Discord structure (TASK-010 DONE; TikTok URL still placeholder)
 
 ### What is NOT done yet
 - No site header/navigation (TASK-006)
 - Hero has too much whitespace (TASK-007)
 - Page copy is generic, needs rewrite with real messaging pillars (TASK-008)
 - No About the Author section (TASK-009)
-- Social links wrong: currently Instagram/YouTube, should be TikTok/X/Discord (TASK-010)
 - No carousel share buttons (TASK-011)
 - No signup progress indicator (TASK-012)
-- No favicon (TASK-002)
 - ConvertKit form not connected (TASK-004 — BLOCKED, waiting for embed code)
-- No CLAUDE.md (TASK-005)
+- TikTok URL still placeholder `#` (owner has not provided final URL)
 
 ---
 
@@ -56,6 +57,9 @@ Page flow: HOOK → SHOW → EXPLAIN → TRUST → CONVERT
 
 ## Completed tasks
 - [TASK-001] Add OG meta tags and page SEO
+- [TASK-002] Add favicon
+- [TASK-005] Create CLAUDE.md for AI auto-loading rules
+- [TASK-010] Replace social links — remove Instagram/YouTube, add TikTok/X/Discord
 
 ## Active task
 - none

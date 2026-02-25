@@ -30,3 +30,99 @@ PowerShell escaping issue during initial regex check; verification was rerun wit
 
 ### Recommended next action
 Execute `TASK-002` (favicon) next; it is independent, low-risk, and also limited to `<head>` changes.
+---
+## [TASK-002] Add favicon
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added the flame emoji favicon `<link rel="icon" ...>` to the `<head>` of both `index.html` and `blog.html` using the exact data-URI format from the task, without creating any image assets.
+
+### Files changed
+- `index.html` — added favicon link tag in `<head>`
+- `blog.html` — added favicon link tag in `<head>`
+
+### Acceptance Criteria Results
+- [x] Browser tab shows 🔥 icon on `index.html` — passed (favicon tag present in page head)
+- [x] Browser tab shows 🔥 icon on `blog.html` — passed (favicon tag present in page head)
+- [x] No image files added to repo — passed (no new image assets created)
+
+### Behavior changes
+Browser tabs now use a flame emoji favicon on both landing and blog pages.
+
+### Verification
+- PASSED
+- Ran file-level verification: `Select-String` confirmed favicon tag exists in both files at line 7.
+- Checked repository files for image extensions (`.png/.jpg/.jpeg/.gif/.webp/.svg/.ico`) and confirmed none were added.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-006` and `TASK-007` together in one UI-focused iteration (header + hero spacing), then continue with narrative rewrite tasks.
+
+---
+## [TASK-005] Create CLAUDE.md for AI auto-loading rules
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created `CLAUDE.md` in project root by copying `content/user-rules.md` verbatim, preserving source file unchanged.
+
+### Files changed
+- `CLAUDE.md` — created as exact copy of `content/user-rules.md`
+
+### Acceptance Criteria Results
+- [x] `CLAUDE.md` exists in project root — passed
+- [x] Content is identical to `content/user-rules.md` — passed (`CLAUDE_DIFF=NONE`)
+- [x] `content/user-rules.md` still exists — passed
+
+### Behavior changes
+Claude Code sessions can now auto-load project rules from `CLAUDE.md` in root.
+
+### Verification
+- PASSED
+- Verified file existence for both source and destination.
+- Compared file content line-by-line using `Compare-Object`; result shows no differences.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Keep `content/user-rules.md` as source of truth and update both files together only when policy changes.
+
+---
+## [TASK-010] Replace social links — remove Instagram/YouTube, add TikTok/X/Discord
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Replaced the footer `.social-links` block in `index.html` to use TikTok placeholder plus real X and Discord URLs, and added `target="_blank" rel="noopener"` for all three links.
+
+### Files changed
+- `index.html` — replaced footer social link markup inside `.social-links`
+
+### Acceptance Criteria Results
+- [x] Footer shows exactly 3 links: TikTok, X, Discord — passed
+- [x] Instagram and YouTube links are gone — passed (`OLD_SOCIAL_MATCHES=0`)
+- [x] X link points to `https://x.com/kushnir_marian_` — passed
+- [x] Discord link points to `https://discord.gg/PRuveBJH` — passed
+- [x] TikTok has `href="#"` with a comment indicating placeholder — passed
+- [x] All links have `target="_blank" rel="noopener"` — passed
+
+### Behavior changes
+Footer social navigation now points to X and Discord, with TikTok left as an explicit placeholder until URL is provided.
+
+### Verification
+- PASSED
+- Used `Select-String` to verify exact URLs, placeholder comment, and required link attributes in `index.html`.
+- Verified old `Instagram`/`YouTube` text no longer exists.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Request the real TikTok URL from owner and replace the placeholder `#` in a follow-up micro-task.

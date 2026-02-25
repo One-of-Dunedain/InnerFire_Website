@@ -10,7 +10,7 @@ Owner: Executor AI
 ---
 
 ## [TASK-002] Add favicon
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 
@@ -96,7 +96,7 @@ This is the core conversion mechanism. Requires the owner to first create a Conv
 ---
 
 ## [TASK-005] Create CLAUDE.md for AI auto-loading rules
-Status: TODO
+Status: DONE
 Priority: Low
 Owner: Executor AI
 
@@ -456,7 +456,7 @@ The author lives in Ukraine. When the full-scale Russian invasion started, he ne
 ---
 
 ## [TASK-010] Replace social links — remove Instagram/YouTube, add TikTok/X/Discord
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 
