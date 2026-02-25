@@ -607,7 +607,7 @@ document.querySelectorAll('.card-share').forEach(btn => {
 ---
 
 ## [TASK-012] Add signup progress indicator (burning wick)
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 

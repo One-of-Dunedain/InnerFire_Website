@@ -90,6 +90,13 @@ Status: TODO
 Owner: Project Owner
 Details: Confirm sender domain, unsubscribe/footer compliance, inbox placement smoke test, and abuse/spam handling path.
 
+## [PD-013] Connect signup wick to real Kit subscriber count
+Type: Connect/Automation
+Priority: High
+Status: TODO
+Owner: Project Owner + Executor AI
+Details: Replace manual `const current = 0` in `script.js` with real count from Kit (API/Zapier/Make/serverless endpoint), cache safely, and keep UI fallback if API is unavailable.
+
 ## Done Debt Items
 
 None yet.

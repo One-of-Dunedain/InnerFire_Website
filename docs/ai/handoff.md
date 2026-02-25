@@ -9,10 +9,11 @@ Collect 300 emails from potential beta testers via static landing page flows.
 - Email provider: Kit (ConvertKit)
 
 ## Status
-- Completed set now: TASK-001, TASK-002, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008, TASK-009, TASK-010, TASK-011.
+- Completed set now: TASK-001, TASK-002, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008, TASK-009, TASK-010, TASK-011, TASK-012.
 - `TASK-009` About section is implemented and then refined per UI feedback (non-clickable label + larger centered shelter placeholder).
 - `TASK-011` carousel share interaction is implemented and verified.
-- Remaining major task: TASK-012.
+- `TASK-012` signup wick progress indicator is implemented and verified.
+- Remaining major task: none in current queue.
 - `PROJECT_DEBT.md` exists for pending integrations/purchases (including Kit email-domain setup).
 
 ## Decisions
@@ -24,22 +25,20 @@ Collect 300 emails from potential beta testers via static landing page flows.
 - Keep `Linkedin` as plain text label (no outbound link) in About section.
 - Place shelter-image placeholder under About text, centered and visually prominent.
 - Add share buttons to all environment cards with mobile native share + desktop clipboard fallback.
+- Add burning wick progress UI above signup form, with manual `current` value in `script.js`.
 - Keep implementation static and dependency-free.
 
 ## Files changed in latest iteration
 - `index.html`
-  - Added `.card-share` button to each of 5 carousel cards with correct `data-env`.
-  - Updated script include to `./script.js?v=task011` for cache busting.
+  - Added `.progress-wick` block above signup form.
 - `styles.css`
-  - Added `.card-share` styles (position, hover, active, subtle appearance).
-  - Added parent-card transform suppression during share interaction.
+  - Added wick styles and flame animation (`.progress-wick`, `.wick-*`, `@keyframes flicker`).
 - `script.js`
-  - Added share behavior: native share branch + clipboard fallback + temporary green success feedback.
-  - Added DOM-ready safe initialization wrapper for share listeners.
+  - Added wick initializer IIFE with manual `current` and `goal` values.
 - `TASKS.md`
-  - Marked `TASK-011` as `DONE`.
+  - Marked `TASK-012` as `DONE`.
 - `REPORT.md`
-  - Appended execution report block for `TASK-011`.
+  - Appended execution report block for `TASK-012`.
 - `PROJECT_STATE.md`
   - Updated current state and completed tasks list.
 
@@ -48,33 +47,30 @@ Collect 300 emails from potential beta testers via static landing page flows.
 - `Get-Content PROJECT_STATE.md`
 - `Get-Content REPORTING_FORMAT.md`
 - `git status --short`
-- `Select-String` checks for share button count and script/style presence
+- `Select-String` checks for wick markup/styles/script hooks
 - `Invoke-WebRequest http://localhost:8080`
+- temporary script toggle for verification:
+  - `const current = 0` -> `const current = 150` -> back to `const current = 0`
 - Playwright checks:
-  - snapshot validation of 5 share buttons
-  - native share payload capture (`navigator.share` branch)
-  - clipboard fallback payload capture and green feedback check
-  - computed transform check to ensure no card scale while interacting with share button
+  - snapshot validation of wick in signup section
+  - baseline validation (`0 / 300`, empty fill, flame animation)
+  - `current=150` validation (display `150`, fill 50%)
+  - mobile width validation (`375x812`, no overflow)
 
 ## Verification/QA Status
 - Verification run: YES
 - Result: PASSED
 - Evidence:
-  - 5 share buttons rendered with environment mappings:
-    - Mountain Peaks
-    - Meditation Room
-    - City Rooftop
-    - Forest Clearing
-    - Ocean Shore
-  - Desktop fallback copied expected text format and URL.
-  - Success feedback applied then reset.
-  - Parent card transform remained `none` while hovering share button.
+  - Signup shows wick labels `0 / 300` + `early testers`.
+  - Track starts at 0% with flame at the start and active `flicker` animation.
+  - With `current=150`, UI shows 50% progress and `150 / 300`.
+  - On `375px` viewport, wick remains within layout width with no horizontal overflow.
 
 ## Open risks / notes
 - First live Kit submission flow still needs owner validation in Kit dashboard and inbox.
 - TikTok URL still placeholder until provided.
 
 ## Next steps
-1. Execute TASK-012 (signup wick/progress indicator).
-2. Replace TikTok placeholder when URL is available.
-3. Validate Kit double opt-in/send settings end-to-end with a production sender domain.
+1. Replace TikTok placeholder when URL is available.
+2. Validate Kit double opt-in/send settings end-to-end with a production sender domain.
+3. Start new orchestrator queue items from `PROJECT_DEBT.md` priorities.

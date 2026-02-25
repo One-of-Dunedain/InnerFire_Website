@@ -439,6 +439,54 @@ body {
 
 .signup-sub  { font-size: 1.05rem; margin-bottom: 8px; }
 .signup-note { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+/* Burning wick progress */
+.progress-wick {
+  max-width: 360px;
+  margin: 0 auto 40px;
+}
+.wick-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+.wick-count {
+  color: var(--accent);
+  font-weight: 700;
+}
+.wick-goal {
+  color: var(--muted);
+}
+.wick-track {
+  position: relative;
+  height: 6px;
+  background: var(--surface);
+  border-radius: 3px;
+  overflow: visible;
+}
+.wick-fill {
+  height: 100%;
+  width: var(--progress);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 3px;
+  transition: width 1s ease-out;
+}
+.wick-flame {
+  position: absolute;
+  top: -8px;
+  left: var(--progress);
+  width: 10px;
+  height: 18px;
+  background: radial-gradient(ellipse at bottom, var(--accent2), var(--accent), transparent);
+  border-radius: 50% 50% 20% 20%;
+  transform: translateX(-50%);
+  animation: flicker 0.4s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+@keyframes flicker {
+  0%   { transform: translateX(-50%) scaleY(1) scaleX(1); }
+  100% { transform: translateX(-50%) scaleY(1.3) scaleX(0.8); }
+}
 
 .form-placeholder {
   display: flex;

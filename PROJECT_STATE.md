@@ -1,7 +1,7 @@
 ﻿# Project State
 
 ## Last updated: 2026-02-25
-## Current status: Share interaction on carousel completed; ready for final conversion UI enhancement
+## Current status: Task queue completed; waiting for external integrations and owner inputs
 
 ---
 
@@ -26,9 +26,9 @@
 - About section refined: non-clickable `Linkedin` label under profile placeholder and larger centered shelter-photo placeholder
 - Footer social links updated to TikTok placeholder + X + Discord (TASK-010 DONE)
 - Carousel cards now have share buttons with native share + clipboard fallback (TASK-011 DONE)
+- Signup section now has burning wick progress indicator with manual count control (TASK-012 DONE)
 
 ### What is NOT done yet
-- Signup wick/progress indicator (TASK-012)
 - TikTok URL still placeholder `#` (owner has not provided final URL)
 - Live Kit submission and confirmation-email flow still needs owner-side validation
 
@@ -65,6 +65,7 @@ Page flow: HOOK -> SHOW -> EXPLAIN -> TRUST -> CONVERT
 - [TASK-009] Add About the Author section
 - [TASK-010] Replace social links - remove Instagram/YouTube, add TikTok/X/Discord
 - [TASK-011] Add share button to carousel cards
+- [TASK-012] Add signup progress indicator (burning wick)
 
 ## Active task
 - none

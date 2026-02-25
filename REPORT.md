@@ -379,3 +379,43 @@ Cached browser script initially caused stale behavior; resolved by cache-busting
 
 ### Recommended next action
 Proceed with `TASK-012` (signup progress wick) as the next conversion-focused iteration.
+
+---
+## [TASK-012] Add signup progress indicator (burning wick)
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added a signup progress wick above the Kit form in `index.html`, added wick styles/animation in `styles.css`, and added JS logic in `script.js` to render the current count and progress percentage from a manual `current` value (default `0`) against goal `300`.
+
+### Files changed
+- `index.html` — added `.progress-wick` block above signup form
+- `styles.css` — added `.progress-wick`, `.wick-*` styles and `@keyframes flicker`
+- `script.js` — added wick progress initializer IIFE with manual `current`/`goal`
+- `TASKS.md` — changed TASK-012 status to DONE
+
+### Acceptance Criteria Results
+- [x] Progress wick is visible above the email form in the signup section — passed
+- [x] Shows "0 / 300" and "early testers" labels — passed
+- [x] Track bar is empty (0%) with a tiny flame at the start — passed
+- [x] Flame animates (flicker effect) — passed
+- [x] Changing `const current = 0` to `const current = 150` in `script.js` updates both the number display and the bar fill to 50% — passed
+- [x] Wick is centered and no wider than 360px — passed
+- [x] Works on mobile (375px width) — passed
+
+### Behavior changes
+Signup section now includes a visual urgency/progress indicator (burning wick) tied to the manual signup count variable in `script.js`.
+
+### Verification
+- PASSED
+- Verified on `http://localhost:8080/index.html` with Playwright:
+- baseline state shows `0 / 300`, `--progress: 0%`, empty fill, flame at start, and `animationName: flicker`.
+- mobile viewport `375x812` shows wick width within viewport and no horizontal overflow.
+- temporarily changed `const current` from `0` to `150`, refreshed, confirmed `150 / 300`, `--progress: 50%`, and fill ratio `0.5`, then reverted `current` back to `0`.
+
+### Issues encountered
+Initial JS insertion had escaped quote artifacts from shell templating; fixed immediately before verification.
+
+### Recommended next action
+With all queued tasks complete, next step is a new orchestrator task to finalize production readiness items (Kit email-domain setup and TikTok URL replacement).

@@ -56,3 +56,16 @@ if (document.readyState === 'loading') {
 } else {
   initCardShareButtons();
 }
+
+// Set wick progress - update these values manually or via API later
+(function() {
+  const current = 0; // UPDATE THIS NUMBER as signups come in
+  const goal = 300;
+  const pct = Math.min((current / goal) * 100, 100);
+  const el = document.getElementById('wick-current');
+  const fill = document.querySelector('.wick-fill');
+  const flame = document.querySelector('.wick-flame');
+  if (el) el.textContent = current;
+  if (fill) fill.style.setProperty('--progress', pct + '%');
+  if (flame) flame.style.left = pct + '%';
+})();
