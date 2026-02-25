@@ -515,7 +515,7 @@ With:
 ---
 
 ## [TASK-011] Add share button to carousel cards
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 

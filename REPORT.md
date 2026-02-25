@@ -338,3 +338,44 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-011` (carousel share action) to improve interaction, then `TASK-012` for conversion urgency.
+
+---
+## [TASK-011] Add share button to carousel cards
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Added a share button to each of the five carousel cards in `index.html`, added matching visual styles in `styles.css`, and implemented share behavior in `script.js` with native share support (`navigator.share`) plus desktop clipboard fallback and temporary green success feedback.
+
+### Files changed
+- `index.html` — added `.card-share` buttons in all card overlays with correct `data-env` values; updated script tag to `./script.js?v=task011`
+- `styles.css` — added `.card-share` styles and hover/active behavior; prevented parent card scaling while interacting with share button
+- `script.js` — added share logic (native share + clipboard fallback + success feedback), initialized safely on DOM ready
+- `TASKS.md` — changed TASK-011 status to DONE
+
+### Acceptance Criteria Results
+- [x] Each of the 5 carousel cards has a share icon button (top-right corner) — passed
+- [x] On mobile: tapping the share button opens the native share sheet (via `navigator.share`) — passed (verified via mocked `navigator.share` payload capture)
+- [x] On desktop: clicking copies a link + environment name to clipboard — passed
+- [x] Button shows green feedback briefly after successful copy — passed
+- [x] Clicking share does NOT trigger card hover/scale animation — passed
+- [x] Button is visually subtle (translucent circle) and doesn't dominate the card — passed
+
+### Behavior changes
+Carousel cards now include a share action. On supported devices, native share is triggered; otherwise, share text with environment name and page URL is copied to clipboard with short visual confirmation.
+
+### Verification
+- PASSED
+- Verified with Playwright on `http://localhost:8080/index.html`:
+- Confirmed 5 buttons and exact environment mappings.
+- Confirmed clipboard text format: `Check out the "<env>" breathing environment on InnerFire - <url>`.
+- Confirmed native share branch receives `{ title, text, url }`.
+- Confirmed success feedback sets temporary green background and resets.
+- Confirmed parent `.carousel-card` computed transform remains `none` while hovering share button.
+
+### Issues encountered
+Cached browser script initially caused stale behavior; resolved by cache-busting script include (`?v=task011`) and re-running verification.
+
+### Recommended next action
+Proceed with `TASK-012` (signup progress wick) as the next conversion-focused iteration.

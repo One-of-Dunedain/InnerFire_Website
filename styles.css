@@ -291,6 +291,31 @@ body {
   color: var(--muted);
 }
 
+.card-share {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  z-index: 2;
+}
+.card-share:hover { background: rgba(255,138,61,0.3); transform: scale(1.1); }
+.card-share:active { transform: scale(0.95); }
+.carousel-card:has(.card-share:hover),
+.carousel-card:has(.card-share:focus-visible),
+.carousel-card:has(.card-share:active) {
+  transform: none;
+}
+
 /* ═══════════════════════════════════════════════════
    WHO IT'S FOR
    ═══════════════════════════════════════════════════ */
