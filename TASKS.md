@@ -234,7 +234,7 @@ Visitors from TikTok/Reels have very short attention. The hero should fit conten
 ---
 
 ## [TASK-008] Rewrite page copy and restructure content sections
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 

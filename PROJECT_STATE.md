@@ -1,14 +1,14 @@
 ﻿# Project State
 
 ## Last updated: 2026-02-25
-## Current status: Header/navigation and hero spacing updates completed; ready for copy/story iteration
+## Current status: Core copy rewrite completed; ready for trust and interaction layers
 
 ---
 
 ## What exists
 
 ### Website (static HTML/CSS/JS, no build step)
-- `index.html` - landing page with hero, carousel, benefits section, signup section, and footer
+- `index.html` - landing page with hero, breathing-environments intro, why-it-works section, signup section, and footer
 - `blog.html` - blog shell page with shared top header
 - `styles.css` - dark theme styles, responsive breakpoints, fixed glass header styles
 - `script.js` - smooth anchor scrolling
@@ -21,10 +21,10 @@
 - `CLAUDE.md` added from `content/user-rules.md` (TASK-005 DONE)
 - Shared sticky header added on `index.html` and `blog.html` (TASK-006 DONE)
 - Hero whitespace reduced for tighter first-screen layout (TASK-007 DONE)
+- Landing-page copy and section narrative updated (TASK-008 DONE)
 - Footer social links updated to TikTok placeholder + X + Discord (TASK-010 DONE)
 
 ### What is NOT done yet
-- Landing page copy rewrite and section text restructuring (TASK-008)
 - About the Author section (TASK-009)
 - Carousel share buttons (TASK-011)
 - Signup wick/progress indicator (TASK-012)
@@ -60,6 +60,7 @@ Page flow: HOOK -> SHOW -> EXPLAIN -> TRUST -> CONVERT
 - [TASK-005] Create CLAUDE.md for AI auto-loading rules
 - [TASK-006] Add sticky header navigation
 - [TASK-007] Reduce hero whitespace and tighten layout
+- [TASK-008] Rewrite page copy and restructure content sections
 - [TASK-010] Replace social links - remove Instagram/YouTube, add TikTok/X/Discord
 
 ## Active task

@@ -229,3 +229,40 @@ None.
 
 ### Recommended next action
 Execute `TASK-008` and `TASK-009` in one controlled iteration (copy + trust section), then continue with interaction features.
+---
+## [TASK-008] Rewrite page copy and restructure content sections
+Date: 2026-02-25
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Updated landing-page copy in `index.html` per provided script (hero subtitle, carousel intro, and full "Why it works" section), updated `meta description` and `og:description`, and renamed section class usage from `.for-who` to `.why-it-works` in both HTML and CSS without changing layout behavior.
+
+### Files changed
+- `index.html` - updated required copy blocks and replaced section markup with `.why-it-works`
+- `styles.css` - renamed selectors `.for-who` -> `.why-it-works`
+- `TASKS.md` - changed TASK-008 status to DONE
+
+### Acceptance Criteria Results
+- [x] Hero subtitle updated to new text - passed
+- [x] Carousel section heading is "Breathing Environments" - passed
+- [x] `.for-who` section replaced with `.why-it-works` containing 3 new benefit cards - passed
+- [x] Each benefit card has a `<strong>` title + explanation text - passed
+- [x] Meta description updated to match new subtitle - passed
+- [x] OG description updated to match new subtitle - passed
+- [x] No CSS layout changes (only class rename) - passed
+
+### Behavior changes
+Landing-page messaging now follows the requested narrative: clear sensory hook, explicit environment explanation, and stronger "why it works" benefits copy.
+
+### Verification
+- PASSED
+- Checked diffs for `index.html` and `styles.css` to confirm only required edits.
+- Verified required strings and selector rename using `rg`.
+- Loaded `http://localhost:8080/index.html` in Playwright and confirmed updated copy is rendered in hero, demo intro, and the new `why-it-works` section.
+
+### Issues encountered
+Initial regex-edit attempt introduced encoding corruption; reverted affected files and reapplied changes via targeted patches. Final state verified clean.
+
+### Recommended next action
+Proceed to `TASK-009` (About the Author section) to complete the TRUST step in the page narrative.
