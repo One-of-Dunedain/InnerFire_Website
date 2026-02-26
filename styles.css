@@ -78,15 +78,41 @@ body {
 .header-nav a:hover { color: var(--text); }
 
 .btn-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--accent);
   border: 1px solid var(--accent);
   padding: 6px 16px;
   border-radius: var(--radius);
 }
 
+.btn-header::after {
+  content: "iOS only";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 209, 102, 0.35);
+  background: rgba(255, 209, 102, 0.16);
+  color: var(--accent2);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
 .btn-header:hover {
   background: var(--accent);
   color: #000;
+}
+
+.btn-header:hover::after {
+  border-color: rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.56);
+  color: #2a1500;
 }
 
 /* ── Button ─────────────────────────────────────── */
@@ -769,6 +795,11 @@ footer {
   .header-nav { gap: 12px; }
   .header-nav a { font-size: 0.83rem; }
   .btn-header { padding: 6px 12px; }
+  .btn-header::after {
+    content: "iOS";
+    padding: 2px 6px;
+    font-size: 0.62rem;
+  }
   .article-header { padding: 100px 0 30px; }
   .media-video-v video { max-width: 100%; }
 }
