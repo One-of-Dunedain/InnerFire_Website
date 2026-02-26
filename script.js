@@ -51,10 +51,30 @@ function initCardShareButtons() {
   });
 }
 
+// Blur reveal on benefit cards
+function initBenefitReveal() {
+  document.querySelectorAll('.benefit-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      this.classList.toggle('revealed');
+      this.setAttribute('aria-expanded', this.classList.contains('revealed'));
+    });
+    item.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initCardShareButtons);
+  document.addEventListener('DOMContentLoaded', function() {
+    initCardShareButtons();
+    initBenefitReveal();
+  });
 } else {
   initCardShareButtons();
+  initBenefitReveal();
 }
 
 // Set wick progress - update these values manually or via API later

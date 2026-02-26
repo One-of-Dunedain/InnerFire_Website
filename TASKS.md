@@ -12,7 +12,7 @@ Last updated: 2026-02-26
 ---
 
 ## [TASK-019] Site-wide text cleanup (em-dashes, grammar, voice)
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
@@ -22,7 +22,7 @@ Goal: Remove all em-dash characters from user-visible text. Fix "a App" grammar.
 ---
 
 ## [TASK-020] Hero section visual overhaul
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-019
@@ -32,7 +32,7 @@ Goal: More embers (16), stronger glow, breathing-synced ember speed, gradient ta
 ---
 
 ## [TASK-021] About section rewrite + UI refresh
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-019
@@ -42,7 +42,7 @@ Goal: Rename to "From Ukraine, with a purpose", replace body text with owner-pro
 ---
 
 ## [TASK-022] "Why it actually works" blur reveal interaction
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-019

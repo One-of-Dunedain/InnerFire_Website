@@ -122,15 +122,15 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 55%, rgba(255,120,40,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 40% at 50% 70%, rgba(255,80,20,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 55% 60%, rgba(255,200,80,0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 50% at 50% 55%, rgba(255,120,40,0.28) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% 70%, rgba(255,80,20,0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 55% 60%, rgba(255,200,80,0.12) 0%, transparent 50%);
   animation: glowPulse 4s ease-in-out infinite alternate;
 }
 @keyframes glowPulse {
-  0%   { opacity: 0.6; transform: scale(1); }
-  50%  { opacity: 1;   transform: scale(1.05); }
-  100% { opacity: 0.7; transform: scale(0.98); }
+  0%   { opacity: 0.7; transform: scale(1); }
+  50%  { opacity: 1;   transform: scale(1.08); }
+  100% { opacity: 0.75; transform: scale(0.95); }
 }
 
 /* Floating embers */
@@ -138,31 +138,47 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  --ember-speed: 1;
+  animation: embersBreathing 4s ease-in-out infinite alternate;
+}
+@keyframes embersBreathing {
+  0%   { transform: scale(1) translateY(0); }
+  50%  { transform: scale(1.05) translateY(-8px); }
+  100% { transform: scale(0.98) translateY(2px); }
 }
 .ember {
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--accent);
   opacity: 0;
+  box-shadow: 0 0 10px rgba(255, 138, 61, 0.45);
   animation: emberFloat linear infinite;
 }
-.ember:nth-child(1) { left: 45%; bottom: 30%; animation-duration: 4.5s; animation-delay: 0s;   width: 3px; height: 3px; }
-.ember:nth-child(2) { left: 52%; bottom: 35%; animation-duration: 5.2s; animation-delay: 0.8s; width: 4px; height: 4px; }
-.ember:nth-child(3) { left: 38%; bottom: 40%; animation-duration: 6s;   animation-delay: 1.5s; width: 2px; height: 2px; }
-.ember:nth-child(4) { left: 58%; bottom: 32%; animation-duration: 4s;   animation-delay: 2.2s; width: 3px; height: 3px; }
-.ember:nth-child(5) { left: 48%; bottom: 38%; animation-duration: 5.8s; animation-delay: 0.3s; width: 5px; height: 5px; }
-.ember:nth-child(6) { left: 42%; bottom: 36%; animation-duration: 4.8s; animation-delay: 3s;   width: 2px; height: 2px; }
-.ember:nth-child(7) { left: 55%; bottom: 28%; animation-duration: 5.5s; animation-delay: 1s;   width: 3px; height: 3px; }
-.ember:nth-child(8) { left: 50%; bottom: 42%; animation-duration: 6.5s; animation-delay: 2s;   width: 2px; height: 2px; }
+.ember:nth-child(1)  { left: 15%; bottom: 28%; animation-duration: 4.2s; animation-delay: 0s;   width: 4px; height: 4px; }
+.ember:nth-child(2)  { left: 22%; bottom: 34%; animation-duration: 5.8s; animation-delay: 1.1s; width: 6px; height: 6px; }
+.ember:nth-child(3)  { left: 28%; bottom: 40%; animation-duration: 6.3s; animation-delay: 2.2s; width: 5px; height: 5px; background: var(--accent2); box-shadow: 0 0 12px rgba(255, 209, 102, 0.5); }
+.ember:nth-child(4)  { left: 34%; bottom: 30%; animation-duration: 4.7s; animation-delay: 0.6s; width: 8px; height: 8px; }
+.ember:nth-child(5)  { left: 40%; bottom: 42%; animation-duration: 5.2s; animation-delay: 1.6s; width: 4px; height: 4px; }
+.ember:nth-child(6)  { left: 46%; bottom: 32%; animation-duration: 3.9s; animation-delay: 2.8s; width: 7px; height: 7px; }
+.ember:nth-child(7)  { left: 52%; bottom: 26%; animation-duration: 5.9s; animation-delay: 0.9s; width: 5px; height: 5px; background: var(--accent2); box-shadow: 0 0 12px rgba(255, 209, 102, 0.5); }
+.ember:nth-child(8)  { left: 58%; bottom: 38%; animation-duration: 6.6s; animation-delay: 1.9s; width: 6px; height: 6px; }
+.ember:nth-child(9)  { left: 64%; bottom: 29%; animation-duration: 4.4s; animation-delay: 0.2s; width: 8px; height: 8px; }
+.ember:nth-child(10) { left: 70%; bottom: 36%; animation-duration: 5.6s; animation-delay: 2.4s; width: 4px; height: 4px; }
+.ember:nth-child(11) { left: 76%; bottom: 41%; animation-duration: 6.8s; animation-delay: 1.3s; width: 5px; height: 5px; background: var(--accent2); box-shadow: 0 0 12px rgba(255, 209, 102, 0.5); }
+.ember:nth-child(12) { left: 82%; bottom: 33%; animation-duration: 4.9s; animation-delay: 2.7s; width: 7px; height: 7px; }
+.ember:nth-child(13) { left: 18%; bottom: 24%; animation-duration: 5.4s; animation-delay: 3.1s; width: 6px; height: 6px; }
+.ember:nth-child(14) { left: 30%; bottom: 27%; animation-duration: 6.1s; animation-delay: 3.7s; width: 4px; height: 4px; background: var(--accent2); box-shadow: 0 0 12px rgba(255, 209, 102, 0.5); }
+.ember:nth-child(15) { left: 55%; bottom: 44%; animation-duration: 5s;   animation-delay: 4.1s; width: 8px; height: 8px; }
+.ember:nth-child(16) { left: 85%; bottom: 25%; animation-duration: 4.6s; animation-delay: 4.6s; width: 5px; height: 5px; }
 
 @keyframes emberFloat {
   0%   { opacity: 0; transform: translateY(0) translateX(0) scale(1); }
-  10%  { opacity: 0.9; }
-  50%  { opacity: 0.6; transform: translateY(-120px) translateX(15px) scale(0.7); }
-  80%  { opacity: 0.2; }
-  100% { opacity: 0; transform: translateY(-250px) translateX(-10px) scale(0.3); }
+  10%  { opacity: 1; }
+  40%  { opacity: 0.8; transform: translateY(-150px) translateX(20px) scale(0.8); }
+  70%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-350px) translateX(-15px) scale(0.2); }
 }
 
 /* Hero content (above glow + embers) */
@@ -194,6 +210,20 @@ body {
   font-size: 1.1rem;
   color: var(--muted);
   max-width: 480px;
+}
+
+.hero-emphasis {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle-secondary {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* Seamless fade at bottom of hero → next section */
@@ -337,12 +367,46 @@ body {
   gap: 16px;
 }
 
-.benefits li {
+.benefit-item {
   padding: 20px 24px;
   background: var(--surface);
   border-radius: var(--radius);
   border-left: 3px solid var(--accent);
   font-size: 1.05rem;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.benefit-detail {
+  display: inline;
+  filter: blur(5px);
+  transition: filter 0.5s ease;
+}
+
+.benefit-item.revealed .benefit-detail {
+  filter: blur(0);
+}
+
+.benefit-item::after {
+  content: "tap to reveal";
+  display: block;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.benefit-item.revealed::after {
+  content: "";
+  display: none;
+}
+
+.benefit-item:hover:not(.revealed) .benefit-detail {
+  filter: blur(3px);
 }
 
 /* About the Author */
@@ -382,9 +446,19 @@ body {
 }
 .about-text p {
   color: var(--muted);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   font-size: 0.95rem;
   line-height: 1.7;
+}
+.about-highlight {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-left: 3px solid var(--accent);
+  background: rgba(255,138,61,0.04);
+  border-radius: 0 var(--radius) var(--radius) 0;
 }
 .about-photo-label {
   color: var(--accent);
@@ -970,6 +1044,13 @@ footer {
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .hero-glow, .ember { animation: none; }
+  .hero-glow, .embers, .ember { animation: none; }
   .hero-glow { opacity: 0.8; }
+  .benefit-detail {
+    filter: none;
+    transition: none;
+  }
+  .benefit-item::after {
+    display: none;
+  }
 }

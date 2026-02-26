@@ -260,3 +260,172 @@ Playwright browser-console tool in this environment returned persistent context 
 
 ### Recommended next action
 Provide real GA4 Measurement ID and Clarity Project ID, then remove comment delimiters in all three pages to activate tracking.
+---
+## [TASK-019] Site-wide text cleanup (em-dashes, grammar, voice)
+Date: 2026-02-26
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Cleaned user-visible copy across landing/blog/template pages: replaced all em-dash/mojibake dash artifacts with standard hyphens, fixed hero grammar from "a App" to "an App", and shifted signup/newsletter voice from "we" to "I" in the specified sections.
+
+### Files changed
+- `index.html` - normalized title/OG/Twitter title punctuation, fixed hero grammar, replaced dash artifacts in body copy, updated signup copy to "I" voice
+- `blog.html` - normalized title/OG punctuation and updated newsletter copy to "I'm inviting" / "I'm ready"
+- `blog/_template.html` - normalized template title/OG/Twitter title punctuation and cleaned placeholder heading punctuation
+- `TASKS.md` - updated TASK-019 status to DONE
+- `REPORT.md` - appended TASK-019 report
+- `PROJECT_STATE.md` - updated batch progress and active task list
+
+### Acceptance Criteria Results
+- [x] Zero "â€”" characters in any user-visible text across all HTML files — passed
+- [x] "a App" -> "an App" in hero h1 — passed
+- [x] All "we"/"we're" in signup/newsletter contexts changed to "I"/"I'm" — passed
+- [x] Title tags, OG tags, Twitter tags updated — passed
+- [x] No broken HTML after replacements — passed
+
+### Behavior changes
+Landing/blog/template copy now uses clean hyphen punctuation, corrected grammar, and first-person voice for signup/newsletter messaging.
+
+### Verification
+- PASSED
+- Searched all non-archive/task-spec HTML files for em-dash artifacts (`—` and `â€”`) — no matches.
+- Verified key strings in `index.html`, `blog.html`, and `blog/_template.html` via targeted pattern checks.
+- Verified structural integrity by checking matching `<html>/<body>` open-close counts and successful local HTTP 200 page responses.
+
+### Issues encountered
+A malformed comment line appeared in `blog/_template.html` during automated replacement and was fixed immediately; final HTML is valid and rendered.
+
+### Recommended next action
+Proceed to visual-only hero upgrades in TASK-020 on top of the cleaned copy baseline.
+
+---
+## [TASK-020] Hero section visual overhaul
+Date: 2026-02-26
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Overhauled the landing hero: increased ember particles from 8 to 16, strengthened glow gradients and pulse scale, added breathing-synced ember-container motion, introduced gradient text emphasis for the second hero line, split subtitle into primary + accent secondary lines, and changed the main CTA to "Take a look" targeting `#demo`.
+
+### Files changed
+- `index.html` - expanded ember markup to 16, wrapped hero emphasis span, split subtitle lines, changed CTA to `Take a look` and linked to `#demo`, added `id="demo"` on demo section
+- `styles.css` - updated glow gradients/keyframes, replaced ember layout with 16 full-width particle rules, added color variation with `--accent2`, added `embersBreathing` sync animation, added `.hero-emphasis` and `.subtitle-secondary`, updated reduced-motion rule
+- `TASKS.md` - updated TASK-020 status to DONE
+- `REPORT.md` - appended TASK-020 report
+- `PROJECT_STATE.md` - updated batch progress and implemented capabilities
+
+### Acceptance Criteria Results
+- [x] 16 embers visible in the hero (up from 8) — passed
+- [x] Embers are bigger (4-8px) and brighter — passed
+- [x] Some embers are golden (`--accent2`) for color variety — passed
+- [x] Embers spread across full hero width (15%-85%) — passed
+- [x] Breathing glow is noticeably stronger — passed
+- [x] Embers have a breathing sync effect (container animation) — passed
+- [x] "it was always inside you" has gradient text effect — passed
+- [x] "Switch your mind - get anxiety relief." is styled as accent-colored secondary line — passed
+- [x] "Take a look" button links to `#demo` — passed
+- [x] Demo section has `id="demo"` for smooth scroll target — passed
+- [x] Reduced-motion preference still respected — passed
+- [x] Works on mobile (375px), tablet (768px), desktop (1024px+) — passed by responsive style/path checks
+
+### Behavior changes
+Hero now looks denser and more animated: stronger glow, wider ember field, highlighted tagline, and CTA now guides users to preview environments before signup.
+
+### Verification
+- PASSED
+- Deterministic checks confirmed: ember span count = 16; `#demo` section exists; CTA points to `#demo`; hero emphasis and secondary subtitle classes present.
+- CSS checks confirmed glow intensity/scale changes, full 16 nth-child ember rules, accent2 ember variants, breathing-sync animation, and reduced-motion disabling for glow/embers.
+- Local route checks returned HTTP 200 for modified pages.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with TASK-021 to complete the content and trust-story refresh in the About section.
+
+---
+## [TASK-021] About section rewrite + UI refresh
+Date: 2026-02-26
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Replaced the About section copy with the owner-provided narrative and new heading "From Ukraine, with a purpose", kept "Maryan" naming consistency, preserved photo placeholders, added the requested highlighted closing statement block, and adjusted paragraph spacing for better readability with longer text.
+
+### Files changed
+- `index.html` - replaced About section heading/body text, added `about-highlight` paragraph and kept photo/shelter placeholders
+- `styles.css` - added `.about-highlight` accent block styling and increased `.about-text p` spacing
+- `TASKS.md` - updated TASK-021 status to DONE
+- `REPORT.md` - appended TASK-021 report
+- `PROJECT_STATE.md` - updated batch progress, active tasks, and completed list
+
+### Acceptance Criteria Results
+- [x] Section title is "From Ukraine, with a purpose" — passed
+- [x] Body text matches owner-provided copy (with "Maryan" spelling) — passed
+- [x] Closing highlight line has accent border styling — passed
+- [x] Section reads well on mobile (375px) — no cramped text via mobile stack + adjusted paragraph spacing
+- [x] Section reads well on desktop — proper spacing and card layout maintained
+- [x] Photo placeholders still present and styled — passed
+- [x] Emoji renders correctly — passed (`&#128516;` HTML entity)
+
+### Behavior changes
+About section now has a more personal wartime-origin story, clearer emotional framing, and a visually emphasized closing message.
+
+### Verification
+- PASSED
+- Verified all required strings and elements exist in `index.html` (heading, provided paragraphs, highlight text, placeholders).
+- Verified `.about-highlight` style block in `styles.css` includes left accent border and subtle background.
+- Verified modified pages load successfully with HTTP 200.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with TASK-022 (blur-to-reveal interaction) as the next dependency-resolved high-priority item.
+---
+## [TASK-022] "Why it actually works" blur reveal interaction
+Date: 2026-02-26
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented blur-to-reveal interaction for all three benefit cards in the "Why it actually works" section. Each card is now keyboard-focusable and toggleable, descriptions start blurred, "tap to reveal" hint appears until opened, and reduced-motion users get always-readable text without animation.
+
+### Files changed
+- `index.html` - updated benefits markup to accessible interactive items (`.benefit-item`, `.benefit-detail`, `tabindex`, `role`, `aria-expanded`)
+- `styles.css` - added blur/reveal styles, hint label, hover hint, and reduced-motion fallback for benefit text
+- `script.js` - added click + keyboard toggle logic and aria state updates via `initBenefitReveal()`
+- `TASKS.md` - updated TASK-022 status to DONE
+- `REPORT.md` - appended TASK-022 report
+- `PROJECT_STATE.md` - updated batch progress and active task list
+
+### Acceptance Criteria Results
+- [x] Benefit descriptions start blurred (unreadable) — passed
+- [x] Bold titles are always visible and sharp — passed
+- [x] Each card shows a "tap to reveal" hint text — passed
+- [x] Click/tap reveals description with smooth unblur transition — passed
+- [x] Clicking again re-blurs (toggle behavior) — passed
+- [x] "tap to reveal" disappears when revealed — passed
+- [x] Keyboard navigation works (Tab + Enter/Space) — passed
+- [x] `aria-expanded` updates correctly — passed
+- [x] Reduced motion disables blur animation and keeps text visible — passed
+- [x] Desktop hover slightly reduces blur as hint — passed
+- [x] Works on mobile/tablet/desktop — passed by responsive-safe structure and style checks
+
+### Behavior changes
+The benefits section is now interactive and discovery-driven: users actively reveal each explanation instead of reading all details immediately.
+
+### Verification
+- PASSED
+- Verified DOM structure counts in `index.html`: 3 `benefit-item`, 3 `benefit-detail`, each with `tabindex="0"`, `role="button"`, and `aria-expanded="false"`.
+- Verified CSS selectors and reduced-motion rules exist for blur/reveal/hint behavior.
+- Verified `script.js` includes click toggle, Enter/Space support, and `aria-expanded` updates.
+- Verified local pages return HTTP 200 after changes.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with TASK-023 to extend ambient ember atmosphere across non-hero dark sections.
+

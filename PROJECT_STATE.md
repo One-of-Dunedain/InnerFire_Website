@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-26
-## Current status: 8 new tasks queued (TASK-019 through TASK-026) - main page polish + SEO + analytics
+## Current status: 4/8 tasks completed in Feb 26 batch (TASK-019 through TASK-022); 4 tasks remaining
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (currently populated with demo posts)
 
-### Implemented capabilities (TASK-001-018, all DONE)
+### Implemented capabilities (TASK-001-022 complete)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -33,6 +33,10 @@
 - Blog newsletter and inline article CTA forms connected to Kit endpoint (TASK-016)
 - SEO foundation: canonical links, JSON-LD, robots.txt, and sitemap.xml (TASK-017)
 - GA4 + Microsoft Clarity placeholders added to all pages (inactive by default, TASK-018)
+- Site-wide copy cleanup: removed em-dash artifacts, fixed grammar, shifted signup/newsletter voice to "I" (TASK-019)
+- Hero overhaul: 16 embers, stronger glow pulse, gradient emphasis line, and "Take a look" CTA to carousel (TASK-020)
+- About section rewrite: "From Ukraine, with a purpose" content refresh + highlighted closing statement block (TASK-021)
+- Why-it-works interaction: blur-to-reveal benefit descriptions with keyboard + aria support and reduced-motion fallback (TASK-022)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -77,10 +81,6 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks (Feb 26 batch — Notion "Task Skope 26 Feb 2026")
-- [TASK-019] Site-wide text cleanup: em-dashes, grammar, "we"→"I" (TODO)
-- [TASK-020] Hero visual overhaul: more embers, stronger glow, gradient tagline, "Take a look" CTA (TODO)
-- [TASK-021] About section rewrite: "From Ukraine, with a purpose" + new text (TODO)
-- [TASK-022] Blur reveal on "Why it works" benefit descriptions (TODO)
 - [TASK-023] Ambient embers across all dark sections site-wide (TODO)
 - [TASK-024] GA4 + Clarity custom event tracking code (TODO)
 - [TASK-025] SEO deep improvements: theme-color, preconnect, heading hierarchy, etc. (TODO)
@@ -94,6 +94,10 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-016 (DONE)
 - TASK-017 (DONE)
 - TASK-018 (DONE)
+- TASK-019 (DONE)
+- TASK-020 (DONE)
+- TASK-021 (DONE)
+- TASK-022 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
@@ -118,3 +122,4 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - Hosted: GitHub Pages (intended)
 - Email service: Kit (HTML form POST endpoint)
 - Analytics: GA4 + Microsoft Clarity placeholders integrated (IDs pending)
+
