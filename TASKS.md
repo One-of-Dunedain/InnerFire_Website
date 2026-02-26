@@ -51,13 +51,13 @@ Goal: Blur benefit descriptions until click/tap reveals them. Accessible, with r
 
 ---
 
-## [TASK-023] Ambient embers across all dark sections
+## [TASK-023] Ambient embers for entire site (except hero)
 Status: TODO
 Priority: Medium
 Owner: Executor AI
 Depends on: TASK-020
 Spec: tasks/active/TASK-023.md
-Goal: Add subtle fixed-position floating ember particles visible across all pages and sections.
+Goal: 8 glowing pulsating embers, position:fixed behind content (z-index:-1 + body isolation:isolate). Rise slowly, pulse with light, drift horizontally, fade at top. Visible everywhere except hero (hero's solid bg covers them). Remove solid bg from .signup/.blog-newsletter.
 
 ---
 
