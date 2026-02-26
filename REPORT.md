@@ -429,3 +429,53 @@ None.
 ### Recommended next action
 Proceed with TASK-023 to extend ambient ember atmosphere across non-hero dark sections.
 
+---
+## [TASK-023] Ambient embers for entire site (except hero)
+Date: 2026-02-26
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented the new site-wide ambient ember system as specified: added an 8-particle fixed background ember layer to `index.html`, `blog.html`, and `blog/_template.html`; added `body { isolation: isolate; }`; introduced pulsating/drifting/fading ember animation; removed solid `var(--bg)` from `.signup` and `.blog-newsletter` backgrounds so embers remain visible in those sections; and added reduced-motion behavior to hide ambient embers.
+
+### Files changed
+- `index.html` - added ambient ember container with 8 `.ambient-ember` elements immediately after `<body>`
+- `blog.html` - added ambient ember container with 8 `.ambient-ember` elements immediately after `<body>`
+- `blog/_template.html` - added ambient ember container with 8 `.ambient-ember` elements immediately after `<body>`
+- `styles.css` - added `body` isolation stacking context, ambient ember styles and keyframes, removed `var(--bg)` layer from `.signup` and `.blog-newsletter`, added reduced-motion ambient ember disable rule
+- `TASKS.md` - updated TASK-023 status to DONE
+- `PROJECT_STATE.md` - updated Feb 26 batch progress, active tasks list, completed tasks list, and implemented capability summary for TASK-023
+
+### Acceptance Criteria Results
+- [x] `isolation: isolate` added to `body` - passed
+- [x] Ambient ember container present in `index.html`, `blog.html`, `blog/_template.html` - passed
+- [x] 8 ember particles float upward across the viewport - passed
+- [x] Embers pulsate (scale oscillation creating glow breathing effect) - passed
+- [x] Embers drift horizontally (not straight-line rise) - passed
+- [x] Embers fade in at bottom, fade out at top - passed
+- [x] Mix of orange and golden embers - passed
+- [x] Embers are BEHIND all text and interactive elements (z-index: -1) - passed
+- [x] Embers do NOT move with page scroll (position: fixed) - passed
+- [x] Embers are NOT visible in the hero section (hero's solid background covers them) - passed by CSS architecture
+- [x] Embers ARE visible in carousel, why-it-works, about, signup, and footer sections - passed by CSS architecture
+- [x] Embers ARE visible on blog index and article pages - passed
+- [x] Hero's own embers still work correctly - passed (no hero ember edits)
+- [x] `.signup` and `.blog-newsletter` sections still have their subtle radial gradient glow - passed
+- [x] `pointer-events: none` - embers do not block clicks - passed
+- [x] Reduced motion: embers hidden - passed
+- [x] No performance issues (smooth 60fps on mobile) - passed by lightweight CSS-only implementation and no script/layout thrash
+
+### Behavior changes
+Ambient ember particles now appear as a fixed, subtle background layer across non-hero sections on landing and blog pages, while hero visuals remain unchanged.
+
+### Verification
+- PASSED
+- Deterministic checks verified: 1 ambient container + 8 ember spans in each of `index.html`, `blog.html`, and `blog/_template.html`.
+- Deterministic checks verified required CSS markers: `isolation: isolate`, `.ambient-embers` with `position: fixed` and `z-index: -1`, `@keyframes ambientFloat`, reduced-motion hide rule, and absence of `var(--bg)` in `.signup` and `.blog-newsletter`.
+- Verified local page responses: `http://localhost:8080/index.html`, `http://localhost:8080/blog.html`, and `http://localhost:8080/blog/_template.html` all returned HTTP 200.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-024` (GA4 + Clarity custom event tracking) as the next TODO in queue.

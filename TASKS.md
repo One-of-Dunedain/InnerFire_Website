@@ -52,7 +52,7 @@ Goal: Blur benefit descriptions until click/tap reveals them. Accessible, with r
 ---
 
 ## [TASK-023] Ambient embers for entire site (except hero)
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 Depends on: TASK-020
