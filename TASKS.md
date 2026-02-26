@@ -82,7 +82,7 @@ Goal: Add theme-color, preconnect, og:locale, meta author, fix heading hierarchy
 ---
 
 ## [TASK-026] Blog UX/UI audit + fixes
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 Depends on: TASK-019, TASK-023

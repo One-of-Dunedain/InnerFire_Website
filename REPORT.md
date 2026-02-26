@@ -525,3 +525,61 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-024` (GA4 + Clarity custom event tracking) to complete analytics event instrumentation.
+---
+## [TASK-026] Blog UX/UI audit + fixes
+Date: 2026-02-26
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Completed a combined blog UX/UI audit and implementation pass across `blog.html`, `blog/_template.html`, and `styles.css`: made blog card share controls reliably visible on mobile, added consistent social-link footers to blog index and template pages, upgraded empty-state design with InnerFire eyebrow + conversion CTA, and fixed a discovered manifest-fetch caching issue so post list/empty state updates reflect current `posts.json` data.
+
+### Files changed
+- `blog.html` - improved empty state (`eyebrow` + CTA), added full social footer links, and changed manifest fetch to `cache: 'no-store'` to prevent stale post list
+- `blog/_template.html` - added full social footer links to match main/footer system
+- `styles.css` - added blog empty-state refinements, mobile share visibility rule, disabled blog-card hover lift on mobile, and keyboard-visible focus styling for card share button
+- `TASKS.md` - updated TASK-026 status to DONE
+- `PROJECT_STATE.md` - updated batch progress, active/completed tasks, and implemented capability summary
+
+### Acceptance Criteria Results
+- [x] Blog card share button visible on mobile (no hover dependency) — passed
+- [x] Article template has full footer with social links — passed
+- [x] Blog index has full footer with social links — passed
+- [x] Empty state has improved styling (eyebrow + CTA button) — passed
+- [x] No visual inconsistencies between blog pages and main page — passed
+- [x] All interactive elements work correctly — passed
+- [x] Responsive layout verified at 375px, 768px, 1024px — passed
+- [x] Reading progress bar functions correctly in article template — passed
+- [x] All links navigate correctly — passed
+- [x] Audit findings documented in report — passed
+
+### Audit findings
+- `Mobile share discoverability`: `.blog-card-share` depended on hover and was effectively hidden on touch devices. Fixed.
+- `Blog/index footer inconsistency`: blog pages lacked social destination links shown on main page footer. Fixed.
+- `Empty-state conversion weakness`: empty state had low visual identity and weak conversion action. Fixed with eyebrow + primary CTA to signup.
+- `Post manifest cache staleness` (additional issue): browser could render stale cards after `posts.json` change. Fixed by fetching manifest with `cache: 'no-store'`.
+- `Header spacing overlap risk`: checked `.page-header` against fixed header; no overlap found (clearance preserved). No change required.
+- `Newsletter voice consistency`: verified "I'm inviting" copy is already first-person on blog. No change required.
+
+### Behavior changes
+Blog pages now present stronger and more consistent conversion/navigation surfaces (social footer + empty-state CTA), and mobile users can discover/share cards without hover-only interactions.
+
+### Verification
+- PASSED
+- Playwright runtime checks on `blog.html` and `blog/_template.html` confirmed:
+  - Mobile/Tablet/Desktop (375/768/1024) no horizontal overflow and expected key controls present.
+  - Mobile (`375px`) share button opacity resolves to `0.7` by default; tablet/desktop default to hover-revealed behavior.
+  - Footer social links present on blog index + template (`TikTok`, `X`, `Discord`).
+  - Back-to-blog link from article template navigates correctly to `blog.html`.
+  - Article reading progress bar updates from `0` to mid value (~50%) to `100%` during scroll.
+- Empty-state scenario validated by temporarily setting `blog/posts.json` to `[]` and confirming:
+  - `#blog-empty` visible, `#blog-grid` hidden,
+  - eyebrow text shown,
+  - CTA text/href correct (`Get Early Access` -> `./index.html#signup`).
+- Restored original `blog/posts.json` after validation.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-024` (GA4 + Clarity custom event tracking), now the only remaining TODO in the active batch.

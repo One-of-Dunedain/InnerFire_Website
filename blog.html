@@ -73,8 +73,9 @@
           <!-- JS renders article cards here -->
         </div>
         <div id="blog-empty" class="blog-empty" style="display:none;">
+          <p class="eyebrow">InnerFire</p>
           <p>Articles are coming soon. Stay tuned.</p>
-          <a href="./index.html" class="back-link">&larr; Back to home</a>
+          <a href="./index.html#signup" class="btn-primary">Get Early Access</a>
         </div>
       </div>
     </section>
@@ -101,6 +102,12 @@
 
     <footer>
       <div class="container">
+        <p class="footer-follow">Follow the build:</p>
+        <div class="social-links">
+          <a href="#" class="social-link" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://x.com/kushnir_marian_" class="social-link" target="_blank" rel="noopener">X</a>
+          <a href="https://discord.gg/PRuveBJH" class="social-link" target="_blank" rel="noopener">Discord</a>
+        </div>
         <p class="footer-credit">Made by an indie developer who needed to breathe.</p>
       </div>
     </footer>
@@ -154,7 +161,7 @@
       }
       */
       try {
-        var res = await fetch('./blog/posts.json');
+        var res = await fetch('./blog/posts.json', { cache: 'no-store' });
         var posts = await res.json();
         if (!posts.length) { empty.style.display = ''; grid.style.display = 'none'; return; }
         posts.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });

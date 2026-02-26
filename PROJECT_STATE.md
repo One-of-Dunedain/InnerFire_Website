@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-26
-## Current status: 6/8 tasks completed in Feb 26 batch (TASK-019 through TASK-023, TASK-025); 2 tasks remaining
+## Current status: 7/8 tasks completed in Feb 26 batch (TASK-019 through TASK-023, TASK-025, TASK-026); 1 task remaining
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (currently populated with demo posts)
 
-### Implemented capabilities (TASK-001-023 + TASK-025 complete)
+### Implemented capabilities (TASK-001-023 + TASK-025 + TASK-026 complete)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -39,6 +39,7 @@
 - Why-it-works interaction: blur-to-reveal benefit descriptions with keyboard + aria support and reduced-motion fallback (TASK-022)
 - Site-wide ambient ember layer: 8 fixed glowing particles behind content (excluding hero), with body isolation stacking, reduced-motion hide, and transparent signup/newsletter backgrounds (TASK-023)
 - SEO deep improvements: theme-color, preconnect, og:locale, author meta, blog heading hierarchy fix, and sitemap/blog alt-text guidance updates (TASK-025)
+- Blog UX/UI audit + fixes: mobile-visible share controls, enhanced empty state CTA, full social-link footers on blog pages, and manifest fetch cache-hardening for fresh post state (TASK-026)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -84,7 +85,6 @@ Static blog with JSON manifest. No build step.
 
 ## Active tasks (Feb 26 batch — Notion "Task Skope 26 Feb 2026")
 - [TASK-024] GA4 + Clarity custom event tracking code (TODO)
-- [TASK-026] Blog UX/UI audit + fixes (TODO)
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -100,6 +100,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-022 (DONE)
 - TASK-023 (DONE)
 - TASK-025 (DONE)
+- TASK-026 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
