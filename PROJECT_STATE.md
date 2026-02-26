@@ -1,7 +1,7 @@
 # Project State
 
-## Last updated: 2026-02-25
-## Current status: Core task queue complete (0 active TODO tasks)
+## Last updated: 2026-02-26
+## Current status: 8 new tasks queued (TASK-019 through TASK-026) - main page polish + SEO + analytics
 
 ---
 
@@ -76,8 +76,15 @@ Static blog with JSON manifest. No build step.
 
 ---
 
-## Active tasks
-- none
+## Active tasks (Feb 26 batch — Notion "Task Skope 26 Feb 2026")
+- [TASK-019] Site-wide text cleanup: em-dashes, grammar, "we"→"I" (TODO)
+- [TASK-020] Hero visual overhaul: more embers, stronger glow, gradient tagline, "Take a look" CTA (TODO)
+- [TASK-021] About section rewrite: "From Ukraine, with a purpose" + new text (TODO)
+- [TASK-022] Blur reveal on "Why it works" benefit descriptions (TODO)
+- [TASK-023] Ambient embers across all dark sections site-wide (TODO)
+- [TASK-024] GA4 + Clarity custom event tracking code (TODO)
+- [TASK-025] SEO deep improvements: theme-color, preconnect, heading hierarchy, etc. (TODO)
+- [TASK-026] Blog UX/UI audit + fixes (TODO)
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`

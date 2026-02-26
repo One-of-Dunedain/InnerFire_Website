@@ -69,12 +69,12 @@ Status: TODO
 Owner: Project Owner
 Details: About section task uses placeholder image until a final author photo is provided.
 
-## [PD-010] Decide analytics stack
-Type: Decision/Connect
+## [PD-010] Activate analytics (GA4 + Clarity)
+Type: Connect
 Priority: Medium
-Status: TODO
+Status: IN PROGRESS
 Owner: Project Owner
-Details: Pick analytics (GA4/Plausible/etc.), add privacy-conscious tracking, and define conversion event for signup.
+Details: Decision made: GA4 + Microsoft Clarity. TASK-018 adds commented-out placeholder scripts to all pages. Owner needs to: (1) create GA4 property and get Measurement ID, (2) create Clarity project and get Project ID, (3) uncomment scripts and replace placeholder IDs. Define conversion event for signup in GA4.
 
 ## [PD-011] Define legal pages
 Type: Content/Compliance
