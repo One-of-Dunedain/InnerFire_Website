@@ -10,5 +10,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Add new blog post URLs here as they are published -->
+  <!-- Blog posts: add a <url> block for each published article, e.g.:
+  <url>
+    <loc>https://innerfire.app/blog/my-article-slug.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  -->
 </urlset>

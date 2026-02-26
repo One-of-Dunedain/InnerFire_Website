@@ -479,3 +479,49 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-024` (GA4 + Clarity custom event tracking) as the next TODO in queue.
+---
+## [TASK-025] SEO deep improvements (2026 standards)
+Date: 2026-02-26
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented the requested SEO enhancements across `index.html`, `blog.html`, and `blog/_template.html`: added theme color, Kit preconnect, author meta, `og:locale`, improved blog-specific meta description/OG description, fixed blog heading hierarchy with hidden `h2`, added `.sr-only` utility, expanded sitemap post-guidance comment, and improved placeholder photo alt-text comments in the specified locations.
+
+### Files changed
+- `index.html` - added `theme-color`, Kit preconnect, author meta, `og:locale`; updated about photo placeholder alt-text comment
+- `blog.html` - added `theme-color`, Kit preconnect, author meta, `og:locale`; updated blog description + OG description; added hidden `h2` before article grid
+- `blog/_template.html` - added `theme-color`, Kit preconnect, author meta, `og:locale`; added descriptive author photo placeholder alt-text comment
+- `styles.css` - added `.sr-only` utility class for accessible hidden heading
+- `sitemap.xml` - replaced generic blog-post comment with explicit `<url>` example guidance block
+- `TASKS.md` - updated TASK-025 status to DONE
+- `PROJECT_STATE.md` - updated batch progress, active/completed task lists, and implemented capabilities summary
+
+### Acceptance Criteria Results
+- [x] `<meta name="theme-color" content="#0a0d12">` on all 3 pages — passed
+- [x] `<link rel="preconnect" href="https://app.kit.com">` on all 3 pages — passed
+- [x] Blog meta description is specific to blog content — passed
+- [x] `og:locale` present on all 3 pages — passed
+- [x] `<meta name="author">` on all 3 pages — passed
+- [x] Blog grid has proper heading hierarchy (hidden `<h2>`) — passed
+- [x] `.sr-only` class added to `styles.css` — passed
+- [x] Sitemap has expanded blog post guidance comment — passed
+- [x] Placeholder alt texts are descriptive — passed
+- [x] No broken HTML or duplicate meta tags — passed
+
+### Behavior changes
+Behavior changes: none.
+
+### Verification
+- PASSED
+- Verified deterministic presence/counts for all new head tags on `index.html`, `blog.html`, and `blog/_template.html` (single instances for theme-color, preconnect, author, og:locale).
+- Verified blog heading hierarchy fix (`<h2 class="sr-only">Articles</h2>`), `.sr-only` CSS utility, updated placeholder alt-text comments, and expanded sitemap guidance comment.
+- Parsed `sitemap.xml` as XML successfully (`urlset`, 2 existing URL nodes).
+- Verified local routes return HTTP 200: `/index.html`, `/blog.html`, `/blog/_template.html`.
+- Lighthouse SEO audit and W3C validator were not run in this pass (tooling not executed in this terminal-only verification flow).
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-024` (GA4 + Clarity custom event tracking) to complete analytics event instrumentation.
