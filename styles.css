@@ -80,23 +80,25 @@ body {
 }
 
 .header-nav a {
-  color: var(--muted);
+  color: #fff;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
   transition: color 0.2s;
 }
 
-.header-nav a:hover { color: var(--text); }
+.header-nav a:hover { color: var(--accent2); }
 
 .btn-header {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--accent);
+  color: #fff;
   border: 1px solid var(--accent);
+  background: transparent;
   padding: 6px 16px;
   border-radius: var(--radius);
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
 
 .btn-header::after {
@@ -118,12 +120,13 @@ body {
 
 .btn-header:hover {
   background: var(--accent);
+  border-color: var(--accent);
   color: #000;
 }
 
 .btn-header:hover::after {
-  border-color: rgba(0, 0, 0, 0.18);
-  background: rgba(255, 255, 255, 0.56);
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.62);
   color: #2a1500;
 }
 
@@ -328,7 +331,7 @@ body {
 .hero .subtitle {
   font-size: var(--type-subtitle);
   line-height: 1.52;
-  color: var(--muted);
+  color: #fff;
   max-width: 36ch;
   text-wrap: pretty;
 }
@@ -348,7 +351,7 @@ body {
 
 .subtitle-secondary {
   font-size: clamp(1rem, 0.96rem + 0.55vw, 1.14rem);
-  color: #aeb4cb;
+  color: #fff;
   font-weight: 650;
   letter-spacing: 0.01em;
 }
@@ -580,7 +583,7 @@ body {
 .about-text {
   flex: 1;
   min-width: 0;
-  text-align: center;
+  text-align: left;
 }
 .about-text p {
   color: var(--muted);
@@ -644,16 +647,11 @@ body {
   .about-card {
     flex-direction: column;
     align-items: center;
-    text-align: initial;
+    text-align: left;
   }
   .about-text {
     width: 100%;
-    text-align: right;
-  }
-  .about-highlight {
-    border-left: 0;
-    border-right: 3px solid var(--accent);
-    border-radius: var(--radius) 0 0 var(--radius);
+    text-align: left;
   }
 }
 
