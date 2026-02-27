@@ -23,3 +23,42 @@ Depends on: none
 Spec: tasks/active/TASK-024.md
 Goal: Add conversion event tracking (form submits, share clicks, CTA clicks) to script.js. GA4/Clarity snippets stay commented.
 
+---
+
+## [TASK-027] Magnifying lens button system (site-wide)
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: TASK-023, TASK-026
+Spec: tasks/active/TASK-027.md
+Goal: Transform all 5 button types into transparent magnifying lenses. No fill, backdrop-filter: brightness(), thin luminous borders. Ambient embers physically enlarge (scale: 2) when floating behind buttons via JS requestAnimationFrame loop. CSS + JS change.
+
+---
+
+## [TASK-028] Competitive research for "Best Breathwork Apps" article
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-028.md
+Goal: Research 10-12 breathwork apps (features, pricing, ratings), analyze top 3 SERP articles, collect PAA questions. Output to docs/research/breathwork-apps.md.
+
+---
+
+## [TASK-029] Listicle article template + CSS components
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-029.md
+Goal: Create blog/_listicle-template.html and add listicle CSS components (ToC, Quick Picks, App Card, Comparison Table, FAQ accordion, Highlight box) to styles.css.
+
+---
+
+## [TASK-030] Write "Best Breathwork Apps" article + AI optimization
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: TASK-028, TASK-029
+Spec: tasks/active/TASK-030.md
+Goal: Create blog/best-breathwork-apps.html with full content, Schema.org (ItemList + FAQPage), update posts.json, create llms.txt for AI discoverability.
