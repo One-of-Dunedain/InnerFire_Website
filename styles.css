@@ -96,8 +96,8 @@ body {
   color: #fff;
   border: 1px solid rgba(255, 138, 61, 0.25);
   background: transparent;
-  backdrop-filter: brightness(1.3);
-  -webkit-backdrop-filter: brightness(1.3);
+  backdrop-filter: blur(6px) brightness(1.3) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) brightness(1.3) saturate(1.2);
   padding: 6px 16px;
   border-radius: var(--radius);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
@@ -135,8 +135,8 @@ body {
 .btn-primary {
   display: inline-block;
   background: transparent;
-  backdrop-filter: brightness(1.4);
-  -webkit-backdrop-filter: brightness(1.4);
+  backdrop-filter: blur(8px) brightness(1.35) saturate(1.25);
+  -webkit-backdrop-filter: blur(8px) brightness(1.35) saturate(1.25);
   color: #fff;
   font-weight: 700;
   font-size: 1rem;
@@ -220,6 +220,49 @@ body {
 .ambient-ember:nth-child(10) {
   left: 72%; width: 5px; height: 5px;
   --af-dur: 20s; animation-delay: 13s;
+}
+.ambient-ember:nth-child(11) {
+  left: 10%; width: 4px; height: 4px;
+  --af-dur: 19s; animation-delay: 4s;
+}
+.ambient-ember:nth-child(12) {
+  left: 30%; width: 5px; height: 5px;
+  --af-dur: 22s; animation-delay: 8s;
+  background: radial-gradient(circle, rgba(255,200,80,0.9) 0%, rgba(255,180,60,0.4) 40%, transparent 70%);
+}
+.ambient-ember:nth-child(13) {
+  left: 46%; width: 4px; height: 4px;
+  --af-dur: 17s; animation-delay: 12s;
+}
+.ambient-ember:nth-child(14) {
+  left: 58%; width: 6px; height: 6px;
+  --af-dur: 21s; animation-delay: 6s;
+}
+.ambient-ember:nth-child(15) {
+  left: 82%; width: 4px; height: 4px;
+  --af-dur: 18s; animation-delay: 10s;
+  background: radial-gradient(circle, rgba(255,200,80,0.9) 0%, rgba(255,180,60,0.4) 40%, transparent 70%);
+}
+.ambient-ember:nth-child(16) {
+  left: 92%; width: 3px; height: 3px;
+  --af-dur: 24s; animation-delay: 14s;
+}
+.ambient-ember:nth-child(17) {
+  left: 14%; width: 5px; height: 5px;
+  --af-dur: 20s; animation-delay: 15s;
+}
+.ambient-ember:nth-child(18) {
+  left: 38%; width: 4px; height: 4px;
+  --af-dur: 23s; animation-delay: 16s;
+}
+.ambient-ember:nth-child(19) {
+  left: 68%; width: 5px; height: 5px;
+  --af-dur: 19s; animation-delay: 18s;
+  background: radial-gradient(circle, rgba(255,200,80,0.9) 0%, rgba(255,180,60,0.4) 40%, transparent 70%);
+}
+.ambient-ember:nth-child(20) {
+  left: 86%; width: 4px; height: 4px;
+  --af-dur: 22s; animation-delay: 20s;
 }
 
 .ambient-ember.magnified {
@@ -488,8 +531,8 @@ body {
   top: 12px;
   right: 12px;
   background: transparent;
-  backdrop-filter: brightness(1.5);
-  -webkit-backdrop-filter: brightness(1.5);
+  backdrop-filter: blur(6px) brightness(1.45) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) brightness(1.45) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text);
   border-radius: 50%;
@@ -966,8 +1009,8 @@ footer {
   top: 12px;
   right: 12px;
   background: transparent;
-  backdrop-filter: brightness(1.5);
-  -webkit-backdrop-filter: brightness(1.5);
+  backdrop-filter: blur(6px) brightness(1.45) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) brightness(1.45) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text);
   border-radius: 50%;
@@ -1109,8 +1152,8 @@ footer {
   align-items: center;
   gap: 8px;
   background: transparent;
-  backdrop-filter: brightness(1.3);
-  -webkit-backdrop-filter: brightness(1.3);
+  backdrop-filter: blur(6px) brightness(1.3) saturate(1.2);
+  -webkit-backdrop-filter: blur(6px) brightness(1.3) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--muted);
   padding: 8px 16px;
