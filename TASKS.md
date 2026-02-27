@@ -26,7 +26,7 @@ Goal: Add conversion event tracking (form submits, share clicks, CTA clicks) to 
 ---
 
 ## [TASK-028] Competitive research for "Best Breathwork Apps" article
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none

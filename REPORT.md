@@ -733,3 +733,40 @@ None.
 2. Move `assets/materials/incoming/*` to a dated archive folder (or delete) after confirming originals in `assets/images/*` are final (~1.45 MiB recoverable).
 3. Move `tasks/active/TASK-013.md` to `TASK-018.md` into `archive/tasks/` to keep only truly active specs in `tasks/active/`.
 4. When `REPORT.md` exceeds ~50 KB, rotate older blocks into `archive/reports/REPORT_ARCHIVE_2026-02-27.md` and keep recent entries in root.
+---
+## [TASK-028] Competitive research for "Best Breathwork Apps" article
+Date: 2026-02-27
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created `docs/research/breathwork-apps.md` with full competitive research for 10 required apps, including structured pricing/ratings/platform data, feature-level comparisons, InnerFire positioning, SERP pattern analysis (top 3 articles), PAA question set, and 2026 trend angles.
+
+### Files changed
+- `docs/research/breathwork-apps.md` - created full research document with all required sections and complete app fields
+- `TASKS.md` - updated TASK-028 status from TODO to DONE
+- `REPORT.md` - appended TASK-028 execution report
+- `PROJECT_STATE.md` - updated current status, active tasks, and implemented capabilities
+
+### Acceptance Criteria Results
+- [x] `docs/research/breathwork-apps.md` exists and contains all 5 sections - passed
+- [x] At least 10 apps have complete data (all fields filled) - passed (10/10 complete)
+- [x] At least 3 SERP articles analyzed - passed (3 analyzed)
+- [x] At least 8 PAA questions collected - passed (12 collected)
+- [x] All pricing data is current (2026) - passed (captured from current App Store/Play snapshots on 2026-02-27)
+
+### Behavior changes
+Behavior changes: none.
+
+### Verification
+- PASSED
+- Verified file existence and structure (`docs/research/breathwork-apps.md`).
+- Verified 10 app profiles contain all required fields (120 required-field entries = 10 x 12 fields).
+- Verified SERP/PAA/trends sections exist and are populated.
+- Verified ratings and pricing were gathered from live store snapshots and lookup endpoints during this run.
+
+### Issues encountered
+Some high-authority pages (notably Google direct SERP and some publisher mirrors) returned anti-bot/legal blocks (451/403). Used accessible search snapshots and store-first primary data for completion.
+
+### Recommended next action
+Proceed to `TASK-029` (listicle template + CSS components), then use this research file as source input for `TASK-030` article drafting.

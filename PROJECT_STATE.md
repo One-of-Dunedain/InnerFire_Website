@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-02-27
-## Current status: 8/9 tasks completed in Feb 26-27 batch (TASK-019 through TASK-023, TASK-025, TASK-026, TASK-027); 1 task remaining
+## Current status: TASK-028 completed; 3 active tasks remaining (TASK-024, TASK-029, TASK-030)
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (currently populated with demo posts)
 
-### Implemented capabilities (TASK-001-023 + TASK-025 + TASK-026 + TASK-027 complete)
+### Implemented capabilities (TASK-001-023 + TASK-025 + TASK-028 complete)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -41,6 +41,7 @@
 - SEO deep improvements: theme-color, preconnect, og:locale, author meta, blog heading hierarchy fix, and sitemap/blog alt-text guidance updates (TASK-025)
 - Blog UX/UI audit + fixes: mobile-visible share controls, enhanced empty state CTA, full social-link footers on blog pages, and manifest fetch cache-hardening for fresh post state (TASK-026)
 - Site-wide magnifying-lens button system: all 5 button types use transparent lens styling (`background: transparent`, `backdrop-filter: brightness()`), with warm luminous borders and JS-driven ambient ember magnification (`scale: 2`) on overlap (TASK-027)
+- Competitive research foundation for listicle production: 10 app profiles with pricing/ratings/features, InnerFire positioning, top-3 SERP analysis, PAA set, and 2026 trend angles in `docs/research/breathwork-apps.md` (TASK-028)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -84,8 +85,10 @@ Static blog with JSON manifest. No build step.
 
 ---
 
-## Active tasks (Feb 26 batch — Notion "Task Skope 26 Feb 2026")
+## Active tasks
 - [TASK-024] GA4 + Clarity custom event tracking code (TODO)
+- [TASK-029] Listicle article template + CSS components (TODO)
+- [TASK-030] Write "Best Breathwork Apps" article + AI optimization (TODO)
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -103,6 +106,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-025 (DONE)
 - TASK-026 (DONE)
 - TASK-027 (DONE)
+- TASK-028 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
