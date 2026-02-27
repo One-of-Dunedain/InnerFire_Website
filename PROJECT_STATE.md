@@ -1,7 +1,7 @@
 # Project State
 
-## Last updated: 2026-02-26
-## Current status: 7/8 tasks completed in Feb 26 batch (TASK-019 through TASK-023, TASK-025, TASK-026); 1 task remaining
+## Last updated: 2026-02-27
+## Current status: 8/9 tasks completed in Feb 26-27 batch (TASK-019 through TASK-023, TASK-025, TASK-026, TASK-027); 1 task remaining
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (currently populated with demo posts)
 
-### Implemented capabilities (TASK-001-023 + TASK-025 + TASK-026 complete)
+### Implemented capabilities (TASK-001-023 + TASK-025 + TASK-026 + TASK-027 complete)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -40,6 +40,7 @@
 - Site-wide ambient ember layer: 8 fixed glowing particles behind content (excluding hero), with body isolation stacking, reduced-motion hide, and transparent signup/newsletter backgrounds (TASK-023)
 - SEO deep improvements: theme-color, preconnect, og:locale, author meta, blog heading hierarchy fix, and sitemap/blog alt-text guidance updates (TASK-025)
 - Blog UX/UI audit + fixes: mobile-visible share controls, enhanced empty state CTA, full social-link footers on blog pages, and manifest fetch cache-hardening for fresh post state (TASK-026)
+- Site-wide glassmorphism button system: consistent frosted-glass treatment across primary/header/share buttons with Safari-compatible blur and warm glow hover language (TASK-027)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -101,6 +102,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-023 (DONE)
 - TASK-025 (DONE)
 - TASK-026 (DONE)
+- TASK-027 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system

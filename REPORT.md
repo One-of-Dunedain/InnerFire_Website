@@ -583,3 +583,53 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-024` (GA4 + Clarity custom event tracking), now the only remaining TODO in the active batch.
+---
+## [TASK-027] Glassmorphism button system (site-wide consistency)
+Date: 2026-02-27
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented a site-wide two-tier glassmorphism button system in `styles.css`: warm frosted glass for CTA buttons (`.btn-primary`, `.btn-header`) and dark frosted glass for utility/share buttons (`.card-share`, `.blog-card-share`, `.share-btn`), with Safari-compatible blur, translucent backgrounds, luminous borders, and consistent warm hover glow.
+
+### Files changed
+- `styles.css` - replaced all 5 button style blocks with glassmorphism variants per spec, including `backdrop-filter`, `-webkit-backdrop-filter`, translucent backgrounds, luminous borders, and warm-glow hover states
+- `TASKS.md` - updated TASK-027 status to DONE
+- `REPORT.md` - appended TASK-027 report
+- `PROJECT_STATE.md` - updated batch progress and implemented-capability summary
+
+### Acceptance Criteria Results
+- [x] All 5 button types have `backdrop-filter: blur()` applied - passed
+- [x] All 5 button types have semi-transparent backgrounds (no solid colors) - passed
+- [x] All 5 button types have thin luminous borders - passed
+- [x] All hover states produce a warm accent glow (`box-shadow`) - passed
+- [x] `.btn-primary` text is white and readable against the glass background - passed
+- [x] `.btn-header` "iOS only" badge still visible and styled - passed
+- [x] `.card-share` and `.blog-card-share` are dark glass circles (Telegram-style) - passed
+- [x] `.share-btn` is a glass pill with proper blur - passed
+- [x] Hover states feel consistent across all button types (warm glow language) - passed
+- [x] No layout shifts - all button dimensions/spacing preserved - passed
+- [x] Mobile: buttons render correctly at 375px width - passed
+- [x] `backdrop-filter` has `-webkit-` prefix for Safari compatibility - passed
+- [x] No solid backgrounds on ANY button in ANY state - passed
+- [x] Performance: no jank on mobile (blur is GPU-accelerated) - passed by CSS-only implementation and runtime spot checks
+
+### Behavior changes
+Buttons now use a unified frosted-glass visual language with translucent fills, blur, and accent-glow hover feedback; `.btn-primary` remains white text over warm glass instead of solid orange fill.
+
+### Verification
+- PASSED
+- Deterministic CSS checks confirmed all 5 button selectors contain required blur, Safari prefix, translucent backgrounds, luminous borders, and 0.25s transition timing for visual states.
+- Runtime checks on `index.html` (desktop) verified:
+  - `.btn-primary` default/hover glass values (`rgba(255,138,61,0.18)` -> `rgba(255,138,61,0.3)`), glow and white text.
+  - `.btn-header` default/hover glass values (`rgba(255,138,61,0.1)` -> `rgba(255,138,61,0.22)`), glow, and badge visibility.
+  - `.card-share` default/hover dark-glass to warm-tint transition with glow and scale.
+- Runtime checks on `blog.html` verified `.blog-card-share` dark-glass default and warm-glow hover transition while preserving hover-reveal behavior.
+- Runtime checks on `blog/_template.html` verified `.share-btn` dark-glass default + warm-glow hover transition.
+- Mobile check at `375x812` verified no horizontal overflow and glass buttons render correctly.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-024` (GA4 + Clarity custom event tracking), now the only remaining TODO in `TASKS.md`.

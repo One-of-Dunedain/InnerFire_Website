@@ -2,7 +2,7 @@
 
 Active task index only. Full task specifications are stored in tasks/active/.
 Completed and superseded tasks are archived in archive/tasks/.
-Last updated: 2026-02-26
+Last updated: 2026-02-27
 
 ## Execution Contract
 1. Find the first section with Status: TODO.
@@ -88,3 +88,13 @@ Owner: Executor AI
 Depends on: TASK-019, TASK-023
 Spec: tasks/active/TASK-026.md
 Goal: Fix mobile share button visibility, add social links to blog footers, improve empty state, audit and fix UX issues.
+
+---
+
+## [TASK-027] Glassmorphism button system (site-wide consistency)
+Status: DONE
+Priority: High
+Owner: Executor AI
+Depends on: TASK-023, TASK-026
+Spec: tasks/active/TASK-027.md
+Goal: Apply consistent glassmorphism (frosted glass) effect to ALL 5 button types. backdrop-filter blur + semi-transparent bg + luminous borders + warm hover glow. Two tiers: warm glass (CTA) and dark glass (share/utility). CSS-only change.
