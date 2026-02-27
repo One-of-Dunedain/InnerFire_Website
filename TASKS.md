@@ -25,16 +25,6 @@ Goal: Add conversion event tracking (form submits, share clicks, CTA clicks) to 
 
 ---
 
-## [TASK-027] Magnifying lens button system (site-wide)
-Status: TODO
-Priority: High
-Owner: Executor AI
-Depends on: TASK-023, TASK-026
-Spec: tasks/active/TASK-027.md
-Goal: Transform all 5 button types into transparent magnifying lenses. No fill, backdrop-filter: brightness(), thin luminous borders. Ambient embers physically enlarge (scale: 2) when floating behind buttons via JS requestAnimationFrame loop. CSS + JS change.
-
----
-
 ## [TASK-028] Competitive research for "Best Breathwork Apps" article
 Status: TODO
 Priority: High
