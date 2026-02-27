@@ -678,10 +678,7 @@ body {
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 .about-photo-label {
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1;
+  margin-top: 2px;
 }
 .about-smile {
   display: inline-flex;
