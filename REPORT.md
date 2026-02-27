@@ -686,3 +686,50 @@ Playwright initially reused a cached `script.js` variant (`?v=task011`) where `i
 
 ### Recommended next action
 Proceed with `TASK-024` (GA4 + Clarity custom event tracking), the remaining TODO in `TASKS.md`.
+---
+## [MAINT-2026-02-27] Repository size audit + archive candidates
+Date: 2026-02-27
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Audited file sizes for both tracked files and full workspace files (including untracked artifacts), then checked whether large temporary PNGs are referenced anywhere in the codebase to identify safe archive candidates.
+
+### Files changed
+- `REPORT.md` - appended repository size audit and archive recommendations
+
+### Acceptance Criteria Results
+- [x] Top tracked files by size identified - passed
+- [x] Top workspace files (including untracked) identified - passed
+- [x] Temporary artifact reference check executed - passed
+- [x] Safe archive candidates and reclaim estimates documented - passed
+
+### Size findings
+- Largest tracked files:
+- `assets/images/ukraine-shelter.jpg` - 1,069,771 B
+- `assets/images/marian-kushnir.png` - 447,769 B
+- `REPORT.md` - 44,101 B
+- `styles.css` - 37,373 B
+- `archive/tasks/TASKS_ARCHIVE_2026-02-25.md` - 25,208 B
+- Largest workspace-only overhead:
+- 12 untracked temp/check PNGs in repo root - 4,935,168 B total
+- `assets/materials/incoming/*` raw duplicates of published images - 1,517,540 B total
+
+### Behavior changes
+Behavior changes: none.
+
+### Verification
+- PASSED
+- Used `git ls-files` + size sort for tracked-file ranking.
+- Used recursive filesystem scan (excluding `.git`) for full workspace ranking.
+- Used `rg --fixed-strings` checks to confirm 12 temp/check PNGs are not referenced in source files.
+- Confirmed `tasks/active/TASK-013.md` through `tasks/active/TASK-018.md` are not listed in `TASKS.md` index and are candidates for archival out of `tasks/active`.
+
+### Issues encountered
+None.
+
+### Recommended next action
+1. Archive or delete the 12 untracked temp/check PNGs in repo root (~4.71 MiB recoverable).
+2. Move `assets/materials/incoming/*` to a dated archive folder (or delete) after confirming originals in `assets/images/*` are final (~1.45 MiB recoverable).
+3. Move `tasks/active/TASK-013.md` to `TASK-018.md` into `archive/tasks/` to keep only truly active specs in `tasks/active/`.
+4. When `REPORT.md` exceeds ~50 KB, rotate older blocks into `archive/reports/REPORT_ARCHIVE_2026-02-27.md` and keep recent entries in root.
