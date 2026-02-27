@@ -67,14 +67,103 @@ function initBenefitReveal() {
   });
 }
 
+// Lens magnification - embers scale up when passing under buttons
+function initLensEffect() {
+  // Respect reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var embers = document.querySelectorAll('.ambient-ember');
+  var lensSelectors = '.btn-primary, .btn-header, .card-share, .blog-card-share, .share-btn';
+  var heroLensSelector = '.hero .btn-primary';
+  var buttons = document.querySelectorAll(lensSelectors);
+  var heroButtons = document.querySelectorAll(heroLensSelector);
+
+  if (!embers.length || !buttons.length) return;
+
+  var lastCheck = 0;
+  var THROTTLE_MS = 80; // ~12fps - smooth enough for visual effect, light on CPU
+
+  function checkOverlap(timestamp) {
+    if (timestamp - lastCheck >= THROTTLE_MS) {
+      lastCheck = timestamp;
+
+      // Get fresh button rects (positions change on scroll)
+      var btnRects = [];
+      for (var i = 0; i < buttons.length; i++) {
+        btnRects.push(buttons[i].getBoundingClientRect());
+      }
+      var heroRects = [];
+      for (var h = 0; h < heroButtons.length; h++) {
+        heroRects.push(heroButtons[h].getBoundingClientRect());
+      }
+
+      // Check each ember against all buttons
+      for (var j = 0; j < embers.length; j++) {
+        var er = embers[j].getBoundingClientRect();
+        var isUnder = false;
+        var isUnderHero = false;
+        for (var m = 0; m < heroRects.length; m++) {
+          var hr = heroRects[m];
+          if (er.right > hr.left && er.left < hr.right &&
+              er.bottom > hr.top && er.top < hr.bottom) {
+            isUnder = true;
+            isUnderHero = true;
+            break;
+          }
+        }
+        if (isUnderHero) {
+          embers[j].classList.add('magnified');
+          embers[j].classList.add('magnified-hero');
+          continue;
+        }
+        for (var k = 0; k < btnRects.length; k++) {
+          var br = btnRects[k];
+          if (er.right > br.left && er.left < br.right &&
+              er.bottom > br.top && er.top < br.bottom) {
+            isUnder = true;
+            break;
+          }
+        }
+        if (isUnder && !embers[j].classList.contains('magnified')) {
+          embers[j].classList.add('magnified');
+        } else if (!isUnder && embers[j].classList.contains('magnified')) {
+          embers[j].classList.remove('magnified');
+        }
+        if (!isUnderHero && embers[j].classList.contains('magnified-hero')) {
+          embers[j].classList.remove('magnified-hero');
+        }
+      }
+    }
+
+    requestAnimationFrame(checkOverlap);
+  }
+
+  // Re-query buttons when DOM might change (blog page loads cards dynamically)
+  function refreshButtons() {
+    buttons = document.querySelectorAll(lensSelectors);
+    heroButtons = document.querySelectorAll(heroLensSelector);
+  }
+
+  // Refresh button list on scroll (handles lazy-loaded content)
+  var scrollTimeout;
+  window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(refreshButtons, 500);
+  }, { passive: true });
+
+  requestAnimationFrame(checkOverlap);
+}
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     initCardShareButtons();
     initBenefitReveal();
+    initLensEffect();
   });
 } else {
   initCardShareButtons();
   initBenefitReveal();
+  initLensEffect();
 }
 
 // Set wick progress - update these values manually or via API later

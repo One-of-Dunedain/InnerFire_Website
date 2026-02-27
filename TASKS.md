@@ -91,10 +91,10 @@ Goal: Fix mobile share button visibility, add social links to blog footers, impr
 
 ---
 
-## [TASK-027] Glassmorphism button system (site-wide consistency)
+## [TASK-027] Magnifying lens button system (site-wide)
 Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-023, TASK-026
 Spec: tasks/active/TASK-027.md
-Goal: Apply consistent glassmorphism (frosted glass) effect to ALL 5 button types. backdrop-filter blur + semi-transparent bg + luminous borders + warm hover glow. Two tiers: warm glass (CTA) and dark glass (share/utility). CSS-only change.
+Goal: Transform all 5 button types into transparent magnifying lenses. No fill, backdrop-filter: brightness(), thin luminous borders. Ambient embers physically enlarge (scale: 2) when floating behind buttons via JS requestAnimationFrame loop. CSS + JS change.

@@ -1,4 +1,4 @@
-# TASK-027: Glassmorphism button system (site-wide consistency)
+# TASK-027: Magnifying lens button system (site-wide)
 
 Status: TODO
 Priority: High
@@ -6,91 +6,85 @@ Owner: Executor AI
 Depends on: TASK-023, TASK-026
 
 ## Goal
-Apply a consistent glassmorphism (frosted glass) effect to ALL interactive buttons across the entire website. Buttons must feel like translucent glass panels floating over the dark background — with `backdrop-filter: blur()`, semi-transparent backgrounds, and subtle luminous borders. The result must be visually cohesive, highly readable, and feel premium.
+Transform ALL buttons across the website into "magnifying lens" elements. Buttons must be **completely transparent** (no fill) with only a thin luminous border — like the edge of a glass lens. When ambient embers float behind a button, the embers must **physically enlarge** (scale up), creating a real magnifying glass effect. Text on buttons must remain perfectly readable.
 
 ## Context
-The site currently has 5 distinct button styles with inconsistent visual language:
-- `.btn-primary` — solid orange, dark text (CTA buttons)
-- `.btn-header` — transparent with orange border (header nav)
-- `.card-share` — dark opaque circle (carousel share)
-- `.blog-card-share` — dark opaque circle (blog card share)
-- `.share-btn` — subtle pill with barely-visible background (article share)
+The site has ambient embers (`position: fixed`, `z-index: -1`) floating across all pages. The owner wants buttons to feel like transparent lenses through which these particles appear magnified — no colored fill, no frosted blur, just clear glass that magnifies.
 
-The owner wants ALL buttons unified under a glassmorphism design language inspired by a Telegram-style frosted glass pause button. The key visual signature: translucent background + blur + thin luminous border + soft glow on hover.
+### Current button types (5 total)
+- `.btn-primary` — CTA (hero, signup, blog empty state, article CTA)
+- `.btn-header` — header nav ("Get Early Access" + iOS badge)
+- `.card-share` — carousel share circles
+- `.blog-card-share` — blog card share circles
+- `.share-btn` — article share pill
 
-## Design System — Two Tiers
+### Architecture overview
+Two systems work together:
+1. **CSS**: buttons become transparent lenses with `backdrop-filter: brightness()` to subtly brighten content behind them (the "clearer glass" zone)
+2. **JS**: detects when ambient embers overlap button areas and applies a `scale` CSS property, causing embers to physically enlarge when "under the lens"
 
-### Tier 1: Primary CTA (warm glass)
-For: `.btn-primary`, `.btn-header`
-- Warm accent-tinted frosted glass
-- Semi-transparent accent background + backdrop blur
-- White/light text (high contrast on dark bg)
-- Thin luminous border (accent-tinted)
-- Hover: brighter glow, slightly more opaque
+### Key technical insight: CSS `scale` property vs `transform: scale()`
+Ambient embers already use `transform` in their `@keyframes ambientFloat` animation (translateX + scale). The individual CSS `scale` property (separate from `transform`) **composes on top** of the `transform` property. This means we can add `scale: 2` to an ember without breaking its animation — the ember grows while still floating and pulsing normally.
 
-### Tier 2: Secondary/Utility (dark glass)
-For: `.card-share`, `.blog-card-share`, `.share-btn`
-- Dark frosted glass (like Telegram's pause button)
-- Semi-transparent dark background + backdrop blur
-- Light muted icons/text
-- Thin white/muted border
-- Hover: warm accent tint bleeds through
+Browser support for individual `scale` property: Chrome 104+, Firefox 72+, Safari 14.1+ — excellent for 2026.
 
 ## Requirements
 
 ### 1. CSS changes in `styles.css`
 
-**A) `.btn-primary` — Warm glass CTA**
+**A) `.btn-primary` — Transparent lens CTA**
 
-Replace the current `.btn-primary` block (lines ~134-149) with:
+Replace the current `.btn-primary` block with:
 ```css
 .btn-primary {
   display: inline-block;
-  background: rgba(255, 138, 61, 0.18);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: transparent;
+  backdrop-filter: brightness(1.4);
+  -webkit-backdrop-filter: brightness(1.4);
   color: #fff;
   font-weight: 700;
   font-size: 1rem;
   padding: 14px 32px;
   border-radius: var(--radius);
-  border: 1px solid rgba(255, 138, 61, 0.35);
+  border: 1px solid rgba(255, 138, 61, 0.3);
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.1s;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.1s;
 }
 .btn-primary:hover {
-  background: rgba(255, 138, 61, 0.3);
   border-color: rgba(255, 138, 61, 0.55);
-  box-shadow: 0 0 20px rgba(255, 138, 61, 0.15);
+  box-shadow: 0 0 20px rgba(255, 138, 61, 0.12), inset 0 0 12px rgba(255, 138, 61, 0.06);
 }
 .btn-primary:active { transform: scale(0.97); }
 .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
 ```
 
 **Design rationale:**
-- `rgba(255, 138, 61, 0.18)` = accent orange at 18% opacity — warm tint visible against dark bg, but translucent enough for blur to show through
-- `backdrop-filter: blur(16px)` = the core glass effect, content behind button is softly blurred
-- `border: 1px solid rgba(255, 138, 61, 0.35)` = luminous accent border, defines the glass edge
-- Hover: opacity increases to 0.3, border brightens to 0.55, soft outer glow via `box-shadow`
-- Text changed from `#000` to `#fff` — critical for readability on semi-transparent dark background
+- `background: transparent` — completely clear lens, zero fill
+- `backdrop-filter: brightness(1.4)` — content behind the button (dark bg, embers) appears ~40% brighter. The dark `#0a0d12` background becomes slightly lighter inside the lens zone. When an ember passes behind, its glow is amplified — reinforcing the magnification illusion even without the JS scale effect
+- `border: 1px solid rgba(255, 138, 61, 0.3)` — thin warm lens edge, just enough to define the button boundary
+- `text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6)` — safety net for text readability. White text on the dark bg is already high-contrast, but when an ember passes behind (especially when magnified), the shadow ensures the text always stays crisp
+- Hover: border brightens + subtle outer glow + faint inset glow (light refracting inside the lens). No background change — stays transparent
+- No `backdrop-filter: blur()` — blur was removed intentionally. A magnifying glass doesn't blur, it sharpens/brightens. The brightness filter is the correct optical metaphor
 
-**B) `.btn-header` — Glass nav button**
+**B) `.btn-header` — Transparent lens nav button**
 
-Replace the current `.btn-header` block (lines ~92-131) with:
+Replace the current `.btn-header` block (including `::after`, `:hover`, `:hover::after`) with:
 ```css
 .btn-header {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #fff;
-  border: 1px solid rgba(255, 138, 61, 0.3);
-  background: rgba(255, 138, 61, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 138, 61, 0.25);
+  background: transparent;
+  backdrop-filter: brightness(1.3);
+  -webkit-backdrop-filter: brightness(1.3);
   padding: 6px 16px;
   border-radius: var(--radius);
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.2s;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 
 .btn-header::after {
@@ -101,46 +95,44 @@ Replace the current `.btn-header` block (lines ~92-131) with:
   padding: 2px 8px;
   border-radius: 999px;
   border: 1px solid rgba(255, 209, 102, 0.3);
-  background: rgba(255, 209, 102, 0.12);
+  background: rgba(255, 209, 102, 0.1);
   color: var(--accent2);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.1;
   white-space: nowrap;
+  text-shadow: none;
 }
 
 .btn-header:hover {
-  background: rgba(255, 138, 61, 0.22);
-  border-color: rgba(255, 138, 61, 0.5);
-  box-shadow: 0 0 16px rgba(255, 138, 61, 0.1);
+  border-color: rgba(255, 138, 61, 0.45);
+  box-shadow: 0 0 16px rgba(255, 138, 61, 0.1), inset 0 0 10px rgba(255, 138, 61, 0.04);
 }
 
 .btn-header:hover::after {
   border-color: rgba(255, 209, 102, 0.5);
-  background: rgba(255, 209, 102, 0.2);
+  background: rgba(255, 209, 102, 0.18);
 }
 ```
 
 **Design rationale:**
-- Lighter glass than `.btn-primary` (10% vs 18%) — subtler, doesn't compete with hero
-- `blur(12px)` — slightly less blur than primary (header is thin, less area to blur)
-- Hover: warm glow intensifies, stays glass — does NOT flip to solid orange (old behavior)
-- `::after` badge keeps its gold accent but with glass-matching reduced opacity borders
-- Removed the old hover behavior that turned the entire button solid orange with black text — that was jarring and breaks the glass aesthetic
+- `brightness(1.3)` — slightly less than primary (header is smaller, subtler)
+- Badge `::after` keeps its tiny gold accent with glass-matching opacity. `text-shadow: none` on badge prevents doubling of shadow from parent
+- Header sits over `.site-header` which has `background: rgba(10,13,18,0.85)` with blur — the brightness filter compounds nicely with the header backdrop
 
-**C) `.card-share` — Dark glass circle (carousel)**
+**C) `.card-share` — Transparent lens circle (carousel)**
 
-Replace the current `.card-share` block (lines ~459-477) with:
+Replace the current `.card-share` block with:
 ```css
 .card-share {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  backdrop-filter: brightness(1.5);
+  -webkit-backdrop-filter: brightness(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text);
   border-radius: 50%;
   width: 36px;
@@ -149,36 +141,35 @@ Replace the current `.card-share` block (lines ~459-477) with:
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.1s;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.1s;
   z-index: 2;
 }
 .card-share:hover {
-  background: rgba(255, 138, 61, 0.2);
-  border-color: rgba(255, 138, 61, 0.35);
-  box-shadow: 0 0 12px rgba(255, 138, 61, 0.12);
+  border-color: rgba(255, 138, 61, 0.4);
+  box-shadow: 0 0 14px rgba(255, 138, 61, 0.12), inset 0 0 8px rgba(255, 138, 61, 0.06);
   transform: scale(1.1);
 }
 .card-share:active { transform: scale(0.95); }
 ```
 
 **Design rationale:**
-- `rgba(0, 0, 0, 0.35)` = dark glass, reduced from 0.5 — more translucent so blur is visible
-- This is the Telegram-style dark glass circle the owner referenced
-- Hover: warm accent bleeds through the glass (consistent with primary CTA glow)
-- Maintains `z-index: 2` for carousel card stacking
+- `brightness(1.5)` — slightly higher than CTA buttons. Share circles sit over carousel card backgrounds (which have colored gradients), so higher brightness makes the lens zone more visually distinct
+- Fully transparent background — the card gradient shows through
+- White/muted border defines the circular lens edge
+- Hover: warm accent border + glow, consistent with all other buttons
 
-**D) `.blog-card-share` — Dark glass circle (blog cards)**
+**D) `.blog-card-share` — Transparent lens circle (blog cards)**
 
-Replace the current `.blog-card-share` block (lines ~931-955) with:
+Replace the current `.blog-card-share` block with:
 ```css
 .blog-card-share {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  backdrop-filter: brightness(1.5);
+  -webkit-backdrop-filter: brightness(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text);
   border-radius: 50%;
   width: 32px;
@@ -187,14 +178,14 @@ Replace the current `.blog-card-share` block (lines ~931-955) with:
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.1s, opacity 0.2s;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.1s, opacity 0.2s;
   opacity: 0;
+  z-index: 2;
 }
 .blog-card:hover .blog-card-share { opacity: 1; }
 .blog-card-share:hover {
-  background: rgba(255, 138, 61, 0.2);
-  border-color: rgba(255, 138, 61, 0.35);
-  box-shadow: 0 0 12px rgba(255, 138, 61, 0.12);
+  border-color: rgba(255, 138, 61, 0.4);
+  box-shadow: 0 0 14px rgba(255, 138, 61, 0.12), inset 0 0 8px rgba(255, 138, 61, 0.06);
   transform: scale(1.1);
 }
 .blog-card-share:focus-visible {
@@ -205,122 +196,309 @@ Replace the current `.blog-card-share` block (lines ~931-955) with:
 ```
 
 **Design rationale:**
-- Identical glass treatment to `.card-share` (same Tier 2 dark glass)
-- Keeps `opacity: 0` → reveal on hover (existing behavior from TASK-026)
-- Smaller size (32px vs 36px) preserved for blog card proportions
+- Identical lens treatment to `.card-share` (same Tier 2)
+- Preserves `opacity: 0` → reveal on hover (TASK-026 behavior)
+- Smaller size (32px vs 36px) for blog card proportions
 
-**E) `.share-btn` — Glass pill (article share)**
+**E) `.share-btn` — Transparent lens pill (article share)**
 
-Replace the current `.share-btn` block (lines ~1068-1085) with:
+Replace the current `.share-btn` block with:
 ```css
 .share-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  backdrop-filter: brightness(1.3);
+  -webkit-backdrop-filter: brightness(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--muted);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.2s;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s, box-shadow 0.25s, color 0.2s;
 }
 .share-btn:hover {
-  background: rgba(255, 138, 61, 0.12);
-  border-color: rgba(255, 138, 61, 0.3);
-  box-shadow: 0 0 14px rgba(255, 138, 61, 0.1);
+  border-color: rgba(255, 138, 61, 0.35);
+  box-shadow: 0 0 14px rgba(255, 138, 61, 0.1), inset 0 0 8px rgba(255, 138, 61, 0.04);
   color: var(--accent);
 }
 ```
 
 **Design rationale:**
-- Lightest glass in the system — near-transparent with blur creating the frost effect
-- Pill shape preserved (`border-radius: 20px`)
-- Hover: warm accent glow (same language as all other buttons)
-- This was already closest to glass style; adding `backdrop-filter` makes it properly frosted
+- Lightest brightness boost (1.3) — article share buttons are small and subtle
+- Pill shape preserved
+- `text-shadow` for readability safety
 
-**F) Hero-specific `.btn-primary` override**
+**F) Ambient ember magnification styles**
 
-The existing `.hero .btn-primary { min-width: 220px; }` rule (line ~359) stays unchanged. No additional hero overrides needed.
+Add this new block AFTER the existing `.ambient-ember:nth-child(8)` block and BEFORE the `@keyframes ambientFloat` block:
 
-**G) Mobile overrides**
+```css
+/* Lens magnification — embers scale up when passing under buttons */
+.ambient-ember {
+  scale: 1;
+  transition: scale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+.ambient-ember.magnified {
+  scale: 2;
+  filter: brightness(1.4);
+}
+```
 
-In the `@media (max-width: 480px)` block, the existing rules stay:
+**Design rationale:**
+- `scale: 1` (base) → `scale: 2` (magnified) — ember doubles in size when under a button lens. A 5px ember becomes 10px, a 4px ember becomes 8px. This is clearly visible magnification without being overpowering
+- `cubic-bezier(0.34, 1.56, 0.64, 1)` — slight overshoot easing. The ember grows, slightly overshoots, then settles — mimics a real lens focusing. The overshoot is subtle (1.56) not bouncy
+- `filter: brightness(1.4)` — magnified embers also glow brighter, simulating a lens concentrating light. This makes the ember more vivid when magnified
+- `transition: ... 0.4s` — smooth 400ms transition in both directions. Fast enough to feel responsive, slow enough to be elegant
+- Uses `scale` CSS property (NOT `transform: scale()`) — this composes with the `transform` in the `@keyframes ambientFloat` animation without overriding it. The ember continues to float, drift, and pulse normally while also being magnified
+
+**IMPORTANT:** The `scale` and `transition` properties must be added to the EXISTING `.ambient-ember` rule (line ~167). Do NOT create a duplicate `.ambient-ember` rule — add these two new declarations to the existing rule block. The `.magnified` class is a NEW rule block added right after.
+
+Actually, to be safe and avoid specificity issues, add the `scale` and `transition` to the existing rule:
+
+Change the existing `.ambient-ember` rule from:
+```css
+.ambient-ember {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255,160,60,0.9) 0%,
+    rgba(255,120,40,0.4) 40%,
+    transparent 70%
+  );
+  animation: ambientFloat var(--af-dur) linear infinite;
+}
+```
+
+To:
+```css
+.ambient-ember {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255,160,60,0.9) 0%,
+    rgba(255,120,40,0.4) 40%,
+    transparent 70%
+  );
+  animation: ambientFloat var(--af-dur) linear infinite;
+  scale: 1;
+  transition: scale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+```
+
+Then add a new rule AFTER the `.ambient-ember:nth-child(8)` block:
+```css
+.ambient-ember.magnified {
+  scale: 2;
+  filter: brightness(1.4);
+}
+```
+
+**G) Reduced motion update**
+
+Add to the existing `@media (prefers-reduced-motion: reduce)` block:
+```css
+.ambient-ember.magnified { scale: 1; filter: none; transition: none; }
+```
+
+This ensures magnification scaling doesn't happen for users who prefer reduced motion. The embers are already hidden (`opacity: 0`) by the existing rule, but this is belt-and-suspenders safety.
+
+**H) Mobile overrides**
+
+Existing mobile rules stay as-is:
 ```css
 .hero .btn-primary { min-width: 0; margin-top: 6px; }
 .btn-primary { width: 100%; text-align: center; }
 .btn-header { padding: 6px 12px; }
 .btn-header::after { content: "iOS"; padding: 2px 6px; font-size: 0.62rem; }
+.blog-card-share { opacity: 0.7; }
 ```
-These are layout-only and don't conflict with the glass styling.
+These are layout-only and compatible with the transparent lens style.
 
-In the same `@media (max-width: 480px)` block, the existing `.blog-card-share { opacity: 0.7; }` stays (always-visible on mobile).
+### 2. JS changes in `script.js`
 
-**H) Reduced motion**
+Add a new function `initLensEffect()` and call it alongside existing init functions.
 
-No changes needed for reduced motion — glassmorphism is a static visual effect (blur + transparency), not an animation. The existing `@media (prefers-reduced-motion: reduce)` rules are unaffected.
+**Add this function before the existing `if (document.readyState === 'loading')` block:**
 
-### 2. Consistency checklist for Executor
+```js
+// Lens magnification — embers scale up when passing under buttons
+function initLensEffect() {
+  // Respect reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-After making changes, verify ALL buttons share these consistent properties:
-- `backdrop-filter: blur()` + `-webkit-backdrop-filter: blur()` (12-16px)
-- Semi-transparent `background` (rgba values, NOT solid colors)
-- `border: 1px solid rgba(...)` (thin luminous border)
-- Hover adds `box-shadow: 0 0 Xpx rgba(255, 138, 61, ...)` (warm outer glow)
-- Transition durations: `0.25s` for background/border/box-shadow
-- No solid background on any button state (including hover)
+  var embers = document.querySelectorAll('.ambient-ember');
+  var lensSelectors = '.btn-primary, .btn-header, .card-share, .blog-card-share, .share-btn';
+  var buttons = document.querySelectorAll(lensSelectors);
+
+  if (!embers.length || !buttons.length) return;
+
+  var lastCheck = 0;
+  var THROTTLE_MS = 80; // ~12fps — smooth enough for visual effect, light on CPU
+
+  function checkOverlap(timestamp) {
+    if (timestamp - lastCheck >= THROTTLE_MS) {
+      lastCheck = timestamp;
+
+      // Get fresh button rects (positions change on scroll)
+      var btnRects = [];
+      for (var i = 0; i < buttons.length; i++) {
+        btnRects.push(buttons[i].getBoundingClientRect());
+      }
+
+      // Check each ember against all buttons
+      for (var j = 0; j < embers.length; j++) {
+        var er = embers[j].getBoundingClientRect();
+        var isUnder = false;
+        for (var k = 0; k < btnRects.length; k++) {
+          var br = btnRects[k];
+          if (er.right > br.left && er.left < br.right &&
+              er.bottom > br.top && er.top < br.bottom) {
+            isUnder = true;
+            break;
+          }
+        }
+        if (isUnder && !embers[j].classList.contains('magnified')) {
+          embers[j].classList.add('magnified');
+        } else if (!isUnder && embers[j].classList.contains('magnified')) {
+          embers[j].classList.remove('magnified');
+        }
+      }
+    }
+
+    requestAnimationFrame(checkOverlap);
+  }
+
+  // Re-query buttons when DOM might change (blog page loads cards dynamically)
+  function refreshButtons() {
+    buttons = document.querySelectorAll(lensSelectors);
+  }
+
+  // Refresh button list on scroll (handles lazy-loaded content)
+  var scrollTimeout;
+  window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(refreshButtons, 500);
+  }, { passive: true });
+
+  requestAnimationFrame(checkOverlap);
+}
+```
+
+**Update the init block** to call `initLensEffect()`:
+
+Change:
+```js
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    initCardShareButtons();
+    initBenefitReveal();
+  });
+} else {
+  initCardShareButtons();
+  initBenefitReveal();
+}
+```
+
+To:
+```js
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    initCardShareButtons();
+    initBenefitReveal();
+    initLensEffect();
+  });
+} else {
+  initCardShareButtons();
+  initBenefitReveal();
+  initLensEffect();
+}
+```
+
+**JS design rationale:**
+- **`requestAnimationFrame` loop**: Auto-pauses when tab is hidden (battery-friendly). Runs only when browser is ready to paint
+- **Throttled to ~12fps (80ms)**: Ember movement is slow (16-23s per full traversal), so 12fps detection is plenty smooth. Avoids wasted CPU cycles
+- **`getBoundingClientRect()`**: Returns the visual position of elements accounting for scroll, transforms, and fixed positioning. Works correctly for both `position: fixed` embers and normally-positioned buttons
+- **Class toggle with check**: `classList.contains()` check before add/remove avoids unnecessary DOM mutations (style recalcs)
+- **`refreshButtons()` on scroll**: Blog page loads cards via JS from `posts.json`, so button list may change. The debounced refresh (500ms after scroll stops) handles this without continuous overhead
+- **`prefers-reduced-motion` check**: Exits immediately if user prefers reduced motion. Embers are already hidden by CSS in this case
+- **No ES6+ syntax**: Uses `var`, `for` loops, `function` declarations — compatible with older browsers, matching existing `script.js` style
+- **Performance**: 8 embers × ~5-10 visible buttons = 40-80 rect comparisons per frame at 12fps. Each `getBoundingClientRect()` is O(1). Total overhead: negligible
 
 ### 3. Files to modify
 
-**Only `styles.css`** — this is a pure CSS visual change. No HTML or JS modifications.
+| File | Changes |
+|------|---------|
+| `styles.css` | All 5 button types → transparent lens style. Add `.magnified` class for embers. Update reduced-motion |
+| `script.js` | Add `initLensEffect()` function + call it in init block |
+
+### 4. HTML changes
+
+**None.** No HTML modifications needed.
 
 ## Do NOT touch
-- HTML files (no structural changes)
-- `script.js` (no behavior changes)
+- HTML files
 - Hero section CSS (`.hero`, `.embers`, `.ember` classes)
-- Ambient embers CSS (`.ambient-embers`, `.ambient-ember`)
+- Ambient embers animation keyframes (`@keyframes ambientFloat`) — the float animation must not be modified
+- Ambient ember `nth-child` rules (positions, sizes, delays, colors)
 - Form input styles (`.email-input`)
 - Layout/sizing of any button (padding, width, border-radius preserved)
-- The `.carousel-card:has(.card-share:hover)` rule (keeps carousel card from transforming on share hover)
+- The `.carousel-card:has(.card-share:hover)` rule
+- Wick progress bar code in `script.js`
+- Card share button handler in `script.js`
+- Benefit reveal handler in `script.js`
 
 ## Behavior changes
-- `.btn-primary` text changes from `#000` (black) to `#fff` (white) — necessary because background is no longer solid orange
-- `.btn-primary:hover` no longer changes to solid `var(--accent2)` — instead, glass becomes more opaque with warm glow
-- `.btn-header:hover` no longer flips to solid orange bg with black text — stays glass with brighter glow
-- `.btn-header:hover::after` badge no longer turns white — stays gold with brighter border
+- `.btn-primary` background: `rgba(255, 138, 61, 0.18)` → `transparent` (removes orange tint fill)
+- `.btn-primary` removes `backdrop-filter: blur(16px)` → replaces with `backdrop-filter: brightness(1.4)` (lens, not frost)
+- `.btn-header` background: `rgba(255, 138, 61, 0.1)` → `transparent`
+- `.btn-header` removes `backdrop-filter: blur(12px)` → replaces with `backdrop-filter: brightness(1.3)`
+- `.card-share` background: `rgba(0, 0, 0, 0.35)` → `transparent`
+- `.card-share` removes `backdrop-filter: blur(12px)` → replaces with `backdrop-filter: brightness(1.5)`
+- `.blog-card-share` same changes as `.card-share`
+- `.share-btn` background: `rgba(255,255,255,0.06)` → `transparent`
+- `.share-btn` removes `backdrop-filter: blur(12px)` → replaces with `backdrop-filter: brightness(1.3)`
+- Ambient embers now physically enlarge (scale: 2) when overlapping any button — new interactive behavior
+- `script.js` gains new `initLensEffect()` function with `requestAnimationFrame` loop
 
 ## Acceptance Criteria
-- [ ] All 5 button types have `backdrop-filter: blur()` applied
-- [ ] All 5 button types have semi-transparent backgrounds (no solid colors)
-- [ ] All 5 button types have thin luminous borders
-- [ ] All hover states produce a warm accent glow (`box-shadow`)
-- [ ] `.btn-primary` text is white and readable against the glass background
+- [ ] All 5 button types have `background: transparent` (no fill whatsoever)
+- [ ] All 5 button types have `backdrop-filter: brightness()` (NOT blur)
+- [ ] All 5 button types have thin luminous borders (1px solid rgba)
+- [ ] All hover states produce warm accent glow (border + box-shadow, NO background fill)
+- [ ] `.btn-primary` text is white and readable via `text-shadow`
 - [ ] `.btn-header` "iOS only" badge still visible and styled
-- [ ] `.card-share` and `.blog-card-share` are dark glass circles (Telegram-style)
-- [ ] `.share-btn` is a glass pill with proper blur
-- [ ] Hover states feel consistent across all button types (warm glow language)
+- [ ] When an ambient ember floats behind ANY button, the ember visibly enlarges (scale: 2)
+- [ ] Magnified embers also glow brighter (filter: brightness(1.4))
+- [ ] Magnification transition is smooth (0.4s with overshoot easing)
+- [ ] When ember moves out of button area, it smoothly shrinks back to normal
 - [ ] No layout shifts — all button dimensions/spacing preserved
-- [ ] Mobile: buttons render correctly at 375px width
-- [ ] `backdrop-filter` has `-webkit-` prefix for Safari compatibility
-- [ ] No solid backgrounds on ANY button in ANY state
-- [ ] Performance: no jank on mobile (blur is GPU-accelerated)
+- [ ] Ember float/pulse/drift animation continues normally during magnification
+- [ ] Mobile (375px): buttons render correctly, lens effect works
+- [ ] `-webkit-backdrop-filter` prefix present for Safari
+- [ ] `prefers-reduced-motion`: magnification disabled, embers hidden
+- [ ] JS uses `requestAnimationFrame` with throttle, not `setInterval`
+- [ ] No visible performance impact on mobile (12fps detection loop is lightweight)
+- [ ] Hero embers (`.ember` class) are NOT affected — only `.ambient-ember` elements
+- [ ] No `backdrop-filter: blur()` on any button (this is a lens, not frosted glass)
 
 ## Verification
-- Open index.html — hero "Take a look" button should be warm frosted glass with white text
-- Hover over "Take a look" — glass becomes brighter, subtle outer glow appears
-- Header "Get Early Access" button — subtle warm glass, "iOS only" badge visible
-- Hover header button — glass brightens, does NOT flip to solid orange
-- Scroll to carousel — share circles on cards should be dark frosted glass
-- Hover a share circle — warm accent bleeds through
-- Open blog.html — blog card share buttons should be dark glass circles
-- Open any article — "Share" pill button should be frosted glass
-- Hover article share — warm glow appears
-- Resize to 375px — all glass buttons render correctly, no overflow
-- Test on Safari/iOS — `-webkit-backdrop-filter` ensures glass effect works
+1. Open index.html — hero "Take a look" button should be fully transparent with thin warm border and white text
+2. Scroll past hero — buttons in other sections should be transparent lenses
+3. Watch for 20-30 seconds — when an ambient ember floats behind a button, it should visibly grow ~2x in size and glow brighter
+4. When the ember exits the button area, it should smoothly shrink back to normal size
+5. Hover over buttons — border brightens, subtle glow appears, NO background fill appears
+6. Click text/links through the transparent button area — buttons don't block interaction with content behind (existing pointer-events behavior)
+7. Open DevTools → Performance tab → record 10 seconds → verify no jank (consistent ~60fps)
+8. Open blog.html — same lens effect works on blog card share buttons
+9. Resize to 375px — all lens buttons render correctly
+10. DevTools → Rendering → check "Emulate CSS media feature prefers-reduced-motion: reduce" → embers disappear, magnification loop doesn't run
+11. Compare: area INSIDE a button should look subtly brighter than area OUTSIDE (backdrop-filter: brightness effect)
+12. Safari/iOS: `-webkit-backdrop-filter` ensures brightness filter works
 
 ## Reporting
 - Update TASKS.md status to DONE

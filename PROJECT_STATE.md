@@ -40,7 +40,7 @@
 - Site-wide ambient ember layer: 8 fixed glowing particles behind content (excluding hero), with body isolation stacking, reduced-motion hide, and transparent signup/newsletter backgrounds (TASK-023)
 - SEO deep improvements: theme-color, preconnect, og:locale, author meta, blog heading hierarchy fix, and sitemap/blog alt-text guidance updates (TASK-025)
 - Blog UX/UI audit + fixes: mobile-visible share controls, enhanced empty state CTA, full social-link footers on blog pages, and manifest fetch cache-hardening for fresh post state (TASK-026)
-- Site-wide glassmorphism button system: consistent frosted-glass treatment across primary/header/share buttons with Safari-compatible blur and warm glow hover language (TASK-027)
+- Site-wide magnifying-lens button system: all 5 button types use transparent lens styling (`background: transparent`, `backdrop-filter: brightness()`), with warm luminous borders and JS-driven ambient ember magnification (`scale: 2`) on overlap (TASK-027)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
