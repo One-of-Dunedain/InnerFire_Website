@@ -37,7 +37,7 @@ Goal: Create blog/best-breathwork-apps.html with full content, Schema.org (ItemL
 ---
 
 ## [TASK-031] UGC research + trust signals for breathwork apps article
-Status: TODO
+Status: DONE
 Priority: Critical
 Owner: Executor AI
 Depends on: TASK-030

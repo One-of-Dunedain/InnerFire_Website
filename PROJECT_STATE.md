@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-01
-## Current status: TASK-030 completed; 1 active task remaining (TASK-024)
+## Current status: TASK-031 completed; 5 active tasks remaining (TASK-024, TASK-032, TASK-033, TASK-034, TASK-036)
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (includes published listicle card for "Best Breathwork Apps (2026)")
 
-### Implemented capabilities (TASK-001-023 + TASK-025 through TASK-030 complete)
+### Implemented capabilities (TASK-001-023 + TASK-025 through TASK-031 complete)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -44,6 +44,7 @@
 - Competitive research foundation for listicle production: 10 app profiles with pricing/ratings/features, InnerFire positioning, top-3 SERP analysis, PAA set, and 2026 trend angles in `docs/research/breathwork-apps.md` (TASK-028)
 - Listicle publishing system: reusable `blog/_listicle-template.html` with ToC, quick picks, app cards, comparison table, FAQ accordion, dual JSON-LD schemas, and dedicated responsive component styles in `styles.css` (TASK-029)
 - Production listicle article published at `blog/best-breathwork-apps.html` with full app reviews, quick picks, comparison table, FAQ accordion, JSON-LD (Article + ItemList + FAQPage), root `llms.txt`, and blog manifest update (TASK-030)
+- UGC/trust-signal research corpus created in `docs/research/breathwork-apps-ugc.md` with sourced user quotes, billing transparency ratings, Reddit sentiment, Trustpilot/BBB/SiteJabber checks, plus privacy/graveyard industry synthesis (TASK-031)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -89,6 +90,10 @@ Static blog with JSON manifest. No build step.
 
 ## Active tasks
 - [TASK-024] GA4 + Clarity custom event tracking code (TODO)
+- [TASK-032] Collect app logos/icons for article (TODO)
+- [TASK-033] Article UX/UI improvements for long-form navigation (TODO)
+- [TASK-034] Research 10 additional breathwork apps (Wave 2 expansion) (TODO)
+- [TASK-036] Pricing & monetization deep-dive for all breathwork apps (TODO)
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -109,6 +114,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-028 (DONE)
 - TASK-029 (DONE)
 - TASK-030 (DONE)
+- TASK-031 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
