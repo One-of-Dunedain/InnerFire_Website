@@ -47,7 +47,7 @@ Goal: Research real user reviews, billing complaints, scam reports, Reddit senti
 ---
 
 ## [TASK-032] Collect app logos/icons for article
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none

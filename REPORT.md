@@ -195,3 +195,51 @@ Behavior changes: none.
 ### Recommended next action
 Proceed to next TODO task in queue (`TASK-024`) unless the Orchestrator wants a fact-check pass or stricter source normalisation for low-signal Trustpilot/SiteJabber entries.
 
+---
+## [TASK-032] Collect app logos/icons for article
+Date: 2026-03-01
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Replaced all placeholder app icons used in `blog/best-breathwork-apps.html` with real 112x112 PNG icon assets in `assets/images/apps/`. Pulled official icons from App Store metadata for the 10 third-party apps and generated a brand-aligned `innerfire.png` (dark tile + flame mark) for the InnerFire card. Added a small utility script to make icon regeneration reproducible.
+
+### Files changed
+- `assets/images/apps/breathwrk.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/headspace.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/box-breathe.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/calm.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/insight-timer.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/ibreathe.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/oak.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/prana-breath.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/wim-hof-method.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/othership.png` - replaced placeholder with official app icon (112x112 PNG)
+- `assets/images/apps/innerfire.png` - replaced placeholder with brand-aligned fallback icon (112x112 PNG)
+- `scripts/task032_download_icons.ps1` - added reproducible icon download + resize helper for the task
+- `TASKS.md` - updated TASK-032 status from TODO to DONE
+- `PROJECT_STATE.md` - updated current status, active tasks, and capabilities
+- `REPORT.md` - appended TASK-032 execution report
+
+### Acceptance Criteria Results
+- [x] All 11 PNG files exist in `assets/images/apps/` - passed
+- [x] All files are at least 112x112px - passed (all are exactly 112x112)
+- [x] All files are optimized (under 50KB each) - passed
+- [x] Article renders all icons correctly in browser - passed (11/11 app-card icons loaded, no broken sources)
+- [x] InnerFire icon exists and matches site branding - passed
+
+### Behavior changes
+- The comparison article now shows real app icons (instead of placeholders) across all app cards.
+
+### Verification
+- PASSED
+- Verified file dimensions and sizes via local image metadata check: all 11 icons are 112x112 and below 50KB.
+- Verified all icon `src` paths referenced by `blog/best-breathwork-apps.html` resolve to existing files.
+- Verified in browser (`http://localhost:8080/blog/best-breathwork-apps.html`) that 11/11 `.app-card-icon` images load successfully (`naturalWidth > 0` for all).
+
+### Issues encountered
+- Initial attempt to render flame glyph with direct `[char]0x1F525` failed in PowerShell due UTF-16 range; corrected using surrogate-safe conversion.
+
+### Recommended next action
+Proceed with `TASK-033` (article UX/UI improvements) or `TASK-024` depending on orchestration priority.
+

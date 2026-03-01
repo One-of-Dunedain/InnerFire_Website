@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-01
-## Current status: TASK-031 completed; 5 active tasks remaining (TASK-024, TASK-032, TASK-033, TASK-034, TASK-036)
+## Current status: TASK-032 completed; 4 active tasks remaining (TASK-024, TASK-033, TASK-034, TASK-036)
 
 ---
 
@@ -45,6 +45,7 @@
 - Listicle publishing system: reusable `blog/_listicle-template.html` with ToC, quick picks, app cards, comparison table, FAQ accordion, dual JSON-LD schemas, and dedicated responsive component styles in `styles.css` (TASK-029)
 - Production listicle article published at `blog/best-breathwork-apps.html` with full app reviews, quick picks, comparison table, FAQ accordion, JSON-LD (Article + ItemList + FAQPage), root `llms.txt`, and blog manifest update (TASK-030)
 - UGC/trust-signal research corpus created in `docs/research/breathwork-apps-ugc.md` with sourced user quotes, billing transparency ratings, Reddit sentiment, Trustpilot/BBB/SiteJabber checks, plus privacy/graveyard industry synthesis (TASK-031)
+- Official app icon pack for listicle cards: replaced placeholder assets with real 112x112 PNG icons for all 11 compared apps in `assets/images/apps/`, including brand-aligned `innerfire.png` fallback; verified all article card icons render without broken placeholders (TASK-032)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -90,7 +91,6 @@ Static blog with JSON manifest. No build step.
 
 ## Active tasks
 - [TASK-024] GA4 + Clarity custom event tracking code (TODO)
-- [TASK-032] Collect app logos/icons for article (TODO)
 - [TASK-033] Article UX/UI improvements for long-form navigation (TODO)
 - [TASK-034] Research 10 additional breathwork apps (Wave 2 expansion) (TODO)
 - [TASK-036] Pricing & monetization deep-dive for all breathwork apps (TODO)
@@ -115,6 +115,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-029 (DONE)
 - TASK-030 (DONE)
 - TASK-031 (DONE)
+- TASK-032 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
