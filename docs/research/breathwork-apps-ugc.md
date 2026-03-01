@@ -2,7 +2,7 @@
 
 ## Research date: 2026-03-01
 ## Sources checked: Apple App Store RSS reviews, Google Play web listings, Reddit, Trustpilot, BBB listings (where publicly reachable)
-## Progress: Batch 1-3 complete (Calm, Headspace, Breathwrk, Wim Hof Method, Prana Breath, Oak, iBreathe, Insight Timer, Othership). Remaining apps pending in next batches.
+## Progress: Batch 1-4 complete (all app entries done: Calm, Headspace, Breathwrk, Wim Hof Method, Prana Breath, Oak, iBreathe, Insight Timer, Othership, Box Breathe, InnerFire). Industry-wide synthesis pending final pass.
 
 ---
 
@@ -334,12 +334,112 @@
 
 ---
 
-## Batch 1-3 cross-app observations (preliminary)
-- Common complaint cluster across the first 9 apps: billing clarity, support responsiveness, and mismatch between user expectations vs evolving subscription-first UX.
-- Smaller apps often show sparse third-party trust-platform footprints (Trustpilot/BBB/SiteJabber), so App Store + Reddit signals carry more weight.
-- Timer-first apps (iBreathe) show less billing-risk signal, while ecosystem apps (Insight Timer/Othership) show stronger upsell and account-friction complaint patterns.
+### Box Breathe
 
-## Pending for next batches
-- Remaining app entries: Box Breathe, InnerFire.
-- Industry-wide issues section (privacy/news/"app graveyard") will be finalized after all app entries are completed.
-- InnerFire positioning section (no billing history + no public reviews yet) will be added in final pass.
+#### User quotes
+- **Best positive review (iOS):** "Simple and effective... I keep returning to this one." - Perkgun, 5 stars, 2022-08-11
+  - Source: https://itunes.apple.com/us/rss/customerreviews/id=1347597121/sortBy=mostHelpful/json
+- **Best negative review (iOS):** "Does not work on Apple Watch... starts glitching." - AnnaMN, 1 star, 2025-10-14
+  - Source: https://itunes.apple.com/us/rss/customerreviews/id=1347597121/sortBy=mostRecent/json
+- **Recurring negative themes:** Apple Watch stability/background-run issues, preset workflow friction, occasional crashes/sound issues.
+
+#### Reddit sentiment
+- Thread: https://www.reddit.com/r/Meditation/comments/td3mzl/box_breathing_app/ - Generic recommendation request; no single app dominates.
+- Thread: https://www.reddit.com/r/Meditation/comments/1b16z2l/box_breathing_app_for_apple_watch/ - Device-specific app hunting; discussion is practical but fragmented.
+- Overall Reddit sentiment: **Mixed and fragmented (strong demand for simple box-breathing timers, but little concentrated discussion for this exact app)**.
+
+#### Billing transparency
+- Rating: **GREEN**
+- Trial trap reports: **No clear pattern found**.
+- Cancellation ease: **Easy** (paid-upfront model with low-cost entry; no clear recurring-subscription trap signal in sampled data).
+- Notable complaints:
+  - Main complaints are reliability/compatibility on Apple Watch, not billing abuse.
+- Sources:
+  - https://apps.apple.com/us/app/box-breathe/id1347597121
+  - https://itunes.apple.com/lookup?id=1347597121&country=us
+  - https://itunes.apple.com/us/rss/customerreviews/id=1347597121/sortBy=mostRecent/json
+
+#### Trustpilot / BBB / SiteJabber
+- Trustpilot: no public profile found at tested domain slugs (404 at capture time).
+  - Sources:
+    - https://www.trustpilot.com/review/boxbreathe.app
+    - https://www.trustpilot.com/review/denystriasunov.com
+- BBB: direct search endpoints returned 403 in this environment; no reliable complaint count extracted in this batch.
+  - Source: https://www.bbb.org/search?find_text=Box%20Breathe%20app
+- SiteJabber: no high-signal profile found for tested Box Breathe domain in this batch.
+
+---
+
+### InnerFire
+
+#### User quotes
+- **Best positive review:** No public App Store / Google Play review corpus available yet (beta-stage product positioning).
+- **Best negative review:** No public App Store / Google Play review corpus available yet.
+- **Recurring negative themes:** Not enough public user-review data yet to establish recurring themes.
+
+#### Reddit sentiment
+- No relevant app-specific threads found in target subreddits (`r/breathwork`, `r/Meditation`, `r/Anxiety`, `r/Biohackers`, `r/getdisciplined`) during this capture.
+- Overall Reddit sentiment: **No presence / insufficient signal**.
+
+#### Billing transparency
+- Rating: **GREEN (provisional)**
+- Trial trap reports: **No public reports found**.
+- Cancellation ease: **N/A (pre-release / beta access flow)**.
+- Notable complaints:
+  - No public billing history yet; this reduces trial-trap risk today but also means no long-term evidence.
+- Sources:
+  - Apple search snapshot (no direct InnerFire public listing in returned software results): https://itunes.apple.com/search?term=InnerFire%20breath%20app&entity=software&country=us&limit=15
+  - Trustpilot checks:
+    - https://www.trustpilot.com/review/innerfire.app
+    - https://www.trustpilot.com/review/www.innerfire.app
+
+#### Trustpilot / BBB / SiteJabber
+- Trustpilot: no public profile found at expected slugs (404 at capture time).
+  - Sources:
+    - https://www.trustpilot.com/review/innerfire.app
+    - https://www.trustpilot.com/review/www.innerfire.app
+- BBB: direct search endpoints returned 403 in this environment; no reliable complaint count extracted in this batch.
+  - Source: https://www.bbb.org/search?find_text=InnerFire%20app
+- SiteJabber: tested domain resolves to SmartCustomer profile shell, but no clear high-signal rating extracted.
+  - Source: https://www.sitejabber.com/reviews/innerfire.app
+
+---
+
+## Industry-wide issues (synthesis)
+
+### Common complaint patterns across breathwork/meditation apps
+- **Subscription fatigue and upsell friction:** recurring complaints about paywalls, premium prompts, and renewal/cancel confusion in ecosystem apps.
+- **Support latency at billing moments:** complaints spike when users are charged but lose access or cannot quickly restore subscription state.
+- **UX complexity drift:** apps that started as simple timers often get criticism after adding social/feed/gamified layers.
+- **Device reliability issues in timer-first apps:** Apple Watch/session-persistence bugs are a recurring complaint class in minimalist timer apps.
+
+### Privacy and data concerns (recent, relevant)
+- **Regulatory context:** FTC finalized an order against BetterHelp (2023) over sharing sensitive health data for advertising, showing enforcement risk for wellness/mental-health apps that over-share user data.
+  - Source: https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-gives-final-approval-order-banning-betterhelp-sharing-sensitive-health-data-advertising
+- **Meditation-app-specific concern signal:** Mozilla's privacy review flagged Headspace with a privacy warning in 2023 due data-sharing practices and ad-tech concerns.
+  - Source: https://www.mozillafoundation.org/en/privacynotincluded/headspace/
+- **Category-level warning trend:** mainstream reporting in 2025 continues to highlight that many wellness apps are lightly regulated on privacy claims and proof obligations.
+  - Source: https://www.cnbc.com/2025/08/08/wellness-apps-dont-have-to-prove-they-keep-your-data-private.html
+- **Community privacy backlash example:** users raised concerns over Insight Timer privacy-policy changes and data-sharing language (community signal, not regulator finding).
+  - Source: https://www.reddit.com/r/Meditation/comments/18fn9k2/insight_timers_new_privacy_policy_update_be_aware/
+
+### Meditation app "graveyard" (shutdown/pivot/degradation signals)
+- **Omvana discontinued:** Mindvalley confirms app discontinuation and no future software updates (2025 update).
+  - Source: https://help.mindvalley.com/hc/en-us/articles/40065379560859-Omvana-App-discontinued
+- **Stop, Breathe, Think no longer offering services:** reflected in platform-integration support documentation.
+  - Source: https://help.evidation.com/hc/en-us/articles/360001943308-Apps-no-longer-available
+- **Simple Habit pivot/acquisition:** major strategic shift toward Sleep Reset after sale (brand continuity changed).
+  - Source: https://techcrunch.com/2023/03/29/meditation-app-simple-habit-sells-to-wellness-marketplace-ingenio-pivots-the-company-to-sleep-reset/
+- **Degraded-but-live pattern (from this research corpus):**
+  - Insight Timer: repeated "too many prompts/salesy friction" complaints in iOS/Play/Reddit.
+  - Oak: long maintenance-gap anxiety and update-risk signals despite strong loyalty.
+
+---
+
+## Batch 1-4 cross-app observations (preliminary)
+- Most negative patterns are not about breathing protocol quality, but about monetization friction (upsell pressure, renewals, account-lock confusion) and support responsiveness.
+- Smaller timer-first apps (iBreathe, Box Breathe) show lower billing-risk signals but higher sensitivity to device-level stability issues (especially Apple Watch behavior).
+- Larger ecosystem apps (Calm, Headspace, Insight Timer, Othership) show wider sentiment dispersion: very positive outcomes for many users and sharper complaints around pricing, UX complexity, or billing events.
+
+## Pending final pass
+- Final cleanup pass for wording consistency across all sections.
