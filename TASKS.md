@@ -57,7 +57,7 @@ Goal: Download official app icons (112x112 PNG) for all 11 apps. Save to assets/
 ---
 
 ## [TASK-033] Article UX/UI improvements for long-form navigation
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-030

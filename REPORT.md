@@ -286,3 +286,50 @@ Behavior changes: none.
 ### Recommended next action
 Proceed to `TASK-034` completion (remaining Wave-2 apps) or `TASK-024` implementation, depending on orchestration priority.
 
+---
+## [TASK-033] Article UX/UI improvements for long-form navigation
+Date: 2026-03-01
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented long-form navigation UX upgrades for `blog/best-breathwork-apps.html`: added desktop sticky ToC behavior with active-section highlighting, added a floating transparent-lens back-to-top button with smooth scroll, added a mobile-only comparison-table scroll hint that auto-hides after first horizontal interaction, and added subtle section separators to improve reading rhythm across major article groups.
+
+### Files changed
+- `styles.css` - added ToC active link styling, section separator styles, floating back-to-top styles, desktop sticky ToC media rules, and mobile comparison-table scroll-hint styles
+- `blog/best-breathwork-apps.html` - added back-to-top button HTML and inline JS initializers for ToC highlighting, back-to-top visibility/scroll behavior, and first-scroll hint dismissal
+- `TASKS.md` - updated TASK-033 status from TODO to DONE
+- `REPORT.md` - appended TASK-033 execution report
+- `PROJECT_STATE.md` - updated current status, active task list, and capability registry
+
+### Acceptance Criteria Results
+- [x] Desktop: ToC stays visible while scrolling through the article - passed
+- [x] Desktop: Active section highlighted in ToC as user scrolls - passed
+- [x] Mobile: ToC stays inline (no floating) - passed
+- [x] "Back to top" button appears after scrolling past 1 viewport height - passed
+- [x] "Back to top" smoothly scrolls to top on click - passed
+- [x] "Back to top" button uses transparent lens style (consistent with TASK-027 button system) - passed
+- [x] Mobile: Comparison table shows "Scroll →" hint - passed
+- [x] Scroll hint disappears after user scrolls the table - passed
+- [x] Sections have subtle visual separators - passed
+- [x] No layout shifts or content jumps - passed
+- [x] All JS additions are in the article's inline `<script>` block, not global `script.js` - passed
+
+### Behavior changes
+- `blog/best-breathwork-apps.html` now has desktop sticky ToC navigation with active section state.
+- A floating back-to-top control now appears after first-viewport scroll depth.
+- Mobile comparison table now displays a "Scroll →" affordance that disappears after first horizontal scroll.
+- Major listicle sections now have subtle top separators for improved scanability.
+
+### Verification
+- PASSED
+- Playwright verification on desktop (`1440x900`): `.article-toc` computed as `position: sticky; top: 80px; margin-left: -240px`, active ToC section updates during long-page scroll, back-to-top button becomes visible and returns scroll to top.
+- Playwright verification on mobile (`375x812`): ToC computed as `position: static` (inline), comparison-table hint is visible initially and pseudo-element display switches to `none` after first horizontal scroll (`.scrolled` applied).
+- Manual structure checks: section separators and new back-to-top markup present, JS logic confined to the article's existing inline script block.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed to the next TODO task in queue: `TASK-024` or `TASK-034` per Orchestrator priority.
+

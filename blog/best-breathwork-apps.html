@@ -1229,7 +1229,99 @@
         <p class="footer-credit">Made by an indie developer who needed to breathe.</p>
       </div>
     </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top" type="button">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
     <script>
+    // Highlight active ToC link based on scroll position
+    function initTocHighlight() {
+      var tocLinks = document.querySelectorAll('.article-toc a');
+      var sections = [];
+      var isTicking = false;
+
+      tocLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (!href || href.charAt(0) !== '#') return;
+        var id = href.substring(1);
+        var section = document.getElementById(id);
+        if (section) sections.push({ id: id, el: section, link: link });
+      });
+
+      if (!sections.length) return;
+
+      function setActive(id) {
+        tocLinks.forEach(function(l) { l.classList.remove('toc-active'); });
+        var match = sections.find(function(s) { return s.id === id; });
+        if (match) match.link.classList.add('toc-active');
+      }
+
+      function syncActiveByViewport() {
+        var marker = Math.max(140, window.innerHeight * 0.45);
+        var chosen = sections[0];
+
+        sections.forEach(function(section) {
+          var top = section.el.getBoundingClientRect().top;
+          if (top <= marker) {
+            chosen = section;
+          }
+        });
+
+        if (chosen) setActive(chosen.id);
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        var seenVisible = false;
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) seenVisible = true;
+        });
+        if (seenVisible) syncActiveByViewport();
+      }, { rootMargin: '-80px 0px -60% 0px', threshold: [0, 0.01, 0.25] });
+
+      sections.forEach(function(s) { observer.observe(s.el); });
+
+      window.addEventListener('scroll', function() {
+        if (isTicking) return;
+        isTicking = true;
+        window.requestAnimationFrame(function() {
+          syncActiveByViewport();
+          isTicking = false;
+        });
+      }, { passive: true });
+
+      syncActiveByViewport();
+    }
+
+    // Back to top button
+    function initBackToTop() {
+      var btn = document.getElementById('back-to-top');
+      if (!btn) return;
+
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > window.innerHeight) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }, { passive: true });
+
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Mobile scroll hint hide after first interaction
+    function initComparisonScrollHint() {
+      document.querySelectorAll('.comparison-table-wrapper').forEach(function(wrapper) {
+        wrapper.addEventListener('scroll', function() {
+          this.classList.add('scrolled');
+        }, { once: true, passive: true });
+      });
+    }
+
     // Reading progress bar
     window.addEventListener('scroll', function() {
       var bar = document.getElementById('reading-progress');
@@ -1285,6 +1377,10 @@
         }
       });
     });
+
+    initTocHighlight();
+    initBackToTop();
+    initComparisonScrollHint();
     </script>
   </body>
 </html>

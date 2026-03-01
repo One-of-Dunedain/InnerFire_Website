@@ -1380,6 +1380,11 @@ footer {
   color: var(--accent);
 }
 
+.article-toc a.toc-active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* ---------------------------------------------------
    LISTICLE - Quick Picks
    --------------------------------------------------- */
@@ -1663,6 +1668,77 @@ footer {
   color: var(--accent);
 }
 
+/* Listicle section separators for long-form rhythm */
+#anxiety-apps,
+#sleep-apps,
+#free-apps,
+#interactive-apps,
+#timer-alternatives,
+#calm-headspace-alternatives,
+#comparison-table,
+#faq {
+  padding-top: 48px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Floating back-to-top button */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  backdrop-filter: brightness(1.4) blur(6px);
+  -webkit-backdrop-filter: brightness(1.4) blur(6px);
+  border: 1px solid rgba(255, 138, 61, 0.3);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, border-color 0.25s, box-shadow 0.25s, transform 0.1s;
+  z-index: 100;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  border-color: rgba(255, 138, 61, 0.55);
+  box-shadow: 0 0 16px rgba(255, 138, 61, 0.12);
+}
+.back-to-top:active {
+  transform: scale(0.97);
+}
+.back-to-top:focus-visible {
+  outline: 2px solid rgba(255, 138, 61, 0.55);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1100px) {
+  .article-container {
+    position: relative;
+  }
+  .article-toc {
+    position: sticky;
+    top: 80px;
+    float: left;
+    width: 200px;
+    margin-left: -240px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    font-size: 0.85rem;
+  }
+  .article-toc a {
+    font-size: 0.82rem;
+  }
+}
+
 @media (max-width: 480px) {
   .blog-card:hover { transform: none; }
   .blog-card-share { opacity: 0.7; }
@@ -1677,6 +1753,25 @@ footer {
   .quick-picks-table td:nth-child(3) { display: none; }
   .comparison-table { font-size: 0.82rem; }
   .comparison-table th, .comparison-table td { padding: 10px 8px; }
+}
+
+@media (max-width: 768px) {
+  #comparison-table .comparison-table-wrapper {
+    position: relative;
+  }
+  #comparison-table .comparison-table-wrapper::after {
+    content: "Scroll \2192";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  #comparison-table .comparison-table-wrapper.scrolled::after {
+    display: none;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
