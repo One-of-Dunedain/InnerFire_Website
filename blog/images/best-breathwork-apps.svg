@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="70" x2="1040" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1222"/>
+      <stop offset="1" stop-color="#1A2033"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(640 370) rotate(90) scale(260 430)">
+      <stop stop-color="#FF9A42" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FF9A42" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="28" fill="url(#glow)"/>
+  <text x="120" y="180" fill="#FFA347" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="1.2">INNERFIRE BLOG</text>
+  <text x="120" y="310" fill="#E8EEF9" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="800">Best Breathwork Apps</text>
+  <text x="120" y="395" fill="#E8EEF9" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="800">(2026)</text>
+  <text x="120" y="470" fill="#95A3BF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="500">Anxiety, sleep, stress, pricing, and real-time feedback</text>
+</svg>

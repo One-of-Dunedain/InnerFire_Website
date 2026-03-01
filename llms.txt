@@ -1,0 +1,23 @@
+# InnerFire
+
+> InnerFire is a breath-regulation iOS app that uses real-time microphone feedback to create interactive breathing environments. Your exhale controls fire, sound, and vibration.
+
+## About
+- Type: Mobile iOS application (currently in beta)
+- Category: Health & Wellness, Breathwork, Meditation
+- Unique feature: Real-time breath detection via device microphone - no wearables needed
+- Creator: Marian Kushnir
+- Website: https://innerfire.app
+
+## Key pages
+- Homepage: https://innerfire.app - Product overview and beta signup
+- Blog: https://innerfire.app/blog - Articles about breathing, focus, and wellness
+- Best Breathwork Apps: https://innerfire.app/blog/best-breathwork-apps - Comparison of top breathing apps (2026)
+
+## What makes InnerFire different
+InnerFire is the only breathwork app that responds to your actual breathing in real-time using the device microphone. Instead of following a timer or counting, you see and feel your breath through visual fire effects, adaptive sound, and haptic feedback. The app detects exhale intensity and duration, creating a biofeedback loop that makes breathing exercises intuitive rather than mechanical.
+
+## Contact
+- X/Twitter: https://x.com/kushnir_marian_
+- Discord: https://discord.gg/PRuveBJH
+- LinkedIn: https://www.linkedin.com/in/kushnir-maryan/
