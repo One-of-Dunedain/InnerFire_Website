@@ -770,3 +770,48 @@ Some high-authority pages (notably Google direct SERP and some publisher mirrors
 
 ### Recommended next action
 Proceed to `TASK-029` (listicle template + CSS components), then use this research file as source input for `TASK-030` article drafting.
+---
+## [TASK-029] Listicle article template + CSS components
+Date: 2026-03-01
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented the full listicle system by adding six new reusable component style groups plus mobile overrides in `styles.css`, and creating `blog/_listicle-template.html` from the narrative template structure with listicle-specific article blocks, dual JSON-LD schemas (Article+ItemList and FAQPage), and FAQ accordion toggle behavior in the inline script.
+
+### Files changed
+- `styles.css` - added listicle component styles (ToC, quick picks, app card, comparison table, FAQ, highlight) and mobile-specific listicle rules inside existing 480px media block
+- `blog/_listicle-template.html` - created new listicle template with required structure, schemas, inherited site chrome, share/progress logic, and FAQ toggle script
+- `TASKS.md` - updated TASK-029 status to DONE
+- `REPORT.md` - appended TASK-029 execution report
+- `PROJECT_STATE.md` - updated current status, active tasks, completed tasks, and implemented capability summary
+
+### Acceptance Criteria Results
+- [x] `blog/_listicle-template.html` exists and is valid HTML - passed
+- [x] Template includes: ToC, Quick Picks table, App Card placeholder, Comparison Table, FAQ accordion - passed
+- [x] FAQ accordion opens/closes on click with proper `aria-expanded` - passed
+- [x] Template has TWO JSON-LD blocks (Article+ItemList, FAQPage) - passed
+- [x] `styles.css` has all 6 new component blocks (toc, quick-picks, app-card, comparison-table, faq, highlight) - passed
+- [x] App card renders with icon, name, rating, meta, pros/cons, verdict - passed
+- [x] Comparison table scrolls horizontally on mobile - passed
+- [x] Quick picks table hides 3rd column on mobile - passed
+- [x] All new CSS follows existing conventions (same color variables, same border-radius, same spacing scale) - passed
+- [x] No existing styles broken - passed
+- [x] Template inherits site header, footer, ambient embers, reading progress from `_template.html` - passed
+
+### Behavior changes
+Behavior changes: none.
+
+### Verification
+- PASSED
+- Verified local rendering at `http://localhost:8080/blog/_listicle-template.html` (HTTP 200, no console errors).
+- Verified FAQ behavior via Playwright runtime checks: `aria-expanded` toggles `false -> true -> false`, `.faq-item.open` toggles accordingly.
+- Verified mobile (`375x812`) behavior via Playwright: no page overflow, app card stacks, quick-picks 3rd column hidden, comparison table wrapper is horizontally scrollable (`scrollWidth > clientWidth`).
+- Validated HTML with W3C validator API (`validator.w3.org/nu`): `0` errors.
+- Parsed both JSON-LD blocks as valid JSON locally.
+
+### Issues encountered
+Initial validator run found 2 errors (favicon data URI encoding and empty app icon `src` placeholder). Both were fixed, then validator returned 0 errors.
+
+### Recommended next action
+Proceed to `TASK-030` and use `blog/_listicle-template.html` + `docs/research/breathwork-apps.md` as the production base for the final listicle article.

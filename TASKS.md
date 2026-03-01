@@ -36,7 +36,7 @@ Goal: Research 10-12 breathwork apps (features, pricing, ratings), analyze top 3
 ---
 
 ## [TASK-029] Listicle article template + CSS components
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none

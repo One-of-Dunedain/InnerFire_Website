@@ -1336,9 +1336,347 @@ footer {
   margin-bottom: 12px;
 }
 
+/* ---------------------------------------------------
+   LISTICLE - Table of Contents
+   --------------------------------------------------- */
+.article-toc {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 40px;
+}
+.article-toc-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.article-toc ol {
+  list-style: none;
+  counter-reset: toc;
+  padding: 0;
+}
+.article-toc li {
+  counter-increment: toc;
+  margin-bottom: 8px;
+}
+.article-toc li::before {
+  content: counter(toc) ".";
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+.article-toc a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.article-toc a:hover {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------
+   LISTICLE - Quick Picks
+   --------------------------------------------------- */
+.quick-picks {
+  margin-bottom: 48px;
+}
+.quick-picks h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.quick-picks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.quick-picks-table th,
+.quick-picks-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.95rem;
+}
+.quick-picks-table th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.quick-picks-table td:first-child {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.quick-picks-table td a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.quick-picks-table td a:hover {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------
+   LISTICLE - App Review Card
+   --------------------------------------------------- */
+.app-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+.app-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.app-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.app-card-info {
+  flex: 1;
+}
+.app-card-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.app-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.app-card-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 138, 61, 0.3);
+  background: rgba(255, 138, 61, 0.08);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-left: auto;
+}
+.app-card-description {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.app-card-rating {
+  color: var(--accent2);
+  font-weight: 600;
+}
+.app-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.app-card-pros,
+.app-card-cons {
+  padding: 0;
+  list-style: none;
+}
+.app-card-pros-title,
+.app-card-cons-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.app-card-pros-title {
+  color: #4ade80;
+}
+.app-card-cons-title {
+  color: #f87171;
+}
+.app-card-pros li,
+.app-card-cons li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.app-card-pros li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: #4ade80;
+  font-weight: 700;
+}
+.app-card-cons li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: #f87171;
+  font-weight: 700;
+}
+.app-card-verdict {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.app-card-verdict strong {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------
+   LISTICLE - Comparison Table
+   --------------------------------------------------- */
+.comparison-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 48px;
+  -webkit-overflow-scrolling: touch;
+}
+.comparison-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: top;
+}
+.comparison-table th {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+}
+.comparison-table td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.comparison-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.comparison-table .highlight-row {
+  background: rgba(255, 138, 61, 0.04);
+  border-left: 2px solid var(--accent);
+}
+.comparison-table .highlight-row:hover {
+  background: rgba(255, 138, 61, 0.07);
+}
+
+/* ---------------------------------------------------
+   LISTICLE - FAQ Accordion
+   --------------------------------------------------- */
+.faq-section {
+  margin-bottom: 48px;
+}
+.faq-section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+.faq-question:hover {
+  color: var(--accent);
+}
+.faq-question::after {
+  content: "+";
+  font-size: 1.2rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  margin-left: 16px;
+  transition: transform 0.2s;
+}
+.faq-item.open .faq-question::after {
+  content: "-";
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 500px;
+}
+.faq-answer-inner {
+  padding: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ---------------------------------------------------
+   LISTICLE - Highlight / Callout Box
+   --------------------------------------------------- */
+.listicle-highlight {
+  background: rgba(255, 138, 61, 0.04);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.listicle-highlight strong {
+  color: var(--accent);
+}
+
 @media (max-width: 480px) {
   .blog-card:hover { transform: none; }
   .blog-card-share { opacity: 0.7; }
+
+  /* Listicle mobile */
+  .app-card { padding: 20px; }
+  .app-card-header { flex-direction: column; }
+  .app-card-icon { width: 48px; height: 48px; }
+  .app-card-badge { margin-left: 0; }
+  .app-card-grid { grid-template-columns: 1fr; }
+  .quick-picks-table th:nth-child(3),
+  .quick-picks-table td:nth-child(3) { display: none; }
+  .comparison-table { font-size: 0.82rem; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
