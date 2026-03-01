@@ -243,3 +243,46 @@ Replaced all placeholder app icons used in `blog/best-breathwork-apps.html` with
 ### Recommended next action
 Proceed with `TASK-033` (article UX/UI improvements) or `TASK-024` depending on orchestration priority.
 
+---
+## [TASK-036] Pricing & monetization deep-dive for all breathwork apps
+Date: 2026-03-01
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created full pricing/monetization research file `docs/research/breathwork-apps-pricing.md` for all 11 apps (10 comparison apps + InnerFire) in 3 batches. Documented subscription tiers (monthly/yearly/lifetime/one-time), yearly effective monthly cost, free-tier split, trial/cancel mechanics, paywall behavior signals, dark-pattern risk notes, and compiled a final summary comparison table. Used official App Store listing data plus app descriptions and Apple subscription flow docs; where public SKU mapping was ambiguous, marked values as `Unverified` instead of guessing.
+
+### Files changed
+- `docs/research/breathwork-apps-pricing.md` - created full pricing and monetization deep-dive document with per-app sections and summary table
+- `TASKS.md` - updated TASK-036 status from TODO to DONE
+- `PROJECT_STATE.md` - updated current status, active tasks list, capabilities, and completed task registry
+- `REPORT.md` - appended TASK-036 execution report
+
+### Acceptance Criteria Results
+- [x] All 11 apps (10 + InnerFire) have complete pricing entries - passed
+- [x] Monthly AND yearly prices listed for all subscription apps - passed (explicit values shown; ambiguous Breathwrk annual mapping marked Unverified from official SKU list)
+- [x] Effective monthly cost calculated for yearly plans - passed
+- [x] Free tier breakdown with specific feature availability for each app - passed
+- [x] Trial details: length, auto-renew, CC required - passed (unknowns explicitly marked Unverified)
+- [x] Paywall behavior described for each app - passed
+- [x] Cancel ease rated for each app - passed
+- [x] Summary comparison table compiled with all apps - passed
+- [x] All prices verified from official sources (App Store / website), not guessed - passed
+- [x] Any dark patterns or pricing controversies noted - passed
+
+### Behavior changes
+Behavior changes: none.
+
+### Verification
+- PASSED
+- Verified file exists and contains all required app sections (`11/11` headings present).
+- Verified summary comparison table includes all apps (11 data rows).
+- Verified pricing values were sourced from official listing pages / App Store lookup and not invented; ambiguous items are explicitly flagged `Unverified`.
+
+### Issues encountered
+- Several vendor support pages were geo/bot blocked (403/host resolution issues), limiting direct extraction of trial/cancel micro-details for some apps.
+- Some App Store listings expose multiple unlabeled SKUs (notably Breathwrk), making exact annual-plan mapping non-deterministic from public listing HTML alone.
+
+### Recommended next action
+Proceed to `TASK-034` completion (remaining Wave-2 apps) or `TASK-024` implementation, depending on orchestration priority.
+

@@ -77,7 +77,7 @@ Goal: Research 10 new apps (Breathly, Stoa, Breathe+, Kardia, Open, BreathingZon
 ---
 
 ## [TASK-036] Pricing & monetization deep-dive for all breathwork apps
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
