@@ -2,7 +2,7 @@
 
 ## Research date: 2026-03-01
 ## Sources checked: Apple App Store RSS reviews, Google Play web listings, Reddit, Trustpilot, BBB listings (where publicly reachable)
-## Progress: Batch 1-2 complete (Calm, Headspace, Breathwrk, Wim Hof Method, Prana Breath, Oak). Remaining apps pending in next batches.
+## Progress: Batch 1-3 complete (Calm, Headspace, Breathwrk, Wim Hof Method, Prana Breath, Oak, iBreathe, Insight Timer, Othership). Remaining apps pending in next batches.
 
 ---
 
@@ -224,12 +224,122 @@
 
 ---
 
-## Batch 1-2 cross-app observations (preliminary)
-- Common complaint cluster across the first 6 apps: billing clarity, support responsiveness, and mismatch between older user expectations vs current subscription models.
-- Trust signal asymmetry remains: app-store ratings can stay high while trust-platform sentiment is weaker or absent.
-- Community signal from Reddit is strongest for practical friction (bugs, pricing, restore/cancel flows), while smaller apps often have sparse discussion volume.
+### iBreathe
+
+#### User quotes
+- **Best positive review (iOS):** "This app is very customizable and fits my needs... It's not a subscription which is a big plus." - tekis, 5 stars, 2026-02-24
+  - Source: https://itunes.apple.com/us/rss/customerreviews/id=1296605806/sortBy=mostRecent/json
+- **Best negative review (iOS):** "Good app but NSFW ads... would be careful if letting kids use it." - Human?!?999, 3 stars, 2025-12-27
+  - Source: https://itunes.apple.com/us/rss/customerreviews/id=1296605806/sortBy=mostRecent/json
+- **Recurring negative themes:** ad quality complaints in free tier, tip-jar/monetization prompts after sessions, requests for better sync/background behavior.
+
+#### Reddit sentiment
+- Thread: https://www.reddit.com/r/Anxiety/comments/o78a2r/i_recommend_using_the_ibreathe_app/ - Positive recommendation for anxiety support.
+- Thread: https://www.reddit.com/r/Anxiety/comments/fkgby7/ibreathe_app_for_box_breathing_is_helping/ - Positive practical use case for box-breathing regulation.
+- Overall Reddit sentiment: **Positive, but low-volume and mostly confined to anxiety-focused threads**.
+
+#### Billing transparency
+- Rating: **GREEN**
+- Trial trap reports: **No strong pattern found** in sampled reviews.
+- Cancellation ease: **Easy / low-risk** (billing profile appears mostly one-time upsell + ad-removal purchases rather than heavy recurring subscription flow).
+- Notable complaints:
+  - Complaints are mostly about ad experience and tip prompts, not unauthorized recurring charges.
+- Sources:
+  - https://apps.apple.com/us/app/ibreathe-relax-and-breathe/id1296605806
+  - https://itunes.apple.com/us/rss/customerreviews/id=1296605806/sortBy=mostHelpful/json
+  - https://itunes.apple.com/us/rss/customerreviews/id=1296605806/sortBy=mostRecent/json
+
+#### Trustpilot / BBB / SiteJabber
+- Trustpilot: no public profile found at expected parent-domain slug (404 at capture time).
+  - Source: https://www.trustpilot.com/review/jadelizardsoftware.com
+- BBB: direct search endpoints returned 403 in this environment; no reliable complaint count extracted in this batch.
+  - Source: https://www.bbb.org/search?find_text=Jade%20Lizard%20Software
+- SiteJabber: domain resolves to SmartCustomer profile shell, but no clear high-signal rating extracted.
+  - Source: https://www.sitejabber.com/reviews/jadelizardsoftware.com
+
+---
+
+### Insight Timer
+
+#### User quotes
+- **Best positive review (iOS):** "This app is a key part of mine and my kids lives... free content so you can use it when you are at your lowest." - 1GratefulPalmer, 5 stars, 2026-02-27
+  - Source: https://itunes.apple.com/us/rss/customerreviews/id=337472899/sortBy=mostRecent/json
+- **Best negative review (Google Play):** "Premium courses are right in your face... so eager to push me into premium immediately." - Grant, 1 star, 2026-02-25
+  - Source: https://play.google.com/store/apps/details?id=com.spotlightsix.zentimerlite2&hl=en_US&gl=US&showAllReviews=true
+- **Recurring negative themes:** upsell/premium pressure, login/account friction, feature sprawl and too many pre-session prompts for users who want simple timer flow.
+
+#### Reddit sentiment
+- Thread: https://www.reddit.com/r/Meditation/comments/1l0utbc/got_rid_of_insight_timer_because_of_too_much/ - Negative around salesy UX changes and friction.
+- Thread: https://www.reddit.com/r/Meditation/comments/jrkh16/does_anyone_here_use_insight_timer_app/ - Mixed-to-positive user discussion on utility and content depth.
+- Overall Reddit sentiment: **Mixed (strong value signal, but notable UX/premium-friction complaints)**.
+
+#### Billing transparency
+- Rating: **YELLOW**
+- Trial trap reports: **Some reports** (including Trustpilot complaints about unexpected/renewed charges and cancellation friction).
+- Cancellation ease: **Moderate** (official terms disclose auto-renew and account-level control, but user complaint signal around charge handling remains).
+- Notable complaints:
+  - Play/iOS users reporting aggressive premium surfacing and account access friction.
+  - Trustpilot reviews include unauthorized/renewal dispute claims in sampled entries.
+- Sources:
+  - https://itunes.apple.com/lookup?id=337472899&country=us
+  - https://itunes.apple.com/us/rss/customerreviews/id=337472899/sortBy=mostRecent/json
+  - https://play.google.com/store/apps/details?id=com.spotlightsix.zentimerlite2&hl=en_US&gl=US&showAllReviews=true
+  - https://www.trustpilot.com/review/www.insighttimer.com
+
+#### Trustpilot / BBB / SiteJabber
+- Trustpilot: profile exists for `www.insighttimer.com` with substantial review volume and mixed sentiment.
+  - Captured schema signal: **4.5/5, 141 reviews** (page-embedded structured data at capture time).
+  - Source: https://www.trustpilot.com/review/www.insighttimer.com
+- BBB: direct search endpoints returned 403 in this environment; no reliable complaint count extracted in this batch.
+  - Source: https://www.bbb.org/search?find_text=Insight%20Timer
+- SiteJabber: domain resolves to SmartCustomer profile shell, but no clear high-signal rating extracted.
+  - Source: https://www.sitejabber.com/reviews/insighttimer.com
+
+---
+
+### Othership
+
+#### User quotes
+- **Best positive review (iOS):** "Othership has been an absolute lifeline for me... using [it] on a daily basis because of how incredible it is." - joanna_denson, 5 stars, 2023-05-04
+  - Source: https://itunes.apple.com/us/rss/customerreviews/id=1590348936/sortBy=mostHelpful/json
+- **Best negative review (Google Play):** "I was charged... now all of the content is locked and I can't access anything." - Nicole Callahan, 2 stars, 2022-07-01
+  - Source: https://play.google.com/store/apps/details?id=com.breathwork.othership&hl=en_US&gl=US&showAllReviews=true
+- **Recurring negative themes:** high subscription cost sensitivity, occasional support latency, occasional content-access and audio-mix complaints.
+
+#### Reddit sentiment
+- Thread: https://www.reddit.com/r/Meditation/comments/1ca33u2/othership_app_users_have_you_found_anything_weird/ - Mixed thread: curiosity and concern around session effects/fit.
+- Thread: https://www.reddit.com/r/breathwork/comments/1qmev5j/what_are_the_best_apps_for_breathwork/ - Mixed comparison mentions; Othership appears as a premium guided option.
+- Overall Reddit sentiment: **Mixed, with limited but visible mention volume in core breathwork discussions**.
+
+#### Billing transparency
+- Rating: **YELLOW**
+- Trial trap reports: **Some reports** (sampled reviews mention charges plus temporary content lock/access confusion).
+- Cancellation ease: **Moderate** (store-managed subscriptions, but complaint signal around post-charge access/support response exists).
+- Notable complaints:
+  - Price is frequently cited as a barrier.
+  - A subset of users report billing/access mismatch after renewal.
+- Sources:
+  - https://apps.apple.com/us/app/othership-guided-breathwork/id1590348936
+  - https://itunes.apple.com/us/rss/customerreviews/id=1590348936/sortBy=mostRecent/json
+  - https://play.google.com/store/apps/details?id=com.breathwork.othership&hl=en_US&gl=US&showAllReviews=true
+  - https://www.othership.us
+
+#### Trustpilot / BBB / SiteJabber
+- Trustpilot: page exists but currently shows "Be the first to review" style profile state for `www.othership.us` (no robust review corpus extracted in this batch).
+  - Source: https://www.trustpilot.com/review/www.othership.us
+- BBB: direct search endpoints returned 403 in this environment; no reliable complaint count extracted in this batch.
+  - Source: https://www.bbb.org/search?find_text=Othership
+- SiteJabber: domain resolves to SmartCustomer profile shell, but no clear high-signal rating extracted.
+  - Source: https://www.sitejabber.com/reviews/othership.us
+
+---
+
+## Batch 1-3 cross-app observations (preliminary)
+- Common complaint cluster across the first 9 apps: billing clarity, support responsiveness, and mismatch between user expectations vs evolving subscription-first UX.
+- Smaller apps often show sparse third-party trust-platform footprints (Trustpilot/BBB/SiteJabber), so App Store + Reddit signals carry more weight.
+- Timer-first apps (iBreathe) show less billing-risk signal, while ecosystem apps (Insight Timer/Othership) show stronger upsell and account-friction complaint patterns.
 
 ## Pending for next batches
-- Remaining app entries: iBreathe, Insight Timer, Othership, Box Breathe, InnerFire.
+- Remaining app entries: Box Breathe, InnerFire.
 - Industry-wide issues section (privacy/news/"app graveyard") will be finalized after all app entries are completed.
 - InnerFire positioning section (no billing history + no public reviews yet) will be added in final pass.
