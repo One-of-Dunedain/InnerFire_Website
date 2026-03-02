@@ -487,3 +487,57 @@ None.
 
 ### Recommended next action
 Proceed to next active TODO by priority (`TASK-024` or `TASK-034`) and keep `TASK-038` as baseline for any further mobile listicle refinements.
+
+---
+## [TASK-039] Article UX/UI polish — forms, spacing, consistency fixes
+Date: 2026-03-02
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Completed UX/UI polish for the 16-app article: added `first_name` field to both Kit forms, moved InnerFire signup block to the bottom of the card (after verdict), restyled InnerFire signup and bottom CTA forms for consistent two-field behavior, tightened mobile spacing/typography on small screens, added tiny-screen Quick Picks column collapse, and validated comparison-table completeness and section-separator consistency.
+
+### Files changed
+- `blog/best-breathwork-apps.html` — added `fields[first_name]` to InnerFire and bottom CTA forms; moved InnerFire `.app-card-signup` below `.app-card-verdict`
+- `styles.css` — redesigned `.app-card-signup*` block, updated `.article-cta-form` layout, added desktop 2-column form grids, tightened `<480px` article/card spacing, and added `<380px` Quick Picks column hide rule
+- `TASKS.md` — updated TASK-039 status from TODO to DONE
+- `REPORT.md` — appended TASK-039 execution report
+- `PROJECT_STATE.md` — updated current status, capability list, and completed tasks
+
+### Acceptance Criteria Results
+- [x] InnerFire card form: has first_name + email fields — passed
+- [x] Bottom CTA form: has first_name + email fields — passed
+- [x] Both forms use `name="fields[first_name]"` matching Kit.com / index.html pattern — passed
+- [x] InnerFire `.app-card-signup` is positioned AFTER the verdict (not between description and pros/cons) — passed
+- [x] `.app-card-signup` has warm accent border, not generic grey — passed
+- [x] Both forms work: fields required, submit posts to Kit.com — passed (action/method and required fields verified on both forms)
+- [x] Mobile 375px: cards are tighter (14px padding, 12px gap) — passed
+- [x] Mobile 375px: article container has 12px side padding (less wasted space) — passed
+- [x] Mobile 375px: text sizes reduced proportionally (names, meta, pricing) — passed
+- [x] Desktop: forms show inputs side-by-side in grid, submit centered below — passed
+- [x] Reading progress bar visible at top of page — passed
+- [x] Quick Picks table hides "Free tier" column on <380px screens — passed
+- [x] All 16 apps present in comparison table — passed
+- [x] All section separators consistent — passed
+- [x] No broken layouts at 375px, 480px, 768px, 1024px, 1920px — passed
+
+### Behavior changes
+- InnerFire review card now ends with a polished beta signup module (after verdict) with First Name + Email.
+- Bottom article CTA now matches landing-page field pattern (First Name + Email) and uses responsive 2-column desktop layout.
+- Small-screen readability improved with tighter spacing and a more compact Quick Picks table.
+
+### Verification
+- PASSED
+- Verified DOM and computed styles with Playwright at `375x812`, `480x900`, `768x900`, `1024x900`, and `1920x1080`.
+- Verified form wiring for both forms: action `https://app.kit.com/forms/9132207/subscriptions`, method `post`, required `fields[first_name]` + `email_address`.
+- Verified InnerFire signup order is after verdict in document flow.
+- Verified comparison table row count is `16`.
+- Verified separator styling parity for all major section IDs.
+- Verified mobile collapse/anchor/next-link behavior from TASK-037/038 still works.
+- Verified no browser console errors.
+
+### Issues encountered
+One CSS cascade conflict (`max-width: 768px` overriding part of `max-width: 480px`) caused 375px cards to stay at 16px padding; resolved by adding a final `<480px` override block after base mobile rules.
+
+### Recommended next action
+Proceed with remaining TODO backlog in queue (`TASK-024`, `TASK-034`) and keep TASK-039 as the new UX baseline for article-form consistency.

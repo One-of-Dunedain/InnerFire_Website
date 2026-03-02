@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-02
-## Current status: TASK-038 completed; 2 active tasks remaining (TASK-024, TASK-034)
+## Current status: TASK-039 completed; 2 active tasks remaining (TASK-024, TASK-034)
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (includes published listicle card for "Best Breathwork Apps (2026)")
 
-### Implemented capabilities (TASK-001-023 + TASK-025 through TASK-037 complete)
+### Implemented capabilities (TASK-001-023 + TASK-025 through TASK-039 complete)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -51,6 +51,7 @@
 - Pricing/monetization research corpus created for all 11 article apps in `docs/research/breathwork-apps-pricing.md`: subscription tiers, effective yearly monthly cost, free-tier split, trial and cancel flow notes, paywall/dark-pattern signals, and final comparison table (TASK-036)
 - Mobile listicle UX polish for `blog/best-breathwork-apps.html`: app-count badge, quick filter chips, mobile collapsible app cards, auto-generated "Next app" links, smooth anchor scrolling with mobile auto-expand, and hash-load card auto-expand for deep links (TASK-037)
 - Mobile app-card layout overhaul for `blog/best-breathwork-apps.html`: grid-based compact mobile headers (icon/name/rating+price hint/badge/toggle), hidden noisy meta in collapsed state, expanded-body platforms/store row, and 16-card `data-price-hint` system with mobile-only rendering (TASK-038)
+- Article UX/UI consistency polish for `blog/best-breathwork-apps.html`: First Name + Email on both Kit forms, InnerFire signup moved after verdict with warm in-card styling, desktop two-column form grids, tighter mobile spacing at 480px, and tiny-screen Quick Picks responsiveness (TASK-039)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -124,6 +125,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-036 (DONE)
 - TASK-037 (DONE)
 - TASK-038 (DONE)
+- TASK-039 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system

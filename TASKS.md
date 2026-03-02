@@ -117,7 +117,7 @@ Goal: Redesign mobile (<768px) app card layout. Grid-based header with icon/name
 ---
 
 ## [TASK-039] Article UX/UI polish — forms, spacing, consistency fixes
-Status: TODO
+Status: DONE
 Priority: Critical
 Owner: Executor AI
 Depends on: TASK-038 (DONE)

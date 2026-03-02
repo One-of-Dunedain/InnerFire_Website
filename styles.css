@@ -1343,8 +1343,18 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 12px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.article-cta-form .email-input {
+  max-width: none;
+  width: 100%;
+}
+.article-cta-form .btn-primary {
+  width: 100%;
 }
 
 /* ---------------------------------------------------
@@ -1667,37 +1677,40 @@ footer {
   color: var(--muted);
 }
 .app-card-signup {
-  margin: 16px 0;
-  padding: 18px;
+  margin: 20px 0 0 0;
+  padding: 20px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 138, 61, 0.04);
+  border: 1px solid rgba(255, 138, 61, 0.12);
 }
 .app-card-signup-title {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 4px;
+  text-transform: none;
+  letter-spacing: normal;
 }
 .app-card-signup-text {
   color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: 12px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
 }
 .app-card-signup-form {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  align-items: center;
 }
 .app-card-signup-form .email-input {
   max-width: none;
   width: 100%;
+  padding: 12px 14px;
+  font-size: 0.92rem;
 }
 .app-card-signup-form .btn-primary {
-  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  padding: 12px 20px;
 }
 
 /* UGC quotes */
@@ -1963,12 +1976,86 @@ footer {
   .blog-card-share { opacity: 0.7; }
 
   /* Listicle mobile */
+  .article-container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .app-card {
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+  .app-card-header {
+    gap: 0 10px;
+  }
+  .app-card-name {
+    font-size: 1rem;
+  }
+  .app-card-meta {
+    font-size: 0.78rem;
+  }
+  .app-card-badge {
+    font-size: 0.68rem;
+    padding: 1px 6px;
+  }
+  .app-card-body {
+    padding-top: 2px;
+  }
+  .app-card-description {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .app-card-pricing {
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .app-card-pricing ul {
+    font-size: 0.82rem;
+  }
   .app-card-grid { grid-template-columns: 1fr; }
-  .app-card-signup-form { grid-template-columns: 1fr; }
+  .app-card-grid {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .app-card-pros li,
+  .app-card-cons li {
+    font-size: 0.84rem;
+  }
+  .ugc-quote {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+  .app-card-verdict {
+    font-size: 0.85rem;
+    padding-top: 10px;
+  }
+  .quick-picks-table {
+    font-size: 0.8rem;
+  }
   .quick-picks-table th:nth-child(3),
   .quick-picks-table td:nth-child(3) { display: none; }
+  .filter-chips .filter-chip {
+    padding: 5px 12px;
+    font-size: 0.78rem;
+  }
+  .article-body h2 {
+    font-size: 1.2rem;
+    margin-top: 32px;
+  }
+  .article-cta-card {
+    padding: 28px 16px;
+  }
+  .article-cta-card h3 {
+    font-size: 1.1rem;
+  }
   .comparison-table { font-size: 0.82rem; }
   .comparison-table th, .comparison-table td { padding: 10px 8px; }
+}
+
+@media (max-width: 380px) {
+  .quick-picks-table th:nth-child(4),
+  .quick-picks-table td:nth-child(4) { display: none; }
 }
 
 @media (max-width: 768px) {
@@ -2140,6 +2227,46 @@ footer {
   }
 }
 
+/* Fine-tune very small screens after base mobile rules */
+@media (max-width: 480px) {
+  .app-card {
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+  .app-card-header {
+    gap: 0 10px;
+  }
+  .app-card-name {
+    font-size: 1rem;
+  }
+  .app-card-meta {
+    font-size: 0.78rem;
+  }
+  .app-card-badge {
+    font-size: 0.68rem;
+    padding: 1px 6px;
+  }
+  .app-card-body {
+    padding-top: 2px;
+  }
+  .app-card-pricing {
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .app-card-pricing ul {
+    font-size: 0.82rem;
+  }
+  .ugc-quote {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+  .app-card-verdict {
+    font-size: 0.85rem;
+    padding-top: 10px;
+  }
+}
+
 @media (min-width: 481px) and (max-width: 768px) {
   .blog-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -2149,6 +2276,27 @@ footer {
   .app-card-body { display: block !important; }
   .app-card-next { display: none; }
   .price-hint { display: none; }
+  .app-card-signup-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .app-card-signup-form .btn-primary {
+    grid-column: 1 / -1;
+    max-width: 280px;
+    justify-self: center;
+  }
+  .article-cta-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 520px;
+  }
+  .article-cta-form .btn-primary {
+    grid-column: 1 / -1;
+    max-width: 280px;
+    justify-self: center;
+  }
 }
 
 @media (min-width: 769px) {
