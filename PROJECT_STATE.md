@@ -1,7 +1,7 @@
 # Project State
 
-## Last updated: 2026-03-01
-## Current status: TASK-033 completed; 2 active tasks remaining (TASK-024, TASK-034)
+## Last updated: 2026-03-02
+## Current status: TASK-035 completed; 3 active tasks remaining (TASK-024, TASK-034, TASK-037)
 
 ---
 
@@ -15,7 +15,7 @@
 - `content/` - product/docs assets
 - `blog/posts.json` - blog post manifest (includes published listicle card for "Best Breathwork Apps (2026)")
 
-### Implemented capabilities (TASK-001-023 + TASK-025 through TASK-031 complete)
+### Implemented capabilities (TASK-001-023 + TASK-025 through TASK-036 complete)
 - SEO/OG/Twitter meta tags
 - Flame emoji favicon on all pages
 - Kit email form (Email + First Name)
@@ -47,6 +47,7 @@
 - UGC/trust-signal research corpus created in `docs/research/breathwork-apps-ugc.md` with sourced user quotes, billing transparency ratings, Reddit sentiment, Trustpilot/BBB/SiteJabber checks, plus privacy/graveyard industry synthesis (TASK-031)
 - Official app icon pack for listicle cards: replaced placeholder assets with real 112x112 PNG icons for all 11 compared apps in `assets/images/apps/`, including brand-aligned `innerfire.png` fallback; verified all article card icons render without broken placeholders (TASK-032)
 - Long-form article navigation upgrades for `blog/best-breathwork-apps.html`: desktop sticky ToC sidebar with active section highlighting, floating back-to-top control, mobile comparison table "Scroll →" hint with first-scroll dismissal, and section rhythm separators for major groups (TASK-033)
+- Deep article rewrite for `blog/best-breathwork-apps.html`: human-tone copy refresh, 16 full app cards with pricing+UGC+billing badges, 6 integrated Wave 2 apps, expanded quick picks, concise FAQ refresh, and 16-row pricing/billing comparison matrix (TASK-035)
 - Pricing/monetization research corpus created for all 11 article apps in `docs/research/breathwork-apps-pricing.md`: subscription tiers, effective yearly monthly cost, free-tier split, trial and cancel flow notes, paywall/dark-pattern signals, and final comparison table (TASK-036)
 
 ### What is NOT done yet
@@ -94,6 +95,7 @@ Static blog with JSON manifest. No build step.
 ## Active tasks
 - [TASK-024] GA4 + Clarity custom event tracking code (TODO)
 - [TASK-034] Research 10 additional breathwork apps (Wave 2 expansion) (TODO)
+- [TASK-037] Mobile UX polish for long listicle article (16+ apps) (TODO)
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -117,6 +119,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-031 (DONE)
 - TASK-032 (DONE)
 - TASK-033 (DONE)
+- TASK-035 (DONE)
 - TASK-036 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
@@ -142,4 +145,6 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - Hosted: GitHub Pages (intended)
 - Email service: Kit (HTML form POST endpoint)
 - Analytics: GA4 + Microsoft Clarity placeholders integrated (IDs pending)
+
+
 

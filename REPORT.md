@@ -333,3 +333,53 @@ None.
 ### Recommended next action
 Proceed to the next TODO task in queue: `TASK-024` or `TASK-034` per Orchestrator priority.
 
+---
+## [TASK-035] Rewrite article content - human tone, UGC, pricing, Wave 2 apps
+Date: 2026-03-02
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Reworked `blog/best-breathwork-apps.html` into a human-tone comparison article with full pricing transparency, UGC blocks, and billing badges across all app cards; added the missing Wave 2 cards (Breathly, Stoa, Breathe+, Open, Breathing Zone, Breath Ball), rewrote section intros and FAQ answers, expanded quick picks to 16 apps, and rebuilt the comparison table to 16 rows with monthly/yearly/free-tier/trial/billing columns while preserving existing page layout and inline script behavior.
+
+### Files changed
+- `blog/best-breathwork-apps.html` - rewritten article content, added 6 Wave 2 cards, upgraded all existing cards with pricing/UGC/billing, updated quick picks, section intros, FAQ answers, and 16-row comparison table
+- `styles.css` - added app-card pricing block, UGC quote blocks, billing badge styles, and icon placeholder styles used by the updated article cards
+- `TASKS.md` - updated TASK-035 status from TODO to DONE
+- `REPORT.md` - appended TASK-035 execution report
+- `PROJECT_STATE.md` - updated current status, active tasks, and implemented capabilities
+
+### Acceptance Criteria Results
+- [x] ALL text content rewritten in human, honest tone (no keyword stuffing, no AI filler) - passed
+- [x] Each of 10 existing app cards has: pricing block, UGC quotes (positive + negative), billing badge, rewritten description + verdict - passed
+- [x] 6 Wave 2 app cards added with complete content (same structure as existing cards) - passed
+- [x] Comparison table updated: 16 apps, pricing columns, billing rating column - passed
+- [x] Quick Picks table updated with pricing column and new apps - passed
+- [x] Schema.org updated: 16 items, correct prices, updated dateModified - passed
+- [x] Section intros rewritten (short, natural, no keyword spam) - passed
+- [x] FAQ answers rewritten (concise, include pricing where relevant) - passed
+- [x] Meta description updated - passed
+- [x] CSS for new components added to styles.css - passed
+- [x] All pricing data matches research files (no guessing) - passed (unknown values explicitly marked `Unverified`)
+- [x] InnerFire treated honestly - not promoted over others - passed
+- [x] No broken links or missing assets - passed
+- [x] Inline script block unchanged - passed
+
+### Behavior changes
+- `blog/best-breathwork-apps.html` now contains 16 complete app cards with pricing/UGC/billing context and improved readability for long-form comparison scanning.
+- Comparison table now supports practical pricing and billing-risk evaluation instead of feature-bloat columns.
+
+### Verification
+- PASSED
+- Verified 16 app-card section IDs and 16 matching in-page anchors (`href="#app-*"`) with no missing targets.
+- Verified quick picks row count = 16 and comparison table row count = 16.
+- Verified all 16 app sections include `.app-card-pricing`, `.app-card-ugc`, and `.billing-badge`.
+- Verified local relative asset references in article resolve with no missing files.
+- Verified no diffs in inline behavior script logic (content edits only).
+
+### Issues encountered
+- Large single-shot patch operations hit Windows command-length limits; task was completed in smaller patch batches.
+- Temporary malformed line-break literals were introduced during one regex pass and then corrected before final verification.
+
+### Recommended next action
+Proceed to `TASK-037` (mobile UX polish for 16+ app listicle), then return to `TASK-024` analytics events and `TASK-034` completion.

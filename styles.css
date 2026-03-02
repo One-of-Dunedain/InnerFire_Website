@@ -1548,6 +1548,100 @@ footer {
   color: var(--accent);
 }
 
+/* Pricing block inside app card */
+.app-card-pricing {
+  margin: 16px 0;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.app-card-pricing-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.app-card-pricing ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.92rem;
+}
+.app-card-pricing li {
+  padding: 4px 0;
+  color: var(--muted);
+}
+
+/* UGC quotes */
+.app-card-ugc {
+  margin: 16px 0;
+  display: grid;
+  gap: 12px;
+}
+.ugc-quote {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  border-left: 3px solid;
+}
+.ugc-positive {
+  border-left-color: #44aa55;
+  background: rgba(68, 170, 85, 0.06);
+}
+.ugc-negative {
+  border-left-color: #cc5544;
+  background: rgba(204, 85, 68, 0.06);
+}
+.ugc-quote cite {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--muted);
+}
+
+/* Billing badges */
+.billing-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.billing-green {
+  background: rgba(68, 170, 85, 0.15);
+  color: #6fc97a;
+}
+.billing-yellow {
+  background: rgba(230, 180, 50, 0.15);
+  color: #e6b432;
+}
+.billing-red {
+  background: rgba(204, 85, 68, 0.15);
+  color: #e06655;
+}
+
+/* Icon placeholder for apps without downloaded icons */
+.app-card-icon-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(255, 138, 61, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
 /* ---------------------------------------------------
    LISTICLE - Comparison Table
    --------------------------------------------------- */

@@ -87,7 +87,7 @@ Goal: Research exact pricing (monthly/yearly/lifetime), free tier feature split,
 ---
 
 ## [TASK-035] Rewrite article content — human tone, UGC, pricing, Wave 2 apps
-Status: TODO
+Status: DONE
 Priority: Critical
 Owner: Executor AI
 Depends on: TASK-031 (DONE), TASK-036 (DONE), TASK-034 (partial)
@@ -103,3 +103,4 @@ Owner: Executor AI
 Depends on: TASK-035
 Spec: tasks/active/TASK-037.md
 Goal: Add collapsible app cards on mobile, quick filter chips, "Next app" links, smooth anchor + auto-expand, app count badge. Make 16+ app article feel fast and navigable on mobile.
+
