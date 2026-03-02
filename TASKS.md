@@ -2,7 +2,7 @@
 
 Active task index only. Full task specifications are stored in `tasks/active/`.
 Completed and superseded tasks are archived in `archive/tasks/`.
-Last updated: 2026-03-01
+Last updated: 2026-03-02
 
 Archived blocks:
 - `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -83,3 +83,23 @@ Owner: Executor AI
 Depends on: none
 Spec: tasks/active/TASK-036.md
 Goal: Research exact pricing (monthly/yearly/lifetime), free tier feature split, trial mechanics (length, auto-renew, CC upfront), paywall behavior, dark patterns, cancel ease for all 11 apps. Output to docs/research/breathwork-apps-pricing.md.
+
+---
+
+## [TASK-035] Rewrite article content — human tone, UGC, pricing, Wave 2 apps
+Status: TODO
+Priority: Critical
+Owner: Executor AI
+Depends on: TASK-031 (DONE), TASK-036 (DONE), TASK-034 (partial)
+Spec: tasks/active/TASK-035.md
+Goal: Rewrite all article text to honest human tone. Add pricing blocks, UGC quotes, billing badges to each app card. Add 6 Wave 2 apps. Update comparison table, Schema.org, meta. No keyword stuffing.
+
+---
+
+## [TASK-037] Mobile UX polish for long listicle article (16+ apps)
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: TASK-035
+Spec: tasks/active/TASK-037.md
+Goal: Add collapsible app cards on mobile, quick filter chips, "Next app" links, smooth anchor + auto-expand, app count badge. Make 16+ app article feel fast and navigable on mobile.
