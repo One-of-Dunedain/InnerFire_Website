@@ -104,3 +104,22 @@ Depends on: TASK-035
 Spec: tasks/active/TASK-037.md
 Goal: Add collapsible app cards on mobile, quick filter chips, "Next app" links, smooth anchor + auto-expand, app count badge. Make 16+ app article feel fast and navigable on mobile.
 
+---
+
+## [TASK-038] Mobile app card layout overhaul
+Status: DONE
+Priority: Critical
+Owner: Executor AI
+Depends on: TASK-035 (DONE), TASK-037 (DONE)
+Spec: tasks/active/TASK-038.md
+Goal: Redesign mobile (<768px) app card layout. Grid-based header with icon/name/rating/price-hint/badge only. Hide platforms + store links from collapsed state, show in expanded body. Reduce padding. Add price hints via data attributes. Zero desktop changes.
+
+---
+
+## [TASK-039] Article UX/UI polish — forms, spacing, consistency fixes
+Status: TODO
+Priority: Critical
+Owner: Executor AI
+Depends on: TASK-038 (DONE)
+Spec: tasks/active/TASK-039.md
+Goal: Add first_name field to both signup forms (matching index.html Kit.com pattern). Redesign InnerFire card signup box (move after verdict, warm accent styling). Tighten mobile spacing at 480px breakpoint. Fix reading progress bar, section separators, Quick Picks responsive.

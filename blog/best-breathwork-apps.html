@@ -230,7 +230,7 @@
             <p>For anxious moments, speed beats complexity. The best options here start fast, keep cognitive load low, and do not force long setup before relief.</p>
           </section>
           <section id="app-breathwrk">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$9/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -299,7 +299,7 @@
           </section>
 
           <section id="app-headspace">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$13/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -368,7 +368,7 @@
           </section>
 
           <section id="app-breathing-zone">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="Unverified">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -437,7 +437,7 @@
           </section>
 
           <section id="app-breathe-plus">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$10/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -509,7 +509,7 @@
             <p>Sleep apps win when they remove friction at night. These options are the most consistent for wind-down routines, but price and free-tier depth vary a lot.</p>
           </section>
           <section id="app-calm">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$15/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -578,7 +578,7 @@
           </section>
 
           <section id="app-insight-timer">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$10/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -647,7 +647,7 @@
           </section>
 
           <section id="app-ibreathe">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="$3.99 once">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -719,7 +719,7 @@
             <p>If you want daily practice without subscription fatigue, this category matters most. Some apps stay useful for free, others feel free only during onboarding.</p>
           </section>
           <section id="app-oak">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="Free">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -787,7 +787,7 @@
           </section>
 
           <section id="app-breathly">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="Free">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -856,7 +856,7 @@
           </section>
 
           <section id="app-breath-ball">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="Unverified">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -925,7 +925,7 @@
           </section>
 
           <section id="app-prana-breath">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$15/yr">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -994,7 +994,7 @@
           </section>
 
           <section id="app-wim-hof">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$6/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -1067,7 +1067,7 @@
             <p>Most apps in this list pace your breathing but do not react to what your breath actually does. These picks feel more embodied, but only one currently gives true real-time breath input.</p>
           </section>
           <section id="app-innerfire">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="Free beta">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -1134,7 +1134,7 @@
           </section>
 
           <section id="app-othership">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$18/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -1214,7 +1214,7 @@
           </section>
 
           <section id="app-open">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="~$15/mo">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -1282,7 +1282,7 @@
           </section>
 
           <section id="app-stoa">
-            <div class="app-card">
+            <div class="app-card" data-price-hint="Free / $70/yr">
               <div class="app-card-header">
                 <a
                   class="app-card-link"
@@ -1793,6 +1793,70 @@
       return findCardForTarget(target);
     }
 
+    function ensureMobilePlatformsRow(header, body) {
+      if (!header || !body) return;
+      if (body.querySelector('.app-card-platforms-mobile')) return;
+
+      var meta = header.querySelector('.app-card-meta');
+      if (!meta) return;
+
+      var platformText = '';
+      Array.from(meta.children).forEach(function(child) {
+        if (platformText) return;
+        if (!child.classList) return;
+        if (child.classList.contains('app-card-rating')) return;
+        if (child.classList.contains('app-store-links')) return;
+        if (child.classList.contains('price-hint')) return;
+        if (child.classList.contains('billing-badge')) return;
+        if (child.tagName === 'SPAN') {
+          platformText = child.textContent.trim();
+        }
+      });
+
+      var linksSource = meta.querySelector('.app-store-links');
+      if (!platformText && !linksSource) return;
+
+      var row = document.createElement('div');
+      row.className = 'app-card-platforms-mobile';
+
+      if (platformText) {
+        var platformSpan = document.createElement('span');
+        platformSpan.textContent = platformText;
+        row.appendChild(platformSpan);
+      }
+
+      if (linksSource) {
+        var linksWrap = document.createElement('span');
+        linksWrap.className = 'app-store-links';
+        Array.from(linksSource.querySelectorAll('a')).forEach(function(link) {
+          linksWrap.appendChild(link.cloneNode(true));
+        });
+        if (linksWrap.children.length) {
+          row.appendChild(linksWrap);
+        }
+      }
+
+      body.insertBefore(row, body.firstChild);
+    }
+
+    function initMobilePriceHints() {
+      if (window.innerWidth > 768) return;
+
+      document.querySelectorAll('.app-card').forEach(function(card) {
+        var priceHint = card.getAttribute('data-price-hint');
+        if (!priceHint) return;
+
+        var meta = card.querySelector('.app-card-meta');
+        if (!meta) return;
+        if (meta.querySelector('.price-hint')) return;
+
+        var span = document.createElement('span');
+        span.className = 'price-hint';
+        span.textContent = '· ' + priceHint;
+        meta.appendChild(span);
+      });
+    }
+
     function prepareAppCardStructure() {
       document.querySelectorAll('.app-card').forEach(function(card) {
         var header = card.querySelector('.app-card-header');
@@ -1826,6 +1890,8 @@
           });
           card.appendChild(body);
         }
+
+        ensureMobilePlatformsRow(header, body);
 
         if (card.dataset.collapseInit === 'true') return;
 
@@ -1980,6 +2046,7 @@
     });
 
     prepareAppCardStructure();
+    initMobilePriceHints();
     initCardCollapse();
     initNextAppLinks();
     initSmoothAnchorExpand();

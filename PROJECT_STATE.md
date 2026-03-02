@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-02
-## Current status: TASK-037 completed; 2 active tasks remaining (TASK-024, TASK-034)
+## Current status: TASK-038 completed; 2 active tasks remaining (TASK-024, TASK-034)
 
 ---
 
@@ -50,6 +50,7 @@
 - Deep article rewrite for `blog/best-breathwork-apps.html`: human-tone copy refresh, 16 full app cards with pricing+UGC+billing badges, 6 integrated Wave 2 apps, expanded quick picks, concise FAQ refresh, and 16-row pricing/billing comparison matrix (TASK-035)
 - Pricing/monetization research corpus created for all 11 article apps in `docs/research/breathwork-apps-pricing.md`: subscription tiers, effective yearly monthly cost, free-tier split, trial and cancel flow notes, paywall/dark-pattern signals, and final comparison table (TASK-036)
 - Mobile listicle UX polish for `blog/best-breathwork-apps.html`: app-count badge, quick filter chips, mobile collapsible app cards, auto-generated "Next app" links, smooth anchor scrolling with mobile auto-expand, and hash-load card auto-expand for deep links (TASK-037)
+- Mobile app-card layout overhaul for `blog/best-breathwork-apps.html`: grid-based compact mobile headers (icon/name/rating+price hint/badge/toggle), hidden noisy meta in collapsed state, expanded-body platforms/store row, and 16-card `data-price-hint` system with mobile-only rendering (TASK-038)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
@@ -122,6 +123,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-035 (DONE)
 - TASK-036 (DONE)
 - TASK-037 (DONE)
+- TASK-038 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system

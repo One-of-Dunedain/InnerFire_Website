@@ -1549,6 +1549,13 @@ footer {
   color: var(--accent2);
   border-bottom-color: rgba(255, 209, 102, 0.5);
 }
+.app-card-platforms-mobile {
+  display: none;
+}
+.price-hint {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
 .app-card-badge {
   display: inline-flex;
   align-items: center;
@@ -1956,9 +1963,6 @@ footer {
   .blog-card-share { opacity: 0.7; }
 
   /* Listicle mobile */
-  .app-card { padding: 20px; }
-  .app-card-icon { width: 48px; height: 48px; }
-  .app-card-badge { margin-left: 0; }
   .app-card-grid { grid-template-columns: 1fr; }
   .app-card-signup-form { grid-template-columns: 1fr; }
   .quick-picks-table th:nth-child(3),
@@ -1968,17 +1972,70 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .app-card-header {
-    align-items: center;
-    gap: 12px;
+  .app-card {
+    padding: 16px;
+    margin-bottom: 16px;
   }
-  .app-card-badge {
-    margin-left: 0;
+  .app-card-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto;
+    gap: 0 12px;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .app-card-header .app-card-link,
+  .app-card-header .app-card-icon {
+    grid-column: 1;
+    grid-row: 1 / 4;
+  }
+  .app-card-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+  .app-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+  .app-card-info {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    min-width: 0;
+  }
+  .app-card-name {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+  .app-card-meta {
+    gap: 6px;
+    font-size: 0.8rem;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .app-card-meta > span:not(.app-card-rating):not(.price-hint) {
+    display: none;
+  }
+  .app-card-meta .app-store-links {
+    display: none;
+  }
+  .app-card-meta .app-card-rating {
+    display: inline;
+  }
+  .app-card-meta .price-hint {
+    display: inline;
   }
   .app-card-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center;
     width: 32px;
     height: 32px;
     background: transparent;
@@ -1988,11 +2045,56 @@ footer {
     cursor: pointer;
     transition: transform 0.25s ease, border-color 0.2s ease;
     flex-shrink: 0;
-    margin-left: auto;
     padding: 0;
   }
   .app-card-toggle:hover {
     border-color: rgba(255, 138, 61, 0.35);
+  }
+  .app-card-badge {
+    grid-column: 2 / 4;
+    grid-row: 3;
+    justify-self: start;
+    margin: 4px 0 0 0;
+    font-size: 0.7rem;
+    padding: 1px 8px;
+  }
+  .app-card-body {
+    padding-top: 4px;
+  }
+  .app-card-platforms-mobile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding: 12px 0 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    margin-bottom: 12px;
+  }
+  .app-card-platforms-mobile .app-store-links {
+    display: inline-flex;
+    gap: 8px;
+  }
+  .app-card-platforms-mobile .app-store-links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  .app-card-pricing {
+    padding: 12px;
+    margin: 12px 0;
+  }
+  .app-card-pricing ul {
+    font-size: 0.85rem;
+  }
+  .ugc-quote {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+  .app-card-verdict {
+    font-size: 0.88rem;
+    padding-top: 12px;
   }
   .app-card[data-expanded="false"] .app-card-body {
     display: none;
@@ -2046,6 +2148,7 @@ footer {
   .app-card-toggle { display: none; }
   .app-card-body { display: block !important; }
   .app-card-next { display: none; }
+  .price-hint { display: none; }
 }
 
 @media (min-width: 769px) {
