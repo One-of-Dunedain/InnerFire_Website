@@ -97,7 +97,7 @@ Goal: Rewrite all article text to honest human tone. Add pricing blocks, UGC quo
 ---
 
 ## [TASK-037] Mobile UX polish for long listicle article (16+ apps)
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: TASK-035

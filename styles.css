@@ -1139,6 +1139,17 @@ footer {
   font-size: 0.85rem;
   color: var(--muted);
 }
+.app-count-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(255, 138, 61, 0.08);
+  border: 1px solid rgba(255, 138, 61, 0.15);
+  margin-top: 10px;
+}
 
 /* Article share button */
 .article-share {
@@ -1385,6 +1396,37 @@ footer {
   font-weight: 600;
 }
 
+.filter-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 12px 0;
+  margin: 0 0 24px 0;
+}
+.filter-chips::-webkit-scrollbar { display: none; }
+
+.filter-chips .filter-chip {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.filter-chips .filter-chip:hover,
+.filter-chips .filter-chip:active {
+  border-color: rgba(255, 138, 61, 0.3);
+  background: rgba(255, 138, 61, 0.06);
+  color: var(--accent2);
+}
+
 /* ---------------------------------------------------
    LISTICLE - Quick Picks
    --------------------------------------------------- */
@@ -1445,6 +1487,9 @@ footer {
   gap: 16px;
   margin-bottom: 20px;
 }
+.app-card-toggle {
+  display: none;
+}
 .app-card-icon {
   width: 56px;
   height: 56px;
@@ -1471,12 +1516,12 @@ footer {
   font-weight: 700;
   margin-bottom: 4px;
 }
-.app-card-name-link {
+.app-card-name .app-card-name-link {
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.app-card-name-link:hover {
+.app-card-name .app-card-name-link:hover {
   color: var(--accent);
 }
 .app-card-meta {
@@ -1583,6 +1628,9 @@ footer {
 }
 .app-card-verdict strong {
   color: var(--accent);
+}
+.app-card-next {
+  display: none;
 }
 
 /* Pricing block inside app card */
@@ -1909,7 +1957,6 @@ footer {
 
   /* Listicle mobile */
   .app-card { padding: 20px; }
-  .app-card-header { flex-direction: column; }
   .app-card-icon { width: 48px; height: 48px; }
   .app-card-badge { margin-left: 0; }
   .app-card-grid { grid-template-columns: 1fr; }
@@ -1921,6 +1968,50 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .app-card-header {
+    align-items: center;
+    gap: 12px;
+  }
+  .app-card-badge {
+    margin-left: 0;
+  }
+  .app-card-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 0;
+  }
+  .app-card-toggle:hover {
+    border-color: rgba(255, 138, 61, 0.35);
+  }
+  .app-card[data-expanded="false"] .app-card-body {
+    display: none;
+  }
+  .app-card[data-expanded="true"] .app-card-toggle {
+    transform: rotate(180deg);
+  }
+  .app-card-next {
+    display: block;
+    margin-top: 12px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .app-card-next:hover {
+    color: var(--accent);
+  }
   .comparison-table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -1952,7 +2043,17 @@ footer {
 }
 
 @media (min-width: 769px) {
+  .app-card-toggle { display: none; }
+  .app-card-body { display: block !important; }
+  .app-card-next { display: none; }
+}
+
+@media (min-width: 769px) {
   .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1100px) {
+  .filter-chips { display: none; }
 }
 
 /* Reduce motion for accessibility */

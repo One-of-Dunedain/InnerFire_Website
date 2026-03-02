@@ -383,3 +383,54 @@ Reworked `blog/best-breathwork-apps.html` into a human-tone comparison article w
 
 ### Recommended next action
 Proceed to `TASK-037` (mobile UX polish for 16+ app listicle), then return to `TASK-024` analytics events and `TASK-034` completion.
+---
+## [TASK-037] Mobile UX polish for long listicle article (16+ apps)
+Date: 2026-03-02
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented the mobile UX layer for `blog/best-breathwork-apps.html`: app-count badge in header, mobile quick filter chips, dynamic app-card collapse system (header/toggle interactions), auto-generated mobile "Next app" links, smooth in-page anchor navigation with mobile auto-expand, and hash-load auto-expand behavior. Also fixed category-anchor expansion so links like `#sleep-apps` and `#interactive-apps` expand the first relevant app card.
+
+### Files changed
+- `blog/best-breathwork-apps.html` - added app count badge, quick filter chips, and inline JS for app-card structure prep, collapse/expand, next-link generation, smooth anchor expansion, and hash-load expansion
+- `styles.css` - added styles for app-count badge, filter chips, mobile collapse toggles, app-card body visibility states, next-link UI, and desktop/mobile visibility rules
+- `TASKS.md` - updated TASK-037 status from TODO to DONE
+- `PROJECT_STATE.md` - updated current status, capability list, and active/completed task lists
+- `REPORT.md` - appended TASK-037 execution report
+
+### Acceptance Criteria Results
+- [x] Mobile (<768px): App cards collapsed by default, showing only header - passed
+- [x] Tap on card header or toggle button expands the full card - passed
+- [x] Desktop (>768px): All cards fully expanded, toggle buttons hidden - passed
+- [x] Filter chips visible on mobile/tablet, scrollable horizontally - passed
+- [x] Filter chips hidden on desktop (>1100px) where sticky ToC exists - passed
+- [x] Clicking filter chip smooth-scrolls to section and auto-expands card - passed
+- [x] "Next: [App Name]" link at bottom of each expanded card (mobile) - passed
+- [x] Anchor links from ToC/Quick Picks auto-expand target card on mobile - passed
+- [x] App count badge visible in article header - passed
+- [x] No layout shifts or broken styles on desktop - passed
+- [x] Back-to-top button still works correctly - passed (click handler still invokes `scrollTo({ top: 0, behavior: 'smooth' })`)
+- [x] Sticky ToC still works on desktop - passed
+- [x] Hash in URL (#app-calm) auto-expands correct card on page load - passed
+
+### Behavior changes
+- Mobile reading flow for the long listicle is now progressive by default (collapsed cards + expand on demand).
+- Category chips and in-article anchors now open the relevant mobile app card automatically.
+- Mobile cards include a sequential "Next app" path to reduce navigation friction in 16-card flow.
+
+### Verification
+- PASSED
+- Desktop (`1440x900`): verified filter chips hidden, all cards expanded, toggles hidden, sticky ToC (`position: sticky`, `top: 80px`).
+- Mobile (`375x812`): verified 16/16 cards collapsed by default, chips visible and horizontally scrollable, toggles visible.
+- Verified chip navigation (`#interactive-apps`) updates hash and auto-expands the first app card in that section (`#app-innerfire`).
+- Verified Quick Picks and ToC anchors auto-expand target cards (`#app-calm` and `#sleep-apps` flow).
+- Verified generated next-link behavior (`#app-breathwrk` -> `#app-headspace`) and target card expansion.
+- Verified deep-link load behavior (`...#app-calm`) expands only the target card.
+- Verified browser console: 0 errors.
+
+### Issues encountered
+- Initial implementation did not expand a card when clicking category anchors (e.g., `#interactive-apps`) because those sections contain headings, not direct card nodes. Fixed by resolving and expanding the next relevant `.app-card` in DOM flow.
+
+### Recommended next action
+Proceed with the first remaining TODO task in queue (`TASK-024`) or continue research backlog (`TASK-034`) per priority.
