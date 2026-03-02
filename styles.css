@@ -1204,6 +1204,10 @@ footer {
   font-weight: 700;
   margin: 32px 0 12px;
 }
+.article-body .app-card-name {
+  margin: 0;
+  line-height: 1.3;
+}
 .article-body a {
   color: var(--accent);
   text-decoration: underline;
@@ -1492,9 +1496,12 @@ footer {
   margin-bottom: 32px;
 }
 .app-card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  grid-template-areas: "icon info badge";
+  align-items: start;
+  column-gap: 16px;
+  row-gap: 8px;
   margin-bottom: 20px;
 }
 .app-card-toggle {
@@ -1509,6 +1516,7 @@ footer {
 }
 .app-card-link {
   display: inline-flex;
+  grid-area: icon;
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
@@ -1519,12 +1527,18 @@ footer {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 .app-card-info {
+  grid-area: info;
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .app-card-name {
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin: 0;
+  line-height: 1.28;
 }
 .app-card-name .app-card-name-link {
   color: inherit;
@@ -1538,6 +1552,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  align-items: center;
   color: var(--muted);
   font-size: 0.85rem;
 }
@@ -1567,6 +1582,7 @@ footer {
   font-size: 0.8rem;
 }
 .app-card-badge {
+  grid-area: badge;
   display: inline-flex;
   align-items: center;
   padding: 2px 10px;
@@ -1577,7 +1593,10 @@ footer {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  margin-left: auto;
+  margin-left: 0;
+  justify-self: end;
+  align-self: start;
+  white-space: nowrap;
 }
 .app-card-description {
   color: var(--text);
@@ -1678,7 +1697,7 @@ footer {
 }
 .app-card-signup {
   margin: 20px 0 0 0;
-  padding: 20px;
+  padding: 18px;
   border-radius: 10px;
   background: rgba(255, 138, 61, 0.04);
   border: 1px solid rgba(255, 138, 61, 0.12);
@@ -1694,21 +1713,14 @@ footer {
 .app-card-signup-text {
   color: var(--muted);
   font-size: 0.85rem;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
-.app-card-signup-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.app-card-signup-form .email-input {
-  max-width: none;
+.app-card-signup-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 12px 14px;
-  font-size: 0.92rem;
-}
-.app-card-signup-form .btn-primary {
-  width: 100%;
+  max-width: 320px;
   text-align: center;
   padding: 12px 20px;
 }
@@ -1977,8 +1989,8 @@ footer {
 
   /* Listicle mobile */
   .article-container {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .app-card {
     padding: 14px;
@@ -1986,13 +1998,14 @@ footer {
     border-radius: 12px;
   }
   .app-card-header {
-    gap: 0 10px;
+    gap: 0 8px;
   }
   .app-card-name {
-    font-size: 1rem;
+    font-size: 1.03rem;
+    line-height: 1.22;
   }
   .app-card-meta {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
   }
   .app-card-badge {
     font-size: 0.68rem;
@@ -2002,8 +2015,8 @@ footer {
     padding-top: 2px;
   }
   .app-card-description {
-    font-size: 0.88rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.58;
     margin-bottom: 14px;
   }
   .app-card-pricing {
@@ -2065,44 +2078,47 @@ footer {
   }
   .app-card-header {
     display: grid;
-    grid-template-columns: 44px minmax(0, 1fr) auto;
-    grid-template-rows: auto auto auto;
-    gap: 0 12px;
-    align-items: center;
+    grid-template-columns: 42px minmax(0, 1fr) 30px;
+    grid-template-areas:
+      "icon info toggle"
+      "badge badge badge";
+    gap: 8px 10px;
+    align-items: start;
+    align-content: start;
     margin-bottom: 0;
   }
-  .app-card-header .app-card-link,
-  .app-card-header .app-card-icon {
-    grid-column: 1;
-    grid-row: 1 / 4;
-  }
   .app-card-link {
-    width: 44px;
-    height: 44px;
+    grid-area: icon;
+    width: 42px;
+    height: 42px;
     border-radius: 10px;
+    align-self: start;
   }
   .app-card-icon {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: 10px;
   }
   .app-card-info {
-    grid-column: 2;
-    grid-row: 1 / 3;
+    grid-area: info;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-self: start;
   }
   .app-card-name {
     font-size: 1.05rem;
-    line-height: 1.3;
-    margin-bottom: 2px;
+    line-height: 1.22;
+    margin: 0;
   }
   .app-card-meta {
-    gap: 6px;
+    gap: 4px 6px;
     font-size: 0.8rem;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    flex-wrap: wrap;
+    overflow: visible;
+    white-space: normal;
+    line-height: 1.2;
   }
   .app-card-meta > span:not(.app-card-rating):not(.price-hint) {
     display: none;
@@ -2120,11 +2136,10 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    grid-column: 3;
-    grid-row: 1;
-    align-self: center;
-    width: 32px;
-    height: 32px;
+    grid-area: toggle;
+    align-self: start;
+    width: 30px;
+    height: 30px;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 50%;
@@ -2138,12 +2153,13 @@ footer {
     border-color: rgba(255, 138, 61, 0.35);
   }
   .app-card-badge {
-    grid-column: 2 / 4;
-    grid-row: 3;
+    grid-area: badge;
     justify-self: start;
-    margin: 4px 0 0 0;
+    margin: 0;
     font-size: 0.7rem;
     padding: 1px 8px;
+    align-self: start;
+    white-space: normal;
   }
   .app-card-body {
     padding-top: 4px;
@@ -2182,6 +2198,14 @@ footer {
   .app-card-verdict {
     font-size: 0.88rem;
     padding-top: 12px;
+  }
+  .app-card-signup {
+    margin-top: 14px;
+    padding: 14px;
+  }
+  .app-card-signup-cta {
+    max-width: none;
+    width: 100%;
   }
   .app-card[data-expanded="false"] .app-card-body {
     display: none;
@@ -2235,13 +2259,20 @@ footer {
     border-radius: 12px;
   }
   .app-card-header {
-    gap: 0 10px;
+    grid-template-columns: 40px minmax(0, 1fr) 30px;
+    gap: 7px 8px;
+  }
+  .app-card-link,
+  .app-card-icon {
+    width: 40px;
+    height: 40px;
   }
   .app-card-name {
-    font-size: 1rem;
+    font-size: 1.02rem;
+    line-height: 1.2;
   }
   .app-card-meta {
-    font-size: 0.78rem;
+    font-size: 0.79rem;
   }
   .app-card-badge {
     font-size: 0.68rem;
@@ -2265,6 +2296,9 @@ footer {
     font-size: 0.85rem;
     padding-top: 10px;
   }
+  .app-card-signup {
+    padding: 12px;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -2276,16 +2310,7 @@ footer {
   .app-card-body { display: block !important; }
   .app-card-next { display: none; }
   .price-hint { display: none; }
-  .app-card-signup-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .app-card-signup-form .btn-primary {
-    grid-column: 1 / -1;
-    max-width: 280px;
-    justify-self: center;
-  }
+  .app-card-signup-cta { width: auto; min-width: 240px; }
   .article-cta-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
