@@ -190,7 +190,7 @@ Goal: Audit all Kit signup forms across all pages for field consistency (first_n
 ---
 
 ## [TASK-047] Anti-spam — honeypot + client-side validation for all forms
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 Depends on: TASK-046 (DONE)
@@ -226,5 +226,6 @@ Owner: Executor AI + User
 Depends on: TASK-045 (DONE), TASK-046 (DONE), TASK-047 (DONE), TASK-048 (DONE), TASK-049 (DONE)
 Spec: tasks/active/TASK-050.md
 Goal: Comprehensive QA at 5 breakpoints (375/428/768/1440/1920px). All pages: visual, forms, consent flow, analytics, SEO, accessibility, Lighthouse scores (≥90), security, cross-browser. Zero Critical/High issues before launch.
+
 
 

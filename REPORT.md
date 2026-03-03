@@ -280,3 +280,56 @@ None.
 
 ### Recommended next action
 Proceed to `TASK-047` (anti-spam honeypot + time-gate), now that all form structures are normalized.
+---
+## [TASK-047] Anti-spam - honeypot + client-side validation for all forms
+Date: 2026-03-03
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented anti-spam protection for all Kit signup forms using two lightweight guards: an off-screen honeypot input (`website_url`) injected into every form, and a client-side minimum submit-time gate in `script.js` that blocks submits under 2 seconds from page load. Also connected `script.js` to all form pages/templates so protection is consistently active across landing, blog index, listicle, and article CTAs.
+
+### Files changed
+- `script.js` - added anti-spam handler (`initAntiSpamForms`) with honeypot + 2s time gate; hardened anchor smooth-scroll for `href="#"`
+- `index.html` - added honeypot field to signup form; updated script version to `script.js?v=task047`
+- `blog.html` - added honeypot field to newsletter form; included `script.js?v=task047`
+- `blog/best-breathwork-apps.html` - added honeypot field to article CTA form; included `../script.js?v=task047`
+- `blog/vagus-nerve-breathing.html` - added honeypot field to article CTA form; included `../script.js?v=task047`
+- `blog/build-breathing-habit.html` - added honeypot field to article CTA form; included `../script.js?v=task047`
+- `blog/_template.html` - added honeypot field to template CTA form; included `../script.js?v=task047`
+- `blog/_listicle-template.html` - added honeypot field to template CTA form; included `../script.js?v=task047`
+- `TASKS.md` - updated TASK-047 status to DONE
+- `PROJECT_STATE.md` - updated current status/capabilities/active tasks/completed list
+- `REPORT.md` - appended this report
+
+### Acceptance Criteria Results
+- [x] Honeypot field present in all forms on all pages - passed
+- [x] Honeypot field is invisible (off-screen positioned, aria-hidden) - passed
+- [x] Honeypot field doesn't interfere with keyboard navigation (tabindex=-1) - passed
+- [x] JS handler prevents submission if honeypot is filled - passed
+- [x] JS handler prevents submission if < 2 seconds since page load - passed
+- [x] Normal human submission still works (honeypot empty, > 2 seconds) - passed
+- [x] Screen readers don't announce honeypot field - passed (`aria-hidden="true"` wrapper applied)
+- [x] No console errors on any page - passed
+- [x] Templates updated to include honeypot - passed
+
+### Behavior changes
+All signup forms now silently reject bot-like submits (hidden-field filled or too-fast submit) before any POST to Kit, while normal submits continue unchanged.
+
+### Verification
+- PASSED
+- Playwright checks on `index.html`:
+  - immediate submit via `form.requestSubmit()` right after load -> blocked (`requestCount=0`)
+  - honeypot-filled submit after 2.4s -> blocked (`requestCount=0`)
+  - normal submit after 2.4s -> allowed (`POST https://app.kit.com/forms/9132207/subscriptions`, redirect to success)
+- Mobile visibility check at `375x812`:
+  - honeypot wrapper rendered off-screen (`left=-9999`, `right<0`), `tabindex=-1`, `aria-hidden=true`
+- Console/page error sweep across pages with forms:
+  - `index.html`, `blog.html`, `blog/best-breathwork-apps.html`, `blog/vagus-nerve-breathing.html`, `blog/build-breathing-habit.html`
+  - `consoleErrorCount=0`, `pageErrorCount=0`
+
+### Issues encountered
+During first insertion pass, literal `` `r`n `` tokens were accidentally written into HTML; cleaned immediately and re-verified markup in all affected files.
+
+### Recommended next action
+Proceed to `TASK-048` to replace GA4/Clarity placeholders with real IDs and validate consent-gated analytics end-to-end.

@@ -1,7 +1,9 @@
 // Smooth scroll for anchor links (e.g. "Get Early Access" → #signup)
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
@@ -154,16 +156,40 @@ function initLensEffect() {
   requestAnimationFrame(checkOverlap);
 }
 
+// Anti-spam form protection (honeypot + minimum time gate)
+function initAntiSpamForms() {
+  var pageLoadTime = (window.performance && performance.timeOrigin) ? performance.timeOrigin : Date.now();
+  var MIN_SUBMIT_TIME_MS = 2000;
+
+  document.querySelectorAll('form[data-sv-form]').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      var honeypot = form.querySelector('input[name="website_url"]');
+      if (honeypot && honeypot.value.trim() !== '') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+      }
+
+      if (Date.now() - pageLoadTime < MIN_SUBMIT_TIME_MS) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    }, true);
+  });
+}
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     initCardShareButtons();
     initBenefitReveal();
     initLensEffect();
+    initAntiSpamForms();
   });
 } else {
   initCardShareButtons();
   initBenefitReveal();
   initLensEffect();
+  initAntiSpamForms();
 }
 
 // Set wick progress - update these values manually or via API later

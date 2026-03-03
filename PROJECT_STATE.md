@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-04
-## Current status: TASK-046 completed; 4 active tasks remaining (TASK-047, TASK-048, TASK-049, TASK-050)
+## Current status: TASK-047 completed; 3 active tasks remaining (TASK-048, TASK-049, TASK-050)
 
 ---
 
@@ -57,6 +57,7 @@
 - New science-backed habit article created at `blog/build-breathing-habit.html` with full template compliance (meta/canonical/schema), interactive habit-curve SVG, responsive 21-day breath map component, FAQ accordion behavior, and dedicated thumbnail asset `blog/images/build-breathing-habit.svg` (TASK-042)
 - Privacy policy page added at `privacy.html` with noindex, cookie disclosures, third-party services table, GDPR/CCPA rights, and footer legal links (`Privacy` + `Cookie Settings`) added across landing/blog/article pages (TASK-044)
 - Cookie consent system added via `consent.js` with Google Consent Mode v2 defaults, consent banner + Cookie Settings reset flow, conditional GA4/Clarity loading, and custom analytics events (`form_submit`, `form_error`, `scroll_depth`, `share_click`, `cta_click`) wired across landing/blog/article pages (TASK-045)
+- Anti-spam baseline deployed across all Kit forms: honeypot field (`website_url`) on every form + client-side 2-second minimum submit gate in `script.js`, with blocking on filled honeypot or too-fast submit (TASK-047)
 
 ### What is NOT done yet
 - Real GA4 and Clarity IDs are not configured yet (placeholders remain in `consent.js`)
@@ -101,7 +102,6 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks
-- [TASK-047] Anti-spam - honeypot + client-side validation for all forms (TODO)
 - [TASK-048] GA4 + Clarity setup - replace placeholders, verify end-to-end (TODO)
 - [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint (TODO)
 - [TASK-050] Production QA - full site checklist before launch (TODO)
@@ -140,6 +140,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-044 (DONE)
 - TASK-045 (DONE)
 - TASK-046 (DONE)
+- TASK-047 (DONE)
 - TASK-034 (REMOVED as non-current by owner decision; spec moved to archive/tasks/TASK-034.md)
 - TASK-003 SUPERSEDED by TASK-010
 
