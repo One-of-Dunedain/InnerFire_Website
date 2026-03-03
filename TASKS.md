@@ -123,3 +123,13 @@ Owner: Executor AI
 Depends on: TASK-038 (DONE)
 Spec: tasks/active/TASK-039.md
 Goal: Add first_name field to both signup forms (matching index.html Kit.com pattern). Redesign InnerFire card signup box (move after verdict, warm accent styling). Tighten mobile spacing at 480px breakpoint. Fix reading progress bar, section separators, Quick Picks responsive.
+
+---
+
+## [TASK-040] Blog index — compact mobile layout
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-040.md
+Goal: Redesign blog index mobile layout so all articles fit in 1-2 screens. Featured (newest) card keeps full 16:9 thumb, remaining cards become compact horizontal rows (72px square thumb, title + category + date, no excerpt). CSS-only, no JS changes. Desktop unchanged.
