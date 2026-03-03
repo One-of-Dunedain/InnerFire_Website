@@ -7,6 +7,9 @@
   --text:    #e8edf7;
   --muted:   #7a8099;
   --radius:  12px;
+  --motion-expand: 320ms;
+  --motion-fade: 220ms;
+  --motion-ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
   --type-brand: clamp(1.06rem, 0.98rem + 0.42vw, 1.24rem);
   --type-overline: clamp(0.98rem, 0.9rem + 0.34vw, 1.14rem);
   --type-hero: clamp(2.1rem, 1.45rem + 3.9vw, 4rem);
@@ -587,16 +590,27 @@ body {
   cursor: pointer;
   user-select: none;
   position: relative;
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    box-shadow 320ms var(--motion-ease-out);
 }
 
 .benefit-detail {
-  display: inline;
+  display: inline-block;
   filter: blur(5px);
-  transition: filter 0.5s ease;
+  opacity: 0.78;
+  transform: translateY(2px);
+  transition:
+    filter var(--motion-expand) var(--motion-ease-out),
+    opacity var(--motion-fade) ease,
+    transform var(--motion-expand) var(--motion-ease-out);
 }
 
 .benefit-item.revealed .benefit-detail {
   filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .benefit-item::after {
@@ -618,6 +632,10 @@ body {
 
 .benefit-item:hover:not(.revealed) .benefit-detail {
   filter: blur(3px);
+}
+.benefit-item.revealed {
+  border-left-color: rgba(255, 138, 61, 0.85);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 138, 61, 0.08);
 }
 
 /* About the Author */
@@ -1365,7 +1383,7 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   padding: 24px 28px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .article-toc-title {
   font-size: 0.85rem;
@@ -1404,6 +1422,9 @@ footer {
 .article-toc a.toc-active {
   color: var(--accent);
   font-weight: 600;
+}
+.article-body > .article-toc + p {
+  margin-top: 0;
 }
 
 .filter-chips {
@@ -1836,10 +1857,18 @@ footer {
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    max-height var(--motion-expand) var(--motion-ease-out),
+    opacity var(--motion-fade) ease,
+    transform var(--motion-expand) var(--motion-ease-out);
+  will-change: max-height, opacity, transform;
 }
 .faq-item.open .faq-answer {
-  max-height: 500px;
+  max-height: var(--faq-max-height, 560px);
+  opacity: 1;
+  transform: translateY(0);
 }
 .faq-answer-inner {
   padding: 0 0 16px;
@@ -2030,6 +2059,17 @@ footer {
     margin-bottom: 20px;
   }
 
+  .article-toc {
+    padding: 18px 18px;
+    margin-bottom: 12px;
+  }
+  .article-toc-title {
+    margin-bottom: 10px;
+  }
+  .article-toc li {
+    margin-bottom: 6px;
+  }
+
   /* Listicle mobile */
   .article-container {
     padding-left: 10px;
@@ -2178,7 +2218,10 @@ footer {
     border-radius: 50%;
     color: var(--text);
     cursor: pointer;
-    transition: transform 0.25s ease, border-color 0.2s ease;
+    transition:
+      transform var(--motion-expand) var(--motion-ease-out),
+      border-color 220ms ease,
+      background-color 220ms ease;
     flex-shrink: 0;
     padding: 0;
   }
@@ -2196,6 +2239,16 @@ footer {
   }
   .app-card-body {
     padding-top: 8px;
+    overflow: hidden;
+    max-height: var(--app-body-max, 2200px);
+    opacity: 1;
+    transform: translateY(0);
+    transform-origin: top center;
+    transition:
+      max-height var(--motion-expand) var(--motion-ease-out),
+      opacity var(--motion-fade) ease,
+      transform var(--motion-expand) var(--motion-ease-out);
+    will-change: max-height, opacity, transform;
   }
   .app-card-platforms-mobile {
     display: flex;
@@ -2241,10 +2294,14 @@ footer {
     width: 100%;
   }
   .app-card[data-expanded="false"] .app-card-body {
-    display: none;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
   }
   .app-card[data-expanded="true"] .app-card-toggle {
     transform: rotate(180deg);
+    background: rgba(255, 255, 255, 0.04);
   }
   .app-card-next {
     display: block;
@@ -2368,11 +2425,21 @@ footer {
   .ambient-ember.magnified-hero { scale: 1; filter: none; transition: none; }
   .hero-glow, .embers, .ember { animation: none; }
   .hero-glow { opacity: 0.8; }
+  .app-card-body,
+  .faq-answer,
   .benefit-detail {
     filter: none;
     transition: none;
+    transform: none;
+    opacity: 1;
   }
   .benefit-item::after {
     display: none;
+  }
+  .benefit-item {
+    transition: none;
+  }
+  .app-card-toggle {
+    transition: none;
   }
 }

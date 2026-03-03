@@ -393,19 +393,35 @@
     });
 
     // FAQ accordion toggle
+    function syncFaqHeight(item) {
+      if (!item) return;
+      var answer = item.querySelector('.faq-answer');
+      if (!answer) return;
+      item.style.setProperty('--faq-max-height', answer.scrollHeight + 'px');
+    }
+
+    document.querySelectorAll('.faq-item').forEach(function(item) {
+      syncFaqHeight(item);
+    });
+
     document.querySelectorAll('.faq-question').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var item = this.parentElement;
         var isOpen = item.classList.contains('open');
         // Close all other items
         document.querySelectorAll('.faq-item.open').forEach(function(el) {
+          if (el === item) return;
           el.classList.remove('open');
           el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
         // Toggle current
         if (!isOpen) {
+          syncFaqHeight(item);
           item.classList.add('open');
           this.setAttribute('aria-expanded', 'true');
+        } else {
+          item.classList.remove('open');
+          this.setAttribute('aria-expanded', 'false');
         }
       });
     });

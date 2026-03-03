@@ -133,3 +133,33 @@ Owner: Executor AI
 Depends on: none
 Spec: tasks/active/TASK-040.md
 Goal: Redesign blog index mobile layout so all articles fit in 1-2 screens. Featured (newest) card keeps full 16:9 thumb, remaining cards become compact horizontal rows (72px square thumb, title + category + date, no excerpt). CSS-only, no JS changes. Desktop unchanged.
+
+---
+
+## [TASK-041] New article — Vagus Nerve Breathing
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-041.md
+Goal: Create new article replacing why-exhale-works.html. Topic: vagus nerve, breathing mechanics, multisensory approach. Full scientific references (PubMed). Vertical video placeholder. FAQ section with structured data. Complete template compliance (CTA, Schema.org, canonical, full footer).
+
+---
+
+## [TASK-042] New article — Build a Breathing Habit
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-042.md
+Goal: Create new article replacing reset-in-3-minutes.html. Topic: habit formation science, 5 rules for making breathing stick. Interactive visuals: habit formation curve (inline SVG) + 21-day breath map (CSS grid). FAQ section. Complete template compliance.
+
+---
+
+## [TASK-043] Blog cleanup — posts.json, delete old files, fix consistency
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: TASK-041 (DONE), TASK-042 (DONE)
+Spec: tasks/active/TASK-043.md
+Goal: Update posts.json with new slugs. Delete old article files (why-exhale-works.html, reset-in-3-minutes.html, post-02.svg, post-03.svg). Fix breathing-under-noise.html consistency (add CTA, Schema.org, canonical, full footer, missing meta tags).

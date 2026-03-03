@@ -1569,12 +1569,33 @@
       });
     }
 
+    function syncCardBodyHeight(card) {
+      if (!card) return;
+      var body = card.querySelector('.app-card-body');
+      if (!body) return;
+      card.style.setProperty('--app-body-max', body.scrollHeight + 'px');
+    }
+
+    function syncExpandedCardHeights() {
+      document.querySelectorAll('.app-card').forEach(function(card) {
+        if (window.innerWidth > 768 || card.getAttribute('data-expanded') === 'true') {
+          syncCardBodyHeight(card);
+        }
+      });
+    }
+
     function setCardExpanded(card, expanded) {
+      syncCardBodyHeight(card);
       card.setAttribute('data-expanded', expanded ? 'true' : 'false');
       var toggle = card.querySelector('.app-card-toggle');
       if (toggle) {
         toggle.setAttribute('aria-label', expanded ? 'Collapse details' : 'Expand details');
         toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      }
+      if (expanded) {
+        window.requestAnimationFrame(function() {
+          syncCardBodyHeight(card);
+        });
       }
     }
 
@@ -1697,6 +1718,7 @@
         }
 
         ensureMobilePlatformsRow(header, body);
+        syncCardBodyHeight(card);
 
         if (card.dataset.collapseInit === 'true') return;
 
@@ -1722,6 +1744,8 @@
       });
     }
 
+    var cardCollapseMobileState = window.innerWidth <= 768;
+
     function initCardCollapse() {
       var isMobile = window.innerWidth <= 768;
       var cards = document.querySelectorAll('.app-card');
@@ -1738,6 +1762,16 @@
         var hashCard = getTargetCardByHash(window.location.hash);
         if (hashCard) setCardExpanded(hashCard, true);
       }
+    }
+
+    function handleCardLayoutResize() {
+      var isMobile = window.innerWidth <= 768;
+      if (isMobile !== cardCollapseMobileState) {
+        cardCollapseMobileState = isMobile;
+        initCardCollapse();
+        return;
+      }
+      syncExpandedCardHeights();
     }
 
     function initSmoothAnchorExpand() {
@@ -1813,10 +1847,24 @@
     prepareAppCardStructure();
     initMobilePriceHints();
     initCardCollapse();
+    syncExpandedCardHeights();
     initSmoothAnchorExpand();
     initTocHighlight();
     initBackToTop();
     initComparisonScrollHint();
+
+    var cardResizeRaf = null;
+    window.addEventListener('resize', function() {
+      if (cardResizeRaf) return;
+      cardResizeRaf = window.requestAnimationFrame(function() {
+        cardResizeRaf = null;
+        handleCardLayoutResize();
+      });
+    }, { passive: true });
+
+    window.addEventListener('load', function() {
+      syncExpandedCardHeights();
+    }, { once: true });
     </script>
   </body>
 </html>
