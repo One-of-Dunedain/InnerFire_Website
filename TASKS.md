@@ -167,7 +167,7 @@ Goal: Update posts.json with new slugs. Delete old article files (why-exhale-wor
 ---
 
 ## [TASK-044] Privacy Policy + Cookie Policy page
-Status: TODO
+Status: DONE
 Priority: Critical
 Owner: Executor AI
 Depends on: none

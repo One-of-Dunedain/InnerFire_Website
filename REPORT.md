@@ -112,3 +112,54 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-043` (blog cleanup and manifest consistency), since it depends on both `TASK-041` and `TASK-042` already being DONE.
+---
+## [TASK-044] Privacy Policy + Cookie Policy page
+Date: 2026-03-04
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created `privacy.html` with full plain-language privacy policy content for InnerFire (Kit signup data, analytics consent model, cookies, third-party services, rights, retention, security, children, policy updates), including required metadata (`noindex`, canonical, title/description) and full site header/footer structure. Added footer legal links (`Privacy` + `Cookie Settings`) across landing/blog/article pages and blog templates, and added shared `footer-legal` styles plus lightweight privacy-table styles for readable, scroll-safe policy tables on mobile.
+
+### Files changed
+- `privacy.html` - created full Privacy Policy page with required structure/content/tables
+- `styles.css` - added `.footer-legal*` styles and `.policy-table*` styles
+- `index.html` - added footer legal links (`./privacy.html`, `#cookie-settings-link`)
+- `blog.html` - added footer legal links (`./privacy.html`, `#cookie-settings-link`)
+- `blog/best-breathwork-apps.html` - added footer legal links (`../privacy.html`, `#cookie-settings-link`)
+- `blog/vagus-nerve-breathing.html` - added footer legal links (`../privacy.html`, `#cookie-settings-link`)
+- `blog/build-breathing-habit.html` - added footer legal links (`../privacy.html`, `#cookie-settings-link`)
+- `blog/_template.html` - added footer legal links for future article generation
+- `blog/_listicle-template.html` - added footer legal links for future listicle generation
+- `TASKS.md` - updated TASK-044 status to DONE
+- `PROJECT_STATE.md` - updated active/completed task state and stack target
+- `REPORT.md` - appended TASK-044 report
+
+### Acceptance Criteria Results
+- [x] `privacy.html` exists and renders correctly at 375px, 768px, 1920px - passed
+- [x] Page has proper site header with nav (Blog + Get Early Access) - passed
+- [x] Content is readable and well-formatted using existing article-body styles - passed
+- [x] Tables render correctly (cookies table, third-party services table) - passed
+- [x] All external links in tables open in new tab - passed
+- [x] Page has `noindex` meta tag - passed
+- [x] Footer on ALL 6+ pages has "Privacy" and "Cookie Settings" links - passed (active pages + templates updated; `blog/breathing-under-noise.html` no longer exists)
+- [x] Privacy links use correct relative paths (`./privacy.html` or `../privacy.html`) - passed
+- [x] Footer CSS added to styles.css (`.footer-legal` styles) - passed
+- [x] No console errors on verified pages - passed
+
+### Behavior changes
+Users can now open a dedicated Privacy Policy page from site footers, and every updated footer includes a visible "Cookie Settings" placeholder link for the upcoming consent system (TASK-045).
+
+### Verification
+- PASSED
+- Playwright verification on `http://127.0.0.1:8080/privacy.html` at `375x812`, `768x1024`, and `1920x1080`.
+- Verified metadata and structure via DOM checks: title, `meta[name="robots"][content="noindex"]`, header nav, footer legal block, 2 policy tables.
+- Verified policy-table external links include `target="_blank" rel="noreferrer"`.
+- Verified navigation path: footer `Privacy` from `index.html` -> `privacy.html`; footer `Privacy` from `blog/best-breathwork-apps.html` -> `privacy.html`.
+- Verified browser console errors: 0 on tested pages.
+
+### Issues encountered
+`blog/breathing-under-noise.html` is already removed from the repo by prior cleanup, so footer updates were applied to all existing public pages plus both blog templates.
+
+### Recommended next action
+Proceed with `TASK-045` (cookie consent + conditional GA4/Clarity loading + event tracking), wiring the existing `#cookie-settings-link` placeholders to the consent manager.
