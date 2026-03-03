@@ -162,3 +162,53 @@ One CSS cascade conflict (`max-width: 768px` overriding part of `max-width: 480p
 
 ### Recommended next action
 Proceed with remaining TODO backlog in queue (`TASK-024`, `TASK-034`) and keep TASK-039 as the new UX baseline for article-form consistency.
+
+---
+## [TASK-040] Blog index - compact mobile layout
+Date: 2026-03-03
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented compact mobile layout for `blog.html` via CSS-only updates in `styles.css`: kept the newest article as the featured full card, converted cards 2-4 into horizontal compact rows (72px square thumbnail + category/title/meta), hid excerpts and share button on compact cards, reduced mobile page-header and newsletter spacing, reduced blog-grid section bottom spacing, and added tablet-specific thumbnail ratio update (2:1) for 481-768px while keeping desktop behavior unchanged.
+
+### Files changed
+- `styles.css` - added mobile blog-index compact card rules, featured-card tightening, mobile page-header/newsletter spacing adjustments, and tablet `blog-card-thumb` aspect ratio `2 / 1`
+- `TASKS.md` - updated TASK-040 status from TODO to DONE
+- `REPORT.md` - appended TASK-040 execution report
+- `PROJECT_STATE.md` - updated current status, capabilities, and completed task list
+
+### Acceptance Criteria Results
+- [x] Mobile (375px): first card = full layout with 16:9 thumbnail - passed
+- [x] Mobile (375px): cards 2-4 = compact horizontal with 72px square thumb, no excerpt - passed
+- [x] Mobile: all 4 articles visible within 1-2 screens (before newsletter) - passed
+- [x] Mobile: category, title, date/readTime visible on all compact cards - passed
+- [x] Mobile: page header padding reduced (90px top, 32px bottom) - passed
+- [x] Mobile: newsletter section padding reduced (40px) - passed
+- [x] Tablet (481-768px): 2-column grid with 2:1 thumb aspect ratio - passed
+- [x] Desktop (>768px): ZERO visual changes - passed
+- [x] Cards still link to correct articles - passed
+- [x] Share button visible on hover for featured card (desktop) - passed
+- [x] No broken border-radius on compact cards - passed
+- [x] No layout shift on page load - passed
+
+### Behavior changes
+- Mobile blog index now prioritizes scanability: 1 featured card + 3 compact rows.
+- Users can see all current posts with significantly less scrolling on 375px screens.
+- Tablet blog cards keep the 2-column layout but with shorter thumbnails for denser overview.
+
+### Verification
+- PASSED
+- Playwright @ `375x812`: verified card 1 remains full (`aspect-ratio: 16 / 9`) and cards 2-4 render as grid rows (`72px 1fr`), excerpt hidden, share hidden, category/title/meta visible.
+- Playwright @ `375x812`: verified `page-header` computed padding `90px 32px` and newsletter computed padding `40px 40px`.
+- Playwright @ `375x812`: measured post-card block height span as `0.78` viewport screens (cards only), satisfying 1-2 screen target.
+- Playwright @ `768x900`: verified 2-column blog grid and `blog-card-thumb` computed aspect ratio `2 / 1`.
+- Playwright @ `1920x1080`: verified desktop grid unchanged, thumb ratio `16 / 9`, and featured-card share opacity transitions to `1` on hover.
+- Verified card href targets map correctly to all 4 article slugs.
+- Verified browser console errors: `0`.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with the next TODO in queue: `TASK-024` or `TASK-034`.

@@ -175,16 +175,6 @@
             </ol>
           </nav>
 
-          <div class="filter-chips" aria-label="Quick filters">
-            <a href="#anxiety-apps" class="filter-chip">Anxiety</a>
-            <a href="#interactive-apps" class="filter-chip">Interactive</a>
-            <a href="#sleep-apps" class="filter-chip">Sleep</a>
-            <a href="#free-apps" class="filter-chip">Free</a>
-            <a href="#timer-alternatives" class="filter-chip">Timers</a>
-            <a href="#calm-headspace-alternatives" class="filter-chip">Alternatives</a>
-            <a href="#comparison-table" class="filter-chip">Compare all</a>
-          </div>
-
           <p>
             I tested these apps the way most people actually use them: quick resets during stress, short night routines before sleep, and repeated daily sessions where pricing and friction matter. Each app below includes what you really pay, what is actually free, and expanded pros/cons synthesized from user feedback patterns and billing behavior.
           </p>
@@ -1750,30 +1740,6 @@
       }
     }
 
-    function initNextAppLinks() {
-      if (window.innerWidth > 768) return;
-
-      document.querySelectorAll('.app-card-next').forEach(function(link) {
-        link.remove();
-      });
-
-      var cards = Array.from(document.querySelectorAll('.app-card'));
-      cards.forEach(function(card, i) {
-        if (i >= cards.length - 1) return;
-        var nextCard = cards[i + 1];
-        var nextName = nextCard.querySelector('.app-card-name');
-        var nextSection = nextCard.closest('section[id]');
-        var body = card.querySelector('.app-card-body');
-        if (!nextName || !nextSection || !body) return;
-
-        var link = document.createElement('a');
-        link.className = 'app-card-next';
-        link.href = '#' + nextSection.id;
-        link.textContent = 'Next: ' + nextName.textContent.replace(/\s+/g, ' ').trim() + ' \u2192';
-        body.appendChild(link);
-      });
-    }
-
     function initSmoothAnchorExpand() {
       if (document.body.dataset.anchorExpandInit === 'true') return;
       document.body.dataset.anchorExpandInit = 'true';
@@ -1847,7 +1813,6 @@
     prepareAppCardStructure();
     initMobilePriceHints();
     initCardCollapse();
-    initNextAppLinks();
     initSmoothAnchorExpand();
     initTocHighlight();
     initBackToTop();

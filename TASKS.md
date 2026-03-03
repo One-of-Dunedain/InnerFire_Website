@@ -2,7 +2,7 @@
 
 Active task index only. Full task specifications are stored in `tasks/active/`.
 Completed and superseded tasks are archived in `archive/tasks/`.
-Last updated: 2026-03-02
+Last updated: 2026-03-03
 
 Archived blocks:
 - `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -86,7 +86,7 @@ Goal: Research exact pricing (monthly/yearly/lifetime), free tier feature split,
 
 ---
 
-## [TASK-035] Rewrite article content — human tone, UGC, pricing, Wave 2 apps
+## [TASK-035] Rewrite article content - human tone, UGC, pricing, Wave 2 apps
 Status: DONE
 Priority: Critical
 Owner: Executor AI
@@ -116,7 +116,7 @@ Goal: Redesign mobile (<768px) app card layout. Grid-based header with icon/name
 
 ---
 
-## [TASK-039] Article UX/UI polish — forms, spacing, consistency fixes
+## [TASK-039] Article UX/UI polish - forms, spacing, consistency fixes
 Status: DONE
 Priority: Critical
 Owner: Executor AI
@@ -126,8 +126,8 @@ Goal: Add first_name field to both signup forms (matching index.html Kit.com pat
 
 ---
 
-## [TASK-040] Blog index — compact mobile layout
-Status: TODO
+## [TASK-040] Blog index - compact mobile layout
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
