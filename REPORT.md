@@ -212,3 +212,58 @@ None.
 
 ### Recommended next action
 Proceed with the next TODO in queue: `TASK-024` or `TASK-034`.
+
+---
+## [TASK-042] New article - Build a Breathing Habit
+Date: 2026-03-03
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created a full replacement article page at `blog/build-breathing-habit.html` using the complete article template contract (full head meta stack, canonical, commented GA4/Clarity blocks, JSON-LD Article + FAQPage, reading progress, share button, FAQ accordion script, CTA form with first_name + email, author card, back link, and full social footer). Added both required interactive components directly in article flow: the inline SVG habit-formation curve and the 21-day breath map tracker.
+
+Created the article thumbnail at `blog/images/build-breathing-habit.svg` (1200x675) with the requested visual composition.
+
+Updated `styles.css` with the new styles for `.habit-curve-svg` and the complete `.breath-map*` component family, including responsive breakpoints for `480px` and `350px`.
+
+### Files changed
+- `blog/build-breathing-habit.html` - new full article page with complete template compliance and required content
+- `blog/images/build-breathing-habit.svg` - new 1200x675 thumbnail SVG
+- `styles.css` - added `.habit-curve-svg` and `.breath-map*` styles
+- `TASKS.md` - set TASK-042 status to DONE
+- `REPORT.md` - appended this execution report
+- `PROJECT_STATE.md` - synchronized current status/capabilities/task lists
+
+### Acceptance Criteria Results
+- [x] `blog/build-breathing-habit.html` exists and renders correctly
+- [x] `blog/images/build-breathing-habit.svg` exists (1200x675)
+- [x] All `<head>` meta tags present (canonical, og, twitter, author, theme-color)
+- [x] Schema.org Article + FAQPage JSON-LD in head
+- [x] Reading progress bar works on scroll
+- [x] Share button works
+- [x] FAQ accordion expands/collapses
+- [x] Habit formation curve SVG renders correctly and scales responsively
+- [x] 21-Day Breath Map renders 3 rows of 7 circles and fits at 350px
+- [x] CTA form has first_name + email fields, submits to Kit.com endpoint
+- [x] Author card present
+- [x] Full footer with social links present
+- [x] CSS added to `styles.css` for `.habit-curve-svg`, `.breath-map`, `.breath-map-*`
+- [x] No console errors
+- [x] External links use `target="_blank" rel="noreferrer"`
+- [x] Reference links use real URLs
+
+### Verification
+- PASSED
+- Opened `http://127.0.0.1:8080/blog/build-breathing-habit.html` and verified major sections/elements are present.
+- Verified reading progress values across scroll states (`0%` top -> mid progress -> `100%` bottom).
+- Verified share button click path and no runtime errors.
+- Verified FAQ accordion open/close behavior and dynamic height handling.
+- Verified responsive rendering at `1920x1080`, `768x1024`, `375x812`, `350x740`.
+- Verified breath-map overflow checks at 350px (`rowOverflow: false` for all three rows, no container overflow).
+- Verified browser console error count: `0`.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-041` (new vagus nerve article) before `TASK-043` cleanup, since TASK-043 depends on TASK-041 and TASK-042.

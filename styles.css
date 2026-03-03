@@ -2443,3 +2443,85 @@ footer {
     transition: none;
   }
 }
+
+/* Habit curve chart */
+.habit-curve-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 21-Day Breath Map */
+.breath-map {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  margin: 24px 0;
+}
+
+.breath-map-week {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.breath-map-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.breath-map-phase {
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 6px;
+  font-size: 0.8rem;
+}
+
+.breath-map-days {
+  display: flex;
+  gap: 8px;
+}
+
+.breath-map-day {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 138, 61, 0.25);
+  background: rgba(255, 138, 61, 0.04);
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .breath-map {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .breath-map-days {
+    gap: 6px;
+  }
+
+  .breath-map-day {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 350px) {
+  .breath-map-day {
+    width: 24px;
+    height: 24px;
+    border-width: 1.5px;
+  }
+
+  .breath-map-days {
+    gap: 4px;
+  }
+}

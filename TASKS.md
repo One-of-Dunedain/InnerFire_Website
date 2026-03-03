@@ -147,7 +147,7 @@ Goal: Create new article replacing why-exhale-works.html. Topic: vagus nerve, br
 ---
 
 ## [TASK-042] New article — Build a Breathing Habit
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
