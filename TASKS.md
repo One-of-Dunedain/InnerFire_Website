@@ -2,7 +2,7 @@
 
 Active task index only. Full task specifications are stored in `tasks/active/`.
 Completed and superseded tasks are archived in `archive/tasks/`.
-Last updated: 2026-03-03
+Last updated: 2026-03-04
 
 Archived blocks:
 - `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -17,7 +17,7 @@ Archived blocks:
 ---
 
 ## [TASK-024] GA4 + Clarity with custom event tracking
-Status: TODO
+Status: SUPERSEDED by TASK-045
 Priority: Medium
 Owner: Executor AI
 Depends on: none
@@ -157,9 +157,80 @@ Goal: Create new article replacing reset-in-3-minutes.html. Topic: habit formati
 ---
 
 ## [TASK-043] Blog cleanup — posts.json, delete old files, fix consistency
-Status: TODO
+Status: DONE (partial — old files deleted, posts.json updated; breathing-under-noise.html removed entirely)
 Priority: High
 Owner: Executor AI
 Depends on: TASK-041 (DONE), TASK-042 (DONE)
 Spec: tasks/active/TASK-043.md
 Goal: Update posts.json with new slugs. Delete old article files (why-exhale-works.html, reset-in-3-minutes.html, post-02.svg, post-03.svg). Fix breathing-under-noise.html consistency (add CTA, Schema.org, canonical, full footer, missing meta tags).
+
+---
+
+## [TASK-044] Privacy Policy + Cookie Policy page
+Status: TODO
+Priority: Critical
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-044.md
+Goal: Create privacy.html with full privacy policy (GDPR, CCPA, CalOPPA compliant). Covers: Kit email collection, GA4/Clarity analytics, cookie disclosures, user rights, third-party services. Add "Privacy" + "Cookie Settings" links to footer on ALL pages.
+
+---
+
+## [TASK-045] Cookie consent + GA4 + Clarity + event tracking
+Status: TODO
+Priority: Critical
+Owner: Executor AI
+Depends on: TASK-044 (DONE)
+Supersedes: TASK-024
+Spec: tasks/active/TASK-045.md
+Goal: Create consent.js with cookie consent banner (GDPR compliant), Google Consent Mode v2, conditional GA4 + Clarity loading, custom event tracking (form_submit, scroll_depth, share_click, cta_click). Remove commented analytics blocks from all pages. No analytics without user consent.
+
+---
+
+## [TASK-046] Form audit — verify all signup forms match Kit pattern
+Status: TODO
+Priority: Medium
+Owner: Executor AI
+Depends on: TASK-043 (DONE), TASK-044 (DONE), TASK-045 (DONE)
+Spec: tasks/active/TASK-046.md
+Goal: Audit all Kit signup forms across all pages for field consistency (first_name + email), correct form IDs, preconnect headers, templates. Fix any drift.
+
+---
+
+## [TASK-047] Anti-spam — honeypot + client-side validation for all forms
+Status: TODO
+Priority: Medium
+Owner: Executor AI
+Depends on: TASK-046 (DONE)
+Spec: tasks/active/TASK-047.md
+Goal: Add honeypot field (invisible, off-screen) + time-based submission check (< 2s = blocked) to all Kit forms. JS handler in script.js. No CAPTCHA, no external deps.
+
+---
+
+## [TASK-048] GA4 + Clarity setup — replace placeholders, verify end-to-end
+Status: TODO
+Priority: High
+Owner: Executor AI + User
+Depends on: TASK-045 (DONE)
+Spec: tasks/active/TASK-048.md
+Goal: Replace placeholder IDs in consent.js with real GA4 Measurement ID + Clarity Project ID. Configure GA4 conversions for custom events. Verify full analytics pipeline: consent → load → events → dashboards.
+
+---
+
+## [TASK-049] Waitlist counter — Cloudflare Workers + KV serverless endpoint
+Status: TODO
+Priority: High
+Owner: Executor AI + User
+Depends on: TASK-045 (DONE), TASK-046 (DONE)
+Spec: tasks/active/TASK-049.md
+Goal: Real-time "X / 300" waitlist counter on landing page. Cloudflare Worker API with KV storage. Kit webhook increments counter on new subscriber. Frontend fetch + display with graceful fallback.
+
+---
+
+## [TASK-050] Production QA — full site checklist before launch
+Status: TODO
+Priority: Critical
+Owner: Executor AI + User
+Depends on: TASK-045 (DONE), TASK-046 (DONE), TASK-047 (DONE), TASK-048 (DONE), TASK-049 (DONE)
+Spec: tasks/active/TASK-050.md
+Goal: Comprehensive QA at 5 breakpoints (375/428/768/1440/1920px). All pages: visual, forms, consent flow, analytics, SEO, accessibility, Lighthouse scores (≥90), security, cross-browser. Zero Critical/High issues before launch.

@@ -1,76 +1,59 @@
-﻿# Handoff
+# Handoff
 
 ## Goal
 Collect 300 emails from potential beta testers via static landing page flows.
 
 ## Stack
 - Static site: HTML/CSS/JS (no build step)
-- Hosting target: GitHub Pages
+- Hosting: **Cloudflare Pages** (decision confirmed 2026-03-04)
 - Email provider: Kit (ConvertKit)
+- Analytics: GA4 + Microsoft Clarity (behind consent)
 
 ## Status
-- Completed set now: TASK-001, TASK-002, TASK-004, TASK-005, TASK-006, TASK-007, TASK-008, TASK-009, TASK-010, TASK-011, TASK-012.
-- `TASK-009` About section is implemented and then refined per UI feedback (non-clickable label + larger centered shelter placeholder).
-- `TASK-011` carousel share interaction is implemented and verified.
-- `TASK-012` signup wick progress indicator is implemented and verified.
-- Remaining major task: none in current queue.
-- `PROJECT_DEBT.md` exists for pending integrations/purchases (including Kit email-domain setup).
+
+### Completed tasks
+TASK-001 through TASK-012, TASK-024 (SUPERSEDED), TASK-030 through TASK-043.
+
+### Current batch (TODO)
+| Task | Description | Status | Blocker |
+|------|-------------|--------|---------|
+| TASK-044 | Privacy Policy page | TODO | — |
+| TASK-045 | Cookie consent + analytics | TODO | TASK-044 |
+| TASK-046 | Form audit | TODO | TASK-043, 044, 045 |
+| TASK-047 | Anti-spam (honeypot) | TODO | TASK-046 |
+| TASK-048 | GA4 + Clarity real IDs | TODO | TASK-045 + user creates accounts |
+| TASK-049 | Waitlist counter (CF Workers) | TODO | TASK-045, 046 + user CF account |
+| TASK-050 | Production QA | TODO | all above |
+
+### Key notes
+- **TASK-043** marked DONE — old files deleted, posts.json updated, breathing-under-noise.html removed entirely (was never completed as article)
+- **TASK-024** superseded by TASK-045
+- All forms across 7 pages are already consistent (verified by audit agent)
 
 ## Decisions
-- Keep header minimal and shared across pages (`index.html`, `blog.html`) to improve cross-page navigation.
+- **Hosting: Cloudflare Pages** — decided 2026-03-04. This unlocks Cloudflare Workers for TASK-049 waitlist counter.
+- Keep header minimal and shared across pages.
 - Use fixed translucent header with blur to match dark visual identity.
-- Tighten hero viewport occupancy to expose next section earlier.
-- Keep layout unchanged during copy rewrite; only replace text and rename section class `.for-who` -> `.why-it-works`.
-- Add trust narrative as a dedicated About section between why-it-works and signup.
-- Keep `Linkedin` as plain text label (no outbound link) in About section.
-- Place shelter-image placeholder under About text, centered and visually prominent.
-- Add share buttons to all environment cards with mobile native share + desktop clipboard fallback.
-- Add burning wick progress UI above signup form, with manual `current` value in `script.js`.
-- Keep implementation static and dependency-free.
+- Keep implementation static and dependency-free (except Workers for counter).
+- Anti-spam: honeypot + time-based check only (no CAPTCHA, no external deps).
+- Analytics: GA4 + Clarity behind GDPR consent banner, Google Consent Mode v2, defaults denied.
 
-## Files changed in latest iteration
-- `index.html`
-  - Added `.progress-wick` block above signup form.
-- `styles.css`
-  - Added wick styles and flame animation (`.progress-wick`, `.wick-*`, `@keyframes flicker`).
-- `script.js`
-  - Added wick initializer IIFE with manual `current` and `goal` values.
-- `TASKS.md`
-  - Marked `TASK-012` as `DONE`.
-- `REPORT.md`
-  - Appended execution report block for `TASK-012`.
-- `PROJECT_STATE.md`
-  - Updated current state and completed tasks list.
-
-## Commands run
-- `Get-Content TASKS.md`
-- `Get-Content PROJECT_STATE.md`
-- `Get-Content REPORTING_FORMAT.md`
-- `git status --short`
-- `Select-String` checks for wick markup/styles/script hooks
-- `Invoke-WebRequest http://localhost:8080`
-- temporary script toggle for verification:
-  - `const current = 0` -> `const current = 150` -> back to `const current = 0`
-- Playwright checks:
-  - snapshot validation of wick in signup section
-  - baseline validation (`0 / 300`, empty fill, flame animation)
-  - `current=150` validation (display `150`, fill 50%)
-  - mobile width validation (`375x812`, no overflow)
-
-## Verification/QA Status
-- Verification run: YES
-- Result: PASSED
-- Evidence:
-  - Signup shows wick labels `0 / 300` + `early testers`.
-  - Track starts at 0% with flame at the start and active `flicker` animation.
-  - With `current=150`, UI shows 50% progress and `150 / 300`.
-  - On `375px` viewport, wick remains within layout width with no horizontal overflow.
+## Files changed in latest session (2026-03-04)
+- Created task specs: `tasks/active/TASK-046.md` through `TASK-050.md`
+- Updated `TASKS.md` — added 5 new tasks, marked TASK-043 as DONE
+- Updated `docs/ai/handoff.md` — this file
 
 ## Open risks / notes
-- First live Kit submission flow still needs owner validation in Kit dashboard and inbox.
-- TikTok URL still placeholder until provided.
+- **User action needed for TASK-048:** Create GA4 property + Clarity project, provide real IDs
+- **User action needed for TASK-049:** Cloudflare account setup, KV namespace, Kit webhook config
+- First live Kit submission flow still needs owner validation in Kit dashboard
+- TikTok URL still placeholder until provided
 
 ## Next steps
-1. Replace TikTok placeholder when URL is available.
-2. Validate Kit double opt-in/send settings end-to-end with a production sender domain.
-3. Start new orchestrator queue items from `PROJECT_DEBT.md` priorities.
+1. Execute TASK-044 (Privacy Policy page) — first TODO in queue
+2. Execute TASK-045 (Cookie consent + analytics)
+3. Execute TASK-046 (Form audit)
+4. Execute TASK-047 (Anti-spam)
+5. User creates GA4 + Clarity accounts → TASK-048
+6. User sets up Cloudflare Pages + Workers → TASK-049
+7. TASK-050 (Production QA) — final gate before launch
