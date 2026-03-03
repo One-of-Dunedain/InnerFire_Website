@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-03
-## Current status: TASK-042 completed; 4 active tasks remaining (TASK-024, TASK-034, TASK-041, TASK-043)
+## Current status: TASK-041 completed; 3 active tasks remaining (TASK-024, TASK-034, TASK-043)
 
 ---
 
@@ -53,6 +53,7 @@
 - Mobile app-card layout overhaul for `blog/best-breathwork-apps.html`: grid-based compact mobile headers (icon/name/rating+price hint/badge/toggle), hidden noisy meta in collapsed state, expanded-body platforms/store row, and 16-card `data-price-hint` system with mobile-only rendering (TASK-038)
 - Article UX/UI consistency polish for `blog/best-breathwork-apps.html`: First Name + Email on both Kit forms, InnerFire signup moved after verdict with warm in-card styling, desktop two-column form grids, tighter mobile spacing at 480px, and tiny-screen Quick Picks responsiveness (TASK-039)
 - Blog index compact mobile layout for `blog.html`: first card remains featured 16:9, remaining cards convert to 72px horizontal compact rows with hidden excerpts, reduced mobile header/newsletter spacing, and tablet 2:1 thumbnail ratio while preserving desktop layout (TASK-040)
+- New science article published at `blog/vagus-nerve-breathing.html` with full template compliance (meta/canonical/schema), vertical video placeholder, FAQ accordion + FAQPage schema, 4 PubMed references, complete CTA/author/footer/navigation structure, and dedicated thumbnail `blog/images/vagus-nerve-breathing.svg` (TASK-041)
 - New science-backed habit article created at `blog/build-breathing-habit.html` with full template compliance (meta/canonical/schema), interactive habit-curve SVG, responsive 21-day breath map component, FAQ accordion behavior, and dedicated thumbnail asset `blog/images/build-breathing-habit.svg` (TASK-042)
 
 ### What is NOT done yet
@@ -100,7 +101,6 @@ Static blog with JSON manifest. No build step.
 ## Active tasks
 - [TASK-024] GA4 + Clarity custom event tracking code (TODO)
 - [TASK-034] Research 10 additional breathwork apps (Wave 2 expansion) (TODO)
-- [TASK-041] New article - Vagus Nerve Breathing (TODO)
 - [TASK-043] Blog cleanup - posts.json, delete old files, fix consistency (TODO)
 
 ## Completed tasks
@@ -131,6 +131,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-038 (DONE)
 - TASK-039 (DONE)
 - TASK-040 (DONE)
+- TASK-041 (DONE)
 - TASK-042 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 

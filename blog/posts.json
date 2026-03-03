@@ -9,13 +9,13 @@
     "thumbnail": "./blog/images/best-breathwork-apps.svg"
   },
   {
-    "slug": "why-exhale-works",
-    "title": "Why Exhale Controls State",
-    "excerpt": "Why extending exhale changes the body state faster than trying to force calm with thoughts.",
+    "slug": "vagus-nerve-breathing",
+    "title": "Vagus Nerve Breathing: Why Exhaling Actually Calms You Down",
+    "excerpt": "How the longest nerve in your body connects breath to brain - and why extending your exhale is the fastest way to reduce anxiety.",
     "date": "2026-03-07",
-    "readTime": "7 min",
+    "readTime": "9 min",
     "category": "Science",
-    "thumbnail": "./blog/images/post-03.svg"
+    "thumbnail": "./blog/images/vagus-nerve-breathing.svg"
   },
   {
     "slug": "build-breathing-habit",
@@ -25,14 +25,5 @@
     "readTime": "8 min",
     "category": "Habits",
     "thumbnail": "./blog/images/build-breathing-habit.svg"
-  },
-  {
-    "slug": "breathing-under-noise",
-    "title": "Breathing Under Noise",
-    "excerpt": "A practical guide for stabilizing breath when your environment is loud and unpredictable.",
-    "date": "2026-03-01",
-    "readTime": "6 min",
-    "category": "Breathing",
-    "thumbnail": "./blog/images/post-01.svg"
   }
 ]

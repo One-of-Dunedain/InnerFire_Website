@@ -267,3 +267,56 @@ None.
 
 ### Recommended next action
 Proceed with `TASK-041` (new vagus nerve article) before `TASK-043` cleanup, since TASK-043 depends on TASK-041 and TASK-042.
+
+---
+## [TASK-041] New article - Vagus Nerve Breathing
+Date: 2026-03-03
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created a new long-form science article at `blog/vagus-nerve-breathing.html` based on the full article template contract and added the dedicated thumbnail asset `blog/images/vagus-nerve-breathing.svg`. The page includes complete head metadata, commented GA4/Clarity blocks, canonical and OG/Twitter tags, JSON-LD (Article + FAQPage), reading progress, share button behavior with fallback, FAQ accordion logic, CTA form, author card, back navigation, and full footer/social links.
+
+### Files changed
+- `blog/vagus-nerve-breathing.html` - created full article page with required structure, references, schema, CTA, FAQ, and scripts
+- `blog/images/vagus-nerve-breathing.svg` - created 1200x675 article thumbnail
+- `TASKS.md` - updated TASK-041 status from TODO to DONE
+- `REPORT.md` - appended TASK-041 execution report
+- `PROJECT_STATE.md` - updated current status/capabilities/active-completed task lists
+
+### Acceptance Criteria Results
+- [x] `blog/vagus-nerve-breathing.html` exists and renders correctly
+- [x] `blog/images/vagus-nerve-breathing.svg` exists (1200x675)
+- [x] All `<head>` meta tags present (canonical, og, twitter, author, theme-color)
+- [x] Schema.org Article + FAQPage JSON-LD in head
+- [x] Reading progress bar works on scroll
+- [x] Share button works (native share + clipboard fallback)
+- [x] FAQ accordion expands/collapses correctly
+- [x] Vertical video placeholder present with `media-video-v` class
+- [x] CTA form has first_name + email fields, submits to Kit.com
+- [x] Author card present with photo + bio
+- [x] Full footer with social links
+- [x] Back link to `../blog.html`
+- [x] 4 scientific reference links are real PubMed URLs that resolve
+- [x] No console errors
+- [x] Article body tone is informative and non-hype
+- [x] External links use `target="_blank" rel="noreferrer"`
+
+### Behavior changes
+- Added a new standalone article page about vagus-nerve breathing mechanisms, with production-ready blog UX elements and structured data support.
+
+### Verification
+- PASSED
+- Opened `http://127.0.0.1:8080/blog/vagus-nerve-breathing.html` and verified rendering at `375px`, `768px`, and `1920px`.
+- Verified reading-progress updates from top to bottom scroll.
+- Verified share button click path runs without runtime errors.
+- Verified FAQ expand/collapse behavior with dynamic height sync.
+- Verified CTA fields and names: `fields[first_name]` + `email_address`; verified back link points to `../blog.html`.
+- Verified all 4 PubMed URLs return `HTTP/1.1 200 OK` via `curl -I -L`.
+- Verified browser console: 0 errors.
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed with `TASK-043` (blog cleanup and manifest consistency), since it depends on both `TASK-041` and `TASK-042` already being DONE.

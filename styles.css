@@ -1275,11 +1275,21 @@ footer {
   flex-direction: column;
   align-items: center;
 }
-.media-video-v video {
+.media-video-v-shell {
   width: 100%;
-  max-width: 320px;
+  max-width: 360px;
+  padding: 10px;
+  border-radius: calc(var(--radius) + 4px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 138, 61, 0.03));
+}
+.media-video-v video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
   border-radius: var(--radius);
   background: var(--surface);
+  object-fit: cover;
 }
 
 /* Image */

@@ -137,7 +137,7 @@ Goal: Redesign blog index mobile layout so all articles fit in 1-2 screens. Feat
 ---
 
 ## [TASK-041] New article — Vagus Nerve Breathing
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
