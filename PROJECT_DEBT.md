@@ -18,7 +18,7 @@ Type: Connect
 Priority: High
 Status: TODO
 Owner: Project Owner + Executor AI
-Details: Point purchased domain to production hosting (GitHub Pages or chosen platform), configure DNS records, and verify HTTPS.
+Details: Point purchased domain to Cloudflare Pages, configure DNS records, and verify HTTPS.
 
 ## [PD-003] Create branded sender mailbox
 Type: Buy/Connect

@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-04
-## Current status: TASK-044 completed; 7 active tasks remaining (TASK-034, TASK-045, TASK-046, TASK-047, TASK-048, TASK-049, TASK-050)
+## Current status: TASK-045 completed; 6 active tasks remaining (TASK-034, TASK-046, TASK-047, TASK-048, TASK-049, TASK-050)
 
 ---
 
@@ -56,9 +56,10 @@
 - New science article published at `blog/vagus-nerve-breathing.html` with full template compliance (meta/canonical/schema), vertical video placeholder, FAQ accordion + FAQPage schema, 4 PubMed references, complete CTA/author/footer/navigation structure, and dedicated thumbnail `blog/images/vagus-nerve-breathing.svg` (TASK-041)
 - New science-backed habit article created at `blog/build-breathing-habit.html` with full template compliance (meta/canonical/schema), interactive habit-curve SVG, responsive 21-day breath map component, FAQ accordion behavior, and dedicated thumbnail asset `blog/images/build-breathing-habit.svg` (TASK-042)
 - Privacy policy page added at `privacy.html` with noindex, cookie disclosures, third-party services table, GDPR/CCPA rights, and footer legal links (`Privacy` + `Cookie Settings`) added across landing/blog/article pages (TASK-044)
+- Cookie consent system added via `consent.js` with Google Consent Mode v2 defaults, consent banner + Cookie Settings reset flow, conditional GA4/Clarity loading, and custom analytics events (`form_submit`, `form_error`, `scroll_depth`, `share_click`, `cta_click`) wired across landing/blog/article pages (TASK-045)
 
 ### What is NOT done yet
-- Real GA4 and Clarity IDs are not configured yet (placeholders are present but commented out)
+- Real GA4 and Clarity IDs are not configured yet (placeholders remain in `consent.js`)
 - TikTok URL still placeholder `#`
 - Live Kit submission still needs owner-side validation
 - `og-image.png` does not exist yet
@@ -101,7 +102,6 @@ Static blog with JSON manifest. No build step.
 
 ## Active tasks
 - [TASK-034] Research 10 additional breathwork apps (Wave 2 expansion) (TODO)
-- [TASK-045] Cookie consent + GA4 + Clarity + event tracking (TODO)
 - [TASK-046] Form audit - verify all signup forms match Kit pattern (TODO)
 - [TASK-047] Anti-spam - honeypot + client-side validation for all forms (TODO)
 - [TASK-048] GA4 + Clarity setup - replace placeholders, verify end-to-end (TODO)
@@ -140,6 +140,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-042 (DONE)
 - TASK-043 (DONE partial)
 - TASK-044 (DONE)
+- TASK-045 (DONE)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
@@ -163,7 +164,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - Pure HTML/CSS/JS, no dependencies, no build step
 - Hosted: Cloudflare Pages (target)
 - Email service: Kit (HTML form POST endpoint)
-- Analytics: GA4 + Microsoft Clarity placeholders integrated (IDs pending)
+- Analytics: consent-gated GA4 + Clarity via `consent.js` (real IDs pending)
 
 
 

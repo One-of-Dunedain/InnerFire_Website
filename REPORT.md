@@ -1,4 +1,4 @@
-﻿# Execution Reports
+# Execution Reports
 _Executor will write reports here after each completed task._
 
 > Historical reports archived in `archive/reports/REPORT_ARCHIVE_2026-02-25.md`
@@ -163,3 +163,73 @@ Users can now open a dedicated Privacy Policy page from site footers, and every 
 
 ### Recommended next action
 Proceed with `TASK-045` (cookie consent + conditional GA4/Clarity loading + event tracking), wiring the existing `#cookie-settings-link` placeholders to the consent manager.
+---
+## [TASK-045] Cookie consent + GA4 + Clarity + event tracking
+Date: 2026-03-04
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Implemented a full consent-gated analytics layer by creating `consent.js` (Google Consent Mode v2 default deny, consent banner, stored consent handling, footer `Cookie Settings` reset, conditional GA4/Clarity loading, and custom event tracking). Added consent banner styles to `styles.css`, inserted early `<script src=".../consent.js"></script>` in page heads, and removed legacy commented GA4/Clarity placeholder blocks from pages/templates so analytics initialization is centralized.
+
+### Files changed
+- `consent.js` - created consent manager, consent storage/versioning, conditional analytics loader, and custom event tracking
+- `styles.css` - added full consent banner responsive styles
+- `index.html` - removed commented GA/Clarity blocks; added early `./consent.js` include in `<head>`
+- `blog.html` - removed commented GA/Clarity blocks; added early `./consent.js` include in `<head>`
+- `privacy.html` - added early `./consent.js` include in `<head>`
+- `blog/best-breathwork-apps.html` - removed commented GA/Clarity blocks; added early `../consent.js` include in `<head>`
+- `blog/vagus-nerve-breathing.html` - removed commented GA/Clarity blocks; added early `../consent.js` include in `<head>`
+- `blog/build-breathing-habit.html` - removed commented GA/Clarity blocks; added early `../consent.js` include in `<head>`
+- `blog/_template.html` - removed commented GA/Clarity blocks; added early `../consent.js` include in `<head>`
+- `blog/_listicle-template.html` - removed commented GA/Clarity blocks; added early `../consent.js` include in `<head>`
+- `TASKS.md` - updated TASK-045 status to DONE
+- `PROJECT_STATE.md` - updated current state/capabilities/active tasks/completed tasks
+- `REPORT.md` - appended TASK-045 report
+
+### Acceptance Criteria Results
+- [x] `consent.js` exists in project root
+- [x] Script tag added in `<head>` on all current public pages with correct relative paths (`./consent.js` root, `../consent.js` blog)
+- [x] Commented GA4/Clarity blocks removed from pages/templates
+- [x] Banner appears on first visit (no stored consent)
+- [x] Banner slides up with transform animation
+- [x] "Accept" hides banner, stores consent, loads analytics
+- [x] "Decline" hides banner, stores consent, analytics stay unloaded
+- [x] Return visit after "accepted": no banner, analytics initialize automatically
+- [x] Return visit after "declined": no banner, analytics stay unloaded
+- [x] "Cookie Settings" clears consent and re-opens banner
+- [x] Google Consent Mode v2 defaults are set before analytics loading
+- [x] Banner Privacy link resolves correctly on root (`./privacy.html`) and blog pages (`../privacy.html`)
+- [x] Mobile 375px: banner stacks vertically and buttons become full-width
+- [x] Banner CSS added to `styles.css`
+- [x] `form_submit` event fires
+- [x] `scroll_depth` events fire at 25/50/75/100 once each
+- [x] `share_click` event fires (capture phase used to work with existing share button stopPropagation)
+- [x] `cta_click` event fires for non-form CTA links/buttons
+- [x] No console errors on verified pages and interactions
+- [x] No analytics script injection when consent is declined
+
+### Behavior changes
+First-time visitors now get an explicit cookie consent choice. Analytics are blocked by default and only activated after consent. Users can reopen consent from footer `Cookie Settings`. Key product interactions now emit structured analytics events through a single consent-aware pipeline.
+
+### Verification
+- PASSED
+- Playwright checks on:
+  - `http://127.0.0.1:8080/index.html`
+  - `http://127.0.0.1:8080/blog.html`
+  - `http://127.0.0.1:8080/privacy.html`
+  - `http://127.0.0.1:8080/blog/best-breathwork-apps.html`
+  - `http://127.0.0.1:8080/blog/vagus-nerve-breathing.html`
+  - `http://127.0.0.1:8080/blog/build-breathing-habit.html`
+- Verified consent flows: first visit banner, accept, decline, return visit, and Cookie Settings reset.
+- Verified mobile layout at `375x812` (`.consent-inner` column layout, full-width action row, tappable buttons).
+- Verified event emissions in `window.dataLayer` for `form_submit`, `form_error`, `scroll_depth` (4 thresholds), `share_click`, `cta_click`.
+- Verified network behavior:
+  - accepted: GA script request and GA collect calls observed
+  - declined: GA script not injected in DOM (`hasGaScript: false`)
+
+### Issues encountered
+`blog/breathing-under-noise.html` is already removed from the repository by earlier cleanup (TASK-043 partial), so it could not be updated; all current active pages were updated.
+
+### Recommended next action
+Proceed to `TASK-046` (form audit) so all signup forms are normalized before adding anti-spam logic in `TASK-047`.
