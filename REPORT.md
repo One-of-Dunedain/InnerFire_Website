@@ -233,3 +233,50 @@ First-time visitors now get an explicit cookie consent choice. Analytics are blo
 
 ### Recommended next action
 Proceed to `TASK-046` (form audit) so all signup forms are normalized before adding anti-spam logic in `TASK-047`.
+---
+## [TASK-046] Form audit - verify all signup forms match Kit pattern
+Date: 2026-03-03
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Audited all signup forms across landing, blog index, published articles, and both article templates against the canonical Kit pattern. Fixed all detected drift: standardized field order to `first_name` then `email_address`, added missing `required` on `first_name` in the blog newsletter form, and added missing `first_name` field in both templates. Also removed non-current TASK-034 from active queue per owner instruction and archived its spec.
+
+### Files changed
+- `index.html` - reordered signup fields to `first_name` then `email`
+- `blog.html` - reordered fields and added `required` to `first_name`
+- `blog/best-breathwork-apps.html` - reordered CTA form fields
+- `blog/vagus-nerve-breathing.html` - reordered CTA form fields
+- `blog/build-breathing-habit.html` - reordered CTA form fields
+- `blog/_template.html` - added missing `first_name` field before email
+- `blog/_listicle-template.html` - added missing `first_name` field before email
+- `TASKS.md` - removed non-current TASK-034 block; set TASK-046 status to DONE
+- `PROJECT_STATE.md` - updated current status, active/completed tasks
+- `archive/tasks/TASK-034.md` - moved from `tasks/active/` to archive
+
+### Acceptance Criteria Results
+- [x] All forms across all pages have identical Kit configuration - passed
+- [x] All forms have both first_name and email_address fields - passed
+- [x] All forms have `required` on both inputs - passed
+- [x] Preconnect header present on all pages with forms - passed
+- [x] Templates match the same pattern - passed
+- [x] privacy.html has no signup form - passed
+- [x] Manual submission test: at least 1 form submits successfully to Kit - passed (`POST` result: `200`, success URL)
+
+### Behavior changes
+Form UX is now consistent everywhere: users always see `First Name` first, then `Email Address`, with required validation on both fields.
+
+### Verification
+- PASSED
+- Static audit via regex checks over all 7 target files confirmed: action URL, method, `data-sv-form`, `data-uid`, required attributes, field order, and preconnect headers.
+- Verified `privacy.html` has no form-related markers.
+- Performed live endpoint submission test:
+  - `POST https://app.kit.com/forms/9132207/subscriptions`
+  - Response: `200`
+  - Redirect target: `https://app.kit.com/forms/success?form_id=9132207`
+
+### Issues encountered
+None.
+
+### Recommended next action
+Proceed to `TASK-047` (anti-spam honeypot + time-gate), now that all form structures are normalized.

@@ -2,7 +2,7 @@
 
 Active task index only. Full task specifications are stored in `tasks/active/`.
 Completed and superseded tasks are archived in `archive/tasks/`.
-Last updated: 2026-03-04
+Last updated: 2026-03-03
 
 Archived blocks:
 - `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -66,14 +66,6 @@ Goal: Add sticky ToC (desktop), back-to-top button, comparison table scroll hint
 
 ---
 
-## [TASK-034] Research 10 additional breathwork apps (Wave 2 expansion)
-Status: TODO
-Priority: Medium
-Owner: Executor AI
-Depends on: none
-Spec: tasks/active/TASK-034.md
-Goal: Research 10 new apps (Breathly, Stoa, Breathe+, Kardia, Open, BreathingZone, Exhale, Mesmerize, Breethe, Soma Breath) with full data + UGC quotes + billing ratings. Append to docs/research/breathwork-apps.md.
-
 ---
 
 ## [TASK-036] Pricing & monetization deep-dive for all breathwork apps
@@ -90,7 +82,7 @@ Goal: Research exact pricing (monthly/yearly/lifetime), free tier feature split,
 Status: DONE
 Priority: Critical
 Owner: Executor AI
-Depends on: TASK-031 (DONE), TASK-036 (DONE), TASK-034 (partial)
+Depends on: TASK-031 (DONE), TASK-036 (DONE)
 Spec: tasks/active/TASK-035.md
 Goal: Rewrite all article text to honest human tone. Add pricing blocks, UGC quotes, billing badges to each app card. Add 6 Wave 2 apps. Update comparison table, Schema.org, meta. No keyword stuffing.
 
@@ -188,7 +180,7 @@ Goal: Create consent.js with cookie consent banner (GDPR compliant), Google Cons
 ---
 
 ## [TASK-046] Form audit — verify all signup forms match Kit pattern
-Status: TODO
+Status: DONE
 Priority: Medium
 Owner: Executor AI
 Depends on: TASK-043 (DONE), TASK-044 (DONE), TASK-045 (DONE)
@@ -234,3 +226,5 @@ Owner: Executor AI + User
 Depends on: TASK-045 (DONE), TASK-046 (DONE), TASK-047 (DONE), TASK-048 (DONE), TASK-049 (DONE)
 Spec: tasks/active/TASK-050.md
 Goal: Comprehensive QA at 5 breakpoints (375/428/768/1440/1920px). All pages: visual, forms, consent flow, analytics, SEO, accessibility, Lighthouse scores (≥90), security, cross-browser. Zero Critical/High issues before launch.
+
+

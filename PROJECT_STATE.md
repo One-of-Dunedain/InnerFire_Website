@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-04
-## Current status: TASK-045 completed; 6 active tasks remaining (TASK-034, TASK-046, TASK-047, TASK-048, TASK-049, TASK-050)
+## Current status: TASK-046 completed; 4 active tasks remaining (TASK-047, TASK-048, TASK-049, TASK-050)
 
 ---
 
@@ -101,8 +101,6 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks
-- [TASK-034] Research 10 additional breathwork apps (Wave 2 expansion) (TODO)
-- [TASK-046] Form audit - verify all signup forms match Kit pattern (TODO)
 - [TASK-047] Anti-spam - honeypot + client-side validation for all forms (TODO)
 - [TASK-048] GA4 + Clarity setup - replace placeholders, verify end-to-end (TODO)
 - [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint (TODO)
@@ -141,6 +139,8 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-043 (DONE partial)
 - TASK-044 (DONE)
 - TASK-045 (DONE)
+- TASK-046 (DONE)
+- TASK-034 (REMOVED as non-current by owner decision; spec moved to archive/tasks/TASK-034.md)
 - TASK-003 SUPERSEDED by TASK-010
 
 ## Archive system
