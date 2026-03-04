@@ -1,0 +1,11 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
+  X-XSS-Protection: 0
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' www.googletagmanager.com clarity.ms 'unsafe-hashes' 'sha256-6QsYUHxz3WxqK2tzTD9JKfQEXJ8bhGHia4WDQu5fXEo=' 'sha256-0v8pbvOPOdFYRHaqWmW1JZN66HSPW3Fi5JC+zFa8xpM=' 'sha256-HSfKpPQKZoFNtfZ20JLiiYBJjqXxf+JAAC5tXenkJP0=' 'sha256-BSjPMA/eSDxnte3Wz1Y+6PaCyYlAm7Ubp8W/axhrxuI=' 'sha256-Y9uTfh96OdtZmH8OtG4aWrmUVtDRnQe+J2zycTjKjC4=' 'sha256-NHybEU8XSSkdbK5U57YEC+OA/XzvNwWxY7RhRkg0hdM=' 'sha256-/O6uGiob3E7QnY16sOe+LrN2gIW3aZpGKYm6dIfx/2k=' 'sha256-9oumHCC621Wu9H8jlqz9n5QXSz6yRZCXATp2+IuGEVw=' 'sha256-3gnRrTjbrdfSoN/cXjbTAfrrV+4nO7GtI/puyUROI7k=' 'sha256-qxiTHiZ6lemFO6u5GmKaQGAD9r0qYSFuaAb89O7cb/g=' 'sha256-LS8f0SrIP8YsXnwCMTMjR9l7cAe/jI77eWU4xqY7Aa4=' 'sha256-OBwjvViqOrMcdkms0iL3CMnE1spXJzYaXxe+PtxXlGA=' 'sha256-8R/qQsUOHohQ7iEWvVuOlXyoy5rTP+a9AhYczc9bo1w=' 'sha256-a9owxiD6PjLhUjzmHkgkgPiq2FqB7O1OAJ0JafkGdS4=' 'sha256-CsHeGK+F+f68QoZhhs7kMmycd/zFrffVb2EaRLZC/TI=' 'sha256-WN4vw266q7/Bkp+PA3mtx4VBbrFbq/B52zM9LNvrrJE=' 'sha256-FPKsEH1lYUIASOQAnbUDO9WWMyUOYpxJfVo6pxWOetg='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: *.google-analytics.com *.clarity.ms; connect-src 'self' app.kit.com *.kit.com www.google-analytics.com *.google-analytics.com *.analytics.google.com clarity.ms *.clarity.ms; form-action 'self' app.kit.com; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests
+
+/privacy.html
+  X-Robots-Tag: noindex
