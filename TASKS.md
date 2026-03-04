@@ -227,5 +227,23 @@ Depends on: TASK-045 (DONE), TASK-046 (DONE), TASK-047 (DONE), TASK-048 (DONE), 
 Spec: tasks/active/TASK-050.md
 Goal: Comprehensive QA at 5 breakpoints (375/428/768/1440/1920px). All pages: visual, forms, consent flow, analytics, SEO, accessibility, Lighthouse scores (≥90), security, cross-browser. Zero Critical/High issues before launch.
 
+---
 
+## [TASK-051] Security Headers — Cloudflare Pages `_headers` file
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none (parallel-safe)
+Spec: tasks/active/TASK-051.md
+Goal: Create `_headers` file with X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, COOP. Configure HSTS via Cloudflare dashboard.
+
+---
+
+## [TASK-052] Content Security Policy (CSP)
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: TASK-045 (DONE), TASK-049, TASK-051
+Spec: tasks/active/TASK-052.md
+Goal: Add CSP header to `_headers` with precise allowlist for Kit, GA4, Clarity, Google Fonts, Worker API. Start in Report-Only mode, verify zero violations, switch to enforcing.
 
