@@ -525,6 +525,19 @@ body {
   z-index: 1;
 }
 
+.carousel-card.has-video .card-overlay {
+  background: transparent;
+}
+
+.carousel-card.has-video {
+  cursor: pointer;
+}
+
+.carousel-card.has-video:focus-visible {
+  outline: 2px solid rgba(255, 138, 61, 0.6);
+  outline-offset: 4px;
+}
+
 .card-icon {
   font-size: 2.5rem;
 }
@@ -1393,6 +1406,12 @@ footer {
   border-radius: var(--radius);
   background: var(--surface);
   object-fit: cover;
+}
+
+.media-video-clean video {
+  max-width: 360px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 /* Image */

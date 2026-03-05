@@ -56,23 +56,88 @@ function initCardShareButtons() {
 // Auto-play/pause carousel videos based on viewport visibility
 function initCardBackgroundVideos() {
   var videos = document.querySelectorAll('.card-bg-video');
-  if (!videos.length || !('IntersectionObserver' in window)) return;
+  if (!videos.length) return;
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var playPromise = entry.target.play();
-        if (playPromise && typeof playPromise.catch === 'function') {
-          playPromise.catch(function() {});
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var isFullscreenVideo = document.fullscreenElement === entry.target;
+        if (entry.isIntersecting) {
+          var playPromise = entry.target.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(function() {});
+          }
+        } else if (!isFullscreenVideo) {
+          entry.target.pause();
         }
-      } else {
-        entry.target.pause();
-      }
+      });
+    }, { threshold: 0.25 });
+
+    videos.forEach(function(video) {
+      observer.observe(video);
     });
-  }, { threshold: 0.25 });
+  }
+
+  function openVideoFullscreen(video, card) {
+    if (!video) return;
+
+    video.muted = false;
+    video.defaultMuted = false;
+    video.volume = 1;
+    video.controls = true;
+
+    if (video.requestFullscreen) {
+      var fsPromise = video.requestFullscreen();
+      if (fsPromise && typeof fsPromise.catch === 'function') {
+        fsPromise.catch(function() {});
+      }
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.webkitEnterFullscreen) {
+      video.webkitEnterFullscreen();
+    }
+
+    var playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function() {});
+    }
+  }
+
+  function restoreInlineState(video) {
+    if (!video) return;
+    video.controls = false;
+    video.muted = true;
+    video.defaultMuted = true;
+  }
 
   videos.forEach(function(video) {
-    observer.observe(video);
+    var card = video.closest('.carousel-card.has-video');
+    if (!card) return;
+
+    card.addEventListener('click', function() {
+      openVideoFullscreen(video, card);
+    });
+
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openVideoFullscreen(video, card);
+      }
+    });
+
+    video.addEventListener('webkitendfullscreen', function() {
+      restoreInlineState(video);
+    });
+  });
+
+  document.addEventListener('fullscreenchange', function() {
+    videos.forEach(function(video) {
+      var activeEl = document.fullscreenElement;
+      var isActive = activeEl === video;
+      if (!isActive) {
+        restoreInlineState(video);
+      }
+    });
   });
 }
 
