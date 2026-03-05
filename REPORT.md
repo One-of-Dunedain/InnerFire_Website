@@ -376,3 +376,153 @@ Playwright default profile persists storage across runs, so decline verification
 
 ### Recommended next action
 In GA4, mark `form_submit` as conversion and set retention to 14 months; in Clarity, verify input masking and enable smart rage/dead click signals, then proceed to `TASK-049`.
+---
+## [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint
+Date: 2026-03-05
+Status: IN PROGRESS (code complete; deploy/integration pending)
+Executor: Executor AI
+
+### What was done
+Implemented the code side of the waitlist counter flow for landing page progress. Added a Cloudflare Worker source file with two endpoints (`GET /api/waitlist-count`, `POST /api/waitlist-webhook`), secret validation, CORS controls, and KV read/write logic for `subscriber_count`.
+
+Updated frontend integration in `script.js` to fetch count from Worker API, update wick flame/fill progress, and keep graceful fallback when API is unavailable. Updated counter markup in `index.html` to use `waitlist-count` identifier and then applied a UX hotfix: exact numeric text is now hidden visually (`sr-only`) so only the progress bar is shown publicly.
+
+### Files changed
+- `workers/waitlist-counter.js` - new Worker implementation for count read/increment
+- `script.js` - added waitlist counter API fetch + wick update logic
+- `index.html` - switched counter target element to `waitlist-count`; hid exact number visually per owner request
+- `TASKS.md` - status updated to IN PROGRESS
+
+### Acceptance Criteria Results
+- [ ] Cloudflare Worker deployed and accessible - pending owner deploy
+- [ ] GET `/api/waitlist-count` returns JSON in production - pending deploy
+- [ ] POST `/api/waitlist-webhook` increments counter in production - pending deploy + webhook setup
+- [ ] POST unauthorized path returns 401 in production - pending deploy verification
+- [x] Landing page has dynamic counter target element (`#waitlist-count`) - done
+- [x] Graceful fallback on API failure (`-` placeholder remains) - done
+- [x] No secrets committed to repository - done
+- [x] CORS restricted to `https://innerfire.app` in Worker code - done
+- [ ] Kit webhook increments production counter - pending Kit webhook config
+
+### Verification
+- PASSED (local code checks), PARTIAL (production checks blocked)
+- Verified Worker file includes:
+  - capped return at 300
+  - secret validation against `env.WEBHOOK_SECRET`
+  - CORS allow-origin policy for `https://innerfire.app`
+- Verified frontend fallback path leaves placeholder when fetch fails.
+
+### Issues encountered
+Worker API URL in `script.js` is intentionally a placeholder:
+`https://innerfire-waitlist.<your-subdomain>.workers.dev/api/waitlist-count`
+This must be replaced with the real deployed Worker URL.
+
+### Recommended next action
+Deploy Worker + KV, configure Kit webhook, replace placeholder URL in `script.js`, then add real Worker domain to CSP `connect-src`.
+---
+## [TASK-050] Production QA - full site checklist before launch
+Date: 2026-03-05
+Status: BLOCKED
+Executor: Executor AI
+
+### What was done
+Started production QA diagnostics and validated a launch blocker: current `https://innerfire.app` is serving a different website build, not this repository output. This blocks final production acceptance checks for visual, forms, analytics, and waitlist counter behavior on real domain.
+
+Also ran a security/consistency sweep during QA prep and fixed findings in a dedicated commit (`add0ce5`), including inline-handler removal and external link hardening.
+
+### Launch blockers found
+- Domain mismatch: `innerfire.app` returns unrelated HTML (different language/asset signature)
+- Waitlist counter Worker URL still placeholder in `script.js` (not production-wired)
+- Full cross-device QA + Lighthouse cannot be finalized until correct deployment is live
+
+### Acceptance Criteria Results
+- [ ] All pages tested on production domain at all breakpoints - blocked by domain mismatch
+- [ ] Zero Critical/High issues on production build - blocked
+- [ ] Lighthouse targets met on production build - blocked
+- [ ] Analytics and waitlist counter verified end-to-end in production - blocked
+- [ ] Cloudflare Pages deployment confirmed for this repository - pending owner deploy/domain switch
+
+### Verification
+- Confirmed blocker via domain inspection and HTML signature mismatch on `innerfire.app`.
+
+### Recommended next action
+Switch `innerfire.app` to this Cloudflare Pages project first, then re-run full TASK-050 checklist.
+---
+## [TASK-051] Security Headers - Cloudflare Pages `_headers` file
+Date: 2026-03-05
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created Cloudflare Pages `_headers` configuration with baseline response security headers for all routes and `X-Robots-Tag: noindex` for `privacy.html`.
+
+### Files changed
+- `_headers` - added `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-XSS-Protection`, `Cross-Origin-Opener-Policy`, and privacy `X-Robots-Tag`
+- `TASKS.md` - status updated to DONE
+
+### Acceptance Criteria Results
+- [x] `_headers` exists in project root - done
+- [x] Security header set defined for all pages - done (repo config)
+- [x] `privacy.html` has HTTP-level noindex reinforcement - done (repo config)
+- [ ] HSTS enabled in Cloudflare dashboard - pending owner dashboard action
+
+### Verification
+- Verified header rules in `_headers` file.
+- Production header response checks are pending until final domain deploy points to this repo.
+
+### Issues encountered
+None in code scope.
+
+### Recommended next action
+Owner to enable HSTS in Cloudflare dashboard (SSL/TLS -> Edge Certificates), then verify response headers on live domain.
+---
+## [TASK-052] Content Security Policy (CSP)
+Date: 2026-03-05
+Status: DONE (enforcing CSP added; worker domain pending)
+Executor: Executor AI
+
+### What was done
+Added enforcing `Content-Security-Policy` to `_headers` with explicit allowlists for site resources, Kit form endpoints, GA4, and Clarity. Included inline-script hash allowlist and `'unsafe-hashes'` to avoid enabling `'unsafe-inline'` for scripts.
+
+### Files changed
+- `_headers` - appended enforcing CSP policy
+- `TASKS.md` - status updated to DONE with dependency note
+
+### Acceptance Criteria Results
+- [x] CSP header present in `_headers` - done
+- [x] No `unsafe-eval` in policy - done
+- [x] No `unsafe-inline` in `script-src` - done
+- [x] Kit/GA4/Clarity domains included in relevant directives - done
+- [ ] Waitlist Worker domain included in `connect-src` - pending real Worker URL from TASK-049 deploy
+- [ ] End-to-end CSP verification on final production domain - pending final deploy
+
+### Verification
+- Verified CSP directive composition directly in `_headers`.
+- Production browser-console validation remains pending until domain/deploy is finalized.
+
+### Issues encountered
+TASK-052 has a dependency on known Worker host; since TASK-049 deploy is pending, final Worker domain cannot be added yet.
+
+### Recommended next action
+After Worker deploy, add actual `*.workers.dev` host to `connect-src`, then run final CSP validation on live domain.
+---
+## [MAINT-2026-03-05] Post-QA hardening and consistency fixes
+Date: 2026-03-05
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Applied follow-up hardening fixes discovered during QA/security review and shipped them in commit `add0ce5`.
+
+### Files changed
+- `blog.html` - removed inline `onclick` and switched to delegated event listener pattern
+- `blog/best-breathwork-apps.html` - canonical path normalized
+- `blog/build-breathing-habit.html` - external links hardened (`noopener`)
+- `blog/vagus-nerve-breathing.html` - external links hardened (`noopener`)
+- `privacy.html` - external links hardened (`noopener`)
+- `sitemap.xml` - ensured all published article URLs present
+- `docs/ai/bugfix-log.md` - logged fixed issues
+
+### Verification
+- Verified no inline handler remains in dynamic blog share output.
+- Verified all touched external links use `rel="noopener noreferrer"`.

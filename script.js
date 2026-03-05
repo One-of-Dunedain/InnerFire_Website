@@ -192,15 +192,39 @@ if (document.readyState === 'loading') {
   initAntiSpamForms();
 }
 
-// Set wick progress - update these values manually or via API later
+// Waitlist counter
 (function() {
-  const current = 0; // UPDATE THIS NUMBER as signups come in
-  const goal = 300;
-  const pct = Math.min((current / goal) * 100, 100);
-  const el = document.getElementById('wick-current');
-  const fill = document.querySelector('.wick-fill');
-  const flame = document.querySelector('.wick-flame');
-  if (el) el.textContent = current;
-  if (fill) fill.style.setProperty('--progress', pct + '%');
-  if (flame) flame.style.left = pct + '%';
+  var el = document.getElementById('waitlist-count');
+  var fill = document.querySelector('.wick-fill');
+  var flame = document.querySelector('.wick-flame');
+  if (!el) return;
+
+  var FALLBACK_LIMIT = 300;
+  var API_URL = 'https://innerfire-waitlist.<your-subdomain>.workers.dev/api/waitlist-count';
+
+  function applyCount(count, limit) {
+    var safeLimit = typeof limit === 'number' && limit > 0 ? limit : FALLBACK_LIMIT;
+    var safeCount = typeof count === 'number' && count >= 0 ? count : 0;
+    if (safeCount > safeLimit) safeCount = safeLimit;
+
+    var pct = Math.min((safeCount / safeLimit) * 100, 100);
+    el.textContent = String(safeCount);
+    el.classList.add('counter-loaded');
+
+    if (fill) fill.style.setProperty('--progress', pct + '%');
+    if (flame) flame.style.left = pct + '%';
+  }
+
+  fetch(API_URL)
+    .then(function(res) {
+      if (!res.ok) throw new Error('waitlist fetch failed');
+      return res.json();
+    })
+    .then(function(data) {
+      if (!data) return;
+      applyCount(data.count, data.limit);
+    })
+    .catch(function() {
+      // Keep dash placeholder if API is unreachable.
+    });
 })();

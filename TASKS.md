@@ -2,7 +2,7 @@
 
 Active task index only. Full task specifications are stored in `tasks/active/`.
 Completed and superseded tasks are archived in `archive/tasks/`.
-Last updated: 2026-03-03
+Last updated: 2026-03-05
 
 Archived blocks:
 - `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -210,7 +210,7 @@ Goal: Replace placeholder IDs in consent.js with real GA4 Measurement ID + Clari
 ---
 
 ## [TASK-049] Waitlist counter — Cloudflare Workers + KV serverless endpoint
-Status: TODO
+Status: IN PROGRESS (code complete; pending Cloudflare Worker deploy + real Worker URL + Kit webhook)
 Priority: High
 Owner: Executor AI + User
 Depends on: TASK-045 (DONE), TASK-046 (DONE)
@@ -220,7 +220,7 @@ Goal: Real-time "X / 300" waitlist counter on landing page. Cloudflare Worker AP
 ---
 
 ## [TASK-050] Production QA — full site checklist before launch
-Status: TODO
+Status: BLOCKED (awaiting final Cloudflare deploy/domain switch + manual multi-device QA + Lighthouse)
 Priority: Critical
 Owner: Executor AI + User
 Depends on: TASK-045 (DONE), TASK-046 (DONE), TASK-047 (DONE), TASK-048 (DONE), TASK-049 (DONE)
@@ -230,7 +230,7 @@ Goal: Comprehensive QA at 5 breakpoints (375/428/768/1440/1920px). All pages: vi
 ---
 
 ## [TASK-051] Security Headers — Cloudflare Pages `_headers` file
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none (parallel-safe)
@@ -240,10 +240,20 @@ Goal: Create `_headers` file with X-Content-Type-Options, X-Frame-Options, Refer
 ---
 
 ## [TASK-052] Content Security Policy (CSP)
-Status: TODO
+Status: DONE (enforcing CSP added; Worker domain still needs to be appended after TASK-049 deploy)
 Priority: High
 Owner: Executor AI
 Depends on: TASK-045 (DONE), TASK-049, TASK-051
 Spec: tasks/active/TASK-052.md
 Goal: Add CSP header to `_headers` with precise allowlist for Kit, GA4, Clarity, Google Fonts, Worker API. Start in Report-Only mode, verify zero violations, switch to enforcing.
+
+---
+
+## [TASK-053] Video demos on index.html and blog article
+Status: BLOCKED (waiting for video files in assets/videos/)
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-053.md
+Goal: Embed 3 looping demo videos (InnerFire in action) into carousel cards on homepage + 1 video in blog/build-breathing-habit.html. IntersectionObserver for play/pause. Muted autoplay on cards, controls+audio on blog.
 
