@@ -526,3 +526,46 @@ Applied follow-up hardening fixes discovered during QA/security review and shipp
 ### Verification
 - Verified no inline handler remains in dynamic blog share output.
 - Verified all touched external links use `rel="noopener noreferrer"`.
+---
+## [TASK-053] Video demos on index.html and blog article
+Date: 2026-03-05
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Embedded three real demo videos into homepage carousel cards (`mountains`, `meditation`, `forest`) and preserved gradient-only cards for `city` and `ocean`. Added one vertical video block with controls into `blog/build-breathing-habit.html` right after the intro paragraphs.
+
+Added `.card-bg-video` styling in `styles.css` for full-card cover rendering and ensured overlay layering stays above video content. Added `IntersectionObserver` logic in `script.js` to auto-play/pause carousel videos as cards enter/leave viewport.
+
+Renamed provided source video assets into stable project names in `assets/videos/`:
+- `demo-1.mp4`
+- `demo-2.mp4`
+- `demo-3.mp4`
+
+### Files changed
+- `index.html` - added `<video class="card-bg-video">` to 3 carousel cards
+- `blog/build-breathing-habit.html` - added one `media-video-v` demo block with controls
+- `styles.css` - added `.card-bg-video` rule and overlay z-index layer
+- `script.js` - added `initCardBackgroundVideos()` with `IntersectionObserver`
+- `assets/videos/demo-1.mp4` - new tracked asset (renamed from provided mountains clip)
+- `assets/videos/demo-2.mp4` - new tracked asset (renamed from provided meditation clip)
+- `assets/videos/demo-3.mp4` - new tracked asset (renamed from provided fireplace clip)
+- `TASKS.md` - updated TASK-053 status to DONE
+- `tasks/active/TASK-053.md` - status set to DONE
+
+### Acceptance Criteria Results
+- [x] Homepage has 3 video-backed carousel cards and 2 gradient-only cards - done
+- [x] Carousel videos are muted/autoplay/loop/playsinline - done
+- [x] Blog article has one vertical demo video with controls - done
+- [x] Mobile-safe video sizing uses existing 9:16 media shell and card cover fit - done
+- [x] Viewport-based play/pause behavior added via `IntersectionObserver` - done
+
+### Behavior changes
+- Carousel cards `Mountain Peaks`, `Meditation Room`, and `Forest Clearing` now display looping video backgrounds instead of static gradients.
+- `build-breathing-habit` article now includes an interactive video demo block with user controls and audio.
+
+### Verification
+- Confirmed video files exist at `assets/videos/demo-1.mp4`, `demo-2.mp4`, `demo-3.mp4`.
+- Confirmed 3 `.card-bg-video` elements are present in `index.html` and mapped to `demo-1/2/3`.
+- Confirmed one article `<video controls>` embed is present in `blog/build-breathing-habit.html` and points to `../assets/videos/demo-2.mp4`.
+- Verified `script.js` syntax check: `node --check script.js` passed.

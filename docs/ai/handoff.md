@@ -20,10 +20,11 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 | TASK-050 | BLOCKED | Production QA blocked until `innerfire.app` points to this repo deployment |
 | TASK-051 | DONE | `_headers` security baseline added |
 | TASK-052 | DONE (partial dependency) | Enforcing CSP added; Worker host still missing from `connect-src` until TASK-049 deploy |
-| TASK-053 | BLOCKED | Waiting for video files in `assets/videos/` |
+| TASK-053 | DONE | 3 homepage video cards + 1 blog embed integrated |
 
 ### Latest owner decision
 - Deployment is intentionally postponed for now. Continue with code/docs prep only.
+- Owner provided source demo videos; TASK-053 unblocked and executed.
 
 ## What Was Done In This Cycle
 1. Completed TASK-051 in code scope:
@@ -41,26 +42,38 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 6. Applied post-QA hardening fixes and pushed:
    - Commit `add0ce5` removes inline handler, hardens external links, normalizes canonical, updates sitemap.
    - Logged under `docs/ai/bugfix-log.md`.
+7. Completed TASK-053:
+   - Added 3 carousel background videos in `index.html`.
+   - Added 1 controlled video embed in `blog/build-breathing-habit.html`.
+   - Added `.card-bg-video` styles and viewport-based autoplay/pause logic in `script.js`.
+   - Normalized provided assets into `assets/videos/demo-1.mp4`, `demo-2.mp4`, `demo-3.mp4`.
 
 ## Files Changed In This Cycle
 - `_headers`
 - `workers/waitlist-counter.js` (new, currently untracked)
 - `script.js`
 - `index.html`
+- `styles.css`
+- `blog/build-breathing-habit.html`
+- `assets/videos/demo-1.mp4`
+- `assets/videos/demo-2.mp4`
+- `assets/videos/demo-3.mp4`
 - `TASKS.md`
 - `REPORT.md`
 - `docs/ai/bugfix-log.md`
 - `docs/ai/handoff.md`
+- `tasks/active/TASK-053.md`
 - (from pushed hardening commit) `blog.html`, `blog/best-breathwork-apps.html`, `blog/build-breathing-habit.html`, `blog/vagus-nerve-breathing.html`, `privacy.html`, `sitemap.xml`
 
 ## Commits Already Pushed
 - `9d4fe59` - `feat(security): add Cloudflare headers and CSP policy`
 - `91669b1` - `feat(analytics): complete TASK-048 GA4+Clarity setup and verification`
 - `add0ce5` - `fix(security): remove inline handlers and harden external links`
+- `756c1aa` - `feat(waitlist): add worker scaffold and sync task docs`
 
 ## Working Tree Snapshot (not fully committed)
-- Modified: `TASKS.md`, `index.html`, `script.js`, `REPORT.md`, `docs/ai/handoff.md`
-- Untracked (relevant): `workers/waitlist-counter.js`
+- Modified: `TASKS.md`, `REPORT.md`, `index.html`, `script.js`, `styles.css`, `blog/build-breathing-habit.html`, `tasks/active/TASK-053.md`, `docs/ai/handoff.md`
+- Untracked (relevant): `assets/videos/demo-1.mp4`, `assets/videos/demo-2.mp4`, `assets/videos/demo-3.mp4`
 
 ## Verification And Diagnostics
 
@@ -70,6 +83,9 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 - `git diff -- script.js`
 - `Get-Content _headers`
 - `Get-Content workers/waitlist-counter.js`
+- `rg -n "card-bg-video|demo-1.mp4|demo-2.mp4|demo-3.mp4" index.html`
+- `rg -n "media-video-v|demo-2.mp4" blog/build-breathing-habit.html`
+- `node --check script.js`
 
 ### Findings
 - Domain mismatch confirmed: current `innerfire.app` response does not match this static site.

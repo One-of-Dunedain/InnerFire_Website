@@ -1,6 +1,6 @@
 # TASK-053: Video demos on index.html and blog article
 
-Status: BLOCKED (waiting for video files in assets/videos/)
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none

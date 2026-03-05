@@ -53,6 +53,29 @@ function initCardShareButtons() {
   });
 }
 
+// Auto-play/pause carousel videos based on viewport visibility
+function initCardBackgroundVideos() {
+  var videos = document.querySelectorAll('.card-bg-video');
+  if (!videos.length || !('IntersectionObserver' in window)) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var playPromise = entry.target.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(function() {});
+        }
+      } else {
+        entry.target.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  videos.forEach(function(video) {
+    observer.observe(video);
+  });
+}
+
 // Blur reveal on benefit cards
 function initBenefitReveal() {
   document.querySelectorAll('.benefit-item').forEach(function(item) {
@@ -181,12 +204,14 @@ function initAntiSpamForms() {
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     initCardShareButtons();
+    initCardBackgroundVideos();
     initBenefitReveal();
     initLensEffect();
     initAntiSpamForms();
   });
 } else {
   initCardShareButtons();
+  initCardBackgroundVideos();
   initBenefitReveal();
   initLensEffect();
   initAntiSpamForms();
