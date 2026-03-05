@@ -144,6 +144,14 @@
       } catch(e) {}
     }
 
+    document.addEventListener('click', function(e) {
+      var shareBtn = e.target.closest('.blog-card-share');
+      if (!shareBtn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      shareArticle(shareBtn);
+    });
+
     (async function loadBlogPosts() {
       var grid = document.getElementById('blog-grid');
       var empty = document.getElementById('blog-empty');
@@ -173,7 +181,7 @@
         grid.innerHTML = posts.map(function(p) { return ''
           + '<a href="./blog/' + p.slug + '.html" class="blog-card">'
           +   '<div class="blog-card-thumb" style="background-image:url(\'' + (p.thumbnail || '') + '\')">'
-          +     '<button class="blog-card-share" type="button" aria-label="Share" data-title="' + escapeAttr(p.title) + '" data-url="./blog/' + p.slug + '.html" onclick="event.preventDefault();event.stopPropagation();shareArticle(this)">'
+          +     '<button class="blog-card-share" type="button" aria-label="Share" data-title="' + escapeAttr(p.title) + '" data-url="./blog/' + p.slug + '.html">'
           +       '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>'
           +     '</button>'
           +     (!p.thumbnail ? '<div class="blog-card-thumb-placeholder"></div>' : '')
