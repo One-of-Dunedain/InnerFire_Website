@@ -176,11 +176,16 @@
           <p>This is not meditation. You are not sitting with your eyes closed trying to observe your thoughts. You are actively doing something physical that simultaneously extends your exhale and captures your attention across multiple senses.</p>
           <p>The goal is not enlightenment. It is to shift your nervous system state in 3-5 minutes - so you can fall asleep, stop spiraling, or return to whatever you were doing with a clearer head.</p>
 
-          <figure class="media-block media-video-v media-video-clean">
-            <video controls loop playsinline preload="auto">
-              <source src="../assets/videos/Vagus%20Nerve%20Video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <figure class="media-block media-video-card">
+            <div class="video-card" role="button" tabindex="0" aria-label="Tap to watch with sound">
+              <video class="video-card-player" autoplay muted loop playsinline preload="metadata" data-fullsrc="../assets/videos/Vagus%20Nerve%20Video.mp4">
+                <source src="../assets/videos/Vagus%20Nerve%20Video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-card-hint" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
             <figcaption>InnerFire - breath-driven fire, sound, and haptics in real time.</figcaption>
           </figure>
 
@@ -306,7 +311,7 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=task047"></script>
+    <script src="../script.js?v=task054"></script>
     <script>
     // Reading progress bar
     window.addEventListener('scroll', function() {

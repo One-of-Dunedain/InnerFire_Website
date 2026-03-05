@@ -53,89 +53,147 @@ function initCardShareButtons() {
   });
 }
 
-// Auto-play/pause carousel videos based on viewport visibility
+// ── Video modal system ──
+// On tap: opens a fullscreen dark overlay with a NEW video element.
+// No Fullscreen API needed — works on every browser/OS.
+// Preview videos stay untouched (muted, looping, inline).
+
+var videoModal = null;
+
+function openVideoModal(fullSrc) {
+  if (!fullSrc || videoModal) return;
+
+  // Create overlay
+  var overlay = document.createElement('div');
+  overlay.className = 'video-modal';
+
+  // Close button
+  var closeBtn = document.createElement('button');
+  closeBtn.className = 'video-modal-close';
+  closeBtn.setAttribute('aria-label', 'Close video');
+  closeBtn.innerHTML = '&times;';
+  overlay.appendChild(closeBtn);
+
+  // New video element
+  var video = document.createElement('video');
+  video.className = 'video-modal-player';
+  video.src = fullSrc;
+  video.controls = true;
+  video.autoplay = true;
+  video.loop = true;
+  video.preload = 'auto';
+  overlay.appendChild(video);
+
+  document.body.appendChild(overlay);
+  videoModal = overlay;
+
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+
+  overlay.offsetHeight;
+  overlay.classList.add('video-modal-visible');
+
+  // Play, then force native fullscreen on iOS
+  var p = video.play();
+  if (p && p.then) {
+    p.then(function() {
+      if (video.webkitEnterFullscreen) {
+        try { video.webkitEnterFullscreen(); } catch (e) {}
+      }
+    }).catch(function() {});
+  } else if (video.webkitEnterFullscreen) {
+    try { video.webkitEnterFullscreen(); } catch (e) {}
+  }
+
+  function closeModal() {
+    if (!videoModal) return;
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    document.body.style.overflow = '';
+    overlay.classList.remove('video-modal-visible');
+    setTimeout(function() {
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    }, 200);
+    videoModal = null;
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  // iOS: when user exits native fullscreen, close modal
+  video.addEventListener('webkitendfullscreen', closeModal);
+
+  // Back button / Escape key
+  document.addEventListener('keydown', function handler(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+      document.removeEventListener('keydown', handler);
+    }
+  });
+}
+
+// ── Carousel video cards ──
 function initCardBackgroundVideos() {
   var videos = document.querySelectorAll('.card-bg-video');
   if (!videos.length) return;
 
+  // IntersectionObserver: play/pause preview loops when visible
   if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        var isFullscreenVideo = document.fullscreenElement === entry.target;
         if (entry.isIntersecting) {
-          var playPromise = entry.target.play();
-          if (playPromise && typeof playPromise.catch === 'function') {
-            playPromise.catch(function() {});
-          }
-        } else if (!isFullscreenVideo) {
+          var p = entry.target.play();
+          if (p && p.catch) p.catch(function() {});
+        } else {
           entry.target.pause();
         }
       });
     }, { threshold: 0.25 });
 
-    videos.forEach(function(video) {
-      observer.observe(video);
-    });
+    videos.forEach(function(v) { observer.observe(v); });
   }
 
-  function openVideoFullscreen(video, card) {
-    if (!video) return;
-
-    video.muted = false;
-    video.defaultMuted = false;
-    video.volume = 1;
-    video.controls = true;
-
-    if (video.requestFullscreen) {
-      var fsPromise = video.requestFullscreen();
-      if (fsPromise && typeof fsPromise.catch === 'function') {
-        fsPromise.catch(function() {});
-      }
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.webkitEnterFullscreen) {
-      video.webkitEnterFullscreen();
-    }
-
-    var playPromise = video.play();
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(function() {});
-    }
-  }
-
-  function restoreInlineState(video) {
-    if (!video) return;
-    video.controls = false;
-    video.muted = true;
-    video.defaultMuted = true;
-  }
-
+  // Tap handler: open modal with full-quality video
   videos.forEach(function(video) {
     var card = video.closest('.carousel-card.has-video');
     if (!card) return;
+    var fullSrc = video.getAttribute('data-fullsrc');
+    if (!fullSrc) return;
 
     card.addEventListener('click', function() {
-      openVideoFullscreen(video, card);
+      openVideoModal(fullSrc);
     });
 
     card.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openVideoFullscreen(video, card);
+        openVideoModal(fullSrc);
       }
     });
-
-    video.addEventListener('webkitendfullscreen', function() {
-      restoreInlineState(video);
-    });
   });
+}
 
-  document.addEventListener('fullscreenchange', function() {
-    videos.forEach(function(video) {
-      var activeEl = document.fullscreenElement;
-      var isActive = activeEl === video;
-      if (!isActive) {
-        restoreInlineState(video);
+function initArticleVideoCards() {
+  var cards = document.querySelectorAll('.video-card');
+  if (!cards.length) return;
+
+  cards.forEach(function(card) {
+    var video = card.querySelector('.video-card-player');
+    if (!video) return;
+    var fullSrc = video.getAttribute('data-fullsrc');
+    if (!fullSrc) return;
+
+    card.addEventListener('click', function() {
+      openVideoModal(fullSrc);
+    });
+
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openVideoModal(fullSrc);
       }
     });
   });
@@ -270,6 +328,7 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     initCardShareButtons();
     initCardBackgroundVideos();
+    initArticleVideoCards();
     initBenefitReveal();
     initLensEffect();
     initAntiSpamForms();
@@ -277,6 +336,7 @@ if (document.readyState === 'loading') {
 } else {
   initCardShareButtons();
   initCardBackgroundVideos();
+  initArticleVideoCards();
   initBenefitReveal();
   initLensEffect();
   initAntiSpamForms();

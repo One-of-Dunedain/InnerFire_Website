@@ -110,25 +110,37 @@
       <div class="carousel">
         <div class="carousel-track">
 
-          <div class="carousel-card card-mountains has-video" role="button" tabindex="0" aria-label="Open Mountain Peaks video in full screen with sound">
-            <video class="card-bg-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./assets/videos/demo-1.mp4" type="video/mp4" />
+          <div class="carousel-card card-mountains has-video" role="button" tabindex="0" aria-label="Tap to watch with sound">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="metadata" data-fullsrc="./assets/videos/demo-1.mp4">
+              <source src="./assets/videos/demo-1-preview.mp4" type="video/mp4" />
             </video>
-            <div class="card-overlay"></div>
+            <div class="card-overlay">
+              <div class="card-play-hint" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
           </div>
 
-          <div class="carousel-card card-forest has-video" role="button" tabindex="0" aria-label="Open Fireplace video in full screen with sound">
-            <video class="card-bg-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./assets/videos/demo-3.mp4" type="video/mp4" />
+          <div class="carousel-card card-forest has-video" role="button" tabindex="0" aria-label="Tap to watch with sound">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="metadata" data-fullsrc="./assets/videos/demo-3.mp4">
+              <source src="./assets/videos/demo-3-preview.mp4" type="video/mp4" />
             </video>
-            <div class="card-overlay"></div>
+            <div class="card-overlay">
+              <div class="card-play-hint" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
           </div>
 
-          <div class="carousel-card card-meditation has-video" role="button" tabindex="0" aria-label="Open Meditation Room video in full screen with sound">
-            <video class="card-bg-video" autoplay muted loop playsinline preload="metadata">
-              <source src="./assets/videos/demo-2.mp4" type="video/mp4" />
+          <div class="carousel-card card-meditation has-video" role="button" tabindex="0" aria-label="Tap to watch with sound">
+            <video class="card-bg-video" autoplay muted loop playsinline preload="metadata" data-fullsrc="./assets/videos/demo-2.mp4">
+              <source src="./assets/videos/demo-2-preview.mp4" type="video/mp4" />
             </video>
-            <div class="card-overlay"></div>
+            <div class="card-overlay">
+              <div class="card-play-hint" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -241,7 +253,7 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=task047"></script>
+    <script src="./script.js?v=task054d"></script>
   </body>
 </html>
 
