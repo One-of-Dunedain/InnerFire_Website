@@ -1,7 +1,7 @@
 # Project State
 
-## Last updated: 2026-03-04
-## Current status: TASK-047 completed; 3 active tasks remaining (TASK-048, TASK-049, TASK-050)
+## Last updated: 2026-03-05
+## Current status: TASK-048 completed; 4 active tasks remaining (TASK-049, TASK-050, TASK-051, TASK-052)
 
 ---
 
@@ -58,9 +58,10 @@
 - Privacy policy page added at `privacy.html` with noindex, cookie disclosures, third-party services table, GDPR/CCPA rights, and footer legal links (`Privacy` + `Cookie Settings`) added across landing/blog/article pages (TASK-044)
 - Cookie consent system added via `consent.js` with Google Consent Mode v2 defaults, consent banner + Cookie Settings reset flow, conditional GA4/Clarity loading, and custom analytics events (`form_submit`, `form_error`, `scroll_depth`, `share_click`, `cta_click`) wired across landing/blog/article pages (TASK-045)
 - Anti-spam baseline deployed across all Kit forms: honeypot field (`website_url`) on every form + client-side 2-second minimum submit gate in `script.js`, with blocking on filled honeypot or too-fast submit (TASK-047)
+- Real analytics IDs configured in `consent.js` (`G-BQWNY3SMZH`, `vqztrcplxz`) with consent-gated verification: accepted path loads GA4+Clarity and emits custom events; declined path blocks analytics requests (TASK-048)
 
 ### What is NOT done yet
-- Real GA4 and Clarity IDs are not configured yet (placeholders remain in `consent.js`)
+- Owner-side dashboard confirmations are still pending: mark `form_submit` as GA4 conversion and verify Clarity input masking settings
 - TikTok URL still placeholder `#`
 - Live Kit submission still needs owner-side validation
 - `og-image.png` does not exist yet
@@ -102,9 +103,10 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks
-- [TASK-048] GA4 + Clarity setup - replace placeholders, verify end-to-end (TODO)
 - [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint (TODO)
 - [TASK-050] Production QA - full site checklist before launch (TODO)
+- [TASK-051] Security Headers - Cloudflare Pages `_headers` file (TODO)
+- [TASK-052] Content Security Policy (CSP) (TODO)
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -141,6 +143,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-045 (DONE)
 - TASK-046 (DONE)
 - TASK-047 (DONE)
+- TASK-048 (DONE)
 - TASK-034 (REMOVED as non-current by owner decision; spec moved to archive/tasks/TASK-034.md)
 - TASK-003 SUPERSEDED by TASK-010
 
@@ -165,7 +168,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - Pure HTML/CSS/JS, no dependencies, no build step
 - Hosted: Cloudflare Pages (target)
 - Email service: Kit (HTML form POST endpoint)
-- Analytics: consent-gated GA4 + Clarity via `consent.js` (real IDs pending)
+- Analytics: consent-gated GA4 + Clarity via `consent.js` (real IDs configured)
 
 
 

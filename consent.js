@@ -13,8 +13,8 @@
   'use strict';
 
   // Configuration
-  var GA4_ID = 'G-XXXXXXXXXX'; // Replace with real GA4 Measurement ID
-  var CLARITY_ID = 'XXXXXXXXXX'; // Replace with real Clarity Project ID
+  var GA4_ID = 'G-BQWNY3SMZH'; // Replace with real GA4 Measurement ID
+  var CLARITY_ID = 'vqztrcplxz'; // Replace with real Clarity Project ID
   var CONSENT_KEY = 'innerfire_consent';
   var CONSENT_VERSION = '1'; // Bump to re-prompt after policy changes
   var analyticsLoaded = false;

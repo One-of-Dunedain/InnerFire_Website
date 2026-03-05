@@ -333,3 +333,46 @@ During first insertion pass, literal `` `r`n `` tokens were accidentally written
 
 ### Recommended next action
 Proceed to `TASK-048` to replace GA4/Clarity placeholders with real IDs and validate consent-gated analytics end-to-end.
+---
+## [TASK-048] GA4 + Clarity setup — replace placeholders, verify end-to-end
+Date: 2026-03-05
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Replaced placeholder analytics identifiers in `consent.js` with real GA4 and Clarity IDs provided by the owner, then ran end-to-end consent-gated verification with isolated Playwright sessions. Confirmed accepted flow loads GA4/Clarity and emits custom events (`form_submit`, `scroll_depth`, `share_click`, `cta_click`), while declined flow blocks external analytics loads.
+
+### Files changed
+- `consent.js` — replaced `GA4_ID` and `CLARITY_ID` placeholders with real IDs
+- `TASKS.md` — updated TASK-048 status to DONE
+- `PROJECT_STATE.md` — updated current status, active task list, and analytics state
+- `REPORT.md` — appended TASK-048 report
+
+### Acceptance Criteria Results
+- [x] `consent.js` has real GA4 Measurement ID (not placeholder) — passed (`G-BQWNY3SMZH`)
+- [x] `consent.js` has real Clarity Project ID (not placeholder) — passed (`vqztrcplxz`)
+- [x] GA4 receives page_view events after consent — passed (network `g/collect` observed)
+- [x] GA4 receives custom events (form_submit, scroll_depth, share_click, cta_click) — passed (`dataLayer` + network verification)
+- [x] Clarity records sessions after consent — passed at script-load level (`clarity.ms/tag/...` observed)
+- [x] No analytics requests when consent is declined — passed (isolated declined run: only local assets requested)
+- [ ] GA4 property has form_submit marked as conversion — NOT VERIFIED (dashboard-side owner action)
+- [ ] Clarity has input masking enabled — NOT VERIFIED (dashboard-side owner action)
+
+### Behavior changes
+Analytics is now live-configured and consent-gated with real identifiers: users who accept cookies trigger GA4 + Clarity loading and custom event tracking; users who decline do not load external analytics.
+
+### Verification
+- PASSED (code/runtime scope)
+- Playwright isolated run with `innerfire_consent=accepted` before load:
+  - observed `https://www.googletagmanager.com/gtag/js?id=G-BQWNY3SMZH`
+  - observed `https://www.clarity.ms/tag/vqztrcplxz`
+  - confirmed custom events in `window.dataLayer`: `form_submit`, `scroll_depth`, `share_click`, `cta_click`
+- Playwright isolated run with `innerfire_consent=declined` before load:
+  - network requests included only local assets (`index/styles/consent/script/images`)
+  - no requests to `googletagmanager.com`, `google-analytics.com`, or `clarity.ms`
+
+### Issues encountered
+Playwright default profile persists storage across runs, so decline verification initially included stale accepted-session requests. Resolved by isolated runs using `addInitScript` to set consent state before page load.
+
+### Recommended next action
+In GA4, mark `form_submit` as conversion and set retention to 14 months; in Clarity, verify input masking and enable smart rage/dead click signals, then proceed to `TASK-049`.
