@@ -419,6 +419,49 @@ Initial emoji-based flame rendering produced `??` on this host font stack; repla
 ### Recommended next action
 Proceed to `TASK-056` (pre-deployment cleanup) and complete TASK-049 deploy wiring so TASK-050 production QA can be unblocked.
 ---
+## [TASK-058] Rewrite signup form copy — TestFlight + Discord explained
+Date: 2026-03-06
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Updated signup CTA copy in all required files to explicitly explain what users receive and what TestFlight is, while also clarifying private Discord access for early testers. Kept all form structures, field names, action URLs, and button labels unchanged.
+
+### Files changed
+- `index.html` — rewrote main signup subtitle + note to explain TestFlight and Discord access
+- `blog.html` — rewrote blog newsletter subtitle + note with TestFlight and Discord explanation
+- `blog/vagus-nerve-breathing.html` — rewrote article CTA subtitle + form note
+- `blog/build-breathing-habit.html` — rewrote article CTA subtitle + form note
+- `blog/best-breathwork-apps.html` — rewrote article CTA subtitle + form note
+- `TASKS.md` — set TASK-058 status to DONE
+- `PROJECT_STATE.md` — synced current status and active/completed task lists
+- `REPORT.md` — appended TASK-058 report
+
+### Acceptance Criteria Results
+- [x] index.html: signup section explains TestFlight + Discord — passed
+- [x] vagus-nerve-breathing.html: article CTA explains TestFlight + Discord — passed
+- [x] build-breathing-habit.html: article CTA explains TestFlight + Discord — passed
+- [x] best-breathwork-apps.html: article CTA explains TestFlight + Discord — passed
+- [x] blog.html: newsletter section explains TestFlight + Discord — passed
+- [x] All form functionality unchanged (submit still works) — passed (text-only changes in form copy)
+- [x] Copy is clear to someone who doesn't know what TestFlight is — passed
+- [x] No typos or broken HTML — passed
+
+### Behavior changes
+Users now see clear pre-launch testing context: signup means a future invite via Apple TestFlight plus private Discord access, not an ambiguous “beta invite.”
+
+### Verification
+- PASSED
+- Grep verification across all 5 target files confirmed presence of `Apple TestFlight` and `Discord` messaging.
+- Confirmed old vague strings (`free TestFlight invite`, `No spam. Just a beta invite...`) are removed from target files.
+- Checked `<strong>` tag balance remains valid in edited files.
+
+### Issues encountered
+`blog/build-breathing-habit.html` had pre-existing unstaged modifications from prior work in the same branch; task changes were applied only to CTA copy lines as required, without reverting unrelated edits.
+
+### Recommended next action
+Proceed to `TASK-056` (pre-deployment cleanup), then `TASK-057` deploy flow.
+---
 ## [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint
 Date: 2026-03-05
 Status: IN PROGRESS (code complete; deploy/integration pending)

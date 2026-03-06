@@ -300,7 +300,7 @@ Goal: Deploy to Cloudflare Pages, custom domain innerfire.app, HSTS, post-deploy
 ---
 
 ## [TASK-058] Rewrite signup form copy — TestFlight + Discord explained
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none

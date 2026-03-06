@@ -1444,6 +1444,26 @@ footer {
   margin-top: 10px;
 }
 
+.article-illustration {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.illustration-svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 3rem 0;
+  opacity: 0.5;
+}
+
 /* Horizontal video (16:9) */
 .media-video-h video {
   width: 100%;
@@ -2290,6 +2310,12 @@ footer {
   }
   .article-toc li {
     margin-bottom: 6px;
+  }
+  .illustration-svg {
+    max-width: 100%;
+  }
+  .section-divider {
+    margin: 2rem 0;
   }
 
   /* Listicle mobile */

@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-06
-## Current status: TASK-055 completed; deployment-prep tasks active (TASK-049, TASK-056, TASK-057, TASK-058, TASK-059, TASK-060), TASK-050 blocked
+## Current status: TASK-058 completed; deployment-prep tasks active (TASK-049, TASK-056, TASK-057, TASK-059, TASK-060), TASK-050 blocked
 
 ---
 
@@ -60,6 +60,7 @@
 - Anti-spam baseline deployed across all Kit forms: honeypot field (`website_url`) on every form + client-side 2-second minimum submit gate in `script.js`, with blocking on filled honeypot or too-fast submit (TASK-047)
 - Real analytics IDs configured in `consent.js` (`G-BQWNY3SMZH`, `vqztrcplxz`) with consent-gated verification: accepted path loads GA4+Clarity and emits custom events; declined path blocks analytics requests (TASK-048)
 - Social sharing image added at project root: `og-image.png` (1200x630 PNG, dark fire-themed branding) for valid OG previews across landing/blog pages (TASK-055)
+- Signup copy rewritten across landing/blog/article CTAs with plain-language TestFlight explanation and explicit private Discord tester access messaging, without changing Kit form wiring (TASK-058)
 
 ### What is NOT done yet
 - Owner-side dashboard confirmations are still pending: mark `form_submit` as GA4 conversion and verify Clarity input masking settings
@@ -108,7 +109,6 @@ Static blog with JSON manifest. No build step.
 - [TASK-050] Production QA - full site checklist before launch (BLOCKED)
 - [TASK-056] Pre-deployment cleanup - Worker URL + TikTok links (TODO)
 - [TASK-057] Cloudflare Pages deployment + verification (TODO)
-- [TASK-058] Rewrite signup form copy - TestFlight + Discord explained (TODO)
 - [TASK-059] Vagus nerve article - add ToC, dividers, SVG illustrations (TODO)
 - [TASK-060] Add Table of Contents to build-breathing-habit.html (TODO)
 
@@ -148,6 +148,7 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-046 (DONE)
 - TASK-047 (DONE)
 - TASK-048 (DONE)
+- TASK-058 (DONE)
 - TASK-051 (DONE)
 - TASK-052 (DONE)
 - TASK-053 (DONE)
