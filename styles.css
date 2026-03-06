@@ -2203,6 +2203,29 @@ footer {
   .article-toc a {
     font-size: 0.82rem;
   }
+  .article--sidebar-toc .article-container {
+    max-width: 980px;
+  }
+  .article--sidebar-toc .article-body {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 40px;
+    align-items: start;
+  }
+  .article--sidebar-toc .article-body > :not(.article-toc) {
+    grid-column: 2;
+  }
+  .article--sidebar-toc .article-toc {
+    grid-column: 1;
+    position: sticky;
+    top: 80px;
+    width: auto;
+    margin: 0;
+    float: none;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    align-self: start;
+  }
 }
 
 @media (max-width: 480px) {
