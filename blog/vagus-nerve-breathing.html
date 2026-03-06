@@ -146,16 +146,26 @@
 
           <h2 id="autonomic-seesaw">The Autonomic Seesaw</h2>
           <figure class="article-illustration" aria-label="Autonomic nervous system seesaw diagram">
-            <svg viewBox="0 0 400 200" class="illustration-svg" role="img" aria-label="Seesaw showing sympathetic vs parasympathetic balance">
-              <polygon points="200,180 180,140 220,140" fill="var(--muted)" opacity="0.45" />
-              <line x1="60" y1="125" x2="340" y2="145" stroke="var(--text)" stroke-width="3" stroke-linecap="round" />
-              <circle cx="80" cy="115" r="24" fill="none" stroke="var(--muted)" stroke-width="2" />
-              <text x="80" y="80" text-anchor="middle" fill="var(--muted)" font-size="13" font-family="system-ui">Sympathetic</text>
-              <text x="80" y="95" text-anchor="middle" fill="var(--muted)" font-size="10" font-family="system-ui">fight or flight</text>
-              <circle cx="320" cy="155" r="24" fill="none" stroke="var(--accent)" stroke-width="2" />
-              <text x="320" y="120" text-anchor="middle" fill="var(--accent)" font-size="13" font-family="system-ui">Parasympathetic</text>
-              <text x="320" y="135" text-anchor="middle" fill="var(--accent)" font-size="10" font-family="system-ui">rest and digest</text>
-              <text x="200" y="198" text-anchor="middle" fill="var(--text)" font-size="11" font-family="system-ui">Vagus Nerve</text>
+            <svg viewBox="0 0 440 220" class="illustration-svg" role="img" aria-label="Seesaw showing sympathetic vs parasympathetic balance" preserveAspectRatio="xMidYMid meet">
+              <style>
+                .vagus-text { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+                .vagus-text-main { fill: var(--text); }
+                .vagus-text-muted { fill: var(--muted); }
+                .vagus-text-accent { fill: var(--accent); }
+                .vagus-pivot { fill: rgba(122, 128, 153, 0.35); }
+                .vagus-beam { stroke: rgba(232, 237, 247, 0.92); stroke-width: 4; stroke-linecap: round; }
+                .vagus-ring-muted { fill: none; stroke: rgba(122, 128, 153, 0.95); stroke-width: 2.5; }
+                .vagus-ring-accent { fill: none; stroke: rgba(255, 138, 61, 1); stroke-width: 2.5; }
+              </style>
+              <polygon class="vagus-pivot" points="220,176 196,128 244,128" />
+              <line class="vagus-beam" x1="78" y1="122" x2="362" y2="140" />
+              <circle class="vagus-ring-muted" cx="104" cy="112" r="28" />
+              <circle class="vagus-ring-accent" cx="336" cy="146" r="28" />
+              <text class="vagus-text vagus-text-muted" x="104" y="56" text-anchor="middle" font-size="16" font-weight="600">Sympathetic</text>
+              <text class="vagus-text vagus-text-muted" x="104" y="78" text-anchor="middle" font-size="12">fight or flight</text>
+              <text class="vagus-text vagus-text-accent" x="336" y="82" text-anchor="middle" font-size="16" font-weight="600">Parasympathetic</text>
+              <text class="vagus-text vagus-text-accent" x="336" y="104" text-anchor="middle" font-size="12">rest and digest</text>
+              <text class="vagus-text vagus-text-main" x="220" y="206" text-anchor="middle" font-size="12" font-weight="600">Vagus Nerve</text>
             </svg>
           </figure>
           <p><strong>Sympathetic</strong> - fight or flight. Heart rate increases, pupils dilate, digestion stops, cortisol rises. This is your alarm system.</p>
@@ -166,21 +176,32 @@
           <hr class="section-divider" />
           <h2 id="breathing-mechanism">How Breathing Activates the Vagus Nerve</h2>
           <figure class="article-illustration" aria-label="Breathing cycle and heart rate diagram">
-            <svg viewBox="0 0 400 160" class="illustration-svg" role="img" aria-label="Inhale raises heart rate, exhale lowers it via vagus nerve">
-              <rect x="20" y="20" width="160" height="120" rx="12" fill="none" stroke="var(--muted)" stroke-width="1.5" />
-              <text x="100" y="50" text-anchor="middle" fill="var(--text)" font-size="15" font-weight="700" font-family="system-ui">Inhale</text>
-              <text x="100" y="72" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="system-ui">diaphragm contracts</text>
-              <text x="100" y="96" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="system-ui">heart fills with blood</text>
-              <text x="100" y="122" text-anchor="middle" fill="var(--muted)" font-size="12" font-family="system-ui">HR &#x2191;</text>
-              <line x1="190" y1="80" x2="215" y2="80" stroke="var(--text)" stroke-width="2" marker-end="url(#arrowhead-vagus)" />
-              <rect x="220" y="20" width="160" height="120" rx="12" fill="none" stroke="var(--accent)" stroke-width="1.5" />
-              <text x="300" y="50" text-anchor="middle" fill="var(--accent)" font-size="15" font-weight="700" font-family="system-ui">Exhale</text>
-              <text x="300" y="72" text-anchor="middle" fill="var(--accent)" font-size="11" font-family="system-ui">vagus nerve activates</text>
-              <text x="300" y="96" text-anchor="middle" fill="var(--accent)" font-size="11" font-family="system-ui">acetylcholine released</text>
-              <text x="300" y="122" text-anchor="middle" fill="var(--accent)" font-size="12" font-family="system-ui">HR &#x2193;</text>
+            <svg viewBox="0 0 420 180" class="illustration-svg" role="img" aria-label="Inhale raises heart rate, exhale lowers it via vagus nerve" preserveAspectRatio="xMidYMid meet">
+              <style>
+                .cycle-text { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+                .cycle-text-main { fill: var(--text); }
+                .cycle-text-muted { fill: var(--muted); }
+                .cycle-text-accent { fill: var(--accent); }
+                .cycle-panel-muted { fill: rgba(255, 255, 255, 0.02); stroke: rgba(122, 128, 153, 0.9); stroke-width: 1.5; }
+                .cycle-panel-accent { fill: rgba(255, 138, 61, 0.04); stroke: rgba(255, 138, 61, 0.95); stroke-width: 1.5; }
+                .cycle-arrow { stroke: rgba(232, 237, 247, 0.92); stroke-width: 2.2; }
+                .cycle-arrow-head { fill: rgba(232, 237, 247, 0.92); }
+              </style>
+              <rect class="cycle-panel-muted" x="18" y="22" width="164" height="122" rx="16" />
+              <text class="cycle-text cycle-text-main" x="100" y="54" text-anchor="middle" font-size="16" font-weight="700">Inhale</text>
+              <text class="cycle-text cycle-text-muted" x="100" y="80" text-anchor="middle" font-size="12">diaphragm contracts</text>
+              <text class="cycle-text cycle-text-muted" x="100" y="102" text-anchor="middle" font-size="12">heart fills with blood</text>
+              <text class="cycle-text cycle-text-muted" x="100" y="126" text-anchor="middle" font-size="13" font-weight="600">HR &#x2191;</text>
+              <line class="cycle-arrow" x1="192" y1="84" x2="223" y2="84" marker-end="url(#arrowhead-vagus)" />
+              <rect class="cycle-panel-accent" x="238" y="22" width="164" height="122" rx="16" />
+              <text class="cycle-text cycle-text-accent" x="320" y="54" text-anchor="middle" font-size="16" font-weight="700">Exhale</text>
+              <text class="cycle-text cycle-text-accent" x="320" y="80" text-anchor="middle" font-size="12">vagus nerve activates</text>
+              <text class="cycle-text cycle-text-accent" x="320" y="102" text-anchor="middle" font-size="12">acetylcholine released</text>
+              <text class="cycle-text cycle-text-accent" x="320" y="126" text-anchor="middle" font-size="13" font-weight="600">HR &#x2193;</text>
+              <text class="cycle-text cycle-text-muted" x="210" y="164" text-anchor="middle" font-size="12">Longer exhale nudges the system toward calm</text>
               <defs>
                 <marker id="arrowhead-vagus" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                  <polygon points="0 0, 10 3.5, 0 7" fill="var(--text)" />
+                  <polygon class="cycle-arrow-head" points="0 0, 10 3.5, 0 7" />
                 </marker>
               </defs>
             </svg>
