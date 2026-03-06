@@ -116,3 +116,10 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 3. Deploy Worker + KV and share Worker URL.
 4. Patch `script.js` placeholder URL and append Worker host into CSP `connect-src`.
 5. Re-run full TASK-050 production QA checklist and close launch blockers.
+
+## In-Session Fixes (2026-03-05, video UX hotfix)
+- Reverted mobile carousel sizing change that shrank homepage demo cards; restored larger card width on `max-width: 480px`.
+- Updated fullscreen flow so first tap requests fullscreen immediately, then upgrades source to full-quality in background (instead of swapping source first).
+- Added fallback for Safari/iOS fullscreen API path when `requestFullscreen` rejects.
+- Unified `vagus-nerve-breathing` video block with `build-breathing-habit` container/hint pattern (`media-video-card` + `video-card` + `video-card-hint`).
+- Files touched in this hotfix cycle: `styles.css`, `script.js`, `blog/vagus-nerve-breathing.html`.

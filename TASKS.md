@@ -257,3 +257,72 @@ Depends on: none
 Spec: tasks/active/TASK-053.md
 Goal: Embed 3 looping demo videos (InnerFire in action) into carousel cards on homepage + 1 video in blog/build-breathing-habit.html. IntersectionObserver for play/pause. Muted autoplay on cards, controls+audio on blog.
 
+---
+
+## [TASK-054] Two-tier video system — preview + fullscreen with audio
+Status: DONE
+Priority: Critical
+Owner: Executor AI
+Depends on: TASK-053 (DONE)
+Spec: tasks/active/TASK-054.md
+Goal: Split videos into preview (480p, ~500KB-1MB, muted autoplay) and fullscreen (original quality, on-demand + audio). Play hint icon. Blog video restyle to match homepage cards. Mobile carousel: 3 cards fill viewport width.
+
+---
+
+## [TASK-055] Create og-image.png for social sharing
+Status: TODO
+Priority: Critical (blocks deployment)
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-055.md
+Goal: Create 1200x630px OG image with dark background, fire visual, "InnerFire" branding. All pages already reference it but the file is missing.
+
+---
+
+## [TASK-056] Pre-deployment cleanup — Worker URL + TikTok links
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-056.md
+Goal: Disable waitlist counter fetch (placeholder Worker URL), remove TikTok placeholder links from 3 footers. 4 files: script.js, index.html, blog.html, privacy.html.
+
+---
+
+## [TASK-057] Cloudflare Pages deployment + verification
+Status: TODO
+Priority: Critical
+Owner: Executor AI + Human
+Depends on: TASK-055 (DONE), TASK-056 (DONE)
+Spec: tasks/active/TASK-057.md
+Goal: Deploy to Cloudflare Pages, custom domain innerfire.app, HSTS, post-deployment smoke test (forms, consent, OG preview, security headers, mobile).
+
+---
+
+## [TASK-058] Rewrite signup form copy — TestFlight + Discord explained
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-058.md
+Goal: Rewrite signup text on index.html and all article CTAs to clearly explain what TestFlight is and that testers also get Discord access. 5 files: index.html, blog.html, blog articles x3.
+
+---
+
+## [TASK-059] Vagus nerve article — add ToC, dividers, SVG illustrations
+Status: TODO
+Priority: High
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-059.md
+Goal: Add sticky Table of Contents, 4 section dividers, and 2 inline SVG diagrams (autonomic seesaw + breathing cycle) to vagus-nerve-breathing.html. Improve readability on web and mobile.
+
+---
+
+## [TASK-060] Add Table of Contents to build-breathing-habit.html
+Status: TODO
+Priority: Medium
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-060.md
+Goal: Add nav.article-toc with links to all 8 H2 sections, add id attributes to all headings. Reuse existing ToC styles from best-breathwork-apps.
