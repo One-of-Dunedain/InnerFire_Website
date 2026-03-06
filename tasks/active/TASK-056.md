@@ -7,7 +7,7 @@ Continue from the first unchecked [ ] item.
 
 ---
 
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
@@ -90,13 +90,13 @@ Any other `href="#"` is a broken link.
 
 ## Acceptance Criteria
 
-- [ ] script.js: Worker URL fetch is disabled (returns early)
-- [ ] index.html: TikTok link removed from footer
-- [ ] blog.html: TikTok link removed from footer
-- [ ] privacy.html: TikTok link removed from footer
-- [ ] No broken `href="#"` links remain (except cookie-settings-link which is JS-handled)
-- [ ] X (Twitter) and Discord links still present and functional
-- [ ] No console errors on any page
+- [x] script.js: Worker URL fetch is disabled (returns early)
+- [x] index.html: TikTok link removed from footer
+- [x] blog.html: TikTok link removed from footer
+- [x] privacy.html: TikTok link removed from footer
+- [x] No broken `href="#"` links remain (except cookie-settings-link which is JS-handled)
+- [x] X (Twitter) and Discord links still present and functional
+- [x] No console errors on any page
 
 ## Verification
 

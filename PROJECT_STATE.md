@@ -1,7 +1,7 @@
 # Project State
 
 ## Last updated: 2026-03-06
-## Current status: TASK-058 completed; deployment-prep tasks active (TASK-049, TASK-056, TASK-057, TASK-059, TASK-060), TASK-050 blocked
+## Current status: TASK-056 + TASK-058 completed; deployment-prep tasks active (TASK-049, TASK-057, TASK-059, TASK-060), TASK-050 blocked
 
 ---
 
@@ -24,7 +24,7 @@
 - Breathing environments carousel with share buttons
 - "Why it actually works" section (3 benefit cards)
 - About the Author section (Ukraine origin story)
-- Social links: TikTok (placeholder) + X + Discord
+- Social links: X + Discord
 - Burning wick signup progress indicator
 - CLAUDE.md auto-loading rules
 - Blog manifest system and responsive blog card grid (TASK-013)
@@ -64,7 +64,6 @@
 
 ### What is NOT done yet
 - Owner-side dashboard confirmations are still pending: mark `form_submit` as GA4 conversion and verify Clarity input masking settings
-- TikTok URL still placeholder `#`
 - Live Kit submission still needs owner-side validation
 - Waitlist Worker still needs real deployed URL + Kit webhook wiring (TASK-049)
 - Author photos are placeholders
@@ -107,7 +106,6 @@ Static blog with JSON manifest. No build step.
 ## Active tasks
 - [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint (IN PROGRESS)
 - [TASK-050] Production QA - full site checklist before launch (BLOCKED)
-- [TASK-056] Pre-deployment cleanup - Worker URL + TikTok links (TODO)
 - [TASK-057] Cloudflare Pages deployment + verification (TODO)
 - [TASK-059] Vagus nerve article - add ToC, dividers, SVG illustrations (TODO)
 - [TASK-060] Add Table of Contents to build-breathing-habit.html (TODO)

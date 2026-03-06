@@ -350,7 +350,9 @@ if (document.readyState === 'loading') {
   if (!el) return;
 
   var FALLBACK_LIMIT = 300;
-  var API_URL = 'https://innerfire-waitlist.<your-subdomain>.workers.dev/api/waitlist-count';
+  // TODO: Replace with real Cloudflare Worker URL after TASK-049
+  // var API_URL = 'https://innerfire-waitlist.YOUR_SUBDOMAIN.workers.dev/api/waitlist-count';
+  return; // Skip counter fetch until Worker is deployed
 
   function applyCount(count, limit) {
     var safeLimit = typeof limit === 'number' && limit > 0 ? limit : FALLBACK_LIMIT;

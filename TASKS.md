@@ -280,7 +280,7 @@ Goal: Create 1200x630px OG image with dark background, fire visual, "InnerFire" 
 ---
 
 ## [TASK-056] Pre-deployment cleanup — Worker URL + TikTok links
-Status: TODO
+Status: DONE
 Priority: High
 Owner: Executor AI
 Depends on: none
@@ -326,3 +326,4 @@ Owner: Executor AI
 Depends on: none
 Spec: tasks/active/TASK-060.md
 Goal: Add nav.article-toc with links to all 8 H2 sections, add id attributes to all headings. Reuse existing ToC styles from best-breathwork-apps.
+
