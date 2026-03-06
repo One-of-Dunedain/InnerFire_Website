@@ -55,13 +55,39 @@ function initCardShareButtons() {
 
 // ── Video modal system ──
 // On tap: opens a fullscreen dark overlay with a NEW video element.
-// No Fullscreen API needed — works on every browser/OS.
 // Preview videos stay untouched (muted, looping, inline).
+// If the R2 media host is unavailable, fall back to the local full file.
 
 var videoModal = null;
+var VIDEO_REMOTE_FALLBACK_TIMEOUT_MS = 1200;
 
-function openVideoModal(fullSrc) {
-  if (!fullSrc || videoModal) return;
+function playModalVideo(video) {
+  var p = video.play();
+  if (p && p.then) {
+    p.then(function() {
+      if (video.webkitEnterFullscreen) {
+        try { video.webkitEnterFullscreen(); } catch (e) {}
+      }
+    }).catch(function() {});
+  } else if (video.webkitEnterFullscreen) {
+    try { video.webkitEnterFullscreen(); } catch (e) {}
+  }
+}
+
+function getVideoModalSources(videoEl) {
+  if (!videoEl) return { primary: '', fallback: '' };
+
+  var fallbackSrc = videoEl.getAttribute('data-fullsrc') || '';
+  var remoteSrc = videoEl.getAttribute('data-r2src') || '';
+
+  return {
+    primary: remoteSrc || fallbackSrc,
+    fallback: remoteSrc ? fallbackSrc : ''
+  };
+}
+
+function openVideoModal(primarySrc, fallbackSrc) {
+  if ((!primarySrc && !fallbackSrc) || videoModal) return;
 
   // Create overlay
   var overlay = document.createElement('div');
@@ -84,6 +110,35 @@ function openVideoModal(fullSrc) {
   video.preload = 'auto';
   overlay.appendChild(video);
 
+  var remoteAttempted = Boolean(primarySrc && fallbackSrc && primarySrc !== fallbackSrc);
+  var fallbackArmed = remoteAttempted;
+  var fallbackTimer = null;
+
+  function clearFallbackTimer() {
+    if (!fallbackTimer) return;
+    clearTimeout(fallbackTimer);
+    fallbackTimer = null;
+  }
+
+  function switchToFallback() {
+    if (!fallbackArmed || !fallbackSrc) return;
+    fallbackArmed = false;
+    clearFallbackTimer();
+    video.pause();
+    video.src = fallbackSrc;
+    video.load();
+    playModalVideo(video);
+  }
+
+  video.addEventListener('loadedmetadata', clearFallbackTimer);
+  video.addEventListener('playing', function() {
+    fallbackArmed = false;
+    clearFallbackTimer();
+  });
+  video.addEventListener('error', function() {
+    switchToFallback();
+  });
+
   document.body.appendChild(overlay);
   videoModal = overlay;
 
@@ -93,20 +148,20 @@ function openVideoModal(fullSrc) {
   overlay.offsetHeight;
   overlay.classList.add('video-modal-visible');
 
-  // Play, then force native fullscreen on iOS
-  var p = video.play();
-  if (p && p.then) {
-    p.then(function() {
-      if (video.webkitEnterFullscreen) {
-        try { video.webkitEnterFullscreen(); } catch (e) {}
-      }
-    }).catch(function() {});
-  } else if (video.webkitEnterFullscreen) {
-    try { video.webkitEnterFullscreen(); } catch (e) {}
+  video.src = primarySrc || fallbackSrc;
+  video.load();
+
+  if (remoteAttempted) {
+    fallbackTimer = setTimeout(function() {
+      switchToFallback();
+    }, VIDEO_REMOTE_FALLBACK_TIMEOUT_MS);
   }
+
+  playModalVideo(video);
 
   function closeModal() {
     if (!videoModal) return;
+    clearFallbackTimer();
     video.pause();
     video.removeAttribute('src');
     video.load();
@@ -160,17 +215,17 @@ function initCardBackgroundVideos() {
   videos.forEach(function(video) {
     var card = video.closest('.carousel-card.has-video');
     if (!card) return;
-    var fullSrc = video.getAttribute('data-fullsrc');
-    if (!fullSrc) return;
+    var sources = getVideoModalSources(video);
+    if (!sources.primary && !sources.fallback) return;
 
     card.addEventListener('click', function() {
-      openVideoModal(fullSrc);
+      openVideoModal(sources.primary, sources.fallback);
     });
 
     card.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openVideoModal(fullSrc);
+        openVideoModal(sources.primary, sources.fallback);
       }
     });
   });
@@ -183,17 +238,17 @@ function initArticleVideoCards() {
   cards.forEach(function(card) {
     var video = card.querySelector('.video-card-player');
     if (!video) return;
-    var fullSrc = video.getAttribute('data-fullsrc');
-    if (!fullSrc) return;
+    var sources = getVideoModalSources(video);
+    if (!sources.primary && !sources.fallback) return;
 
     card.addEventListener('click', function() {
-      openVideoModal(fullSrc);
+      openVideoModal(sources.primary, sources.fallback);
     });
 
     card.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openVideoModal(fullSrc);
+        openVideoModal(sources.primary, sources.fallback);
       }
     });
   });
