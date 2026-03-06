@@ -270,7 +270,7 @@ Goal: Split videos into preview (480p, ~500KB-1MB, muted autoplay) and fullscree
 ---
 
 ## [TASK-055] Create og-image.png for social sharing
-Status: TODO
+Status: DONE
 Priority: Critical (blocks deployment)
 Owner: Executor AI
 Depends on: none

@@ -377,6 +377,48 @@ Playwright default profile persists storage across runs, so decline verification
 ### Recommended next action
 In GA4, mark `form_submit` as conversion and set retention to 14 months; in Clarity, verify input masking and enable smart rage/dead click signals, then proceed to `TASK-049`.
 ---
+## [TASK-055] Create og-image.png for social sharing
+Date: 2026-03-06
+Status: DONE
+Executor: Executor AI
+
+### What was done
+Created a new root-level `og-image.png` with a 1200x630 canvas, dark InnerFire-themed gradient background, warm fire glow, flame visual mark, brand text `InnerFire`, tagline `Breathe. Feel It.`, and domain label `innerfire.app`. Verified file dimensions and size target. Also verified OG meta paths in landing/blog pages and article templates resolve correctly to root OG image where expected.
+
+### Files changed
+- `og-image.png` — created social share image (PNG, 1200x630)
+- `TASKS.md` — updated TASK-055 status to DONE
+- `PROJECT_STATE.md` — updated project status, active/completed task lists, and missing-items section
+- `REPORT.md` — appended TASK-055 report
+
+### Acceptance Criteria Results
+- [x] `og-image.png` exists in the project root — passed
+- [x] Image is 1200x630 pixels — passed
+- [x] Image file size is under 500KB (ideally under 200KB) — passed (`67,785` bytes)
+- [x] Image has dark background matching site theme — passed
+- [x] Image has "InnerFire" text visible — passed
+- [x] Image is visually acceptable (not broken/corrupted) — passed
+
+### Behavior changes
+When the site is shared on platforms that read Open Graph metadata, previews now show a valid branded image instead of a missing/broken thumbnail.
+
+### Verification
+- PASSED
+- File checks:
+  - `Get-Item og-image.png` -> file exists, size `67,785` bytes
+  - loaded image via `System.Drawing.Image` -> `1200x630`
+- OG path checks:
+  - `index.html` -> `./og-image.png`
+  - `blog.html` -> `./og-image.png`
+  - listicle/article templates and listicle page reference `../og-image.png` correctly
+  - article-specific OG images (`vagus-nerve-breathing.svg`, `build-breathing-habit.svg`) remain unchanged by design
+
+### Issues encountered
+Initial emoji-based flame rendering produced `??` on this host font stack; replaced with vector flame path to ensure consistent rendering.
+
+### Recommended next action
+Proceed to `TASK-056` (pre-deployment cleanup) and complete TASK-049 deploy wiring so TASK-050 production QA can be unblocked.
+---
 ## [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint
 Date: 2026-03-05
 Status: IN PROGRESS (code complete; deploy/integration pending)

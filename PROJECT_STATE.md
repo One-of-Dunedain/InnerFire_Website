@@ -1,7 +1,7 @@
 # Project State
 
-## Last updated: 2026-03-05
-## Current status: TASK-048 completed; 4 active tasks remaining (TASK-049, TASK-050, TASK-051, TASK-052)
+## Last updated: 2026-03-06
+## Current status: TASK-055 completed; deployment-prep tasks active (TASK-049, TASK-056, TASK-057, TASK-058, TASK-059, TASK-060), TASK-050 blocked
 
 ---
 
@@ -59,12 +59,13 @@
 - Cookie consent system added via `consent.js` with Google Consent Mode v2 defaults, consent banner + Cookie Settings reset flow, conditional GA4/Clarity loading, and custom analytics events (`form_submit`, `form_error`, `scroll_depth`, `share_click`, `cta_click`) wired across landing/blog/article pages (TASK-045)
 - Anti-spam baseline deployed across all Kit forms: honeypot field (`website_url`) on every form + client-side 2-second minimum submit gate in `script.js`, with blocking on filled honeypot or too-fast submit (TASK-047)
 - Real analytics IDs configured in `consent.js` (`G-BQWNY3SMZH`, `vqztrcplxz`) with consent-gated verification: accepted path loads GA4+Clarity and emits custom events; declined path blocks analytics requests (TASK-048)
+- Social sharing image added at project root: `og-image.png` (1200x630 PNG, dark fire-themed branding) for valid OG previews across landing/blog pages (TASK-055)
 
 ### What is NOT done yet
 - Owner-side dashboard confirmations are still pending: mark `form_submit` as GA4 conversion and verify Clarity input masking settings
 - TikTok URL still placeholder `#`
 - Live Kit submission still needs owner-side validation
-- `og-image.png` does not exist yet
+- Waitlist Worker still needs real deployed URL + Kit webhook wiring (TASK-049)
 - Author photos are placeholders
 
 ---
@@ -103,10 +104,13 @@ Static blog with JSON manifest. No build step.
 ---
 
 ## Active tasks
-- [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint (TODO)
-- [TASK-050] Production QA - full site checklist before launch (TODO)
-- [TASK-051] Security Headers - Cloudflare Pages `_headers` file (TODO)
-- [TASK-052] Content Security Policy (CSP) (TODO)
+- [TASK-049] Waitlist counter - Cloudflare Workers + KV serverless endpoint (IN PROGRESS)
+- [TASK-050] Production QA - full site checklist before launch (BLOCKED)
+- [TASK-056] Pre-deployment cleanup - Worker URL + TikTok links (TODO)
+- [TASK-057] Cloudflare Pages deployment + verification (TODO)
+- [TASK-058] Rewrite signup form copy - TestFlight + Discord explained (TODO)
+- [TASK-059] Vagus nerve article - add ToC, dividers, SVG illustrations (TODO)
+- [TASK-060] Add Table of Contents to build-breathing-habit.html (TODO)
 
 ## Completed tasks
 Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -144,6 +148,11 @@ Archived in `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
 - TASK-046 (DONE)
 - TASK-047 (DONE)
 - TASK-048 (DONE)
+- TASK-051 (DONE)
+- TASK-052 (DONE)
+- TASK-053 (DONE)
+- TASK-054 (DONE)
+- TASK-055 (DONE)
 - TASK-034 (REMOVED as non-current by owner decision; spec moved to archive/tasks/TASK-034.md)
 - TASK-003 SUPERSEDED by TASK-010
 
