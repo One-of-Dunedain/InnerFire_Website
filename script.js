@@ -103,7 +103,6 @@ function openVideoModal(primarySrc, fallbackSrc) {
   // New video element
   var video = document.createElement('video');
   video.className = 'video-modal-player';
-  video.src = fullSrc;
   video.controls = true;
   video.autoplay = true;
   video.loop = true;
