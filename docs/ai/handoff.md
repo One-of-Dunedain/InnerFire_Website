@@ -10,21 +10,29 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 - Analytics: GA4 + Microsoft Clarity behind consent (`consent.js`)
 - Counter backend target: Cloudflare Worker + KV
 
-## Current Status (2026-03-05)
+## Current Status (2026-03-09)
+
+### PRODUCTION INCIDENT: Google Safe Browsing "Deceptive pages"
+- Site deployed at `innerfire-app.com` (NOT `innerfire.app` — domain changed)
+- Chrome blocks all pages with danger warning
+- Root cause: 30+ canonical/og:url/JSON-LD references still point to old `innerfire.app` domain + reward-for-email signup copy
+- Fix: TASK-061 (domain identity + trust signals remediation)
+- After fix: redeploy → Google Search Console "Request Review" → wait 1-3 days
 
 ### Task summary
 | Task | Status | Notes |
 |---|---|---|
-| TASK-048 | DONE | Real GA4/Clarity IDs configured and verified in consent-gated flow |
-| TASK-049 | IN PROGRESS | Code complete locally; waiting on Worker deploy, real URL, and Kit webhook |
-| TASK-050 | BLOCKED | Production QA blocked until `innerfire.app` points to this repo deployment |
-| TASK-051 | DONE | `_headers` security baseline added |
-| TASK-052 | DONE (partial dependency) | Enforcing CSP added; Worker host still missing from `connect-src` until TASK-049 deploy |
-| TASK-053 | DONE | 3 homepage video cards + 1 blog embed integrated |
+| TASK-055 | DONE | og-image.png created |
+| TASK-056 | DONE | Pre-deploy cleanup (Worker URL disabled, TikTok links removed from main pages) |
+| TASK-058 | DONE | Signup copy rewrite (TestFlight + Discord) — **NOTE: copy needs re-revision in TASK-061 for trust reasons** |
+| TASK-059 | TODO | Vagus article readability (ToC + SVG illustrations) — **deprioritized, TASK-061 first** |
+| TASK-060 | TODO | Habit article ToC — **deprioritized, TASK-061 first** |
+| TASK-061 | TODO | **CRITICAL** Safe Browsing remediation — domain swap + trust copy + footer cleanup |
 
-### Latest owner decision
-- Deployment is intentionally postponed for now. Continue with code/docs prep only.
-- Owner provided source demo videos; TASK-053 unblocked and executed.
+### Production domain
+- **Current:** `innerfire-app.com` (Cloudflare Pages)
+- **Old (DO NOT USE):** `innerfire.app`
+- **Media:** `media.innerfire-app.com` (R2)
 
 ## What Was Done In This Cycle
 1. Completed TASK-051 in code scope:
@@ -111,11 +119,11 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 - Full TASK-050 QA (including Lighthouse and cross-browser) is pending deployment switch.
 
 ## Next Steps
-1. Keep deployment paused as requested.
-2. When owner is ready, perform Cloudflare Pages domain switch.
-3. Deploy Worker + KV and share Worker URL.
-4. Patch `script.js` placeholder URL and append Worker host into CSP `connect-src`.
-5. Re-run full TASK-050 production QA checklist and close launch blockers.
+1. **TASK-061** (CRITICAL): Execute Safe Browsing remediation — domain swap + trust copy + footer cleanup
+2. Redeploy to Cloudflare Pages after TASK-061 verified
+3. Submit Google Search Console "Request Review" with remediation summary
+4. While waiting for Google (1-3 days): execute TASK-059, TASK-060
+5. After Google clears: TASK-050 production QA
 
 ## In-Session Fixes (2026-03-05, video UX hotfix)
 - Reverted mobile carousel sizing change that shrank homepage demo cards; restored larger card width on `max-width: 480px`.

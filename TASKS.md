@@ -2,7 +2,7 @@
 
 Active task index only. Full task specifications are stored in `tasks/active/`.
 Completed and superseded tasks are archived in `archive/tasks/`.
-Last updated: 2026-03-05
+Last updated: 2026-03-09
 
 Archived blocks:
 - `archive/tasks/TASKS_ARCHIVE_2026-02-25.md`
@@ -326,4 +326,14 @@ Owner: Executor AI
 Depends on: none
 Spec: tasks/active/TASK-060.md
 Goal: Add nav.article-toc with links to all 8 H2 sections, add id attributes to all headings. Reuse existing ToC styles from best-breathwork-apps.
+
+---
+
+## [TASK-061] Safe Browsing Remediation — Domain Identity + Trust Signals
+Status: TODO
+Priority: CRITICAL (production blocker)
+Owner: Executor AI
+Depends on: none
+Spec: tasks/active/TASK-061.md
+Goal: Fix Google Safe Browsing "Deceptive pages" classification. Replace all innerfire.app → innerfire-app.com in production files (canonical, og:url, JSON-LD, sitemap, robots, privacy emails, worker CORS). Rewrite reward-for-email signup copy. Remove TikTok placeholder links. 12 files, 4 phases.
 
