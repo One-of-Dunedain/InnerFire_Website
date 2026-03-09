@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://innerfire.app/sitemap.xml
+Sitemap: https://innerfire-app.com/sitemap.xml

@@ -16,7 +16,7 @@ export default {
   async fetch(request, env) {
     var url = new URL(request.url);
     var origin = request.headers.get('Origin') || '';
-    var allowOrigin = origin === 'https://innerfire.app' ? origin : 'https://innerfire.app';
+    var allowOrigin = origin === 'https://innerfire-app.com' ? origin : 'https://innerfire-app.com';
 
     var corsHeaders = {
       'Access-Control-Allow-Origin': allowOrigin,
