@@ -2217,6 +2217,7 @@ footer {
   }
   .article--sidebar-toc .article-toc {
     grid-column: 1;
+    grid-row: 1 / span 100;
     position: sticky;
     top: 80px;
     width: auto;
