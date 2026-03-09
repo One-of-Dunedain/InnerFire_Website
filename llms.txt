@@ -11,8 +11,8 @@
 
 ## Key pages
 - Homepage: https://innerfire-app.com - Product overview and beta signup
-- Blog: https://innerfire-app.com/blog - Articles about breathing, focus, and wellness
-- Best Breathwork Apps: https://innerfire-app.com/blog/best-breathwork-apps - Comparison of top breathing apps (2026)
+- Blog: https://innerfire-app.com/blog.html - Articles about breathing, focus, and wellness
+- Best Breathwork Apps: https://innerfire-app.com/blog/best-breathwork-apps.html - Comparison of top breathing apps (2026)
 
 ## What makes InnerFire different
 InnerFire is the only breathwork app that responds to your actual breathing in real-time using the device microphone. Instead of following a timer or counting, you see and feel your breath through visual fire effects, adaptive sound, and haptic feedback. The app detects exhale intensity and duration, creating a biofeedback loop that makes breathing exercises intuitive rather than mechanical.
