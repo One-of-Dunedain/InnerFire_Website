@@ -1427,31 +1427,6 @@ footer {
 .welcome-page .legal-body a:hover {
   color: var(--accent2);
 }
-.welcome-page .welcome-reading-links li {
-  margin-bottom: 0.45rem;
-}
-.welcome-page .welcome-reading-link {
-  font-weight: 600;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-  text-decoration-color: rgba(255, 255, 255, 0.35);
-}
-.welcome-page .welcome-reading-link--vagus,
-.welcome-page .welcome-reading-link--vagus:visited {
-  color: var(--accent2);
-}
-.welcome-page .welcome-reading-link--habit,
-.welcome-page .welcome-reading-link--habit:visited {
-  color: var(--accent);
-}
-.welcome-page .welcome-reading-link--apps,
-.welcome-page .welcome-reading-link--apps:visited {
-  color: #ffb37a;
-}
-.welcome-page .welcome-reading-link:hover,
-.welcome-page .welcome-reading-link:focus-visible {
-  color: var(--text);
-  text-decoration-color: var(--text);
-}
 .article-body blockquote {
   border-left: 3px solid var(--accent);
   padding: 16px 20px;
