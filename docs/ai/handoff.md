@@ -28,6 +28,7 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 | TASK-059 | TODO | Vagus article readability (ToC + SVG illustrations) — **deprioritized, TASK-061 first** |
 | TASK-060 | TODO | Habit article ToC — **deprioritized, TASK-061 first** |
 | TASK-061 | TODO | **CRITICAL** Safe Browsing remediation — domain swap + trust copy + footer cleanup |
+| TASK-062 | IN PROGRESS | Executor done Phase 1 + Phase 3; waiting for Human R2 upload + runtime verification |
 
 ### Production domain
 - **Current:** `innerfire-app.com` (Cloudflare Pages)
@@ -119,11 +120,12 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 - Full TASK-050 QA (including Lighthouse and cross-browser) is pending deployment switch.
 
 ## Next Steps
-1. **TASK-061** (CRITICAL): Execute Safe Browsing remediation — domain swap + trust copy + footer cleanup
-2. Redeploy to Cloudflare Pages after TASK-061 verified
-3. Submit Google Search Console "Request Review" with remediation summary
-4. While waiting for Google (1-3 days): execute TASK-059, TASK-060
-5. After Google clears: TASK-050 production QA
+1. Complete TASK-062 Phase 2 (Human): upload originals to R2 (`media.innerfire-app.com`) and run runtime fallback checks.
+2. **TASK-061** (CRITICAL): Execute Safe Browsing remediation — domain swap + trust copy + footer cleanup
+3. Redeploy to Cloudflare Pages after TASK-061 verified
+4. Submit Google Search Console "Request Review" with remediation summary
+5. While waiting for Google (1-3 days): execute TASK-059, TASK-060
+6. After Google clears: TASK-050 production QA
 
 ## In-Session Fixes (2026-03-05, video UX hotfix)
 - Reverted mobile carousel sizing change that shrank homepage demo cards; restored larger card width on `max-width: 480px`.
@@ -131,3 +133,18 @@ Collect 300 emails from potential beta testers via static landing-page flows.
 - Added fallback for Safari/iOS fullscreen API path when `requestFullscreen` rejects.
 - Unified `vagus-nerve-breathing` video block with `build-breathing-habit` container/hint pattern (`media-video-card` + `video-card` + `video-card-hint`).
 - Files touched in this hotfix cycle: `styles.css`, `script.js`, `blog/vagus-nerve-breathing.html`.
+
+## In-Session Updates (2026-03-11, TASK-062 progress)
+- Regenerated all 8 video derivatives from source files in `X:\Work\innerFire landing info\` using ffmpeg:
+  - Preview: `360x640`, `crf=32`
+  - Fallback: `720x1280`, `crf=25`
+- Updated HTML R2 bindings:
+  - `index.html`: added `data-r2src` for `demo-1`, `demo-2`, `demo-3`.
+  - `blog/vagus-nerve-breathing.html`: switched `data-r2src` to shared `https://media.innerfire-app.com/demo-2.mp4`.
+- Verified:
+  - All preview files are < 500KB.
+  - All fallback files are < 8MB and < 25MB CF Pages limit.
+  - `git ls-files` check: no tracked files over 25MB.
+- Pending:
+  - Human Phase 2 upload to R2 bucket.
+  - Browser runtime validation of R2-success path and 1.2s fallback path after upload.

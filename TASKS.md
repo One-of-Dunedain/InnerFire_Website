@@ -337,3 +337,13 @@ Depends on: none
 Spec: tasks/active/TASK-061.md
 Goal: Fix Google Safe Browsing "Deceptive pages" classification. Replace all innerfire.app → innerfire-app.com in production files (canonical, og:url, JSON-LD, sitemap, robots, privacy emails, worker CORS). Rewrite reward-for-email signup copy. Remove TikTok placeholder links. 12 files, 4 phases.
 
+---
+
+## [TASK-062] Video hosting migration — R2 CDN for full-quality playback
+Status: IN PROGRESS (Executor done: Phase 1 video regeneration + Phase 3 data-r2src; pending Human Phase 2 R2 upload)
+Priority: High
+Owner: Executor AI + Human (R2 upload)
+Depends on: none
+Spec: tasks/active/TASK-062.md
+Goal: Migrate video delivery to 3-tier system: preview (CF Pages, 360p), full quality (R2 CDN, original/1080p), fallback (CF Pages, 720p). Upload originals to R2 media.innerfire-app.com. Regenerate preview+fallback from new source videos. Restore data-r2src in HTML.
+
