@@ -1422,7 +1422,7 @@ footer {
   text-underline-offset: 3px;
 }
 .welcome-page .legal-body a:visited {
-  color: currentColor;
+  color: var(--accent);
 }
 .welcome-page .legal-body a:hover {
   color: var(--accent2);
