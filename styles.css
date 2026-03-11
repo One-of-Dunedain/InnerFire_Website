@@ -1087,6 +1087,7 @@ footer {
   .btn-primary { width: 100%; text-align: center; }
   .email-input { max-width: 100%; }
   .carousel-card { flex: 0 0 180px; }
+  .carousel-card.card-forest { order: -1; }
   .header-nav { gap: 12px; }
   .header-nav a { font-size: 0.83rem; }
   .btn-header { padding: 6px 12px; }
