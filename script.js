@@ -59,7 +59,7 @@ function initCardShareButtons() {
 // If the R2 media host is unavailable, fall back to the local full file.
 
 var videoModal = null;
-var VIDEO_REMOTE_FALLBACK_TIMEOUT_MS = 1200;
+var VIDEO_REMOTE_FALLBACK_TIMEOUT_MS = 2500;
 
 function playModalVideo(video) {
   var p = video.play();
