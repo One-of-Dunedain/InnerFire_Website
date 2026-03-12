@@ -504,12 +504,16 @@ body {
 
 .card-bg-video {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  /* Overdraw by 1px to avoid subpixel seam where card background can bleed through */
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  display: block;
   object-fit: cover;
+  object-position: center;
   z-index: 0;
   border-radius: inherit;
+  background: #000;
 }
 
 .card-overlay {
